@@ -1,0 +1,407 @@
+{
+  "sections": {
+    "image-accordions-0": {
+      "type": "section-image-accordions",
+      "blocks": {
+        "accordion-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6X0A9494.jpg",
+            "bg_position": "center-bottom",
+            "overlay_opacity": 10,
+            "text_width": "normal",
+            "text_position": "bottom-left",
+            "text_color": "text-light",
+            "title": "NFR Collection",
+            "text": "Coming out with a bang - Wild Junkies first ever NFR Collection is here! Shop our hand picked items for only the most specular nights in Vegas.",
+            "btn_text": "Shop Now",
+            "btn_link": "shopify:\/\/collections\/nfr-collection",
+            "btn_style": "btn--primary btn--small",
+            "btn_text_2": "",
+            "btn_link_2": "",
+            "btn_style_2": "btn--secondary btn--small"
+          }
+        },
+        "accordion-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6X0A3699.jpg",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_width": "normal",
+            "text_position": "bottom-left",
+            "text_color": "text-light",
+            "title": "Graphic Tees",
+            "text": "Shop our wide selection of unique and exclusive graphic tees in sizes up to XXL giving you an option to wear any as t-shirt dress.",
+            "btn_text": "Shop Now",
+            "btn_link": "shopify:\/\/collections\/graphic-tees",
+            "btn_style": "btn--primary btn--small",
+            "btn_text_2": "",
+            "btn_link_2": "",
+            "btn_style_2": "btn--secondary btn--small"
+          }
+        },
+        "accordion-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6X0A1063.jpg",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_width": "normal",
+            "text_position": "bottom-left",
+            "text_color": "text-light",
+            "title": "New Arrivals",
+            "text": "Find the newest arrivals throughout all of our product line up here!",
+            "btn_text": "Shop Now",
+            "btn_link": "shopify:\/\/collections\/new-arrivals",
+            "btn_style": "btn--primary btn--small",
+            "btn_text_2": "",
+            "btn_link_2": "",
+            "btn_style_2": "btn--secondary btn--small"
+          }
+        },
+        "accordion-3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6X0A4070.jpg",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_width": "normal",
+            "text_position": "bottom-left",
+            "text_color": "text-light",
+            "title": "Authentic Turquoise",
+            "text": "Shop our curated selection of authentic turquoise and Navajo pearls!",
+            "btn_text": "Shop Now",
+            "btn_link": "shopify:\/\/collections\/real-turquoise-jewelry",
+            "btn_style": "btn--primary btn--small",
+            "btn_text_2": "",
+            "btn_link_2": "",
+            "btn_style_2": "btn--secondary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "accordion-0",
+        "accordion-1",
+        "accordion-2",
+        "accordion-3"
+      ],
+      "settings": {
+        "accordion_height": "six-fifty-height",
+        "heading_size": 100,
+        "width": "wrapper--full",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "marquee": {
+      "type": "section-marquee",
+      "blocks": {
+        "text-0": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Free shipping on all US orders over $25<\/strong><\/p>",
+            "icon_name": "truck",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        }
+      },
+      "block_order": [
+        "text-0"
+      ],
+      "settings": {
+        "bg_color": "#ff6d6d",
+        "color": "#ffffff",
+        "layout": "marquee",
+        "padding": 20,
+        "slider_speed": 7,
+        "marquee_speed": 100,
+        "text_size": 150,
+        "message_spacing": 25,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "collection": {
+      "type": "section-collection",
+      "settings": {
+        "collection": "new-arrivals",
+        "title": "New Arrivals",
+        "text": "",
+        "text_alignment": "text-left",
+        "products_rows": 1,
+        "products_layout": "grid",
+        "show_collection_button": true,
+        "button_style": "btn--text",
+        "bg_color": "",
+        "enable_slider_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "grid-0": {
+      "type": "section-grid",
+      "blocks": {
+        "39c7ed22-848d-4a94-afd8-12d2462dc1d6": {
+          "type": "collection",
+          "settings": {
+            "collection": "tops",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "show_description": false,
+            "button_text": "",
+            "text_color": "text-light"
+          }
+        },
+        "47fffd63-2890-4c40-87eb-058d0a869645": {
+          "type": "collection",
+          "settings": {
+            "collection": "bottoms",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "show_description": false,
+            "button_text": "",
+            "text_color": "text-light"
+          }
+        },
+        "10e0781c-0da8-4176-90c5-28c4a64e9fdc": {
+          "type": "collection",
+          "settings": {
+            "collection": "jewelry",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "show_description": true,
+            "button_text": "",
+            "text_color": "text-light"
+          }
+        },
+        "28667974-591a-4943-9cf1-3dc944bee1b9": {
+          "type": "collection",
+          "settings": {
+            "collection": "shoes",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "show_description": true,
+            "button_text": "",
+            "text_color": "text-light"
+          }
+        }
+      },
+      "block_order": [
+        "39c7ed22-848d-4a94-afd8-12d2462dc1d6",
+        "47fffd63-2890-4c40-87eb-058d0a869645",
+        "10e0781c-0da8-4176-90c5-28c4a64e9fdc",
+        "28667974-591a-4943-9cf1-3dc944bee1b9"
+      ],
+      "settings": {
+        "height": "fullscreen",
+        "heading_size": 130,
+        "button_style": "btn--primary",
+        "secondary_button_style": "btn--secondary btn--small",
+        "bg_color": "",
+        "enable_slider_mobile": true,
+        "width": "wrapper",
+        "add_gutter": true,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "custom-content-0": {
+      "type": "section-custom-content",
+      "blocks": {
+        "text-0": {
+          "type": "text",
+          "settings": {
+            "text_position": "center",
+            "top_image_width": 100,
+            "text_color": "text-dark",
+            "subheading": "",
+            "title": "Our Story",
+            "text": "<p>The team behind Wild Junkie is small but mighty; let me begin by introducing myself, Brooke Hald, and telling you about WJB! Wild Junkie was born in the fall of 2018 when I decided to expand my wood-crafting business.<\/p>",
+            "button_text": "Learn More",
+            "button_link": "shopify:\/\/pages\/about",
+            "button_style": "btn--primary btn--small",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "secondary_button_style": "btn--secondary btn--small",
+            "bg_color": ""
+          }
+        },
+        "image-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/DSCF4587.png",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "text-0",
+        "image-0"
+      ],
+      "settings": {
+        "height": "six-fifty-height",
+        "bg_color": "",
+        "width": "wrapper--full-padded",
+        "add_gutter": true,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "testimonials": {
+      "type": "section-testimonials",
+      "blocks": {
+        "testimonial-0": {
+          "type": "text",
+          "settings": {
+            "heading": "We let our reviews speak for themselves.",
+            "text_size": 125,
+            "subheading": "<p>4.98 average<br\/>213 reviews<\/p>",
+            "block_color": "#ff6d6d",
+            "text_color": "text-light",
+            "text_alignment": "text-left"
+          }
+        },
+        "testimonial-1": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "John Edmonson",
+            "subheading": "<p>Loyal Customer<\/p>"
+          }
+        },
+        "testimonial-2": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "John Edmonson",
+            "subheading": "<p>Loyal Customer<\/p>"
+          }
+        },
+        "testimonial-3": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "John Edmonson",
+            "subheading": "<p>Loyal Customer<\/p>"
+          }
+        },
+        "testimonial-4": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "John Edmonson",
+            "subheading": "<p>Loyal Customer<\/p>"
+          }
+        },
+        "testimonial-5": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "John Edmonson",
+            "subheading": "<p>Loyal Customer<\/p>"
+          }
+        },
+        "testimonial-6": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "John Edmonson",
+            "subheading": "<p>Loyal Customer<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial-0",
+        "testimonial-1",
+        "testimonial-2",
+        "testimonial-3",
+        "testimonial-4",
+        "testimonial-5",
+        "testimonial-6"
+      ],
+      "settings": {
+        "title": "Testimonials",
+        "text_size": 100,
+        "text_alignment": "text-left",
+        "bg_color": "",
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "16639327156d6f701c": {
+      "type": "apps",
+      "blocks": {
+        "d4e60578-c7b8-402e-9033-b5e9a51c8efa": {
+          "type": "shopify:\/\/apps\/tikshop-tiktok-insta-feeds\/blocks\/tikshop-shoptrade\/9cc01fbc-7a70-4c25-8768-b96d953c7a70",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "d4e60578-c7b8-402e-9033-b5e9a51c8efa"
+      ],
+      "settings": {
+        "bg_color": "",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "newsletter": {
+      "type": "section-newsletter",
+      "settings": {
+        "flex_align": "align--middle-split",
+        "text_color": "text-dark",
+        "title": "Newsletter",
+        "text": "<p>Sign up for exclusive deals and early access to new products.<\/p>",
+        "extra_fields": "name",
+        "button_text": "",
+        "bg_color": "",
+        "image_height": "three-fifty-height",
+        "image_position": "center-center",
+        "overlay_opacity": 10,
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "image-accordions-0",
+    "marquee",
+    "collection",
+    "grid-0",
+    "custom-content-0",
+    "testimonials",
+    "16639327156d6f701c",
+    "newsletter"
+  ]
+}
