@@ -295,6 +295,8 @@
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
 
   {{ content_for_header }}
+
+	{{ shop.metafields.loox["global_html_head"] }}
 </head>
 
 {%- capture body_class -%}
@@ -352,5 +354,7 @@ template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}
       {% render 'icon-arrow' %}
     </button>
   {%- endif -%}
+
+	{{ shop.metafields.loox["global_html_body"] }}
 </body>
 </html>
