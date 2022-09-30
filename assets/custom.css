@@ -18,3 +18,18 @@
         fill: var(--COLOR-TEXT);
     }
 }
+
+/* Text Highlight */
+.text-Highlight{
+    display: flex;
+    justify-content: space-between;
+}
+.text-Highlight .text-Highlight-Heading{
+    text-align: left;
+}
+.text-Highlight .text-Highlight-btn .btn{
+    text-align: right;
+}
+.text-Highlight .text-Highlight-btn .btn{
+    vertical-align: middle;
+}

@@ -1,0 +1,175 @@
+{% style%}
+@media screen and (max-width: 480px){
+    .textHighlight-container{
+        margin: {{ section.settings.section__mobile__margin }}px 0 !important;
+    }
+    .textHighlight-container .text-Highlight{
+        font-size: {{ section.settings.mobile__font__size }}px !important;
+        min-height: {{ section.settings.section__mobile__height }}px !important;
+        padding: {{ section.settings.section__mobile__padding }}px 0 !important;
+    }
+}
+    .text-Highlight .text-Highlight-Heading{
+        color: {{ section.settings.section__text__color }};
+    }
+{% endstyle %}
+
+<div class="textHighlight-container" style="background-color: {{ section.settings.section__background }}; margin: {{ section.settings.section__margin }}px 0; ">
+    <div class="wrapper">
+        <div class="text-Highlight" style="min-height: {{ section.settings.section__height }}px ;  align-items: {{ section.settings.Vertical__Text__alignment }}; padding: {{ section.settings.section__padding }}px 0; font-size: {{ section.settings.desktop__font__size }}px; ">
+            <h2 class="text-Highlight-Heading section__heading h2"
+                data-aos="fade-up"
+                data-aos-delay="{{ animation_delay }}"
+                data-aos-anchor="{{ animation_anchor }}"
+                {%- assign animation_delay = animation_delay | plus: 150 -%}>
+                {{- section.settings.text | escape -}}
+            </h2>
+            {% if section.settings.show__collection__button %}
+                <div class="text-Highlight-btn"
+                data-aos="fade-up"
+                data-aos-delay="{{ animation_delay }}"
+                data-aos-anchor="{{ animation_anchor }}"
+                {%- assign animation_delay = animation_delay | plus: 150 -%}>
+                    <a class="btn btn--text btn--view-all" href="{{ section.settings.btn-url }}" target="_self">{{ section.settings.btn-text }}</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+  "name": "Text Highlight",
+  "settings": [
+        {
+            "type": "text",
+            "id": "text",
+            "label" : "Enter Text Content"
+        },
+        {
+            "type": "select",
+            "id": "Vertical__Text__alignment",
+            "label": "Vertical Text alignment",
+            "default": "center",
+            "options": [
+                { "label": "Center", "value": "center" },
+                { "label": "Top", "value": "flex-start" },
+                { "label": "Bottom", "value": "flex-end" }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "section__background",
+            "default": "#fff",
+            "label": "Enter background Color"
+        },
+        {
+            "type": "color",
+            "id": "section__text__color",
+            "default": "#000",
+            "label": "Enter Text Color"
+        },
+        {
+          "type": "checkbox",
+          "id": "show__collection__button",
+          "label": "Show Button ",
+          "default": true
+        },
+        {
+            "type": "text",
+            "id": "btn-text",
+            "label": "Enter Button Text"
+        },
+        {
+            "type": "url",
+            "id": "btn-url",
+            "label": "Enter Button URL"
+        },
+        {
+            "type": "header",
+            "content": "Desktop Settings"
+        },
+        {
+            "type": "range",
+            "id": "section__height",
+            "min": 0,
+            "max": 400,
+            "step": 5,
+            "default": 0,
+            "label": "Desktop Height of the Section"
+        },
+        {
+            "type": "range",
+            "id": "desktop__font__size",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 30,
+            "label": "Desktop Font Size"
+        },
+        {
+            "type": "range",
+            "id": "section__padding",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 0,
+            "label": "Desktop Padding of the Section"
+        },
+        {
+            "type": "range",
+            "id": "section__margin",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 0,
+            "label": "Desktop Margin of the Section"
+        },
+        {
+            "type": "header",
+            "content": "Mobile Settings"
+        },
+        {
+            "type": "range",
+            "id": "mobile__font__size",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "default": 20,
+            "label": "Mobile Font Size"
+        },
+        {
+            "type": "range",
+            "id": "section__mobile__height",
+            "min": 0,
+            "max": 400,
+            "step": 5,
+            "default": 0,
+            "label": "Mobile Height of the Section"
+        },
+        {
+            "type": "range",
+            "id": "section__mobile__padding",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 0,
+            "label": "Mobile Padding of the Section"
+        },
+        {
+            "type": "range",
+            "id": "section__mobile__margin",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 0,
+            "label": "Mobile Margin of the Section"
+        }
+    ],
+    "presets": [
+        {
+        "name": "Text Highlight",
+        "category": "Hero"
+        }
+    ]
+}
+{% endschema %}
