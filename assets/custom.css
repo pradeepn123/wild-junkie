@@ -1,7 +1,32 @@
 /* Header Hover Styles */
 
+/* Text Highlight */
+.text-Highlight{
+    display: flex;
+    justify-content: space-between;
+}
+.text-Highlight .text-Highlight-Heading{
+    text-align: left;
+}
+.text-Highlight .text-Highlight-btn .btn{
+    text-align: right;
+}
+.text-Highlight .text-Highlight-btn .btn{
+    vertical-align: middle;
+}
+
+/* Product Page - Slider */
+.product-single .product-single__wrapper .product-single__gallery .flickity-slider:first-child>div .product-single__media.product-single__media--image .product-single__media--image-height{
+    padding-top: 100% !important;
+}
+
+.product-single .product-single__wrapper .product-single__gallery .flickity-slider:first-child >div .product-single__media.product-single__media--image img {
+    /* max-height: 652.5px; */
+    object-fit: cover;
+}
+
 /* Media Queries */
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 1024px) {
     .site-header:hover {
         background-color: var(--COLOR-BG);
     }
@@ -18,18 +43,6 @@
         fill: var(--COLOR-TEXT);
     }
 }
-
-/* Text Highlight */
-.text-Highlight{
-    display: flex;
-    justify-content: space-between;
-}
-.text-Highlight .text-Highlight-Heading{
-    text-align: left;
-}
-.text-Highlight .text-Highlight-btn .btn{
-    text-align: right;
-}
-.text-Highlight .text-Highlight-btn .btn{
-    vertical-align: middle;
+@media screen and (max-width: 480px){
+    
 }
