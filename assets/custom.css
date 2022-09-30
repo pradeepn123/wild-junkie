@@ -43,6 +43,21 @@
         fill: var(--COLOR-TEXT);
     }
 }
-@media screen and (max-width: 480px){
-    
+/* Footer Styles */
+.footer__svg{
+    top: 0;
+    height: 30px;
+    background-color: #ff6d6d;
+}
+.footer__svg .zigzag::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(135deg, #fff 12px,
+            transparent 0%), linear-gradient(-135deg, #fff 12px,
+            transparent 0%);
+    background-size: 30px;
 }
