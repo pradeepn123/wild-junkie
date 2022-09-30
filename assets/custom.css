@@ -1,0 +1,20 @@
+/* Header Hover Styles */
+
+/* Media Queries */
+@media screen and (min-width: 1024px){
+    .site-header:hover {
+        background-color: var(--COLOR-BG);
+    }
+
+    .site-header:hover .nav .menu__item .navlink.navlink--toplevel {
+        color: var(--COLOR-TEXT);
+    }
+
+    .site-header:hover .nav .menu__item .navlink.navlink--highlight {
+        color: var(--highlight);
+    }
+
+    .site-header:hover .nav .menu__item .navlink.navlink--icon .icon {
+        fill: var(--COLOR-TEXT);
+    }
+}
