@@ -142,6 +142,26 @@
         "padding_bottom": 60
       }
     },
+    "166451777374c087c9": {
+      "type": "text-Highlight",
+      "settings": {
+        "text": "Our Collections",
+        "Vertical__Text__alignment": "center",
+        "section__background": "#ffffff",
+        "section__text__color": "#000000",
+        "show__collection__button": true,
+        "btn-text": "View Collections",
+        "btn-url": "\/collections",
+        "section__height": 0,
+        "desktop__font__size": 30,
+        "section__padding": 0,
+        "section__margin": 0,
+        "mobile__font__size": 30,
+        "section__mobile__height": 45,
+        "section__mobile__padding": 0,
+        "section__mobile__margin": 0
+      }
+    },
     "grid-0": {
       "type": "section-grid",
       "blocks": {
@@ -213,7 +233,7 @@
         "enable_slider_mobile": true,
         "width": "wrapper",
         "add_gutter": true,
-        "padding_top": 100,
+        "padding_top": 74,
         "padding_bottom": 100
       }
     },
@@ -398,6 +418,7 @@
     "image-accordions-0",
     "marquee",
     "collection",
+    "166451777374c087c9",
     "grid-0",
     "custom-content-0",
     "testimonials",
