@@ -1,0 +1,368 @@
+{% style %}
+    .image--and--mButtons__parent{
+        margin: {{ section.settings.margin__desktop }}px 0;
+    }
+    .image--and--mButtons__parent .image-and-mButtons__container{
+        column-gap: 50px;
+    }
+    .image-and-mButtons__container{
+        display: flex;
+    }
+    {% comment %}
+        Image Container
+    {% endcomment %}
+    .image__container__mButtons{
+        text-align: center;
+    }
+    {% comment %}
+        Icon and Description Container
+    {% endcomment %}
+    .image-and-mButtons__container .image-and-mButtons__blocks__container{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        row-gap: {{ section.settings.row__gap__desktop }}px;
+    }
+    {% comment %}
+        Icon and Description Styles
+    {% endcomment %}
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent > div{
+        display: inline-block;
+    }
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent {
+        display: flex;
+        flex-direction: row;
+    }
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__image{
+        flex: 1 1 auto;
+        margin-right: 15px;
+    }
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__children{
+        flex: 1 1 80%;
+    }
+
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__children:last-child{
+        font-family: Montserrat;
+    }
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__button .icons__button__link{
+        box-shadow: 5px 5px var(--COLOR-BLACK);
+        font-family: 'Londrina Solid', cursive;
+        min-width: 180px;
+    }
+
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__image{
+        order: {{ section.settings.order }};
+        width: 50%;
+    }
+
+@media screen and (min-width: 1025px){
+    .image--and--mButtons__parent .image-and-mButtons__container{
+        column-gap: {{ section.settings.gap__desktop }}px;
+    }
+}
+@media screen and (max-width: 768px){
+    .image-and-mButtons__container{
+        flex-direction: column;
+    }
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__image{
+        width: 100%;
+    }
+    .image-and-mButtons__container .image-and-mButtons__blocks__container{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .image--and--mButtons__parent .image-and-mButtons__container{
+        row-gap: {{ section.settings.row__gap__mobile }}px;
+    }
+}
+@media screen and (max-width: 480px){
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__children .icons__content__heading h3{
+        font-size: 24px !important;
+    }
+
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__children .rich-text__text p{
+        font-size: 16px !important;
+        margin-top: 10px
+    }
+    .image--and--mButtons__parent{
+        margin: {{ section.settings.margin__mobile }}px 0;
+    }
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__image{
+        width: 100%;
+    }
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__image{
+        order: {{ section.settings.order__mobile }};
+    }
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__image{
+        margin-right: 5px;
+    }
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__image img{
+        max-width: 49px;
+        height: auto;
+    }
+    .image--and--mButtons__parent .image-and-mButtons__container{
+        row-gap: {{ section.settings.gap__mobile }}px;
+    }
+    .image-and-mButtons__container .image-and-mButtons__blocks__container{
+        width: 100%;
+        row-gap: {{ section.settings.row__gap__mobile }}px;
+    }
+    .image-and-mButtons__container{
+        flex-direction: column;
+    }
+    .image__container__mButtons img {
+        max-height: {{ section.settings.mobile__image__height }}px;
+    }
+    .image-and-mButtons__container .image-and-mButtons__blocks__container .block__image-mButton .main-buttons{
+        align-items: center;
+    }
+}
+{% endstyle %}
+<div class="image--and--mButtons__parent">
+    <div class="wrapper">
+        <div class="image-and-mButtons__container">
+            {% if section.settings.image__container != blank %}
+                <div class="image-and-mButtons__image">
+                    <div class="image__container__mButtons">
+                        {{ section.settings.image__container | image_url: width: auto | image_tag: section.settings.image__container.alt }}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="image-and-mButtons__blocks__container">
+                {% for block in section.blocks %}
+                    {% case block.type %}
+                        {% when 'icon_Description' %}
+                            <div class="block__image-mButton icons__content__container">
+                                {% if block.settings.icon__image != blank %}
+                                <div class="icons__content__parent">
+                                    <div class="icons__content__image">
+                                        {{ block.settings.icon__image | image_url: width: auto | image_tag: alt: block.settings.icon__image.alt }}
+                                    </div>
+                                    <div class="icons__content__children">
+                                        <div class="icons__content__heading">
+                                            <h3 class="rich-text__heading h2 aos-init aos-animate" data-aos="fade-up" data-aos-anchor="#BrickBlock--text-0" data-aos-delay="150" style="font-size: {{ block.settings.desktop__heading__font__size }}px;">{{ block.settings.icon__heading | newline_to_br }}</h3></div>
+                                        <div class="rich-text__text aos-init aos-animate" data-aos="fade-up" data-aos-anchor="#BrickBlock--text-0" data-aos-delay="300">
+                                            <p style="font-size: {{ block.settings.desktop__description__font__size }}px;">{{ block.settings.icon__description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        {% when 'button' %}
+                            <div class="block__image-mButton icons__button">
+                                <div class="empty__block"></div>
+                                <div class="rich-text__buttons main-buttons"><div class="main-buttons__item aos-init aos-animate" data-aos="fade-up" data-aos-anchor="#BrickBlock--text-0" data-aos-delay="450">
+                                <a class="icons__button__link btn btn--primary btn--small" href="{{ block.settings.button__block__url }}" style="color: {{ block.settings.text__color }};  background-color: {{ block.settings.bg__color }}; border-color: {{ block.settings.bg__color }} ">{{ block.settings.button__block__text }}</a>
+                                </div></div>
+                            </div>
+                    {% endcase %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+    {
+        "name":"Image Multiple Buttons",
+        "settings":[
+            {
+                "type": "image_picker",
+                "id": "image__container",
+                "label":"Choose Image"
+            },
+            {
+                "type": "select",
+                "id": "order",
+                "label": "Desktop Image Position",
+                "default": "initial",
+                "options": [
+                    {
+                    "value": "1",
+                    "label": "Right"
+                    },
+                    {
+                    "value": "initial",
+                    "label": "Left"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "order__mobile",
+                "label": "Mobile Image Position",
+                "default": "initial",
+                "options": [
+                    {
+                    "value": "1",
+                    "label": "Bottom"
+                    },
+                    {
+                    "value": "initial",
+                    "label": "Top"
+                    }
+                ]
+            },
+            {
+                "type": "header",
+                "content": "Container Margin and Padding"
+            },
+            {
+                "type": "range",
+                "id": "margin__desktop",
+                "label": "Section Margin Desktop",
+                "default": 10,
+                "min": 10,
+                "max": 110,
+                "step": 5,
+                "unit": "px"
+            },
+            {
+                "type": "range",
+                "id": "margin__mobile",
+                "label": "Section Margin Mobile",
+                "default": 10,
+                "min": 10,
+                "max": 110,
+                "step": 5,
+                "unit": "px"
+            },
+            {
+                "type":"header",
+                "content": "Sections Spacing Settings"
+            },
+            {
+                "type": "range",
+                "id": "gap__desktop",
+                "label": "Desktop Spacing Between Sections",
+                "default": 130,
+                "min": 10,
+                "max": 200,
+                "step": 5,
+                "unit": "px"
+            },
+            {
+                "type": "range",
+                "id": "gap__mobile",
+                "label": "Mobile Spacing Between Sections",
+                "default": 40,
+                "min": 10,
+                "max": 200,
+                "step": 5,
+                "unit": "px"
+            },
+            {
+                "type": "range",
+                "id": "mobile__image__height",
+                "label": "Maximum Mobile Image Height",
+                "default": 400,
+                "min": 50,
+                "max": 500,
+                "step": 5,
+                "unit": "px"
+            },
+            {
+                "type":"header",
+                "content": "Blocks Common Settings"
+            },
+            {
+                "type": "range",
+                "id": "row__gap__desktop",
+                "label": "Desktop Spacing Between Blocks",
+                "default": 10,
+                "min": 10,
+                "max": 110,
+                "step": 5,
+                "unit": "px"
+            },
+            {
+                "type": "range",
+                "id": "row__gap__mobile",
+                "label": "Mobile Spacing Between Blocks",
+                "default": 10,
+                "min": 10,
+                "max": 110,
+                "step": 5,
+                "unit": "px"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "icon_Description",
+                "name": "Icon Description",
+                "settings": [
+                    {
+                        "type":"richtext",
+                        "id": "icon__heading",
+                        "label": "Choose Icon Heading"
+                    },
+                    {
+                        "type": "text",
+                        "id": "icon__description",
+                        "label": "Choose Icon Description"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id" : "icon__image",
+                        "label": "Choose Icon"
+                    },
+                    {
+                        "type": "range",
+                        "id": "desktop__heading__font__size",
+                        "label": "Desktop Heading Font Size",
+                        "default": 30,
+                        "min": 10,
+                        "max": 110,
+                        "step": 5,
+                        "unit": "px"
+                    },
+                    {
+                        "type": "range",
+                        "id": "desktop__description__font__size",
+                        "label": "Desktop Heading Font Size",
+                        "default": 20,
+                        "min": 10,
+                        "max": 110,
+                        "step": 5,
+                        "unit": "px"
+                    }
+                ]
+            },
+            {
+                "type":"button",
+                "name": "Button",
+                "limit" : 1,
+                "settings": [
+                    {
+                        "type":"text",
+                        "id": "button__block__text",
+                        "label": "Enter Button Text"
+                    },
+                    {
+                        "type": "url",
+                        "id": "button__block__url",
+                        "label": "Choose Button Link"
+                    },
+                    {
+                        "type": "color",
+                        "id": "text__color",
+                        "label": "Text Color",
+                        "default": "#fff"
+                    },
+                    {
+                        "type": "color",
+                        "id": "bg__color",
+                        "label": "Background Color",
+                        "default": "#ff6d6d"
+                    }
+                ]
+            }
+        ],
+        "presets":[
+            {
+                "name":"Image Multiple Buttons",
+                "category":"Text"
+            }
+        ]
+    }
+{% endschema %}
