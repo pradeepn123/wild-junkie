@@ -1,4 +1,13 @@
 {% style %}
+{% for block in section.blocks %}
+    {% case block.type %}
+    {% when 'button' %}
+        {% assign varBgColor = block.settings.bg__color %}
+        .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .block__image-mButton .main-buttons__item .icons__button__link:hover{
+            color: {{varBgColor}} !important;
+        }
+    {% endcase %}
+{% endfor %}
     .image--and--mButtons__parent{
         margin: {{ section.settings.margin__desktop }}px 0;
     }
