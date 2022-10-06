@@ -1,0 +1,135 @@
+{% style %}
+    .image--and--mButtons__parent .image-and-mButtons__container{
+        width: 100%;
+    }
+    .image-and-mButtons__container{
+        display: flex;
+    }
+    {% comment %}
+        Image Container
+    {% endcomment %}
+    .image__container__mButtons{
+        text-align: center;
+    }
+    .image__container__mButtons > img{
+        width: 95%;
+    }
+    {% comment %}
+        Icon and Description Container
+    {% endcomment %}
+    .image-and-mButtons__container .image-and-mButtons__blocks__container{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    {% comment %}
+        Icon and Description Styles
+    {% endcomment %}
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent > div{
+        display: inline-block;
+    }
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent {
+        display: flex;
+        flex-direction: row;
+    }
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__image{
+        flex: 1 1 20%;
+    }
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__content{
+        flex: 1 1 80%;
+    }
+{% endstyle %}
+<div class="image--and--mButtons__parent">
+    <div class="wrapper">
+        <div class="image-and-mButtons__container">
+            {% if section.settings.image__container != blank %}
+                <div class="image-and-mButtons__image" {% if section.blocks.size > 0 %} style="width: 50%" {%endif%}>
+                    <div class="image__container__mButtons">
+                        {{ section.settings.image__container | image_url: width: auto | image_tag: section.settings.image__container.alt }}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="image-and-mButtons__blocks__container">
+                {% for block in section.blocks %}
+                    {% case block.type %}
+                        {% when 'icon_Description' %}
+                            <div class="block__image-mButton icons__content__container">
+                                <div class="icons__content__parent">
+                                    <div class="icons__content__image">
+                                        {{ block.settings.icon__image | image_url: width: auto | image_tag: alt: block.settings.icon__image.alt }}
+                                    </div>
+                                    <div class="icons__content__content">
+                                        <div class="icons__content__heading">{{ block.settings.icon__heading }}</div>
+                                        <div class="icons__content__description">{{ block.settings.icon__description }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% when 'button' %}
+                            <div class="block__image-mButton icons__button">
+                                Hello World Button
+                            </div>
+                    {% endcase %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+    {
+        "name":"Image Multiple Buttons",
+        "settings":[
+            {
+                "type": "image_picker",
+                "id": "image__container",
+                "label":"Choose Image"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "icon_Description",
+                "name": "Icon Description",
+                "settings": [
+                    {
+                        "type":"text",
+                        "id": "icon__heading",
+                        "label": "Choose Icon Heading"
+                    },
+                    {
+                        "type": "text",
+                        "id": "icon__description",
+                        "label": "Choose Icon Description"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id" : "icon__image",
+                        "label": "Choose Icon"
+                    }
+                ]
+            },
+            {
+                "type":"button",
+                "name": "Button",
+                "limit" : 1,
+                "settings": [
+                    {
+                        "type":"text",
+                        "id": "button__block__text",
+                        "label": "Enter Button Text"
+                    },
+                    {
+                        "type": "url",
+                        "id": "button__block__url",
+                        "label": "Choose Button Link"
+                    }
+                ]
+            }
+        ],
+        "presets":[
+            {
+                "name":"Image Multiple Buttons",
+                "category":"Text"
+            }
+        ]
+    }
+{% endschema %}

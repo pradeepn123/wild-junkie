@@ -375,6 +375,46 @@
         "padding_bottom": 60
       }
     },
+    "ebffde90-06fc-4e93-8836-6adae2f22fbd": {
+      "type": "image-button-and-multipleIcons",
+      "blocks": {
+        "b671c525-d812-420f-9811-4bf22c234856": {
+          "type": "icon_Description",
+          "settings": {
+            "icon__heading": "Western goodies Every month",
+            "icon__description": "Join our subscription and receive a fun box of western goodies each month!",
+            "icon__image": "shopify:\/\/shop_images\/wj-icon-1.png"
+          }
+        },
+        "db5a70d5-2d8c-431c-bb28-8805c97df7ef": {
+          "type": "icon_Description",
+          "settings": {
+            "icon__heading": "New items  each time",
+            "icon__description": "All items in our subscription boxes will be new to the store each month to ensure you never receive something you've already ordered!",
+            "icon__image": "shopify:\/\/shop_images\/wj-icon-2.png"
+          }
+        },
+        "bcf5cbc1-1159-4601-be35-5aac7ddf88dc": {
+          "type": "icon_Description",
+          "settings": {
+            "icon__heading": "$60+ box value Guaranteed",
+            "icon__description": "Box value will always be at least $60+ Cancel anytime.",
+            "icon__image": "shopify:\/\/shop_images\/wj-icon-3.png"
+          }
+        }
+      },
+      "block_order": [
+        "b671c525-d812-420f-9811-4bf22c234856",
+        "db5a70d5-2d8c-431c-bb28-8805c97df7ef",
+        "bcf5cbc1-1159-4601-be35-5aac7ddf88dc"
+      ],
+      "settings": {
+        "image__container": "shopify:\/\/shop_images\/wildJunkiesImg.png",
+        "show__button": true,
+        "button__text": "Shop Now",
+        "button__url": "shopify:\/\/collections"
+      }
+    },
     "newsletter": {
       "type": "section-newsletter",
       "settings": {
@@ -402,6 +442,7 @@
     "custom-content-0",
     "testimonials",
     "16639327156d6f701c",
+    "ebffde90-06fc-4e93-8836-6adae2f22fbd",
     "newsletter"
   ]
 }
