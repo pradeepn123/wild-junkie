@@ -377,42 +377,65 @@
     },
     "ebffde90-06fc-4e93-8836-6adae2f22fbd": {
       "type": "image-button-and-multipleIcons",
+      "disabled": true,
       "blocks": {
         "b671c525-d812-420f-9811-4bf22c234856": {
           "type": "icon_Description",
           "settings": {
-            "icon__heading": "Western goodies Every month",
+            "icon__heading": "<p>Western goodies<\/p><p>Every month<\/p>",
             "icon__description": "Join our subscription and receive a fun box of western goodies each month!",
-            "icon__image": "shopify:\/\/shop_images\/wj-icon-1.png"
+            "icon__image": "shopify:\/\/shop_images\/wj-icon-1.png",
+            "desktop__heading__font__size": 30,
+            "desktop__description__font__size": 20
           }
         },
         "db5a70d5-2d8c-431c-bb28-8805c97df7ef": {
           "type": "icon_Description",
           "settings": {
-            "icon__heading": "New items  each time",
+            "icon__heading": "<p>New items <\/p><p>each time<\/p>",
             "icon__description": "All items in our subscription boxes will be new to the store each month to ensure you never receive something you've already ordered!",
-            "icon__image": "shopify:\/\/shop_images\/wj-icon-2.png"
+            "icon__image": "shopify:\/\/shop_images\/wj-icon-2.png",
+            "desktop__heading__font__size": 30,
+            "desktop__description__font__size": 20
           }
         },
         "bcf5cbc1-1159-4601-be35-5aac7ddf88dc": {
           "type": "icon_Description",
           "settings": {
-            "icon__heading": "$60+ box value Guaranteed",
+            "icon__heading": "<p>$60+ box value<\/p><p>Guaranteed<\/p>",
             "icon__description": "Box value will always be at least $60+ Cancel anytime.",
-            "icon__image": "shopify:\/\/shop_images\/wj-icon-3.png"
+            "icon__image": "shopify:\/\/shop_images\/wj-icon-3.png",
+            "desktop__heading__font__size": 30,
+            "desktop__description__font__size": 20
+          }
+        },
+        "3faec129-fe42-4917-bfca-c236b057eff4": {
+          "type": "button",
+          "settings": {
+            "button__block__text": "Shop Now",
+            "button__block__url": "shopify:\/\/collections",
+            "text__color": "#fff",
+            "bg__color": "#ff6d6d"
           }
         }
       },
       "block_order": [
         "b671c525-d812-420f-9811-4bf22c234856",
         "db5a70d5-2d8c-431c-bb28-8805c97df7ef",
-        "bcf5cbc1-1159-4601-be35-5aac7ddf88dc"
+        "bcf5cbc1-1159-4601-be35-5aac7ddf88dc",
+        "3faec129-fe42-4917-bfca-c236b057eff4"
       ],
       "settings": {
         "image__container": "shopify:\/\/shop_images\/wildJunkiesImg.png",
-        "show__button": true,
-        "button__text": "Shop Now",
-        "button__url": "shopify:\/\/collections"
+        "order": "initial",
+        "order__mobile": "initial",
+        "margin__desktop": 10,
+        "margin__mobile": 10,
+        "gap__desktop": 130,
+        "gap__mobile": 35,
+        "mobile__image__height": 400,
+        "row__gap__desktop": 60,
+        "row__gap__mobile": 40
       }
     },
     "newsletter": {
