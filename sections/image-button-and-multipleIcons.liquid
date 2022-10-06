@@ -11,54 +11,15 @@
     .image--and--mButtons__parent{
         margin: {{ section.settings.margin__desktop }}px 0;
     }
-    .image--and--mButtons__parent .image-and-mButtons__container{
-        column-gap: 50px;
-    }
-    .image-and-mButtons__container{
-        display: flex;
-    }
-    {% comment %}
-        Image Container
-    {% endcomment %}
-    .image__container__mButtons{
-        text-align: center;
-    }
     {% comment %}
         Icon and Description Container
     {% endcomment %}
     .image-and-mButtons__container .image-and-mButtons__blocks__container{
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
         row-gap: {{ section.settings.row__gap__desktop }}px;
     }
     {% comment %}
         Icon and Description Styles
     {% endcomment %}
-    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent > div{
-        display: inline-block;
-    }
-    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent {
-        display: flex;
-        flex-direction: row;
-    }
-    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__image{
-        flex: 1 1 auto;
-        margin-right: 15px;
-    }
-    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__children{
-        flex: 1 1 80%;
-    }
-
-    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__children:last-child{
-        font-family: Montserrat;
-    }
-    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__button .icons__button__link{
-        box-shadow: 5px 5px var(--COLOR-BLACK);
-        font-family: 'Londrina Solid', cursive;
-        min-width: 180px;
-    }
 
     .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__image{
         order: {{ section.settings.order }};
@@ -71,45 +32,18 @@
     }
 }
 @media screen and (max-width: 768px){
-    .image-and-mButtons__container{
-        flex-direction: column;
-    }
-    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__image{
-        width: 100%;
-    }
-    .image-and-mButtons__container .image-and-mButtons__blocks__container{
-        width: 90%;
-        margin: 0 auto;
-    }
     .image--and--mButtons__parent .image-and-mButtons__container{
         row-gap: {{ section.settings.row__gap__mobile }}px;
     }
 }
 @media screen and (max-width: 480px){
-    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__children .icons__content__heading h3{
-        font-size: 24px !important;
-    }
-
-    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__children .rich-text__text p{
-        font-size: 16px !important;
-        margin-top: 10px
-    }
     .image--and--mButtons__parent{
         margin: {{ section.settings.margin__mobile }}px 0;
     }
     .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__image{
-        width: 100%;
-    }
-    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__image{
         order: {{ section.settings.order__mobile }};
     }
-    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__image{
-        margin-right: 5px;
-    }
-    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__image img{
-        max-width: 49px;
-        height: auto;
-    }
+    
     .image--and--mButtons__parent .image-and-mButtons__container{
         row-gap: {{ section.settings.gap__mobile }}px;
     }
@@ -117,14 +51,8 @@
         width: 100%;
         row-gap: {{ section.settings.row__gap__mobile }}px;
     }
-    .image-and-mButtons__container{
-        flex-direction: column;
-    }
     .image__container__mButtons img {
         max-height: {{ section.settings.mobile__image__height }}px;
-    }
-    .image-and-mButtons__container .image-and-mButtons__blocks__container .block__image-mButton .main-buttons{
-        align-items: center;
     }
 }
 {% endstyle %}
