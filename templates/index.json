@@ -501,17 +501,17 @@
     "newsletter": {
       "type": "section-newsletter",
       "settings": {
-        "flex_align": "align--middle-split",
+        "flex_align": "align--middle-center",
         "text_color": "text-dark",
         "title": "Newsletter",
         "text": "<p>Sign up for exclusive deals and early access to new products.<\/p>",
-        "extra_fields": "name",
+        "extra_fields": "",
         "button_text": "",
         "bg_color": "",
         "image_height": "three-fifty-height",
-        "image_position": "center-center",
+        "image_position": "center-bottom",
         "overlay_opacity": 10,
-        "width": "wrapper",
+        "width": "wrapper--narrow",
         "padding_top": 60,
         "padding_bottom": 60
       }
