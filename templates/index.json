@@ -442,7 +442,7 @@
     "e011148e-70ed-42bd-9fb8-6a220f657dc2": {
       "type": "section-divider",
       "settings": {
-        "show_line": true,
+        "show_line": false,
         "width": "wrapper",
         "padding_top": 50,
         "padding_bottom": 50
