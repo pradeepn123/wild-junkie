@@ -503,9 +503,9 @@
       ],
       "settings": {
         "bg_color": "",
-        "width": "wrapper--full-padded",
+        "width": "wrapper--narrow",
         "padding_top": 17,
-        "padding_bottom": 60
+        "padding_bottom": 15
       }
     },
     "16639327156d6f701c": {
