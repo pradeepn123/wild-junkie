@@ -12,6 +12,7 @@
     "show_spacer_lines": false,
     "show_rounded_corners": true,
     "button_style": "pill",
+    "show_rating": true,
     "quick_button": "view",
     "show_payment_button": true,
     "cart_type": "drawer",
