@@ -59,6 +59,11 @@
     .site-header:hover .nav .menu__item .navlink.navlink--icon .icon {
         fill: var(--COLOR-TEXT);
     }
+
+    /* /collections/2022-usa-collection Layout Update */
+    .collection-section .collection__wrapper .collection__inner .collection__products .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 /* Subscription Section - Homepage */
 .image--and--mButtons__parent .image-and-mButtons__container {
