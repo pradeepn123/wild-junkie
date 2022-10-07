@@ -352,6 +352,7 @@
     },
     "testimonials": {
       "type": "section-testimonials",
+      "disabled": true,
       "blocks": {
         "testimonial-0": {
           "type": "text",
@@ -438,43 +439,6 @@
         "padding_bottom": 60
       }
     },
-    "16639327156d6f701c": {
-      "type": "apps",
-      "blocks": {
-        "d4e60578-c7b8-402e-9033-b5e9a51c8efa": {
-          "type": "shopify:\/\/apps\/tikshop-tiktok-insta-feeds\/blocks\/tikshop-shoptrade\/9cc01fbc-7a70-4c25-8768-b96d953c7a70",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "d4e60578-c7b8-402e-9033-b5e9a51c8efa"
-      ],
-      "settings": {
-        "bg_color": "",
-        "width": "wrapper",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "newsletter": {
-      "type": "section-newsletter",
-      "settings": {
-        "flex_align": "align--middle-split",
-        "text_color": "text-dark",
-        "title": "Newsletter",
-        "text": "<p>Sign up for exclusive deals and early access to new products.<\/p>",
-        "extra_fields": "name",
-        "button_text": "",
-        "bg_color": "",
-        "image_height": "three-fifty-height",
-        "image_position": "center-center",
-        "overlay_opacity": 10,
-        "width": "wrapper",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
     "1665111792048bf374": {
       "type": "apps",
       "blocks": {
@@ -514,6 +478,43 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "16639327156d6f701c": {
+      "type": "apps",
+      "blocks": {
+        "d4e60578-c7b8-402e-9033-b5e9a51c8efa": {
+          "type": "shopify:\/\/apps\/tikshop-tiktok-insta-feeds\/blocks\/tikshop-shoptrade\/9cc01fbc-7a70-4c25-8768-b96d953c7a70",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "d4e60578-c7b8-402e-9033-b5e9a51c8efa"
+      ],
+      "settings": {
+        "bg_color": "",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "newsletter": {
+      "type": "section-newsletter",
+      "settings": {
+        "flex_align": "align--middle-split",
+        "text_color": "text-dark",
+        "title": "Newsletter",
+        "text": "<p>Sign up for exclusive deals and early access to new products.<\/p>",
+        "extra_fields": "name",
+        "button_text": "",
+        "bg_color": "",
+        "image_height": "three-fifty-height",
+        "image_position": "center-center",
+        "overlay_opacity": 10,
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
@@ -525,8 +526,8 @@
     "custom-content-0",
     "ebffde90-06fc-4e93-8836-6adae2f22fbd",
     "testimonials",
+    "1665111792048bf374",
     "16639327156d6f701c",
-    "newsletter",
-    "1665111792048bf374"
+    "newsletter"
   ]
 }
