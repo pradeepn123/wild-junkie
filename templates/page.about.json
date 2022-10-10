@@ -195,7 +195,7 @@
             "secondary_button_text": "",
             "secondary_button_link": "",
             "secondary_button_style": "btn--secondary btn--small",
-            "bg_color": "#f4f4f4"
+            "bg_color": "#ffffff"
           }
         }
       },
@@ -230,7 +230,7 @@
             "secondary_button_text": "",
             "secondary_button_link": "",
             "secondary_button_style": "btn--secondary btn--small",
-            "bg_color": "#f4f4f4"
+            "bg_color": "#ffffff"
           }
         },
         "image": {
