@@ -94,7 +94,7 @@
         "template--14461244735551__dbf9049f-3852-4dbb-b672-b97fab9b1ce8-16653988064872fb28-0": {
           "type": "message",
           "settings": {
-            "message": "Spend ||amount|| more for free shipping.",
+            "message": "WILD JUNKIE",
             "target_device_enabled": false,
             "target_device": "mobile"
           }
@@ -102,7 +102,7 @@
         "template--14461244735551__dbf9049f-3852-4dbb-b672-b97fab9b1ce8-16653988064872fb28-1": {
           "type": "text",
           "settings": {
-            "text": "<p>New collections just released - <a href=\"\/collections\" title=\"All collections\">Shop now<\/a><\/p>",
+            "text": "<p>WILD JUNKIE<\/p>",
             "icon_name": "none",
             "icon_color": "",
             "icon_width": 20,
@@ -113,7 +113,7 @@
         "template--14461244735551__dbf9049f-3852-4dbb-b672-b97fab9b1ce8-16653988064872fb28-2": {
           "type": "text",
           "settings": {
-            "text": "<p>Use code <strong>TENOFF<\/strong> for 10% off first purchase<\/p>",
+            "text": "<p>WILD JUNKIE<\/p>",
             "icon_name": "none",
             "icon_color": "",
             "icon_width": 20,
@@ -128,7 +128,7 @@
         "template--14461244735551__dbf9049f-3852-4dbb-b672-b97fab9b1ce8-16653988064872fb28-2"
       ],
       "settings": {
-        "bg_color": "#000000",
+        "bg_color": "#ff6d6d",
         "color": "#ffffff",
         "layout": "marquee",
         "padding": 20,
@@ -570,6 +570,7 @@
     },
     "section-image-with-text": {
       "type": "section-image-with-text",
+      "disabled": true,
       "settings": {
         "section_height": "six-fifty-height",
         "text_position": "left",
@@ -593,6 +594,7 @@
     },
     "section-press": {
       "type": "section-press",
+      "disabled": true,
       "settings": {
         "title": "Press",
         "bg_color": "",
@@ -679,6 +681,7 @@
     },
     "section-icons-row": {
       "type": "section-icons-row",
+      "disabled": true,
       "blocks": {
         "icon-0": {
           "type": "text",
