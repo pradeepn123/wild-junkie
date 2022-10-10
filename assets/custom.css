@@ -166,6 +166,17 @@
     .collection-section .collection__wrapper .collection__inner .collection__products .grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+    /* Footer Styles */
+    .footer-content .footer-block--logo {
+        padding-right: 0;
+        margin-right: 80px;
+    }
+}
+@media screen and (min-width: 1200px){
+    /* Footer Logo Block */
+    .site-footer{
+        padding-top: 83px;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -181,7 +192,7 @@
     }
 
     .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__image {
-        width: 100%;
+        width: 100% !important;
     }
 
     .image-and-mButtons__container .image-and-mButtons__blocks__container {
@@ -198,6 +209,9 @@
     .footer-bottom .payment-icon-list{
         justify-content: center;
     }
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__image .image__container__mButtons img{
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 480px){
@@ -209,9 +223,6 @@
     .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__children .rich-text__text p {
         font-size: 16px !important;
         margin-top: 10px
-    }
-    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__image {
-        width: 100%;
     }
     .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__image {
         margin-right: 5px;
@@ -229,14 +240,36 @@
         flex-direction: column;
     }
     /* Footer Styles */
+    
+    .footer-content .footer-blocks {
+        gap: 32px;
+    }
+
+    .footer-content .footer-blocks .footer-block .footer-title__button {
+        padding: 0 32px 0 0;
+    }
     .footer-title__button{
-        font-size: 32px;
+        font-size: 32px !important;
+        }
+
+    .site-footer .footer-content .footer-block .footer-block__description__container{
+        line-height: 24px;
+    }
+    .footer-currency .footer__select-popout {
+        justify-content: center;
     }
 
     .footer-bottom {
         margin-top: 26px;
         padding: 20px var(--gutter-mobile);
     }
+        /* Footer Social Icons */
+        .site-footer{
+            padding-top: 67px
+        }
+        .site-footer .footer-content .footer-block .social-sharing-wrapper{
+            padding-top: 20px;
+        }
         /* Footer Currency */
         .footer-currency{
             margin-top: 32px;
