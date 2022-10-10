@@ -81,7 +81,7 @@
       ],
       "settings": {
         "text_position": "center",
-        "bg_color": "",
+        "bg_color": "#F6F6F7",
         "text_color": "text-dark",
         "width": "wrapper--narrow",
         "padding_top": 60,
@@ -90,6 +90,7 @@
     },
     "dbf9049f-3852-4dbb-b672-b97fab9b1ce8": {
       "type": "section-marquee",
+      "disabled": true,
       "blocks": {
         "template--14461244735551__dbf9049f-3852-4dbb-b672-b97fab9b1ce8-16653988064872fb28-0": {
           "type": "message",
@@ -151,8 +152,8 @@
         "btn-text": "",
         "btn-url": "",
         "section__height": 0,
-        "desktop__font__size": 30,
-        "section__padding": 0,
+        "desktop__font__size": 60,
+        "section__padding": 60,
         "section__margin": 0,
         "mobile__font__size": 20,
         "section__mobile__height": 0,
@@ -207,7 +208,7 @@
         "bg_color": "",
         "width": "wrapper--full",
         "add_gutter": false,
-        "padding_top": 60,
+        "padding_top": 0,
         "padding_bottom": 0
       }
     },
