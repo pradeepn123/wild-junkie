@@ -23,10 +23,14 @@
     "quick_button": "buy",
     "show_payment_button": true,
     "cart_type": "drawer",
-    "social_facebook_link": "",
+    "social_facebook_link": "https:\/\/www.facebook.com\/wildjunkiebtq\/",
     "social_twitter_link": "",
-    "social_pinterest_link": "",
-    "social_instagram_link": "",
+    "social_pinterest_link": "https:\/\/in.pinterest.com\/wildjunkiebtq\/",
+    "social_instagram_link": "https:\/\/www.instagram.com\/wildjunkiebtq\/",
+    "social_youtube_link": "",
+    "social_tiktok_link": "",
+    "social_snapchat_link": "",
+    "social_rss_link": "",
     "favicon": "",
     "checkout_header_image": "",
     "checkout_logo_image": "",
@@ -73,32 +77,40 @@
       "footer": {
         "type": "footer",
         "blocks": {
+          "b2e5833c-03f7-41d6-b51b-f0253a6c077b": {
+            "type": "logo",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/wild-junkies-footer-Image.webp",
+              "logo_width": 140,
+              "show_shop_name": false,
+              "shop__description__footer": "We supply women with high quality wild western fashion products and the best customer service. All products made in the USA!",
+              "shop__description__footer__fontSize": 16
+            }
+          },
           "footer-block-0": {
             "type": "link",
             "settings": {
-              "menu": "footer",
-              "title": ""
+              "menu": "shop-new"
             }
           },
-          "footer-block-1": {
-            "type": "text",
+          "3f9399d6-6914-4fb8-b7c5-8903d4393cf4": {
+            "type": "link",
             "settings": {
-              "title": "About us",
-              "footer_text": "<p>Leave your customers with a final message about your brand in this rich text block.<\/p>"
+              "menu": "company"
             }
           },
-          "footer-block-2": {
-            "type": "newsletter",
+          "70df7833-143e-4683-b8e1-8e535ebb6fa9": {
+            "type": "link",
             "settings": {
-              "title": "Newsletter",
-              "text": "<p>Stay up to date with the new collections, products and exclusive offers.<\/p>"
+              "menu": "help-new"
             }
           }
         },
         "block_order": [
+          "b2e5833c-03f7-41d6-b51b-f0253a6c077b",
           "footer-block-0",
-          "footer-block-1",
-          "footer-block-2"
+          "3f9399d6-6914-4fb8-b7c5-8903d4393cf4",
+          "70df7833-143e-4683-b8e1-8e535ebb6fa9"
         ],
         "settings": {
           "width": "wrapper",

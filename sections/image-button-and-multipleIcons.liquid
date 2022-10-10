@@ -88,7 +88,7 @@
                             </div>
                         {% when 'button' %}
                             <div class="block__image-mButton icons__button">
-                                <div class="empty__block"></div>
+                                <div class="empty__block__icons__description"></div>
                                 <div class="rich-text__buttons main-buttons"><div class="main-buttons__item aos-init aos-animate" data-aos="fade-up" data-aos-anchor="#BrickBlock--text-0" data-aos-delay="450">
                                 <a class="icons__button__link btn btn--primary btn--small" href="{{ block.settings.button__block__url }}" style="color: {{ block.settings.text__color }};  background-color: {{ block.settings.bg__color }}; border-color: {{ block.settings.bg__color }} ">{{ block.settings.button__block__text }}</a>
                                 </div></div>
@@ -149,9 +149,9 @@
                 "id": "margin__desktop",
                 "label": "Section Margin Desktop",
                 "default": 10,
-                "min": 10,
-                "max": 110,
-                "step": 5,
+                "min": 0,
+                "max": 100,
+                "step": 1,
                 "unit": "px"
             },
             {
@@ -160,8 +160,8 @@
                 "label": "Section Margin Mobile",
                 "default": 10,
                 "min": 10,
-                "max": 110,
-                "step": 5,
+                "max": 100,
+                "step": 1,
                 "unit": "px"
             },
             {
@@ -256,11 +256,11 @@
                     {
                         "type": "range",
                         "id": "desktop__description__font__size",
-                        "label": "Desktop Heading Font Size",
+                        "label": "Desktop Content Font Size",
                         "default": 20,
                         "min": 10,
                         "max": 110,
-                        "step": 5,
+                        "step": 1,
                         "unit": "px"
                     }
                 ]

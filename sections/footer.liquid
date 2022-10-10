@@ -13,6 +13,13 @@
 -%}
 
 {%- style -%}
+  .footer-currency{
+    margin-top: {{ section.settings.currency__margin__top }}px;
+    margin-bottom: {{ section.settings.currency__margin__bottom }}px;
+  }
+  .footer-currency .footer__select-popout{
+    justify-content: {{ section.settings.currency__position }};
+  }
   {%- if color_bg != 'rgba(0,0,0,0)' and color_bg != '' -%}
     .site-footer { --bg: {{ color_bg }}; }
   {%- endif -%}
@@ -94,10 +101,23 @@
               {%- if block.settings.show_shop_name -%}
                 <a class="footer-block__shop-name h4" href="{{ routes.root_url }}">{{ shop.name }}</a>
               {%- endif -%}
+
+              {% if block.settings.shop__description__footer %}
+                <div class="footer-block__description__container">
+                  <p class="footer-block__description" style="font-size: {{ block.settings.shop__description__footer__fontSize }}px;">
+                    {{ block.settings.shop__description__footer }}
+                  </p>
+                </div>
+              {% endif %}
+
+              {%- if section.settings.show_social_links -%}
+                {%- render 'footer-social' -%}
+              {%- endif -%}
+
             </div>
 
           {%- when 'link' -%}
-            {%- assign menu_links = linklists[block.settings.menu].links -%}
+            {%- assign menu_links = linklists[block.settings.menu] -%}
             <div class="footer-block footer-block--menu"
               {% if animations_enabled %}
                 data-aos="fade-up"
@@ -106,20 +126,23 @@
                 {%- assign animation_delay = animation_delay | plus: 150 -%}
               {% endif %}
               {{ block.shopify_attributes }}>
-              {%- if title != blank -%}
+              {%- if menu_links.title != blank -%}
                 <p class="footer-title footer-title--links">
-                  <button class="footer-title__button h5" aria-controls="FooterMenu--{{ title | handle }}-{{ forloop.index0 }}" data-collapsible-trigger data-collapsible-trigger-mobile>
-                    {{- title -}}
+                  <button class="footer-title__button h5" aria-controls="FooterMenu--{{ menu_links.title | handle }}-{{ forloop.index0 }}" data-collapsible-trigger data-collapsible-trigger-mobile style="font-size: {{ block.settings.title__font__size }}px;">
+                    {% comment %}
+                      {{- title -}}
+                    {% endcomment %}
+                      {{ menu_links.title }}
                     {%- render 'icon-toggle-plus' -%}
                     {%- render 'icon-toggle-minus' -%}
                   </button>
                 </p>
               {%- endif -%}
 
-              {%- if menu_links != empty -%}
-                <div class="footer-links__wrapper"{% if title != blank %} id="FooterMenu--{{ title | handle }}-{{ forloop.index0 }}" data-collapsible-container-mobile{% endif %}>
-                  <ul class="footer-links"{% if title != blank %} data-collapsible-content aria-expanded="false"{% endif %}>
-                    {%- for link in menu_links -%}
+              {%- if menu_links.links != empty -%}
+                <div class="footer-links__wrapper"{% if menu_links.title != blank %} id="FooterMenu--{{ menu_links.title | handle }}-{{ forloop.index0 }}" data-collapsible-container-mobile{% endif %}>
+                  <ul class="footer-links"{% if menu_links.title != blank %} data-collapsible-content aria-expanded="false"{% endif %}>
+                    {%- for link in menu_links.links -%}
                       <li><a class="footer-link" href="{{ link.url }}">{{ link.title }}</a></li>
                     {%- endfor -%}
                   </ul>
@@ -139,8 +162,8 @@
                 {%- assign animation_delay = animation_delay | plus: 150 -%}
               {% endif %}
               {{ block.shopify_attributes }}>
-              {%- if title != blank -%}
-                <p class="footer-title h5">{{ title }}</p>
+              {%- if menu_links.title != blank -%}
+                <p class="footer-title h5">{{ menu_links.title }}</p>
               {%- endif -%}
 
               {%- if blog -%}
@@ -189,8 +212,8 @@
                 {%- assign animation_delay = animation_delay | plus: 150 -%}
               {% endif %}
               {{ block.shopify_attributes }}>
-              {%- if title != blank -%}
-                <div class="footer-title h5">{{ title }}</div>
+              {%- if menu_links.title != blank -%}
+                <div class="footer-title h5">{{ menu_links.title }}</div>
               {%- endif -%}
 
               {%- if block.settings.text != blank -%}
@@ -211,8 +234,8 @@
                 {%- assign animation_delay = animation_delay | plus: 150 -%}
               {% endif %}
               {{ block.shopify_attributes }}>
-              {%- if title != blank -%}
-                <p class="footer-title h5">{{ title }}</p>
+              {%- if menu_links.title != blank -%}
+                <p class="footer-title h5">{{ menu_links.title }}</p>
               {%- endif -%}
 
               <div class="rte">
@@ -224,7 +247,7 @@
     </div>
   </div>
 
-  <div class="footer-bottom {{ section_width }}"
+  <div class="footer-currency {{ section_width }}"
     {% if animations_enabled %}
       data-aos="fade-up"
       data-aos-anchor="{{ animation_anchor }}"
@@ -232,10 +255,16 @@
       {%- assign animation_delay = animation_delay | plus: 150 -%}
     {% endif %}>
     {%- render 'cross-border' -%}
+  </div>
 
-    {%- if section.settings.show_social_links -%}
-      {%- render 'footer-social' -%}
-    {%- endif -%}
+  <div class="footer-bottom {{ section_width }}"
+    {% if animations_enabled %}
+      data-aos="fade-up"
+      data-aos-anchor="{{ animation_anchor }}"
+      data-aos-delay="{{ animation_delay }}"
+      {%- assign animation_delay = animation_delay | plus: 150 -%}
+    {% endif %}>
+
 
     {%- render 'footer-copyright' -%}
 
@@ -343,6 +372,46 @@
       "default": false
     },
     {
+      "type": "range",
+      "id": "currency__margin__top",
+      "label": "Currency Margin Top",
+      "min":10,
+      "max":100,
+      "default": 34,
+      "step":1,
+      "unit":"px"
+    },
+    {
+      "type": "range",
+      "id": "currency__margin__bottom",
+      "label": "Currency Margin Bottom",
+      "min":10,
+      "max":100,
+      "default": 42,
+      "step":1,
+      "unit":"px"
+    },
+    {
+      "type": "select",
+      "id": "currency__position",
+      "default": "flex-start",
+      "label": "Curreny Position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ]
+    },
+    {
       "type": "select",
       "id": "currency_type",
       "label": "Type",
@@ -384,6 +453,21 @@
           "id": "show_shop_name",
           "label": "Show shop name",
           "default": true
+        },
+        {
+          "type": "text",
+          "id": "shop__description__footer",
+          "label": "Enter Description"
+        },
+        {
+          "type": "range",
+          "id": "shop__description__footer__fontSize",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Footer Description Font Size",
+          "default": 16
         }
       ]
     },
@@ -399,9 +483,14 @@
           "info":"This menu won't show dropdown items"
         },
         {
-          "type": "text",
-          "id": "title",
-          "label": "Title"
+          "type": "range",
+          "id": "title__font__size",
+          "label": "Title Font Size",
+          "min":0,
+          "max":100,
+          "default":42,
+          "step":1,
+          "unit":"px"
         }
       ]
     },
