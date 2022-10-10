@@ -313,6 +313,256 @@
         "padding_bottom": 0
       }
     },
+    "477aa243-565b-4d37-bdfd-942519cc246e": {
+      "type": "section-custom-content",
+      "blocks": {
+        "template--14461244735551__477aa243-565b-4d37-bdfd-942519cc246e-16653988075f05b7d1-1": {
+          "type": "text",
+          "settings": {
+            "text_position": "center",
+            "top_image_width": 100,
+            "text_color": "text-dark",
+            "subheading": "Subheading",
+            "title": "Our Story",
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "button_text": "Learn More",
+            "button_link": "",
+            "button_style": "btn--primary btn--small",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "secondary_button_style": "btn--secondary btn--small",
+            "bg_color": ""
+          }
+        },
+        "template--14461244735551__477aa243-565b-4d37-bdfd-942519cc246e-16653988075f05b7d1-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "Welcome to Palo Alto",
+            "heading_size": 100,
+            "text": "Describe in a few words your special products, collection, or brand.",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--14461244735551__477aa243-565b-4d37-bdfd-942519cc246e-16653988075f05b7d1-1",
+        "template--14461244735551__477aa243-565b-4d37-bdfd-942519cc246e-16653988075f05b7d1-0"
+      ],
+      "settings": {
+        "height": "four-fifty-height",
+        "bg_color": "",
+        "width": "wrapper--full",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "28707cbf-eec1-41c3-92cd-91f0507255ce": {
+      "type": "section-custom-content",
+      "blocks": {
+        "template--14461244735551__28707cbf-eec1-41c3-92cd-91f0507255ce-16653988075f05b7d1-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "Welcome to Palo Alto",
+            "heading_size": 100,
+            "text": "Describe in a few words your special products, collection, or brand.",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        },
+        "template--14461244735551__28707cbf-eec1-41c3-92cd-91f0507255ce-16653988075f05b7d1-1": {
+          "type": "text",
+          "settings": {
+            "text_position": "center",
+            "top_image_width": 100,
+            "text_color": "text-dark",
+            "subheading": "Subheading",
+            "title": "Our Story",
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "button_text": "Learn More",
+            "button_link": "",
+            "button_style": "btn--primary btn--small",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "secondary_button_style": "btn--secondary btn--small",
+            "bg_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--14461244735551__28707cbf-eec1-41c3-92cd-91f0507255ce-16653988075f05b7d1-0",
+        "template--14461244735551__28707cbf-eec1-41c3-92cd-91f0507255ce-16653988075f05b7d1-1"
+      ],
+      "settings": {
+        "height": "four-fifty-height",
+        "bg_color": "",
+        "width": "wrapper--full",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "8d8b7d54-70a3-4cea-9f39-ccc0c825707a": {
+      "type": "section-custom-content",
+      "blocks": {
+        "template--14461244735551__8d8b7d54-70a3-4cea-9f39-ccc0c825707a-16653988075f05b7d1-1": {
+          "type": "text",
+          "settings": {
+            "text_position": "center",
+            "top_image_width": 100,
+            "text_color": "text-dark",
+            "subheading": "Subheading",
+            "title": "Our Story",
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "button_text": "Learn More",
+            "button_link": "",
+            "button_style": "btn--primary btn--small",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "secondary_button_style": "btn--secondary btn--small",
+            "bg_color": ""
+          }
+        },
+        "template--14461244735551__8d8b7d54-70a3-4cea-9f39-ccc0c825707a-16653988075f05b7d1-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "Welcome to Palo Alto",
+            "heading_size": 100,
+            "text": "Describe in a few words your special products, collection, or brand.",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--14461244735551__8d8b7d54-70a3-4cea-9f39-ccc0c825707a-16653988075f05b7d1-1",
+        "template--14461244735551__8d8b7d54-70a3-4cea-9f39-ccc0c825707a-16653988075f05b7d1-0"
+      ],
+      "settings": {
+        "height": "four-fifty-height",
+        "bg_color": "",
+        "width": "wrapper--full",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "bd910b51-44cb-4093-a71c-7d0dd4d9c86a": {
+      "type": "section-custom-content",
+      "blocks": {
+        "template--14461244735551__bd910b51-44cb-4093-a71c-7d0dd4d9c86a-16653988075f05b7d1-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "Welcome to Palo Alto",
+            "heading_size": 100,
+            "text": "Describe in a few words your special products, collection, or brand.",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        },
+        "template--14461244735551__bd910b51-44cb-4093-a71c-7d0dd4d9c86a-16653988075f05b7d1-1": {
+          "type": "text",
+          "settings": {
+            "text_position": "center",
+            "top_image_width": 100,
+            "text_color": "text-dark",
+            "subheading": "Subheading",
+            "title": "Our Story",
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "button_text": "Learn More",
+            "button_link": "",
+            "button_style": "btn--primary btn--small",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "secondary_button_style": "btn--secondary btn--small",
+            "bg_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--14461244735551__bd910b51-44cb-4093-a71c-7d0dd4d9c86a-16653988075f05b7d1-0",
+        "template--14461244735551__bd910b51-44cb-4093-a71c-7d0dd4d9c86a-16653988075f05b7d1-1"
+      ],
+      "settings": {
+        "height": "four-fifty-height",
+        "bg_color": "",
+        "width": "wrapper--full",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "a77c4698-8921-4e3e-abad-8860a1951614": {
+      "type": "section-custom-content",
+      "blocks": {
+        "template--14461244735551__a77c4698-8921-4e3e-abad-8860a1951614-16653988075f05b7d1-1": {
+          "type": "text",
+          "settings": {
+            "text_position": "center",
+            "top_image_width": 100,
+            "text_color": "text-dark",
+            "subheading": "",
+            "title": "Our Story",
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "secondary_button_style": "btn--secondary btn--small",
+            "bg_color": ""
+          }
+        },
+        "template--14461244735551__a77c4698-8921-4e3e-abad-8860a1951614-16653988075f05b7d1-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--14461244735551__a77c4698-8921-4e3e-abad-8860a1951614-16653988075f05b7d1-1",
+        "template--14461244735551__a77c4698-8921-4e3e-abad-8860a1951614-16653988075f05b7d1-0"
+      ],
+      "settings": {
+        "height": "four-fifty-height",
+        "bg_color": "",
+        "width": "wrapper--full",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "section-image-with-text": {
       "type": "section-image-with-text",
       "settings": {
@@ -489,6 +739,11 @@
     "section-custom-content-0",
     "section-custom-content-1",
     "bb298499-ba2b-4bd3-9c88-20e0b995a050",
+    "477aa243-565b-4d37-bdfd-942519cc246e",
+    "28707cbf-eec1-41c3-92cd-91f0507255ce",
+    "8d8b7d54-70a3-4cea-9f39-ccc0c825707a",
+    "bd910b51-44cb-4093-a71c-7d0dd4d9c86a",
+    "a77c4698-8921-4e3e-abad-8860a1951614",
     "section-image-with-text",
     "section-press",
     "columns",
