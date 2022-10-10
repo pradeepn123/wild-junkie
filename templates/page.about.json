@@ -338,6 +338,7 @@
           "type": "image",
           "settings": {
             "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/IMG_1409_5000x_7e573cf9-b888-4b06-974c-25902d337745.jpg",
             "image_position": "center-center",
             "overlay_opacity": 10,
             "text_color": "text-light",
@@ -370,6 +371,7 @@
           "type": "image",
           "settings": {
             "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/IMG_1409_5000xw.jpg",
             "image_position": "center-center",
             "overlay_opacity": 10,
             "text_color": "text-light",
@@ -438,6 +440,7 @@
           "type": "image",
           "settings": {
             "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/IMG_1409_5000xw2.jpg",
             "image_position": "center-center",
             "overlay_opacity": 10,
             "text_color": "text-light",
@@ -470,6 +473,7 @@
           "type": "image",
           "settings": {
             "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Ellie.jpg",
             "image_position": "center-center",
             "overlay_opacity": 10,
             "text_color": "text-light",
@@ -538,6 +542,7 @@
           "type": "image",
           "settings": {
             "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/IMG_1409_5000xw3_9977c419-d829-427f-bada-915f2bbc13ef.jpg",
             "image_position": "center-center",
             "overlay_opacity": 10,
             "text_color": "text-light",
