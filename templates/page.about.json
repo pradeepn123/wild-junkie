@@ -6,6 +6,22 @@
         "slideshow-0": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Main-Banner.jpg",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_width": "normal",
+            "text_position": "center",
+            "text_color": "text-light",
+            "title": "Welcome to Wild Junkiw",
+            "text": "We are wild junkie! Always fun and wild!",
+            "slide_btn_text": "Shop All",
+            "slide_btn_link": "shopify:\/\/collections\/all",
+            "slide_btn_style": "btn--primary",
+            "slide_btn_text_2": "",
+            "slide_btn_link_2": "",
+            "slide_btn_style_2": "btn--secondary btn--small",
+            "video_text": "",
+            "video_link": ""
           }
         }
       },
@@ -13,7 +29,15 @@
         "slideshow-0"
       ],
       "settings": {
-        "slide_height": "six-fifty-height"
+        "slide_height": "six-fifty-height",
+        "show_nav_dots": true,
+        "show_nav_arrows": true,
+        "show_arrow_down": false,
+        "autoplay": false,
+        "duration": 4,
+        "transition": "slide",
+        "enable_zoom_animation": true,
+        "heading_size": 120
       }
     },
     "text": {
@@ -22,21 +46,30 @@
         "subheading": {
           "type": "subheading",
           "settings": {
+            "text": "<p>Wild Junkie<\/p>",
+            "size": 100
           }
         },
         "heading": {
           "type": "heading",
           "settings": {
+            "text": "<p>Our Story<\/p>",
+            "size": 100
           }
         },
         "text": {
           "type": "text",
           "settings": {
+            "text": "<p>The team behind Wild Junkie is small but mighty; let me begin by introducing myself, Brooke Hald, and telling you about WJB! Wild Junkie was born in the fall of 2018 when I decided to expand my wood-crafting business.<\/p>",
+            "size": 100
           }
         },
         "button": {
           "type": "button",
           "settings": {
+            "btn_text": "Read More",
+            "btn_link": "",
+            "btn_style": "btn--primary btn--small"
           }
         }
       },
@@ -47,6 +80,12 @@
         "button"
       ],
       "settings": {
+        "text_position": "center",
+        "bg_color": "",
+        "text_color": "text-dark",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "section-custom-content-0": {
@@ -55,16 +94,33 @@
         "image": {
           "type": "image",
           "settings": {
+            "text_position": "middle-center",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
             "title": "",
-            "text": ""
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
           }
         },
         "text": {
           "type": "text",
           "settings": {
+            "text_position": "center",
+            "top_image_width": 100,
+            "text_color": "text-dark",
             "subheading": "",
+            "title": "Our Story",
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
             "button_text": "",
             "button_link": "",
+            "button_style": "btn--primary btn--small",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "secondary_button_style": "btn--secondary btn--small",
             "bg_color": "#f4f4f4"
           }
         }
@@ -75,6 +131,7 @@
       ],
       "settings": {
         "height": "five-fifty-height",
+        "bg_color": "",
         "width": "wrapper--full",
         "add_gutter": false,
         "padding_top": 60,
@@ -84,20 +141,37 @@
     "section-custom-content-1": {
       "type": "section-custom-content",
       "blocks": {
-        "image": {
-          "type": "image",
-          "settings": {
-            "title": "",
-            "text": ""
-          }
-        },
         "text": {
           "type": "text",
           "settings": {
+            "text_position": "center",
+            "top_image_width": 100,
+            "text_color": "text-dark",
             "subheading": "",
+            "title": "Our Story",
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
             "button_text": "",
             "button_link": "",
+            "button_style": "btn--primary btn--small",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "secondary_button_style": "btn--secondary btn--small",
             "bg_color": "#f4f4f4"
+          }
+        },
+        "image": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
           }
         }
       },
@@ -107,6 +181,7 @@
       ],
       "settings": {
         "height": "five-fifty-height",
+        "bg_color": "",
         "width": "wrapper--full",
         "add_gutter": false,
         "padding_top": 0,
@@ -116,11 +191,32 @@
     "section-image-with-text": {
       "type": "section-image-with-text",
       "settings": {
+        "section_height": "six-fifty-height",
+        "text_position": "left",
+        "image_background": false,
+        "bg_position": "center-center",
+        "text_alignment": "left",
+        "subheading": "Subheading",
+        "heading": "Our Story",
+        "heading_size": 100,
+        "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+        "button_text": "Learn More",
+        "button_link": "",
+        "button_style": "btn--primary btn--small",
+        "video_link": "",
+        "video_link_color": "text-dark",
+        "bg_color": "",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "section-press": {
       "type": "section-press",
       "settings": {
+        "title": "Press",
+        "bg_color": "",
+        "width": "wrapper",
         "padding_top": 100,
         "padding_bottom": 100
       }
@@ -132,28 +228,52 @@
           "type": "text_block",
           "settings": {
             "bg_position": "center-center",
-            "button_text": ""
+            "title": "Add a title or tagline",
+            "text": "<p>Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--text",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
           }
         },
         "column-1": {
           "type": "text_block",
           "settings": {
             "bg_position": "center-center",
-            "button_text": ""
+            "title": "Add a title or tagline",
+            "text": "<p>Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--text",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
           }
         },
         "column-2": {
           "type": "text_block",
           "settings": {
             "bg_position": "center-center",
-            "button_text": ""
+            "title": "Add a title or tagline",
+            "text": "<p>Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--text",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
           }
         },
         "column-3": {
           "type": "text_block",
           "settings": {
             "bg_position": "center-center",
-            "button_text": ""
+            "title": "Add a title or tagline",
+            "text": "<p>Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--text",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
           }
         }
       },
@@ -170,7 +290,10 @@
         "bg_color": "",
         "equalize_height": true,
         "image_aspect_ratio": 0.8,
-        "show_images": true
+        "show_images": true,
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "section-icons-row": {
@@ -210,9 +333,13 @@
         "alignment": "center",
         "columns": 3,
         "icons_width": 30,
+        "heading": "",
+        "subheading": "",
         "bg_color": "#f6f6f7",
         "box_color": "rgba(0,0,0,0)",
         "text_color": "#000000",
+        "button_text": "",
+        "button_link": "",
         "button_style": "secondary btn--small",
         "padding_top": 60,
         "padding_bottom": 100
@@ -222,6 +349,9 @@
       "type": "main-page",
       "disabled": true,
       "settings": {
+        "show_page_title": true,
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
