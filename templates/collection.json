@@ -81,37 +81,19 @@
             "show_color": false,
             "bg_color": "#f7f7f7"
           }
-        },
-        "collection-5": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "show_color": false,
-            "bg_color": "#f7f7f7"
-          }
-        },
-        "collection-2": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "show_color": false,
-            "bg_color": "#f7f7f7"
-          }
         }
       },
       "block_order": [
         "collection-0",
         "collection-1",
         "collection-3",
-        "collection-4",
-        "collection-5",
-        "collection-2"
+        "collection-4"
       ],
       "settings": {
         "layout": "carousel",
-        "columns": 6,
-        "image_size": 100,
-        "image_shape": "rect",
+        "columns": 4,
+        "image_size": 80,
+        "image_shape": "circle",
         "title": "",
         "text_size": 120,
         "overlay_text": true,
