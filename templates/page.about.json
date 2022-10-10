@@ -167,6 +167,7 @@
           "type": "image",
           "settings": {
             "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Brooke.jpg",
             "image_position": "center-center",
             "overlay_opacity": 10,
             "text_color": "text-light",
@@ -202,7 +203,7 @@
         "text"
       ],
       "settings": {
-        "height": "five-fifty-height",
+        "height": "four-fifty-height",
         "bg_color": "",
         "width": "wrapper--full",
         "add_gutter": false,
@@ -235,6 +236,7 @@
           "type": "image",
           "settings": {
             "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Ace.jpg",
             "image_position": "center-center",
             "overlay_opacity": 10,
             "text_color": "text-light",
@@ -252,7 +254,58 @@
         "image"
       ],
       "settings": {
-        "height": "five-fifty-height",
+        "height": "four-fifty-height",
+        "bg_color": "",
+        "width": "wrapper--full",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "bb298499-ba2b-4bd3-9c88-20e0b995a050": {
+      "type": "section-custom-content",
+      "blocks": {
+        "template--14461244735551__bb298499-ba2b-4bd3-9c88-20e0b995a050-16653988075f05b7d1-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Brooke-husband.jpg",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        },
+        "template--14461244735551__bb298499-ba2b-4bd3-9c88-20e0b995a050-16653988075f05b7d1-1": {
+          "type": "text",
+          "settings": {
+            "text_position": "center",
+            "top_image_width": 100,
+            "text_color": "text-dark",
+            "subheading": "",
+            "title": "Our Story",
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "secondary_button_style": "btn--secondary btn--small",
+            "bg_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--14461244735551__bb298499-ba2b-4bd3-9c88-20e0b995a050-16653988075f05b7d1-0",
+        "template--14461244735551__bb298499-ba2b-4bd3-9c88-20e0b995a050-16653988075f05b7d1-1"
+      ],
+      "settings": {
+        "height": "four-fifty-height",
         "bg_color": "",
         "width": "wrapper--full",
         "add_gutter": false,
@@ -435,6 +488,7 @@
     "662bf507-c2f3-4e69-8b98-5a814d75a6f1",
     "section-custom-content-0",
     "section-custom-content-1",
+    "bb298499-ba2b-4bd3-9c88-20e0b995a050",
     "section-image-with-text",
     "section-press",
     "columns",
