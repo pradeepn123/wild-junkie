@@ -88,6 +88,78 @@
         "padding_bottom": 60
       }
     },
+    "dbf9049f-3852-4dbb-b672-b97fab9b1ce8": {
+      "type": "section-marquee",
+      "blocks": {
+        "template--14461244735551__dbf9049f-3852-4dbb-b672-b97fab9b1ce8-16653988064872fb28-0": {
+          "type": "message",
+          "settings": {
+            "message": "Spend ||amount|| more for free shipping.",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "template--14461244735551__dbf9049f-3852-4dbb-b672-b97fab9b1ce8-16653988064872fb28-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>New collections just released - <a href=\"\/collections\" title=\"All collections\">Shop now<\/a><\/p>",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "template--14461244735551__dbf9049f-3852-4dbb-b672-b97fab9b1ce8-16653988064872fb28-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Use code <strong>TENOFF<\/strong> for 10% off first purchase<\/p>",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        }
+      },
+      "block_order": [
+        "template--14461244735551__dbf9049f-3852-4dbb-b672-b97fab9b1ce8-16653988064872fb28-0",
+        "template--14461244735551__dbf9049f-3852-4dbb-b672-b97fab9b1ce8-16653988064872fb28-1",
+        "template--14461244735551__dbf9049f-3852-4dbb-b672-b97fab9b1ce8-16653988064872fb28-2"
+      ],
+      "settings": {
+        "bg_color": "#000000",
+        "color": "#ffffff",
+        "layout": "marquee",
+        "padding": 20,
+        "slider_speed": 7,
+        "marquee_speed": 100,
+        "text_size": 150,
+        "message_spacing": 25,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "662bf507-c2f3-4e69-8b98-5a814d75a6f1": {
+      "type": "text-Highlight",
+      "settings": {
+        "text": "Meet the faces and learn about the team behind Wild Junkie",
+        "Vertical__Text__alignment": "center",
+        "section__background": "#fff",
+        "section__text__color": "#000",
+        "show__collection__button": false,
+        "btn-text": "",
+        "btn-url": "",
+        "section__height": 0,
+        "desktop__font__size": 30,
+        "section__padding": 0,
+        "section__margin": 0,
+        "mobile__font__size": 20,
+        "section__mobile__height": 0,
+        "section__mobile__padding": 0,
+        "section__mobile__margin": 0
+      }
+    },
     "section-custom-content-0": {
       "type": "section-custom-content",
       "blocks": {
@@ -223,6 +295,7 @@
     },
     "columns": {
       "type": "section-columns",
+      "disabled": true,
       "blocks": {
         "column-0": {
           "type": "text_block",
@@ -335,7 +408,7 @@
         "icons_width": 30,
         "heading": "",
         "subheading": "",
-        "bg_color": "#f6f6f7",
+        "bg_color": "#ffffff",
         "box_color": "rgba(0,0,0,0)",
         "text_color": "#000000",
         "button_text": "",
@@ -358,6 +431,8 @@
   "order": [
     "slideshow",
     "text",
+    "dbf9049f-3852-4dbb-b672-b97fab9b1ce8",
+    "662bf507-c2f3-4e69-8b98-5a814d75a6f1",
     "section-custom-content-0",
     "section-custom-content-1",
     "section-image-with-text",
