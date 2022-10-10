@@ -46,14 +46,14 @@
         "subheading": {
           "type": "subheading",
           "settings": {
-            "text": "<p>Wild Junkie<\/p>",
+            "text": "<p>OUR STORY<\/p>",
             "size": 100
           }
         },
         "heading": {
           "type": "heading",
           "settings": {
-            "text": "<p>Our Story<\/p>",
+            "text": "<p>We are wild junkie<\/p>",
             "size": 100
           }
         },
