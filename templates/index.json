@@ -503,7 +503,7 @@
       ],
       "settings": {
         "bg_color": "",
-        "width": "wrapper--narrow",
+        "width": "wrapper",
         "padding_top": 17,
         "padding_bottom": 15
       }
