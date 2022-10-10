@@ -107,9 +107,11 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        padding: 20px 0;
+        margin: auto 0;
+        height: fit-content;
     }
 
-    /* Icon and Description Styles */
     .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent>div {
         display: inline-block;
     }
@@ -120,7 +122,7 @@
     }
 
     .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__image {
-        flex: 1 1 auto;
+        flex: 1 1 20%;
         margin-right: 15px;
     }
 
@@ -132,12 +134,33 @@
         font-family: Montserrat;
     }
 
+    .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__children .rich-text__text p{
+        margin-top: 16px;
+    }
+
     .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__button .icons__button__link {
-        font-family: 'Londrina Solid', cursive;
+        font-family: 'Chivo', sans-serif;
         min-width: 180px;
     }
 
+    .image--and--mButtons__parent .image-and-mButtons__blocks__container .icons__button{
+        display: flex;
+        flex-direction: row;
+    }
 
+    .image--and--mButtons__parent .image-and-mButtons__blocks__container .icons__button .empty__block__icons__description{
+        flex: 1 1 20%;
+        margin-right: 15px;
+    }
+
+    .image--and--mButtons__parent .image-and-mButtons__blocks__container .icons__button .main-buttons{
+        flex: 1 1 80%;
+        justify-content: flex-start;
+        margin: 0;
+    }
+    .image--and--mButtons__parent .image-and-mButtons__blocks__container .icons__button .main-buttons .main-buttons__item{
+        margin: 0;
+    }
 /* Media Queries */
 @media screen and (min-width: 768px){
     /* Footer Currency */
@@ -216,13 +239,19 @@
 
 @media screen and (max-width: 480px){
     /* Subscription Section - Homepage */
+    .image-and-mButtons__container .image-and-mButtons__blocks__container{
+        padding: 20px 0;
+        height: fit-content;
+        padding: 0;
+    }
     .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__children .icons__content__heading h3 {
         font-size: 24px !important;
+        font-family: 'Londrina Solid';
     }
     
     .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__children .rich-text__text p {
         font-size: 16px !important;
-        margin-top: 10px
+        margin-top: 10px;
     }
     .image--and--mButtons__parent .image-and-mButtons__container .image-and-mButtons__blocks__container .icons__content__container .icons__content__parent .icons__content__image {
         margin-right: 5px;
@@ -232,8 +261,11 @@
         max-width: 49px;
         height: auto;
     }
+    .image--and--mButtons__parent .image-and-mButtons__blocks__container .icons__button .empty__block__icons__description{
+        margin-right: 5px;
+    }
     .image-and-mButtons__container .image-and-mButtons__blocks__container .block__image-mButton .main-buttons {
-        align-items: center;
+        align-items: flex-start;
     }
 
     .image-and-mButtons__container {
