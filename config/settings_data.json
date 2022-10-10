@@ -64,7 +64,7 @@
           "main-menu": "main-menu-new",
           "show_images": true,
           "image_aspect_ratio": 0.5,
-          "menu_alignment": "right",
+          "menu_alignment": "left",
           "highlight_item": "Sale",
           "highlight_item_color": "#ff6d6d",
           "show_search": true,
@@ -90,19 +90,22 @@
           "footer-block-0": {
             "type": "link",
             "settings": {
-              "menu": "shop-new"
+              "menu": "shop-new",
+              "title__font__size": 42
             }
           },
           "3f9399d6-6914-4fb8-b7c5-8903d4393cf4": {
             "type": "link",
             "settings": {
-              "menu": "company"
+              "menu": "company",
+              "title__font__size": 42
             }
           },
           "70df7833-143e-4683-b8e1-8e535ebb6fa9": {
             "type": "link",
             "settings": {
-              "menu": "help-new"
+              "menu": "help-new",
+              "title__font__size": 42
             }
           }
         },
@@ -124,6 +127,9 @@
           "color_border": "#ffffff",
           "show_locale_selector": false,
           "show_currency_selector": true,
+          "currency__margin__top": 34,
+          "currency__margin__bottom": 42,
+          "currency__position": "flex-start",
           "currency_type": "currency"
         }
       },
