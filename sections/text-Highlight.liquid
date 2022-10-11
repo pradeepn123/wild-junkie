@@ -9,14 +9,24 @@
         padding: {{ section.settings.section__mobile__padding }}px 0 !important;
     }
 }
+    .textHighlight-container{
+        background-color: {{ section.settings.section__background }}; margin: {{ section.settings.section__margin }}px 0; 
+    }
+    .textHighlight-container .text-Highlight{
+        min-height: {{ section.settings.section__height }}px ;
+        align-items: {{ section.settings.Vertical__Text__alignment }};
+        justify-content: {{ section.settings.horizontal_text_alignment }} ;
+        padding: {{ section.settings.section__padding }}px 0;
+        font-size: {{ section.settings.desktop__font__size }}px;
+    }
     .text-Highlight .text-Highlight-Heading{
         color: {{ section.settings.section__text__color }};
     }
 {% endstyle %}
 
-<div class="textHighlight-container" style="background-color: {{ section.settings.section__background }}; margin: {{ section.settings.section__margin }}px 0; ">
+<div class="textHighlight-container">
     <div class="wrapper">
-        <div class="text-Highlight" style="min-height: {{ section.settings.section__height }}px ;  align-items: {{ section.settings.Vertical__Text__alignment }}; padding: {{ section.settings.section__padding }}px 0; font-size: {{ section.settings.desktop__font__size }}px; ">
+        <div class="text-Highlight">
             <h2 class="text-Highlight-Heading section__heading h2"
                 data-aos="fade-up"
                 data-aos-delay="{{ animation_delay }}"
@@ -54,6 +64,19 @@
                 { "label": "Center", "value": "center" },
                 { "label": "Top", "value": "flex-start" },
                 { "label": "Bottom", "value": "flex-end" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "horizontal_text_alignment",
+            "label": "Horizontal Text alignment",
+            "default": "space-between",
+            "options": [
+                { "label": "Center", "value": "center" },
+                { "label": "Space Between", "value": "space-between" },
+                { "label": "Space Around", "value": "space-around" },
+                { "label": "Start", "value": "flex-start" },
+                { "label": "End", "value": "flex-end" }
             ]
         },
         {
