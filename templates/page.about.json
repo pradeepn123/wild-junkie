@@ -146,6 +146,7 @@
       "settings": {
         "text": "Meet the faces and learn about the team behind Wild Junkie",
         "Vertical__Text__alignment": "center",
+        "horizontal_text_alignment": "center",
         "section__background": "#ffffff",
         "section__text__color": "#000000",
         "show__collection__button": false,
