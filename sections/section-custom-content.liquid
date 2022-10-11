@@ -8,6 +8,7 @@
   assign transparent_header = false
   assign non_image_block_types = 'text, newsletter, testimonial, product, collection' | split: ','
   assign show_text_shadow = settings.show_text_shadow
+  assign mobile_image = collection.metafields.custom.banner_image
 
   unless non_image_block_types contains section.blocks[0].type and non_image_block_types contains section.blocks[1].type
     assign transparent_header = true
@@ -23,10 +24,17 @@
       --bg: {{ bg_color }};
     {%- endif -%}
   }
+  @media screen and (max-width: 480px){
+    {% unless mobile_image == blank %}
+      .collections_page_mobile_image .brick__section__wrapper .brick__block .brick__block__inner .brick__image .featured-image__bg{
+        background-image: url( {{ mobile_image }} ) !important;
+      }
+    {% endunless %}
+  }
 {%- endstyle -%}
 
 <section id="brick-section--{{ section.id }}"
-  class="section-padding brick__section"
+  class="section-padding brick__section {{ section.settings.custom_class_custom_content }} "
   data-overflow-wrapper
   data-section-id="{{ section.id }}"
   data-section-type="custom-content">
@@ -362,8 +370,14 @@
         { "value": "seven-fifty-height", "label": "750px" },
         { "value": "six-fifty-height", "label": "650px" },
         { "value": "five-fifty-height ", "label": "550px" },
-        { "value": "four-fifty-height", "label": "450px" }
+        { "value": "four-fifty-height", "label": "450px" },
+        { "value": "three-fifty-height", "label": "350px" }
       ]
+    },
+    {
+      "type": "text",
+      "id": "custom_class_custom_content",
+      "label":"Enter a Custom Class"
     },
     {
       "type": "header",
