@@ -196,6 +196,10 @@
     }
 }
 @media screen and (min-width: 1200px){
+    /* Custom Content Section - Custom Classes for Height */
+    .custom_content_height_650 .brick__block__content .brick__block__inner .brick__image{
+        height: 650px;
+    }
     /* Footer Logo Block */
     .site-footer{
         padding-top: 83px;
@@ -306,5 +310,20 @@
         .footer-currency{
             margin-top: 32px;
             margin-bottom: 26px;
+        }
+    /* Custom Content Section */
+        /* Text is on Top - Mobile View */
+        .custom-content-mobile-image-on-top .brick__blocks__flex .brick__block--image{
+            order: 1;
+        }
+        .custom-content-mobile-image-on-top .brick__blocks__flex .brick__block--text{
+            order: 2;
+        }
+        /* Image is on Top - Mobile View */
+        .custom-content-mobile-text-on-top .brick__blocks__flex .brick__block--image {
+            order: 2;
+        }
+        .custom-content-mobile-text-on-top .brick__blocks__flex .brick__block--text {
+            order: 1;
         }
 }
