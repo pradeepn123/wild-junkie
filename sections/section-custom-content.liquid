@@ -8,6 +8,7 @@
   assign transparent_header = false
   assign non_image_block_types = 'text, newsletter, testimonial, product, collection' | split: ','
   assign show_text_shadow = settings.show_text_shadow
+  assign mobile_image = collection.metafields.custom.banner_image
 
   unless non_image_block_types contains section.blocks[0].type and non_image_block_types contains section.blocks[1].type
     assign transparent_header = true
@@ -24,9 +25,9 @@
     {%- endif -%}
   }
   @media screen and (max-width: 480px){
-    {% unless collection.metafields.custom.banner_image == blank %}
+    {% unless mobile_image == blank %}
       .collections_page_mobile_image .brick__section__wrapper .brick__block .brick__block__inner .brick__image .featured-image__bg{
-        background-image: url( {{ collection.metafields.custom.banner_image }} ) !important;
+        background-image: url( {{ mobile_image }} ) !important;
       }
     {% endunless %}
   }
@@ -47,7 +48,6 @@
             assign animation_anchor = '#BrickBlock--' | append: unique
             assign animation_delay = 150
             assign image = block.settings.image
-            assign mobile_image = collection.metafields.custom.banner_image
             assign button_text = block.settings.button_text
             assign button_link = block.settings.button_link | default: '#!'
             assign button_style = block.settings.button_style
