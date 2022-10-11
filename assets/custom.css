@@ -196,6 +196,10 @@
     }
 }
 @media screen and (min-width: 1200px){
+    /* Custom Content Section - Custom Classes for Height */
+    .custom_content_height_650 .brick__block__content .brick__block__inner .brick__image{
+        height: 650px;
+    }
     /* Footer Logo Block */
     .site-footer{
         padding-top: 83px;
