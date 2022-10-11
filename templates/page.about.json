@@ -159,7 +159,7 @@
         "mobile__font__size": 20,
         "section__mobile__height": 0,
         "section__mobile__padding": 0,
-        "section__mobile__margin": 0
+        "section__mobile__margin": 40
       }
     },
     "section-custom-content-0": {
