@@ -206,7 +206,7 @@
       ],
       "settings": {
         "height": "four-fifty-height",
-        "custom_class_custom_content": "custom_content_height_650",
+        "custom_class_custom_content": "custom_content_height_650 custom-content-mobile-image-on-top",
         "bg_color": "",
         "width": "wrapper--full-padded",
         "add_gutter": false,
@@ -258,7 +258,7 @@
       ],
       "settings": {
         "height": "five-fifty-height",
-        "custom_class_custom_content": "custom_content_height_650",
+        "custom_class_custom_content": "custom_content_height_650 custom-content-mobile-image-on-top",
         "bg_color": "",
         "width": "wrapper--full-padded",
         "add_gutter": false,
@@ -310,7 +310,7 @@
       ],
       "settings": {
         "height": "five-fifty-height",
-        "custom_class_custom_content": "custom_content_height_650",
+        "custom_class_custom_content": "custom_content_height_650 custom-content-mobile-image-on-top",
         "bg_color": "",
         "width": "wrapper--full-padded",
         "add_gutter": false,
@@ -362,7 +362,7 @@
       ],
       "settings": {
         "height": "five-fifty-height",
-        "custom_class_custom_content": "custom_content_height_650",
+        "custom_class_custom_content": "custom_content_height_650 custom-content-mobile-image-on-top",
         "bg_color": "",
         "width": "wrapper--full-padded",
         "add_gutter": false,
@@ -414,7 +414,7 @@
       ],
       "settings": {
         "height": "five-fifty-height",
-        "custom_class_custom_content": "custom_content_height_650",
+        "custom_class_custom_content": "custom_content_height_650 custom-content-mobile-image-on-top",
         "bg_color": "",
         "width": "wrapper--full-padded",
         "add_gutter": false,
@@ -466,7 +466,7 @@
       ],
       "settings": {
         "height": "five-fifty-height",
-        "custom_class_custom_content": "custom_content_height_650",
+        "custom_class_custom_content": "custom_content_height_650 custom-content-mobile-image-on-top",
         "bg_color": "",
         "width": "wrapper--full-padded",
         "add_gutter": false,
@@ -518,7 +518,7 @@
       ],
       "settings": {
         "height": "five-fifty-height",
-        "custom_class_custom_content": "custom_content_height_650",
+        "custom_class_custom_content": "custom_content_height_650 custom-content-mobile-image-on-top",
         "bg_color": "",
         "width": "wrapper--full-padded",
         "add_gutter": false,
@@ -570,7 +570,7 @@
       ],
       "settings": {
         "height": "five-fifty-height",
-        "custom_class_custom_content": "custom_content_height_650",
+        "custom_class_custom_content": "custom_content_height_650 custom-content-mobile-image-on-top",
         "bg_color": "",
         "width": "wrapper--full-padded",
         "add_gutter": false,

@@ -311,4 +311,19 @@
             margin-top: 32px;
             margin-bottom: 26px;
         }
+    /* Custom Content Section */
+        /* Text is on Top - Mobile View */
+        .custom-content-mobile-image-on-top .brick__blocks__flex .brick__block--image{
+            order: 1;
+        }
+        .custom-content-mobile-image-on-top .brick__blocks__flex .brick__block--text{
+            order: 2;
+        }
+        /* Image is on Top - Mobile View */
+        .custom-content-mobile-text-on-top .brick__blocks__flex .brick__block--image {
+            order: 2;
+        }
+        .custom-content-mobile-text-on-top .brick__blocks__flex .brick__block--text {
+            order: 1;
+        }
 }
