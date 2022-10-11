@@ -23,10 +23,17 @@
       --bg: {{ bg_color }};
     {%- endif -%}
   }
+  @media screen and (max-width: 480px){
+    {% unless collection.metafields.custom.banner_image == blank %}
+      .collections_page_mobile_image .brick__section__wrapper .brick__block .brick__block__inner .brick__image .featured-image__bg{
+        background-image: url( {{ collection.metafields.custom.banner_image }} ) !important;
+      }
+    {% endunless %}
+  }
 {%- endstyle -%}
 
 <section id="brick-section--{{ section.id }}"
-  class="section-padding brick__section"
+  class="section-padding brick__section {{ section.settings.custom_class_custom_content }} "
   data-overflow-wrapper
   data-section-id="{{ section.id }}"
   data-section-type="custom-content">
@@ -40,6 +47,7 @@
             assign animation_anchor = '#BrickBlock--' | append: unique
             assign animation_delay = 150
             assign image = block.settings.image
+            assign mobile_image = collection.metafields.custom.banner_image
             assign button_text = block.settings.button_text
             assign button_link = block.settings.button_link | default: '#!'
             assign button_style = block.settings.button_style
@@ -365,6 +373,11 @@
         { "value": "four-fifty-height", "label": "450px" },
         { "value": "three-fifty-height", "label": "350px" }
       ]
+    },
+    {
+      "type": "text",
+      "id": "custom_class_custom_content",
+      "label":"Enter a Custom Class"
     },
     {
       "type": "header",
