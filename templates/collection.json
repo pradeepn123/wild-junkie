@@ -24,9 +24,9 @@
         "image"
       ],
       "settings": {
-        "height": "four-fifty-height",
+        "height": "three-fifty-height",
         "bg_color": "",
-        "width": "wrapper--full-padded",
+        "width": "wrapper--full",
         "add_gutter": false,
         "padding_top": 1,
         "padding_bottom": 1
