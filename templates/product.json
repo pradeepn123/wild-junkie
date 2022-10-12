@@ -38,7 +38,7 @@
             "icon_text": "Free shipping over $99",
             "text_size": 90,
             "width": "full",
-            "text_alignment": "center",
+            "text_alignment": "left",
             "bg_color": "#ffffff",
             "remove_padding": true
           }
@@ -312,6 +312,10 @@
         "loox-product-reviews"
       ],
       "settings": {
+        "bg_color": "",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
