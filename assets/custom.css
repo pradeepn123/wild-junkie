@@ -24,6 +24,10 @@
     /* max-height: 652.5px; */
     object-fit: cover;
 }
+/* Product Page - Svg Slider Styles */
+.product-page-svg svg{
+    max-width: -webkit-fill-available;
+}
 /* Footer Styles */
 .site-footer{
     padding-bottom: 0;

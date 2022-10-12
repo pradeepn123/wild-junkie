@@ -556,6 +556,21 @@
 
   {% comment %} Shop pay split payment terms {% endcomment %}
   <div class="shop-pay-terms">{{ form | payment_terms }}</div>
+  
+  <div class="product-page-svg">
+    {% if block.settings.show_slide_svg != blank %}
+      {% if product.metafields.custom.choose_size == 'True to Size' %}
+        {% render 'true-to-size' %}
+      {% endif %}
+      {% if product.metafields.custom.choose_size == 'Runs Small' %}
+        {% render 'runs-small' %}
+      {% endif %}
+      {% if product.metafields.custom.choose_size == 'Runs Large' %}
+        {% render 'runs-large' %}
+      {% endif %}
+    {% endif %}
+  </div>
+  
 
   {%- assign quantity_position_bottom = true -%}
 
@@ -1747,7 +1762,6 @@
 
   {% comment %} Shop pay split payment terms {% endcomment %}
   <div class="shop-pay-terms">{{ form | payment_terms }}</div>
-
   {%- assign quantity_position_bottom = true -%}
 
   {%- capture quantity_selector -%}
