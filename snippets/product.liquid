@@ -1192,21 +1192,20 @@
               {% endif %}
               {{ block.shopify_attributes }}>
               {%- unless product == blank -%}
-
-                {% unless block.settings.show_size_chart_accordion == false %}
-                  <div class="product__accordion">
-                    <button class="product__accordion__title" aria-controls="ProductAccordion--page" data-collapsible-trigger>
-                      Product Description
-                      {%- render 'icon-toggle-plus' -%}
-                      {%- render 'icon-toggle-minus' -%}
-                    </button>
-                    <div class="product__accordion__content" id="ProductAccordion--page" data-collapsible-container>
-                      <div class="product__accordion__inner rte" data-collapsible-content>
-                          {{- product.description -}}
-                      </div>
+              {% unless block.settings.show_size_chart_accordion == false %}
+                <div class="product__accordion">
+                  <button class="product__accordion__title" aria-controls="ProductAccordion--page-description" data-collapsible-trigger>
+                    Product Description
+                    {%- render 'icon-toggle-plus' -%}
+                    {%- render 'icon-toggle-minus' -%}
+                  </button>
+                  <div class="product__accordion__content" id="ProductAccordion--page-description" data-collapsible-container>
+                    <div class="product__accordion__inner rte" data-collapsible-content>
+                        {{- product.description -}}
                     </div>
                   </div>
-                {% endunless %}
+                </div>
+              {% endunless %}
 
               {%- else -%}
                 <p>{{ 'homepage.onboarding.single_product_description' | t }}</p>
@@ -1225,15 +1224,15 @@
               {{ block.shopify_attributes }}>
               {%- render 'product-accordions', block_settings: block.settings -%}
 
-              {% unless block.settings.show_size_chart_accordion == false %}
+              {% unless product.metafields.custom.size_chart == blank %}
                 <div class="product__accordion">
-                  <button class="product__accordion__title" aria-controls="ProductAccordion--page" data-collapsible-trigger>
+                  <button class="product__accordion__title" aria-controls="ProductAccordion--page-size-chart" data-collapsible-trigger>
                     Size Chart
                     {%- render 'icon-toggle-plus' -%}
                     {%- render 'icon-toggle-minus' -%}
                   </button>
 
-                  <div class="product__accordion__content" id="ProductAccordion--page" data-collapsible-container>
+                  <div class="product__accordion__content" id="ProductAccordion--page-size-chart" data-collapsible-container>
                     <div class="product__accordion__inner rte" data-collapsible-content>
                         {{ product.metafields.custom.size_chart | img_url: '500x500' | img_tag }}
                     </div>
