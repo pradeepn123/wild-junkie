@@ -23,7 +23,7 @@
   assign featured_media_id = featured_media.id
   assign first_3d_model = product.media | where: 'media_type', 'model' | first
   assign show_newsletter = settings.show_newsletter
-
+  assign product_metafield_size = product.metafields.custom.choose_size
   assign sold_out = true
   if current_variant.available
     assign sold_out = false
@@ -816,15 +816,14 @@
 
     {% if block.settings.show_slide_svg != blank %}
       <div class="product-page-svg">
-        {% if product.metafields.custom.choose_size == 'True to Size' %}
-          {% render 'true-to-size' %}
-        {% endif %}
-        {% if product.metafields.custom.choose_size == 'Runs Small' %}
-          {% render 'runs-small' %}
-        {% endif %}
-        {% if product.metafields.custom.choose_size == 'Runs Large' %}
-          {% render 'runs-large' %}
-        {% endif %}
+        {% case product_metafield_size %}
+          {% when 'True to Size' %}
+            {% render 'true-to-size' %}
+          {% when 'Runs Small' %}
+            {% render 'runs-small' %}
+          {% when 'Runs Large' %}
+            {% render 'runs-large' %}
+        {% endcase %}
       </div>
     {% endif %}
 
