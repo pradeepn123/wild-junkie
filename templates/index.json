@@ -217,13 +217,41 @@
             "button_text": "",
             "text_color": "text-light"
           }
+        },
+        "2a73ef4b-6ee7-4668-9666-c902b6306d35": {
+          "type": "collection",
+          "settings": {
+            "collection": "accessories",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "show_description": true,
+            "button_text": "",
+            "text_color": "text-light"
+          }
+        },
+        "4cdca39d-cd0f-44e2-9ed0-317fbd191fab": {
+          "type": "collection",
+          "settings": {
+            "collection": "nfr-collection",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "show_description": true,
+            "button_text": "",
+            "text_color": "text-light"
+          }
         }
       },
       "block_order": [
         "39c7ed22-848d-4a94-afd8-12d2462dc1d6",
         "47fffd63-2890-4c40-87eb-058d0a869645",
         "10e0781c-0da8-4176-90c5-28c4a64e9fdc",
-        "28667974-591a-4943-9cf1-3dc944bee1b9"
+        "28667974-591a-4943-9cf1-3dc944bee1b9",
+        "2a73ef4b-6ee7-4668-9666-c902b6306d35",
+        "4cdca39d-cd0f-44e2-9ed0-317fbd191fab"
       ],
       "settings": {
         "height": "fullscreen",
