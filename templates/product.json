@@ -11,6 +11,12 @@
             "show_rating_count": false
           }
         },
+        "b40be5b7-a29a-4754-8959-96af5397de5c": {
+          "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/star-rating\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
         "inventory_countdown": {
           "type": "inventory_countdown",
           "settings": {
@@ -89,6 +95,7 @@
       },
       "block_order": [
         "title",
+        "b40be5b7-a29a-4754-8959-96af5397de5c",
         "inventory_countdown",
         "form",
         "icon",
