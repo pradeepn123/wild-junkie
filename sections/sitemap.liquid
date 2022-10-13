@@ -1,0 +1,39 @@
+<div class="sitemap-container">
+    <div class="wrapper">
+        <div class="sitemap-parent">
+            {% comment %}
+            <div class="sitemap-heading">
+                <div class="product__block product__title-and-price aos-init aos-animate" data-aos="fade-up" data-aos-anchor="#FeaturedProduct--template--14490297991231__main" data-aos-delay="450">
+                    <h1 class="sitemap-heading-content">
+                        Sitemap
+                    </h1>
+                </div>
+            </div>
+            {% endcomment %}
+            <div class="collections-sitemap">
+                <div class="product__block product__title-and-price aos-init aos-animate" data-aos="fade-up" data-aos-anchor="#FeaturedProduct--template--14490297991231__main" data-aos-delay="450">
+                    <h1 class="collections-sitemap-title">
+                        Collections
+                    </h1>
+                </div>
+                {% for c in collections %}
+                    <p class="collection-sitemap-data">
+                        <a href="{{ c.url }}">{{ c.title }}</a>
+                    </p>
+                {% endfor %}
+            </div>
+            <div class="products-sitemap">
+                <div class="product__block product__title-and-price aos-init aos-animate" data-aos="fade-up" data-aos-anchor="#FeaturedProduct--template--14490297991231__main" data-aos-delay="450">
+                    <h1 class="products-sitemap-title">
+                        Products
+                    </h1>
+                </div>
+                {% for product in collections.all.products %}
+                    <p class="product-sitemap-data">
+                        <a href="{{ product.url }}">{{ product.title }}</a>
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

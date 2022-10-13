@@ -212,6 +212,29 @@
     height: fit-content;
     margin: 0;
 }
+ 
+
+/* Sitemap Styles */
+/* .sitemap-container .sitemap-parent .sitemap-heading .sitemap-heading-content{
+    margin: 30px 0;
+    text-align: center;
+} */
+
+.sitemap-container .sitemap-parent .collections-sitemap p,
+.sitemap-container .sitemap-parent .products-sitemap p {
+    display: inline;
+}
+
+.sitemap-container .sitemap-parent .collections-sitemap p a,
+.sitemap-container .sitemap-parent .products-sitemap p a{
+    padding: 0  10px 0 0;
+    border-right: 1px solid;
+}
+
+.sitemap-container .sitemap-parent .collections-sitemap,
+.sitemap-container .sitemap-parent .products-sitemap {
+    margin: 60px 0;
+}
 
 /* Media Queries */
 @media screen and (min-width: 768px){
