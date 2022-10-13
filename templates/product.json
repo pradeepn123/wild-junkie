@@ -108,6 +108,11 @@
         "padding_bottom": 60
       }
     },
+    "1f23f22e-a795-4fad-87ce-09e6ba97dd6e": {
+      "type": "model-info",
+      "settings": {
+      }
+    },
     "section-testimonials": {
       "type": "section-testimonials",
       "blocks": {
@@ -323,6 +328,7 @@
   },
   "order": [
     "main",
+    "1f23f22e-a795-4fad-87ce-09e6ba97dd6e",
     "section-testimonials",
     "section-accordions",
     "related",

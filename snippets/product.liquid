@@ -557,19 +557,6 @@
   {% comment %} Shop pay split payment terms {% endcomment %}
   <div class="shop-pay-terms">{{ form | payment_terms }}</div>
   
-  <div class="product-page-svg">
-    {% if block.settings.show_slide_svg != blank %}
-      {% if product.metafields.custom.choose_size == 'True to Size' %}
-        {% render 'true-to-size' %}
-      {% endif %}
-      {% if product.metafields.custom.choose_size == 'Runs Small' %}
-        {% render 'runs-small' %}
-      {% endif %}
-      {% if product.metafields.custom.choose_size == 'Runs Large' %}
-        {% render 'runs-large' %}
-      {% endif %}
-    {% endif %}
-  </div>
   
 
   {%- assign quantity_position_bottom = true -%}
@@ -826,6 +813,22 @@
     <span data-subscription-watch-price></span>
   {%- endif -%}
 
+
+    {% if block.settings.show_slide_svg != blank %}
+      <div class="product-page-svg">
+        {% if product.metafields.custom.choose_size == 'True to Size' %}
+          {% render 'true-to-size' %}
+        {% endif %}
+        {% if product.metafields.custom.choose_size == 'Runs Small' %}
+          {% render 'runs-small' %}
+        {% endif %}
+        {% if product.metafields.custom.choose_size == 'Runs Large' %}
+          {% render 'runs-large' %}
+        {% endif %}
+      </div>
+    {% endif %}
+
+
   {%- if quantity_position_bottom and show_quantity -%}
     <div class="selector-wrapper selector-wrapper--qty"
       {% if animations_enabled %}
@@ -834,7 +837,7 @@
         data-aos-delay="{{ animation_delay }}"
         {%- assign animation_delay = animation_delay | plus: 100 -%}
       {% endif %}>
-      {{ quantity_selector }}
+      Sahrudh{{ quantity_selector }}
     </div>
   {%- endif -%}
 
@@ -1119,7 +1122,6 @@
       {%- endunless -%}
     {%- endif -%}
   </div>
-
   {%- if show_quantity and quantity_position_bottom -%}
     <div class="selector-wrapper{% if variants_style == 'boxes' %} selector-wrapper--qty{% endif %}"
       {% if animations_enabled %}
@@ -1604,7 +1606,7 @@
   {%- endif -%}
 </div>
 
-        <div class="product__block product__form__wrapper{{ hide_labels_class }}{% if sold_out %} variant--soldout{% endif %}" data-form-wrapper>
+        <div class="product__block product__form__wrapper{{ hide_labels_class }}{% if sold_out %} variant--soldout{% endif %}" data-form-wrapper sahrudh>
           {%- comment -%} Product Form partial {%- endcomment -%}
           <!-- /partials/product-form.liquid -->
 
