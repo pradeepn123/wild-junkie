@@ -191,7 +191,7 @@
 }
 
 .model_info_container .model_info_parent .model_info_blocks_data_container .model_info_blocks_data_container_title {
-    padding: 50px 0;
+    padding-bottom: 50px;
 }
 
 .model_info_parent .model_info_blocks_data_container{
@@ -199,6 +199,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: #EAE2DB;
+    padding: 50px 0;
 }
 
 .model_info_parent .model_info_blocks_data_container p{
@@ -249,6 +251,9 @@
     .model_info_parent .model_info_image,
     .model_info_parent .model_info_blocks_data_container {
         width: 50%;
+    }
+    .model_info_parent .model_info_blocks_data_container{
+        padding: 0;
     }
 }
 @media screen and (min-width: 1200px){
