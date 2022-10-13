@@ -147,6 +147,7 @@
       "settings": {
         "text": "Our Collections",
         "Vertical__Text__alignment": "center",
+        "horizontal_text_alignment": "space-between",
         "section__background": "#ffffff",
         "section__text__color": "#000000",
         "show__collection__button": true,
@@ -216,13 +217,41 @@
             "button_text": "",
             "text_color": "text-light"
           }
+        },
+        "2a73ef4b-6ee7-4668-9666-c902b6306d35": {
+          "type": "collection",
+          "settings": {
+            "collection": "accessories",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "show_description": true,
+            "button_text": "",
+            "text_color": "text-light"
+          }
+        },
+        "4cdca39d-cd0f-44e2-9ed0-317fbd191fab": {
+          "type": "collection",
+          "settings": {
+            "collection": "nfr-collection",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "show_description": true,
+            "button_text": "",
+            "text_color": "text-light"
+          }
         }
       },
       "block_order": [
         "39c7ed22-848d-4a94-afd8-12d2462dc1d6",
         "47fffd63-2890-4c40-87eb-058d0a869645",
         "10e0781c-0da8-4176-90c5-28c4a64e9fdc",
-        "28667974-591a-4943-9cf1-3dc944bee1b9"
+        "28667974-591a-4943-9cf1-3dc944bee1b9",
+        "2a73ef4b-6ee7-4668-9666-c902b6306d35",
+        "4cdca39d-cd0f-44e2-9ed0-317fbd191fab"
       ],
       "settings": {
         "height": "fullscreen",
@@ -281,6 +310,7 @@
       ],
       "settings": {
         "height": "six-fifty-height",
+        "custom_class_custom_content": "",
         "bg_color": "",
         "width": "wrapper--full-padded",
         "add_gutter": true,
@@ -453,6 +483,7 @@
       "settings": {
         "text": "Reviews from our  customers",
         "Vertical__Text__alignment": "center",
+        "horizontal_text_alignment": "space-between",
         "section__background": "#ffffff",
         "section__text__color": "#000000",
         "show__collection__button": true,
@@ -473,7 +504,6 @@
       "blocks": {
         "88e66c62-0469-41b5-ae47-4578d66c6a53": {
           "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/media-carousel\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "disabled": true,
           "settings": {
             "product": ""
           }
@@ -488,10 +518,18 @@
         },
         "3062e846-645b-4344-b870-1a14df8d13fe": {
           "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/reviews-carousel\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "disabled": true,
           "settings": {
             "show_heading": false,
             "heading": "",
             "badge_link": "",
+            "product": ""
+          }
+        },
+        "7e84f444-1360-41fc-a612-435394b2c1f0": {
+          "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/media-grid\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "disabled": true,
+          "settings": {
             "product": ""
           }
         }
@@ -499,13 +537,82 @@
       "block_order": [
         "88e66c62-0469-41b5-ae47-4578d66c6a53",
         "3308ee70-357d-46c5-9c8c-97b1fe475b07",
-        "3062e846-645b-4344-b870-1a14df8d13fe"
+        "3062e846-645b-4344-b870-1a14df8d13fe",
+        "7e84f444-1360-41fc-a612-435394b2c1f0"
       ],
       "settings": {
         "bg_color": "",
         "width": "wrapper",
         "padding_top": 17,
         "padding_bottom": 15
+      }
+    },
+    "a0ed315a-680d-44c7-b3ef-6fb07715cf1f": {
+      "type": "section-collection",
+      "settings": {
+        "collection": "best-sellers",
+        "title": "Best Sellers",
+        "text": "",
+        "text_alignment": "text-center",
+        "products_rows": 1,
+        "products_layout": "grid",
+        "show_collection_button": true,
+        "button_style": "btn--secondary btn--small",
+        "bg_color": "",
+        "enable_slider_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "5fca98a6-98cf-4db8-97a5-7b3874c55409": {
+      "type": "section-text",
+      "blocks": {
+        "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-0": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Subheading<\/p>",
+            "size": 100
+          }
+        },
+        "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Follow us on IG @wildjunkiebtq<\/p>",
+            "size": 100
+          }
+        },
+        "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-2": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "size": 100
+          }
+        },
+        "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-3": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "btn_text": "Read More",
+            "btn_link": "",
+            "btn_style": "btn--primary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-0",
+        "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-1",
+        "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-2",
+        "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-3"
+      ],
+      "settings": {
+        "text_position": "center",
+        "bg_color": "",
+        "text_color": "text-dark",
+        "width": "wrapper--narrow",
+        "padding_top": 23,
+        "padding_bottom": 0
       }
     },
     "16639327156d6f701c": {
@@ -523,7 +630,7 @@
       "settings": {
         "bg_color": "",
         "width": "wrapper",
-        "padding_top": 40,
+        "padding_top": 0,
         "padding_bottom": 0
       }
     },
@@ -558,6 +665,8 @@
     "e011148e-70ed-42bd-9fb8-6a220f657dc2",
     "5252a17b-a43e-4267-bd4d-0db186dac8b8",
     "1665111792048bf374",
+    "a0ed315a-680d-44c7-b3ef-6fb07715cf1f",
+    "5fca98a6-98cf-4db8-97a5-7b3874c55409",
     "16639327156d6f701c",
     "newsletter"
   ]
