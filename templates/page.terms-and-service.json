@@ -1,0 +1,49 @@
+{
+  "sections": {
+    "af0eb665-be3e-411b-a7e4-ce6e814f8a06": {
+      "type": "section-custom-content",
+      "blocks": {
+        "template--14490486865983__af0eb665-be3e-411b-a7e4-ce6e814f8a06-166568873763875b88-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Section_Header_Image_New.jpg",
+            "image_position": "center-top",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "Terms and Service",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--14490486865983__af0eb665-be3e-411b-a7e4-ce6e814f8a06-166568873763875b88-0"
+      ],
+      "settings": {
+        "height": "three-hundred-height",
+        "custom_class_custom_content": "",
+        "bg_color": "",
+        "width": "wrapper",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 20
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "show_page_title": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "af0eb665-be3e-411b-a7e4-ce6e814f8a06",
+    "main"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "sections": {
+    "4943bd7c-b712-4317-962e-878ed51eaaf2": {
+      "type": "section-custom-content",
+      "blocks": {
+        "426c04e9-f9b3-4cdd-b7bc-7b41616a65e9": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Section_Header_Image_New.jpg",
+            "image_position": "center-top",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "Shipping Policy",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "426c04e9-f9b3-4cdd-b7bc-7b41616a65e9"
+      ],
+      "settings": {
+        "height": "three-hundred-height",
+        "custom_class_custom_content": "",
+        "bg_color": "",
+        "width": "wrapper--full-padded",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 20
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "show_page_title": false,
+        "padding_top": 30,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "4943bd7c-b712-4317-962e-878ed51eaaf2",
+    "main"
+  ]
+}
