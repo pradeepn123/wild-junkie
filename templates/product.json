@@ -204,6 +204,35 @@
         "padding_bottom": 100
       }
     },
+    "1665682367e6a8a8b7": {
+      "type": "apps",
+      "blocks": {
+        "88a24346-cbe0-4668-bca3-b38120bc653e": {
+          "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/media-carousel\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "869380d9-4a43-4777-939a-952f46a94fcb": {
+          "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/reviews-widget\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "88a24346-cbe0-4668-bca3-b38120bc653e",
+        "869380d9-4a43-4777-939a-952f46a94fcb"
+      ],
+      "settings": {
+        "bg_color": "",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "section-accordions": {
       "type": "section-accordions",
       "blocks": {
@@ -242,47 +271,6 @@
         "tabs_bg_color": "",
         "bg_color": "",
         "text_color": "text-dark",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "1665682367e6a8a8b7": {
-      "type": "apps",
-      "blocks": {
-        "88a24346-cbe0-4668-bca3-b38120bc653e": {
-          "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/media-carousel\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "disabled": true,
-          "settings": {
-            "product": "{{product}}"
-          }
-        },
-        "869380d9-4a43-4777-939a-952f46a94fcb": {
-          "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/reviews-widget\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "settings": {
-            "product": "{{product}}",
-            "widget_type": "reviews_widget"
-          }
-        }
-      },
-      "block_order": [
-        "88a24346-cbe0-4668-bca3-b38120bc653e",
-        "869380d9-4a43-4777-939a-952f46a94fcb"
-      ],
-      "settings": {
-        "bg_color": "",
-        "width": "wrapper",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "related": {
-      "type": "related-products",
-      "disabled": true,
-      "settings": {
-        "limit": 4,
-        "product_recommendations_heading": "You May Also Like",
-        "bg_color": "",
-        "width": "wrapper",
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -336,24 +324,11 @@
         "padding_bottom": 100
       }
     },
-    "loox-product-reviews-app-section": {
-      "type": "apps",
-      "disabled": true,
-      "blocks": {
-        "loox-product-reviews": {
-          "type": "shopify:\/\/apps\/loox-product-reviews-photos\/blocks\/loox-dynamic-section\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
-          "settings": {
-            "only_photos": false,
-            "aggregated": false,
-            "hide_thumbnails": false,
-            "maxwidth": 1080
-          }
-        }
-      },
-      "block_order": [
-        "loox-product-reviews"
-      ],
+    "related": {
+      "type": "related-products",
       "settings": {
+        "limit": 4,
+        "product_recommendations_heading": "You May Also Like",
         "bg_color": "",
         "width": "wrapper",
         "padding_top": 60,
@@ -364,10 +339,9 @@
   "order": [
     "main",
     "section-testimonials",
-    "section-accordions",
     "1665682367e6a8a8b7",
-    "related",
+    "section-accordions",
     "section-icons-row",
-    "loox-product-reviews-app-section"
+    "related"
   ]
 }
