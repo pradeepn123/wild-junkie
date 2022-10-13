@@ -87,9 +87,7 @@
           "type": "upsell",
           "disabled": true,
           "settings": {
-            "product_list": [
-
-            ]
+            "product_list": "{{ product.metafields.theme.upsell_list.value }}"
           }
         }
       },
