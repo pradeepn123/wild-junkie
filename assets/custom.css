@@ -161,6 +161,12 @@
     .image--and--mButtons__parent .image-and-mButtons__blocks__container .icons__button .main-buttons .main-buttons__item{
         margin: 0;
     }
+
+    /* Tabs - section-accordions */
+    .tabs_heading_left_align .section__header .section__heading{
+        text-align: left;
+    }
+
 /* Media Queries */
 @media screen and (min-width: 768px){
     /* Footer Currency */

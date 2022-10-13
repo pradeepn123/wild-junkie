@@ -1,7 +1,41 @@
 {
   "sections": {
+    "50b28de9-249f-4ede-81ae-4e144fd308ab": {
+      "type": "section-custom-content",
+      "blocks": {
+        "template--14488614043711__50b28de9-249f-4ede-81ae-4e144fd308ab-1665655524e80c3643-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Section_Header_Image_New.jpg",
+            "image_position": "center-top",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "FAQ's",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--14488614043711__50b28de9-249f-4ede-81ae-4e144fd308ab-1665655524e80c3643-0"
+      ],
+      "settings": {
+        "height": "three-hundred-height",
+        "custom_class_custom_content": "",
+        "bg_color": "",
+        "width": "wrapper",
+        "add_gutter": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "show_page_title": true,
         "padding_top": 60,
@@ -47,6 +81,7 @@
         "accordion_block_1_4"
       ],
       "settings": {
+        "section_custom_class": "tabs_heading_left_align",
         "title": "Payments & Safety",
         "subheading": "",
         "text": "",
@@ -104,6 +139,7 @@
         "accordion_block_2_4"
       ],
       "settings": {
+        "section_custom_class": "tabs_heading_left_align",
         "title": "Shipping & Delivery",
         "subheading": "",
         "text": "",
@@ -145,6 +181,7 @@
         "accordion_block_3_2"
       ],
       "settings": {
+        "section_custom_class": "tabs_heading_left_align",
         "title": "Warranty & Repair",
         "subheading": "",
         "text": "",
@@ -202,6 +239,7 @@
         "accordion_block_4_4"
       ],
       "settings": {
+        "section_custom_class": "tabs_heading_left_align",
         "title": "Returns & Refunds",
         "subheading": "",
         "text": "",
@@ -214,6 +252,7 @@
     }
   },
   "order": [
+    "50b28de9-249f-4ede-81ae-4e144fd308ab",
     "main",
     "accordion-section-1",
     "accordion-section-2",

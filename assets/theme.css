@@ -1873,6 +1873,10 @@ input.btn, input.shopify-payment-button__button--unbranded {
   height: 350px;
 }
 
+.three-hundred-height{
+  height: 300px;
+}
+
 .two-fifty-height {
   height: 250px;
 }
