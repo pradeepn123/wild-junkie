@@ -14,6 +14,7 @@
   if bg_color == tabs_bg_color or tabs_bg_color == '' or tabs_bg_color == 'rgba(0,0,0,0)'
     assign padded = false
   endif
+  assign section_custom_class = section.settings.tabs_section_custom_class
 -%}
 {%- style -%}
   #Accordions--{{ section.id }} {
@@ -29,7 +30,7 @@
   {%- endif -%}
 {%- endstyle -%}
 
-<section data-section-id="{{ section.id }}" id="Accordions--{{ section.id }}" data-section-type="accordions" class="section-padding accordions-section {{ text_color }}">
+<section data-section-id="{{ section.id }}" id="Accordions--{{ section.id }}" data-section-type="accordions" class="section-padding accordions-section {{ text_color }} {% unless section_custom_class == blank %}{{ section_custom_class }}{% endunless %}">
   {%- unless heading == blank and subheading == blank and text == blank -%}
     <div class="accordion__header">
       <div class="wrapper">
@@ -122,6 +123,11 @@
 {
   "name": "Tabs",
   "settings": [
+    {
+      "type":"text",
+      "id":"tabs_section_custom_class",
+      "label":"Enter Custom Class"
+    },
     {
       "type": "text",
       "id": "title",
