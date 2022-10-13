@@ -519,6 +519,23 @@
         "padding_bottom": 15
       }
     },
+    "a0ed315a-680d-44c7-b3ef-6fb07715cf1f": {
+      "type": "section-collection",
+      "settings": {
+        "collection": "best-sellers",
+        "title": "Best Sellers",
+        "text": "",
+        "text_alignment": "text-center",
+        "products_rows": 1,
+        "products_layout": "grid",
+        "show_collection_button": true,
+        "button_style": "btn--secondary btn--small",
+        "bg_color": "",
+        "enable_slider_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "5fca98a6-98cf-4db8-97a5-7b3874c55409": {
       "type": "section-text",
       "blocks": {
@@ -620,6 +637,7 @@
     "e011148e-70ed-42bd-9fb8-6a220f657dc2",
     "5252a17b-a43e-4267-bd4d-0db186dac8b8",
     "1665111792048bf374",
+    "a0ed315a-680d-44c7-b3ef-6fb07715cf1f",
     "5fca98a6-98cf-4db8-97a5-7b3874c55409",
     "16639327156d6f701c",
     "newsletter"
