@@ -836,7 +836,7 @@
         data-aos-delay="{{ animation_delay }}"
         {%- assign animation_delay = animation_delay | plus: 100 -%}
       {% endif %}>
-      Sahrudh{{ quantity_selector }}
+      {{ quantity_selector }}
     </div>
   {%- endif -%}
 
@@ -1605,7 +1605,7 @@
   {%- endif -%}
 </div>
 
-        <div class="product__block product__form__wrapper{{ hide_labels_class }}{% if sold_out %} variant--soldout{% endif %}" data-form-wrapper sahrudh>
+        <div class="product__block product__form__wrapper{{ hide_labels_class }}{% if sold_out %} variant--soldout{% endif %}" data-form-wrapper >
           {%- comment -%} Product Form partial {%- endcomment -%}
           <!-- /partials/product-form.liquid -->
 
