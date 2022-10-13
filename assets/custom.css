@@ -24,6 +24,10 @@
     /* max-height: 652.5px; */
     object-fit: cover;
 }
+/* Product Page - Svg Slider Styles */
+.product-page-svg svg{
+    max-width: -webkit-fill-available;
+}
 /* Footer Styles */
 .site-footer{
     padding-bottom: 0;
@@ -161,6 +165,50 @@
     .image--and--mButtons__parent .image-and-mButtons__blocks__container .icons__button .main-buttons .main-buttons__item{
         margin: 0;
     }
+
+/* Model Info */
+.model_info_container{
+    padding: 60px 0;
+}
+
+.model_info_parent {
+    display: flex;
+    flex-direction: column;
+}
+
+.model_info_parent .model_info_image{
+    text-align: center;
+}
+
+.model_info_parent .model_info_image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.model_info_container .model_info_parent .model_info_blocks_data_container .model_info_blocks_data_container_title {
+    padding-bottom: 50px;
+}
+
+.model_info_container .model_info_parent .model_info_blocks_data_container .model_info_blocks_data_container_title .product__title{
+    font-size: 32px;
+}
+
+.model_info_parent .model_info_blocks_data_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #EAE2DB;
+    padding: 50px 0;
+}
+
+.model_info_parent .model_info_blocks_data_container p{
+    width: fit-content;
+    height: fit-content;
+    margin: 0;
+}
+
 /* Media Queries */
 @media screen and (min-width: 768px){
     /* Footer Currency */
@@ -193,6 +241,19 @@
     .footer-content .footer-block--logo {
         padding-right: 0;
         margin-right: 80px;
+    }
+
+    /* Model Info */
+    .model_info_parent {
+        display: flex;
+        flex-direction: row;
+    }
+    .model_info_parent .model_info_image,
+    .model_info_parent .model_info_blocks_data_container {
+        width: 50%;
+    }
+    .model_info_parent .model_info_blocks_data_container{
+        padding: 0;
     }
 }
 @media screen and (min-width: 1200px){

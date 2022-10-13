@@ -1,0 +1,48 @@
+{% if product.metafields.my_fields.model_info and product.metafields.my_fields.model_info_image %}
+    <div class="model_info_container">
+        <div class="wrapper">
+                <div class="model_info_parent">
+                    <div class="model_info_image">
+                        {{ product.metafields.my_fields.model_info_image | img_url: '300x300'  | img_tag }}
+                    </div>
+                    <div class="model_info_blocks_data_container">
+                        <p>
+                            {{ product.metafields.my_fields.model_info }}
+                        </p>
+                    </div>
+                </div>
+        </div>
+    </div>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Model Info",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "section-image",
+            "label" :"Choose Image"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Model Info",
+            "type": "modelinfo",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "model_info_text",
+                    "label": "Enter Model Info Text"
+                }
+            ]
+        }
+    ],
+    "presets": [
+    {
+        "name": "Model Info",
+        "category": "Product"
+    }
+    ]
+}
+{% endschema %}

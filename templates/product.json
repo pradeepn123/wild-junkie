@@ -23,6 +23,7 @@
           "settings": {
             "info_page": "",
             "info_page_title_override": "",
+            "show_slide_svg": true,
             "show_labels": true,
             "show_quantity": false,
             "show_payment_button": true,
@@ -65,7 +66,8 @@
             "accordion_page_4": "",
             "accordion_heading_5": "",
             "accordion_text_5": "",
-            "accordion_page_5": ""
+            "accordion_page_5": "",
+            "show_size_chart_accordion": false
           }
         },
         "share-button": {

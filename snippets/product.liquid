@@ -23,7 +23,7 @@
   assign featured_media_id = featured_media.id
   assign first_3d_model = product.media | where: 'media_type', 'model' | first
   assign show_newsletter = settings.show_newsletter
-
+  assign product_metafield_size = product.metafields.custom.choose_size
   assign sold_out = true
   if current_variant.available
     assign sold_out = false
@@ -556,6 +556,8 @@
 
   {% comment %} Shop pay split payment terms {% endcomment %}
   <div class="shop-pay-terms">{{ form | payment_terms }}</div>
+  
+  
 
   {%- assign quantity_position_bottom = true -%}
 
@@ -810,6 +812,21 @@
     {%- comment -%} Delete the following line to block the theme from updating subscription prices {%- endcomment -%}
     <span data-subscription-watch-price></span>
   {%- endif -%}
+
+
+    {% if block.settings.show_slide_svg != blank %}
+      <div class="product-page-svg">
+        {% case product_metafield_size %}
+          {% when 'True to Size' %}
+            {% render 'true-to-size' %}
+          {% when 'Runs Small' %}
+            {% render 'runs-small' %}
+          {% when 'Runs Large' %}
+            {% render 'runs-large' %}
+        {% endcase %}
+      </div>
+    {% endif %}
+
 
   {%- if quantity_position_bottom and show_quantity -%}
     <div class="selector-wrapper selector-wrapper--qty"
@@ -1104,7 +1121,6 @@
       {%- endunless -%}
     {%- endif -%}
   </div>
-
   {%- if show_quantity and quantity_position_bottom -%}
     <div class="selector-wrapper{% if variants_style == 'boxes' %} selector-wrapper--qty{% endif %}"
       {% if animations_enabled %}
@@ -1177,7 +1193,21 @@
               {% endif %}
               {{ block.shopify_attributes }}>
               {%- unless product == blank -%}
-                {{- product.description -}}
+              {% unless block.settings.show_size_chart_accordion == false %}
+                <div class="product__accordion">
+                  <button class="product__accordion__title" aria-controls="ProductAccordion--page-description" data-collapsible-trigger>
+                    Product Description
+                    {%- render 'icon-toggle-plus' -%}
+                    {%- render 'icon-toggle-minus' -%}
+                  </button>
+                  <div class="product__accordion__content" id="ProductAccordion--page-description" data-collapsible-container>
+                    <div class="product__accordion__inner rte" data-collapsible-content>
+                        {{- product.description -}}
+                    </div>
+                  </div>
+                </div>
+              {% endunless %}
+
               {%- else -%}
                 <p>{{ 'homepage.onboarding.single_product_description' | t }}</p>
               {%- endunless -%}
@@ -1194,6 +1224,22 @@
               {% endif %}
               {{ block.shopify_attributes }}>
               {%- render 'product-accordions', block_settings: block.settings -%}
+
+              {% unless product.metafields.custom.size_chart == blank %}
+                <div class="product__accordion">
+                  <button class="product__accordion__title" aria-controls="ProductAccordion--page-size-chart" data-collapsible-trigger>
+                    Size Chart
+                    {%- render 'icon-toggle-plus' -%}
+                    {%- render 'icon-toggle-minus' -%}
+                  </button>
+
+                  <div class="product__accordion__content" id="ProductAccordion--page-size-chart" data-collapsible-container>
+                    <div class="product__accordion__inner rte" data-collapsible-content>
+                        {{ product.metafields.custom.size_chart | img_url: '500x500' | img_tag }}
+                    </div>
+                  </div>
+                </div>
+              {% endunless %}
             </div>
 
           {%- when 'upsell' -%}
@@ -1559,7 +1605,7 @@
   {%- endif -%}
 </div>
 
-        <div class="product__block product__form__wrapper{{ hide_labels_class }}{% if sold_out %} variant--soldout{% endif %}" data-form-wrapper>
+        <div class="product__block product__form__wrapper{{ hide_labels_class }}{% if sold_out %} variant--soldout{% endif %}" data-form-wrapper >
           {%- comment -%} Product Form partial {%- endcomment -%}
           <!-- /partials/product-form.liquid -->
 
@@ -1747,7 +1793,6 @@
 
   {% comment %} Shop pay split payment terms {% endcomment %}
   <div class="shop-pay-terms">{{ form | payment_terms }}</div>
-
   {%- assign quantity_position_bottom = true -%}
 
   {%- capture quantity_selector -%}
