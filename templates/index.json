@@ -147,6 +147,7 @@
       "settings": {
         "text": "Our Collections",
         "Vertical__Text__alignment": "center",
+        "horizontal_text_alignment": "space-between",
         "section__background": "#ffffff",
         "section__text__color": "#000000",
         "show__collection__button": true,
@@ -281,6 +282,7 @@
       ],
       "settings": {
         "height": "six-fifty-height",
+        "custom_class_custom_content": "",
         "bg_color": "",
         "width": "wrapper--full-padded",
         "add_gutter": true,
@@ -453,6 +455,7 @@
       "settings": {
         "text": "Reviews from our  customers",
         "Vertical__Text__alignment": "center",
+        "horizontal_text_alignment": "space-between",
         "section__background": "#ffffff",
         "section__text__color": "#000000",
         "show__collection__button": true,
@@ -473,7 +476,6 @@
       "blocks": {
         "88e66c62-0469-41b5-ae47-4578d66c6a53": {
           "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/media-carousel\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "disabled": true,
           "settings": {
             "product": ""
           }
@@ -488,10 +490,18 @@
         },
         "3062e846-645b-4344-b870-1a14df8d13fe": {
           "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/reviews-carousel\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "disabled": true,
           "settings": {
             "show_heading": false,
             "heading": "",
             "badge_link": "",
+            "product": ""
+          }
+        },
+        "7e84f444-1360-41fc-a612-435394b2c1f0": {
+          "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/media-grid\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "disabled": true,
+          "settings": {
             "product": ""
           }
         }
@@ -499,7 +509,8 @@
       "block_order": [
         "88e66c62-0469-41b5-ae47-4578d66c6a53",
         "3308ee70-357d-46c5-9c8c-97b1fe475b07",
-        "3062e846-645b-4344-b870-1a14df8d13fe"
+        "3062e846-645b-4344-b870-1a14df8d13fe",
+        "7e84f444-1360-41fc-a612-435394b2c1f0"
       ],
       "settings": {
         "bg_color": "",
