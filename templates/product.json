@@ -13,7 +13,7 @@
           "type": "title",
           "settings": {
             "subheading": "none",
-            "show_rating": true,
+            "show_rating": false,
             "show_rating_count": false
           }
         },
@@ -202,6 +202,27 @@
         "padding_bottom": 100
       }
     },
+    "27108dd6-384a-44d5-8a6f-f174b3aeb828": {
+      "type": "text-Highlight",
+      "settings": {
+        "text": "Customer Reviews",
+        "Vertical__Text__alignment": "center",
+        "horizontal_text_alignment": "center",
+        "section__background": "#ffffff",
+        "section__text__color": "#000000",
+        "show__collection__button": true,
+        "btn-text": "",
+        "btn-url": "",
+        "section__height": 100,
+        "desktop__font__size": 30,
+        "section__padding": 0,
+        "section__margin": 60,
+        "mobile__font__size": 20,
+        "section__mobile__height": 0,
+        "section__mobile__padding": 0,
+        "section__mobile__margin": 20
+      }
+    },
     "1665682367e6a8a8b7": {
       "type": "apps",
       "blocks": {
@@ -227,7 +248,7 @@
       "settings": {
         "bg_color": "",
         "width": "wrapper",
-        "padding_top": 60,
+        "padding_top": 0,
         "padding_bottom": 60
       }
     },
@@ -327,6 +348,8 @@
       "settings": {
         "limit": 4,
         "product_recommendations_heading": "You May Also Like",
+        "heading_font_size": 40,
+        "heading_font_size_mobile": 28,
         "bg_color": "",
         "width": "wrapper",
         "padding_top": 60,
@@ -346,6 +369,7 @@
   "order": [
     "main",
     "section-testimonials",
+    "27108dd6-384a-44d5-8a6f-f174b3aeb828",
     "1665682367e6a8a8b7",
     "section-accordions",
     "section-icons-row",
