@@ -262,7 +262,7 @@
         "accordion-2"
       ],
       "settings": {
-        "tabs_section_custom_class": "",
+        "section_custom_class": "",
         "title": "Frequently Asked Questions",
         "subheading": "",
         "text": "",
@@ -281,23 +281,23 @@
           "settings": {
             "icon_name": "truck",
             "title": "Free Shipping",
-            "text": "<p>on all order over $99<\/p>"
+            "text": "<p>on all order over $25<\/p>"
           }
         },
         "icon-1": {
           "type": "text",
           "settings": {
             "icon_name": "refresh-cw",
-            "title": "Free Returns",
-            "text": "<p>within 30 days of purchase<\/p>"
+            "title": "Free Exchange",
+            "text": "<p>within 14 days of purchase<\/p>"
           }
         },
         "icon-2": {
           "type": "text",
           "settings": {
             "icon_name": "heart",
-            "title": "1% Donated Annually",
-            "text": "<p>to forest conservation<\/p>"
+            "title": "Made with love",
+            "text": "<p>In the United States<\/p>"
           }
         }
       },

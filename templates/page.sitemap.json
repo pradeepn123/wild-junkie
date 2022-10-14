@@ -2,8 +2,11 @@
   "sections": {
     "main": {
       "type": "sitemap",
-      "settings": {}
+      "settings": {
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
