@@ -97,6 +97,7 @@
         },
         "locations-1": {
           "type": "locations",
+          "disabled": true,
           "settings": {
             "title": "566 Emerson Street Palo Alto, California",
             "working_time": "<p>Mon - Fri: 8am - 5pm<\/p><p>Sat: Closed<\/p><p>Sun: Closed<\/p>"
@@ -104,6 +105,7 @@
         },
         "locations-2": {
           "type": "locations",
+          "disabled": true,
           "settings": {
             "title": "566 Emerson Street Palo Alto, California",
             "working_time": "<p>Mon - Fri: 8am - 5pm<\/p><p>Sat: Closed<\/p><p>Sun: Closed<\/p>"
