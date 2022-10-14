@@ -557,7 +557,7 @@
         "products_rows": 1,
         "products_layout": "grid",
         "show_collection_button": true,
-        "button_style": "btn--secondary btn--small",
+        "button_style": "btn--primary btn--small",
         "bg_color": "",
         "enable_slider_mobile": true,
         "padding_top": 60,
