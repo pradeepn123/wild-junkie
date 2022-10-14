@@ -88,6 +88,40 @@
         "padding_bottom": 60
       }
     },
+    "8ea75d2e-7f3c-4b45-b6e4-e2790d8b0973": {
+      "type": "section-custom-content",
+      "disabled": true,
+      "blocks": {
+        "template--14490298515519__8ea75d2e-7f3c-4b45-b6e4-e2790d8b0973-16656764665d35914b-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Section_Header_Image_New.jpg",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "Meet the faces and learn about the team behind Wild Junkie",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--14490298515519__8ea75d2e-7f3c-4b45-b6e4-e2790d8b0973-16656764665d35914b-0"
+      ],
+      "settings": {
+        "height": "three-hundred-height",
+        "custom_class_custom_content": "",
+        "bg_color": "",
+        "width": "wrapper",
+        "add_gutter": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "dbf9049f-3852-4dbb-b672-b97fab9b1ce8": {
       "type": "section-marquee",
       "disabled": true,
@@ -750,6 +784,7 @@
     },
     "b5f75c69-73f9-4837-8142-93e47f8592b1": {
       "type": "section-contact-form",
+      "disabled": true,
       "blocks": {
         "template--14486065381439__b5f75c69-73f9-4837-8142-93e47f8592b1-166549579744a37bcd-0": {
           "type": "heading",
@@ -795,6 +830,7 @@
   "order": [
     "slideshow",
     "text",
+    "8ea75d2e-7f3c-4b45-b6e4-e2790d8b0973",
     "dbf9049f-3852-4dbb-b672-b97fab9b1ce8",
     "662bf507-c2f3-4e69-8b98-5a814d75a6f1",
     "section-custom-content-0",

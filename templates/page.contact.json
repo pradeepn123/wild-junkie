@@ -1,9 +1,83 @@
 {
   "sections": {
+    "a16c8e73-e6ca-4694-9e92-f4d08b08fa92": {
+      "type": "section-custom-content",
+      "disabled": true,
+      "blocks": {
+        "template--14490298482751__a16c8e73-e6ca-4694-9e92-f4d08b08fa92-1665687699061d3dff-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Section_Header_Image_New.jpg",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "Contact",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--14490298482751__a16c8e73-e6ca-4694-9e92-f4d08b08fa92-1665687699061d3dff-0"
+      ],
+      "settings": {
+        "height": "three-hundred-height",
+        "custom_class_custom_content": "",
+        "bg_color": "",
+        "width": "wrapper",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "main": {
       "type": "main-page",
       "settings": {
-        "show_page_title": true
+        "show_page_title": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "locations": {
+      "type": "section-locations",
+      "blocks": {
+        "locations-0": {
+          "type": "locations",
+          "settings": {
+            "title": "566 Emerson Street Palo Alto, California",
+            "working_time": "<p>Mon - Fri: 8am - 5pm<\/p><p>Sat: Closed<\/p><p>Sun: Closed<\/p>"
+          }
+        },
+        "locations-1": {
+          "type": "locations",
+          "settings": {
+            "title": "566 Emerson Street Palo Alto, California",
+            "working_time": "<p>Mon - Fri: 8am - 5pm<\/p><p>Sat: Closed<\/p><p>Sun: Closed<\/p>"
+          }
+        },
+        "locations-2": {
+          "type": "locations",
+          "settings": {
+            "title": "566 Emerson Street Palo Alto, California",
+            "working_time": "<p>Mon - Fri: 8am - 5pm<\/p><p>Sat: Closed<\/p><p>Sun: Closed<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "locations-0",
+        "locations-1",
+        "locations-2"
+      ],
+      "settings": {
+        "subheading": "Our stores",
+        "title": "Locations & hours",
+        "bg_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "contact-form": {
@@ -44,37 +118,14 @@
         "contact-form-3"
       ],
       "settings": {
-      }
-    },
-    "locations": {
-      "type": "section-locations",
-      "blocks": {
-        "locations-0": {
-          "type": "locations",
-          "settings": {
-          }
-        },
-        "locations-1": {
-          "type": "locations",
-          "settings": {
-          }
-        },
-        "locations-2": {
-          "type": "locations",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "locations-0",
-        "locations-1",
-        "locations-2"
-      ],
-      "settings": {
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
   "order": [
+    "a16c8e73-e6ca-4694-9e92-f4d08b08fa92",
     "main",
     "locations",
     "contact-form"
