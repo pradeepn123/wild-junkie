@@ -23,6 +23,7 @@
     "quick_button": "buy",
     "show_payment_button": true,
     "cart_type": "drawer",
+    "cart_custom_message_text": "",
     "social_facebook_link": "https:\/\/www.facebook.com\/wildjunkiebtq\/",
     "social_twitter_link": "",
     "social_pinterest_link": "https:\/\/in.pinterest.com\/wildjunkiebtq\/",
