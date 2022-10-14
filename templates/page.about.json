@@ -404,6 +404,59 @@
         "padding_bottom": 0
       }
     },
+    "8d8b7d54-70a3-4cea-9f39-ccc0c825707a": {
+      "type": "section-custom-content",
+      "disabled": true,
+      "blocks": {
+        "template--14461244735551__8d8b7d54-70a3-4cea-9f39-ccc0c825707a-16653988075f05b7d1-1": {
+          "type": "text",
+          "settings": {
+            "text_position": "center",
+            "top_image_width": 100,
+            "text_color": "text-dark",
+            "subheading": "",
+            "title": "Kyndle",
+            "text": "<p>Kyndle is the shipper! She's the gal behind every packages final touches. We rely on her to make sure every single package that leaves the warehouse gets to our customers neat, orderly and out the door on time! \"A great day is a day I beat the mailman\" - she says. Everyday she strives to get as many packages out as she can; she really takes pride in getting orders to our customers quickly. When Kyndle is not at work she likes to spend her time throwing axes, floating the river or enjoy a cool dip in the lake and golfing with friends..<\/p>",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "secondary_button_style": "btn--secondary btn--small",
+            "bg_color": ""
+          }
+        },
+        "template--14461244735551__8d8b7d54-70a3-4cea-9f39-ccc0c825707a-16653988075f05b7d1-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/IMG_1409_5000xw2.jpg",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--14461244735551__8d8b7d54-70a3-4cea-9f39-ccc0c825707a-16653988075f05b7d1-1",
+        "template--14461244735551__8d8b7d54-70a3-4cea-9f39-ccc0c825707a-16653988075f05b7d1-0"
+      ],
+      "settings": {
+        "height": "five-fifty-height",
+        "custom_class_custom_content": "custom_content_height_650 custom-content-mobile-image-on-top",
+        "bg_color": "",
+        "width": "wrapper--full-padded",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "28707cbf-eec1-41c3-92cd-91f0507255ce": {
       "type": "section-custom-content",
       "blocks": {
@@ -456,77 +509,9 @@
         "padding_bottom": 0
       }
     },
-    "8d8b7d54-70a3-4cea-9f39-ccc0c825707a": {
-      "type": "section-custom-content",
-      "blocks": {
-        "template--14461244735551__8d8b7d54-70a3-4cea-9f39-ccc0c825707a-16653988075f05b7d1-1": {
-          "type": "text",
-          "settings": {
-            "text_position": "center",
-            "top_image_width": 100,
-            "text_color": "text-dark",
-            "subheading": "",
-            "title": "Kyndle",
-            "text": "<p>Kyndle is the shipper! She's the gal behind every packages final touches. We rely on her to make sure every single package that leaves the warehouse gets to our customers neat, orderly and out the door on time! \"A great day is a day I beat the mailman\" - she says. Everyday she strives to get as many packages out as she can; she really takes pride in getting orders to our customers quickly. When Kyndle is not at work she likes to spend her time throwing axes, floating the river or enjoy a cool dip in the lake and golfing with friends..<\/p>",
-            "button_text": "",
-            "button_link": "",
-            "button_style": "btn--primary btn--small",
-            "secondary_button_text": "",
-            "secondary_button_link": "",
-            "secondary_button_style": "btn--secondary btn--small",
-            "bg_color": ""
-          }
-        },
-        "template--14461244735551__8d8b7d54-70a3-4cea-9f39-ccc0c825707a-16653988075f05b7d1-0": {
-          "type": "image",
-          "settings": {
-            "text_position": "middle-center",
-            "image": "shopify:\/\/shop_images\/IMG_1409_5000xw2.jpg",
-            "image_position": "center-center",
-            "overlay_opacity": 10,
-            "text_color": "text-light",
-            "title": "",
-            "heading_size": 100,
-            "text": "",
-            "button_text": "",
-            "button_link": "",
-            "button_style": "btn--primary btn--small"
-          }
-        }
-      },
-      "block_order": [
-        "template--14461244735551__8d8b7d54-70a3-4cea-9f39-ccc0c825707a-16653988075f05b7d1-1",
-        "template--14461244735551__8d8b7d54-70a3-4cea-9f39-ccc0c825707a-16653988075f05b7d1-0"
-      ],
-      "settings": {
-        "height": "five-fifty-height",
-        "custom_class_custom_content": "custom_content_height_650 custom-content-mobile-image-on-top",
-        "bg_color": "",
-        "width": "wrapper--full-padded",
-        "add_gutter": false,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
     "bd910b51-44cb-4093-a71c-7d0dd4d9c86a": {
       "type": "section-custom-content",
       "blocks": {
-        "template--14461244735551__bd910b51-44cb-4093-a71c-7d0dd4d9c86a-16653988075f05b7d1-0": {
-          "type": "image",
-          "settings": {
-            "text_position": "middle-center",
-            "image": "shopify:\/\/shop_images\/Ellie.jpg",
-            "image_position": "center-center",
-            "overlay_opacity": 10,
-            "text_color": "text-light",
-            "title": "",
-            "heading_size": 100,
-            "text": "",
-            "button_text": "",
-            "button_link": "",
-            "button_style": "btn--primary btn--small"
-          }
-        },
         "template--14461244735551__bd910b51-44cb-4093-a71c-7d0dd4d9c86a-16653988075f05b7d1-1": {
           "type": "text",
           "settings": {
@@ -544,11 +529,27 @@
             "secondary_button_style": "btn--secondary btn--small",
             "bg_color": ""
           }
+        },
+        "template--14461244735551__bd910b51-44cb-4093-a71c-7d0dd4d9c86a-16653988075f05b7d1-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Ellie.jpg",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
         }
       },
       "block_order": [
-        "template--14461244735551__bd910b51-44cb-4093-a71c-7d0dd4d9c86a-16653988075f05b7d1-0",
-        "template--14461244735551__bd910b51-44cb-4093-a71c-7d0dd4d9c86a-16653988075f05b7d1-1"
+        "template--14461244735551__bd910b51-44cb-4093-a71c-7d0dd4d9c86a-16653988075f05b7d1-1",
+        "template--14461244735551__bd910b51-44cb-4093-a71c-7d0dd4d9c86a-16653988075f05b7d1-0"
       ],
       "settings": {
         "height": "five-fifty-height",
@@ -562,6 +563,7 @@
     },
     "a77c4698-8921-4e3e-abad-8860a1951614": {
       "type": "section-custom-content",
+      "disabled": true,
       "blocks": {
         "template--14461244735551__a77c4698-8921-4e3e-abad-8860a1951614-16653988075f05b7d1-1": {
           "type": "text",
@@ -837,8 +839,8 @@
     "section-custom-content-1",
     "bb298499-ba2b-4bd3-9c88-20e0b995a050",
     "477aa243-565b-4d37-bdfd-942519cc246e",
-    "28707cbf-eec1-41c3-92cd-91f0507255ce",
     "8d8b7d54-70a3-4cea-9f39-ccc0c825707a",
+    "28707cbf-eec1-41c3-92cd-91f0507255ce",
     "bd910b51-44cb-4093-a71c-7d0dd4d9c86a",
     "a77c4698-8921-4e3e-abad-8860a1951614",
     "section-image-with-text",
