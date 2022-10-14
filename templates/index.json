@@ -355,7 +355,7 @@
           "type": "button",
           "settings": {
             "button__block__text": "Shop Now",
-            "button__block__url": "shopify:\/\/collections",
+            "button__block__url": "shopify:\/\/products\/wild-junkie-subscription-box",
             "text__color": "#ffffff",
             "bg__color": "#ff6d6d"
           }
