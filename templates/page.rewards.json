@@ -11,7 +11,7 @@
             "image_position": "center-top",
             "overlay_opacity": 10,
             "text_color": "text-light",
-            "title": "Return Policy",
+            "title": "",
             "heading_size": 100,
             "text": "",
             "button_text": "",
@@ -35,7 +35,6 @@
     },
     "326111f5-7846-4733-8496-cd535bbe6524": {
       "type": "section-accordions",
-      "disabled": true,
       "blocks": {
         "362a8ae2-2303-4068-b18f-c190576a6f48": {
           "type": "text",
@@ -49,8 +48,8 @@
         "362a8ae2-2303-4068-b18f-c190576a6f48"
       ],
       "settings": {
-        "section_custom_class": "tabs_heading_left_align",
-        "title": "Shipping Policy",
+        "section_custom_class": "tabs_heading_center_align",
+        "title": "Way to Earn",
         "subheading": "",
         "text": "",
         "tabs_bg_color": "",
@@ -98,9 +97,61 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "show_page_title": false,
         "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "5adfa752-b45b-4515-ba2c-93a2f10ffc30": {
+      "type": "section-custom-content",
+      "blocks": {
+        "template--14492128542783__5adfa752-b45b-4515-ba2c-93a2f10ffc30-16660010631fd55325-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "Welcome to Palo Alto",
+            "heading_size": 100,
+            "text": "Describe in a few words your special products, collection, or brand.",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        },
+        "template--14492128542783__5adfa752-b45b-4515-ba2c-93a2f10ffc30-16660010631fd55325-1": {
+          "type": "text",
+          "settings": {
+            "text_position": "center",
+            "top_image_width": 100,
+            "text_color": "text-dark",
+            "subheading": "Subheading",
+            "title": "Our Story",
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "button_text": "Learn More",
+            "button_link": "",
+            "button_style": "btn--primary btn--small",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "secondary_button_style": "btn--secondary btn--small",
+            "bg_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--14492128542783__5adfa752-b45b-4515-ba2c-93a2f10ffc30-16660010631fd55325-0",
+        "template--14492128542783__5adfa752-b45b-4515-ba2c-93a2f10ffc30-16660010631fd55325-1"
+      ],
+      "settings": {
+        "height": "six-fifty-height",
+        "custom_class_custom_content": "",
+        "bg_color": "",
+        "width": "wrapper",
+        "add_gutter": false,
+        "padding_top": 60,
         "padding_bottom": 60
       }
     }
@@ -109,6 +160,7 @@
     "13dc39a9-db4a-4a80-8748-092a982f1a34",
     "326111f5-7846-4733-8496-cd535bbe6524",
     "d5a241ff-4a9a-4897-985e-1fec9ac2e59d",
-    "main"
+    "main",
+    "5adfa752-b45b-4515-ba2c-93a2f10ffc30"
   ]
 }
