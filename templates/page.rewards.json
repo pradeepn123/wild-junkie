@@ -147,7 +147,39 @@
             "text_position": "center",
             "subheading": "",
             "title": "Celebrate a birthday",
-            "text": "250 Points",
+            "text": "and earn 250 Points",
+            "button_text": "",
+            "link": "",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "text_color": "text-light"
+          }
+        },
+        "150150a1-ba8b-44d5-947c-7e89bf78fccc": {
+          "type": "image",
+          "settings": {
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Follow on Instagram",
+            "text": "and earn 100 Points",
+            "button_text": "",
+            "link": "",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "text_color": "text-light"
+          }
+        },
+        "43782807-5dde-4219-9697-14a303433a4b": {
+          "type": "image",
+          "settings": {
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Complete a Referral",
+            "text": "500 Points",
             "button_text": "",
             "link": "",
             "secondary_button_text": "",
@@ -159,7 +191,9 @@
       "block_order": [
         "template--14492128542783__123b22be-8ec4-4e80-9ecd-b1cf1134ea7b-1666001063933271e5-0",
         "template--14492128542783__123b22be-8ec4-4e80-9ecd-b1cf1134ea7b-1666001063933271e5-1",
-        "template--14492128542783__123b22be-8ec4-4e80-9ecd-b1cf1134ea7b-1666001063933271e5-2"
+        "template--14492128542783__123b22be-8ec4-4e80-9ecd-b1cf1134ea7b-1666001063933271e5-2",
+        "150150a1-ba8b-44d5-947c-7e89bf78fccc",
+        "43782807-5dde-4219-9697-14a303433a4b"
       ],
       "settings": {
         "height": "auto",
