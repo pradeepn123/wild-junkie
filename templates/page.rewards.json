@@ -104,53 +104,72 @@
         "padding_bottom": 60
       }
     },
-    "5adfa752-b45b-4515-ba2c-93a2f10ffc30": {
-      "type": "section-custom-content",
+    "123b22be-8ec4-4e80-9ecd-b1cf1134ea7b": {
+      "type": "section-grid",
       "blocks": {
-        "template--14492128542783__5adfa752-b45b-4515-ba2c-93a2f10ffc30-16660010631fd55325-0": {
+        "template--14492128542783__123b22be-8ec4-4e80-9ecd-b1cf1134ea7b-1666001063933271e5-0": {
           "type": "image",
           "settings": {
-            "text_position": "middle-center",
-            "image_position": "center-center",
+            "bg_position": "center-center",
             "overlay_opacity": 10,
-            "text_color": "text-light",
-            "title": "Welcome to Palo Alto",
-            "heading_size": 100,
-            "text": "Describe in a few words your special products, collection, or brand.",
-            "button_text": "",
-            "button_link": "",
-            "button_style": "btn--primary btn--small"
-          }
-        },
-        "template--14492128542783__5adfa752-b45b-4515-ba2c-93a2f10ffc30-16660010631fd55325-1": {
-          "type": "text",
-          "settings": {
             "text_position": "center",
-            "top_image_width": 100,
-            "text_color": "text-dark",
-            "subheading": "Subheading",
-            "title": "Our Story",
-            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
-            "button_text": "Learn More",
-            "button_link": "",
-            "button_style": "btn--primary btn--small",
+            "subheading": "",
+            "title": "Sign Up",
+            "text": "and earn 100 Points",
+            "button_text": "",
+            "link": "",
             "secondary_button_text": "",
             "secondary_button_link": "",
-            "secondary_button_style": "btn--secondary btn--small",
-            "bg_color": ""
+            "text_color": "text-light"
+          }
+        },
+        "template--14492128542783__123b22be-8ec4-4e80-9ecd-b1cf1134ea7b-1666001063933271e5-1": {
+          "type": "image",
+          "settings": {
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Place an order",
+            "text": "5 Points for every $1 spent",
+            "button_text": "",
+            "link": "",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "text_color": "text-light"
+          }
+        },
+        "template--14492128542783__123b22be-8ec4-4e80-9ecd-b1cf1134ea7b-1666001063933271e5-2": {
+          "type": "image",
+          "settings": {
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Celebrate a birthday",
+            "text": "250 Points",
+            "button_text": "",
+            "link": "",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "text_color": "text-light"
           }
         }
       },
       "block_order": [
-        "template--14492128542783__5adfa752-b45b-4515-ba2c-93a2f10ffc30-16660010631fd55325-0",
-        "template--14492128542783__5adfa752-b45b-4515-ba2c-93a2f10ffc30-16660010631fd55325-1"
+        "template--14492128542783__123b22be-8ec4-4e80-9ecd-b1cf1134ea7b-1666001063933271e5-0",
+        "template--14492128542783__123b22be-8ec4-4e80-9ecd-b1cf1134ea7b-1666001063933271e5-1",
+        "template--14492128542783__123b22be-8ec4-4e80-9ecd-b1cf1134ea7b-1666001063933271e5-2"
       ],
       "settings": {
-        "height": "six-fifty-height",
-        "custom_class_custom_content": "",
+        "height": "auto",
+        "heading_size": 150,
+        "button_style": "btn--secondary btn--small",
+        "secondary_button_style": "btn--secondary btn--small",
         "bg_color": "",
+        "enable_slider_mobile": true,
         "width": "wrapper",
-        "add_gutter": false,
+        "add_gutter": true,
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -161,6 +180,6 @@
     "326111f5-7846-4733-8496-cd535bbe6524",
     "d5a241ff-4a9a-4897-985e-1fec9ac2e59d",
     "main",
-    "5adfa752-b45b-4515-ba2c-93a2f10ffc30"
+    "123b22be-8ec4-4e80-9ecd-b1cf1134ea7b"
   ]
 }
