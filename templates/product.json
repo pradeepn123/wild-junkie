@@ -259,7 +259,7 @@
           "type": "text",
           "settings": {
             "title": "How long does it take to get my products?",
-            "text": "<p>Domestic shipping can take up to 5 business days.<br\/><br\/>Foreign shipping could take up to 14 business days.<br\/><br\/>Due to global supply chain challenges, shipping times could be longer than usual.<\/p>"
+            "text": "<p>All orders ship within 24 business hours! <\/p><p><\/p><p>From here the time in transit is determined by the shipping you've chosen. You can read more about this in our <a href=\"\/policies\/shipping-policy\" target=\"_blank\" title=\"Shipping Policy\">Shipping Policy<\/a>. <\/p><p><br\/>Due to global supply chain challenges, shipping times could be longer than usual.<\/p>"
           }
         },
         "accordion-1": {
@@ -272,8 +272,8 @@
         "accordion-2": {
           "type": "text",
           "settings": {
-            "title": "Do you offer refunds?",
-            "text": "<p>Yes, we offer full and partial refunds.<br\/><br\/>Please enquire for more information about our Refund policy.<\/p>"
+            "title": "Do you offer returns or exchanges?",
+            "text": "<p>Yes, we offer both exchanges and returns. Products must be returned in new, unwashed and unworn condition with original tags. You can start a return or exchange <a href=\"https:\/\/returns.wildjunkie.com\/#\/\" target=\"_blank\" title=\"https:\/\/returns.wildjunkie.com\/#\/\"><strong>HERE<\/strong><\/a>!<br\/><br\/>For more information please visit our <a href=\"\/policies\/refund-policy\" target=\"_blank\" title=\"Refund Policy\">Refund Policy<\/a>.<\/p>"
           }
         }
       },
