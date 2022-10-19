@@ -1,13 +1,39 @@
 {
   "general": {
-    "ie11_support_message": "This site has limited support for your browser. We recommend switching to Edge, Chrome, Safari, or Firefox.",
-    "swatches": {
-      "color": "Color, Colour"
-    },
-    "size_chart": {
-      "size": "Size"
+    "search": {
+      "no_results_html": "Your search for \"{{ terms }}\" did not yield any results.",
+      "empty_search_message": "Search field cannot be empty",
+      "results_with_count": {
+        "one": "{{ count }} result for \"{{ terms }}\"",
+        "other": "{{ count }} results for \"{{ terms }}\""
+      },
+      "title": "Search for products on our site",
+      "placeholder": "Search our store",
+      "submit": "Search",
+      "close": "Close search",
+      "heading": {
+        "one": "Search result",
+        "other": "Search results"
+      },
+      "results_for_html": "Your search for \"{{ terms }}\" revealed the following:",
+      "view_all": "View All",
+      "popular": "Popular searches",
+      "has_results": "Showing results for \"{{search}}\"",
+      "no_results": "Your search for \"{{ search }}\" did not yield any results",
+      "results": {
+        "one": " result",
+        "other": " results",
+        "no_results": "No results found"
+      },
+      "browse_categories": "Browse categories",
+      "badge": {
+        "blog": "Blog",
+        "page": "Page"
+      }
     },
     "accessibility": {
+      "close_modal": "Close",
+      "unit_price_separator": "per",
       "skip_to_content": "Skip to content",
       "select_variant": "Select variant dropdown",
       "show_submenu": "Show submenu",
@@ -28,7 +54,6 @@
       "subscribe_to_newsletter": "Subscribe to Our Newsletter",
       "link_copied": "Link copied",
       "logo_image": "Logo image",
-      "unit_price_separator": "per",
       "my_account": "My Account",
       "total_reviews": "total reviews",
       "view": "View",
@@ -36,6 +61,13 @@
       "star_reviews_info": "{{ rating_value }} out of {{ rating_max }} stars",
       "close_form_message": "Close thank you message",
       "scroll_to_top": "Scroll to top"
+    },
+    "ie11_support_message": "This site has limited support for your browser. We recommend switching to Edge, Chrome, Safari, or Firefox.",
+    "swatches": {
+      "color": "Color, Colour"
+    },
+    "size_chart": {
+      "size": "Size"
     },
     "meta": {
       "tags": "Tagged \"{{ tags }}\"",
@@ -67,31 +99,127 @@
       "accept": "Ok",
       "decline": "No Thanks"
     },
-    "search": {
-      "no_results_html": "Your search for \"{{ terms }}\" did not yield any results.",
-      "results_for_html": "Your search for \"{{ terms }}\" revealed the following:",
-      "title": "Search for products on our site",
-      "placeholder": "Search our store",
-      "submit": "Search",
-      "view_all": "View All",
-      "popular": "Popular searches",
-      "has_results": "Showing results for \"{{search}}\"",
-      "no_results": "Your search for \"{{ search }}\" did not yield any results",
-      "results": {
-        "one": " result",
-        "other": " results",
-        "no_results": "No results found"
-      },
-      "browse_categories": "Browse categories",
-      "badge": {
-        "blog": "Blog",
-        "page": "Page"
-      }
-    },
     "pagination": {
       "previous": "Previous page",
       "next": "Next page",
       "current_page": "Page {{ current }} of {{ total }}"
+    }
+  },
+  "products": {
+    "product": {
+      "regular_price": "Regular price",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "on_sale": "Sale",
+      "sale_price": "Sale price",
+      "quantity": "Quantity",
+      "add_to_cart": "Add to Cart",
+      "loader_label": "Adding product to your cart",
+      "back_to_collection": "Back to {{ title }}",
+      "vendor": "Vendor",
+      "quantity_minimum_message": "Quantity must be 1 or more",
+      "include_taxes": "Tax included.",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping<\/a> calculated at checkout.",
+      "unit_price_label": "Unit price",
+      "view_cart": "View cart",
+      "sale": "Sale",
+      "preorder": "Pre-Order",
+      "one_time_purchase": "One-time purchase",
+      "free": "Free",
+      "compare_at": "Compare at",
+      "buy_it_now": "Buy it now",
+      "in_stock": "Item is in stock",
+      "out_of_stock": "Item is out of stock",
+      "item_unavailable": "Item is unavailable",
+      "remaining_html": "Only {{ inventory }} left in stock",
+      "remaining_no_count": "Hurry! Low inventory",
+      "save_badge_html": "Save {{ discount }}",
+      "save_badge_up_to_html": "Save up to {{ discount }}",
+      "quick_view": "Quick View",
+      "view_more": "View product",
+      "checkout": "Checkout",
+      "view_in_space": "View in Your Space",
+      "view_in_space_label": "View in your space, loads item in augmented reality window",
+      "subscription": "Subscription",
+      "save": "Save",
+      "popup_missing": "No page added from the block options"
+    },
+    "general": {
+      "catalog": "Catalog",
+      "previous_product_html": "&larr; Previous Product",
+      "next_product_html": "Next Product &rarr;",
+      "from_text_html": "From {{ price }}",
+      "sale_price": "Sale price",
+      "regular_price": "Regular price",
+      "description": "description",
+      "view_all_details": "View all details",
+      "reviews": "Reviews",
+      "filters": "Filters",
+      "filter_by": "Filter by",
+      "reset": "Clear Filters",
+      "close": "Close Filters",
+      "products_with_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      },
+      "see_all": "See All",
+      "upsell_out_of_stock": "Out of stock",
+      "upsell_error_info": "Select one in the Upsell block setting",
+      "upsell_error_no_product": "No upsell product selected",
+      "pair_products": "Buy It With"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Cart",
+      "note": "Add a note for recipient",
+      "remove": "Remove",
+      "subtotal": "Subtotal",
+      "savings": "You're saving",
+      "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
+      "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping<\/a> calculated at checkout",
+      "taxes_included_but_shipping_at_checkout": "Tax included and shipping calculated at checkout",
+      "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping<\/a> calculated at checkout.",
+      "update": "Update Cart",
+      "checkout": "Checkout",
+      "empty": "Your cart is currently empty.",
+      "cookies_required": "Enable cookies to use the shopping cart",
+      "edit": "Edit",
+      "cancel": "Cancel",
+      "continue_shopping": "Continue Shopping",
+      "discount_label": "You're saving {{ amount }} with {{ title }}",
+      "subtotal_items": "Items",
+      "shipping_at_checkout": "Shipping & taxes calculated at checkout",
+      "customer_note": "Special instructions for seller",
+      "cart_notes_label": "Add order notes",
+      "gift_notes_label": "Is this a gift? Add a note.",
+      "gift_note_attribute": "Gift note",
+      "accept_terms": "You must accept our terms and conditions.",
+      "zero_qty_error": "Quantity must be greater than 0.",
+      "limit_error": "Sorry, looks like we don't have enough of this product.",
+      "close_cart": "Close Cart",
+      "free_shipping_message_html": "Spend <span data-free-shipping-amount=\"\">{{ amount }}<\/span> to qualify for free shipping",
+      "qualified_shipping_message": "FREE shipping will be applied at checkout"
+    },
+    "label": {
+      "product": "Product",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total",
+      "items_with_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      }
+    },
+    "popup": {
+      "added_to_cart": "Just added to your cart",
+      "cart_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      },
+      "product_details": "Product details",
+      "quantity": "Qty",
+      "quantity_label": "Quantity: {{ quantity_count }}"
     }
   },
   "blogs": {
@@ -123,41 +251,6 @@
         "one": "{{ count }} comment",
         "other": "{{ count }} comments"
       }
-    }
-  },
-  "cart": {
-    "general": {
-      "title": "Cart",
-      "remove": "Remove",
-      "note": "Add a note for recipient",
-      "discount_label": "You're saving {{ amount }} with {{ title }}",
-      "subtotal": "Subtotal",
-      "subtotal_items": "Items",
-      "shipping_at_checkout": "Shipping & taxes calculated at checkout",
-      "customer_note": "Special instructions for seller",
-      "cart_notes_label": "Add order notes",
-      "gift_notes_label": "Is this a gift? Add a note.",
-      "gift_note_attribute": "Gift note",
-      "update": "Update Cart",
-      "checkout": "Checkout",
-      "empty": "Your cart is currently empty.",
-      "accept_terms": "You must accept our terms and conditions.",
-      "zero_qty_error": "Quantity must be greater than 0.",
-      "limit_error": "Sorry, looks like we don't have enough of this product.",
-      "continue_shopping": "Continue Shopping",
-      "close_cart": "Close Cart",
-      "free_shipping_message_html": "Spend <span data-free-shipping-amount=\"\">{{ amount }}<\/span> to qualify for free shipping",
-      "qualified_shipping_message": "FREE shipping will be applied at checkout"
-    },
-    "label": {
-      "product": "Product",
-      "price": "Price",
-      "quantity": "Quantity",
-      "items_with_count": {
-        "one": "{{ count }} item",
-        "other": "{{ count }} items"
-      },
-      "total": "Total"
     }
   },
   "collection": {
@@ -432,61 +525,6 @@
       "log_in": "Log in",
       "create_account": "Create account",
       "my_account": "My Account"
-    }
-  },
-  "products": {
-    "general": {
-      "catalog": "Catalog",
-      "previous_product_html": "&larr; Previous Product",
-      "next_product_html": "Next Product &rarr;",
-      "from_text_html": "From {{ price }}",
-      "sale_price": "Sale price",
-      "regular_price": "Regular price",
-      "description": "description",
-      "view_all_details": "View all details",
-      "reviews": "Reviews",
-      "filters": "Filters",
-      "filter_by": "Filter by",
-      "reset": "Clear Filters",
-      "close": "Close Filters",
-      "products_with_count": {
-        "one": "{{ count }} product",
-        "other": "{{ count }} products"
-      },
-      "see_all": "See All",
-      "upsell_out_of_stock": "Out of stock",
-      "upsell_error_info": "Select one in the Upsell block setting",
-      "upsell_error_no_product": "No upsell product selected",
-      "pair_products": "Buy It With"
-    },
-    "product": {
-      "sold_out": "Sold Out",
-      "sale": "Sale",
-      "preorder": "Pre-Order",
-      "one_time_purchase": "One-time purchase",
-      "free": "Free",
-      "unavailable": "Unavailable",
-      "compare_at": "Compare at",
-      "quantity": "Quantity",
-      "add_to_cart": "Add to Cart",
-      "buy_it_now": "Buy it now",
-      "in_stock": "Item is in stock",
-      "out_of_stock": "Item is out of stock",
-      "item_unavailable": "Item is unavailable",
-      "remaining_html": "Only {{ inventory }} left in stock",
-      "remaining_no_count": "Hurry! Low inventory",
-      "on_sale": "Sale",
-      "save_badge_html": "Save {{ discount }}",
-      "save_badge_up_to_html": "Save up to {{ discount }}",
-      "quick_view": "Quick View",
-      "view_more": "View product",
-      "checkout": "Checkout",
-      "view_in_space": "View in Your Space",
-      "view_in_space_label": "View in your space, loads item in augmented reality window",
-      "subscription": "Subscription",
-      "save": "Save",
-      "unit_price_label": "Unit price",
-      "popup_missing": "No page added from the block options"
     }
   },
   "gift_cards": {
