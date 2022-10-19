@@ -220,19 +220,16 @@
     text-align: center;
 } */
 
-.sitemap-container .sitemap-parent .collections-sitemap p,
-.sitemap-container .sitemap-parent .products-sitemap p {
+.sitemap-container .sitemap-parent .section-sitemap p{
     display: inline;
 }
 
-.sitemap-container .sitemap-parent .collections-sitemap p a,
-.sitemap-container .sitemap-parent .products-sitemap p a{
+.sitemap-container .sitemap-parent .section-sitemap p a{
     padding: 0  10px 0 0;
     border-right: 1px solid;
 }
 
-.sitemap-container .sitemap-parent .collections-sitemap,
-.sitemap-container .sitemap-parent .products-sitemap {
+.sitemap-container .sitemap-parent .section-sitemap{
     margin: 60px 0;
 }
 
