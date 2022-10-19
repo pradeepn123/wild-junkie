@@ -17,7 +17,7 @@
                             Collections
                         </h1>
                     </div>
-                    {% paginate collections by 100 %}
+                    {% paginate collections by section.settings.no_of_collections %}
                         {% for c in collections %}
                             <p class="collection-sitemap-data">
                                 <a href="{{ c.url }}">{{ c.title }}</a>
@@ -88,6 +88,12 @@
         {
             "type":"header",
             "content": "Number of Links in Sections"
+        },
+        {
+            "type": "text",
+            "id": "no_of_collections",
+            "label": "Enter Number of Collections to be shown",
+            "default": "100"
         },
         {
             "type": "text",
