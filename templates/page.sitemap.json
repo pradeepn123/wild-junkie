@@ -3,6 +3,10 @@
     "main": {
       "type": "sitemap",
       "settings": {
+        "req_collections_checkbox": true,
+        "req_products_checkbox": true,
+        "req_pages_checkbox": true,
+        "req_blogs_checkbox": false
       }
     }
   },
