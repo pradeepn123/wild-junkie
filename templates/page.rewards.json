@@ -110,6 +110,7 @@
         "section-four-block-one": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",
@@ -126,6 +127,7 @@
         "section-four-block-two": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",
@@ -142,6 +144,7 @@
         "section-four-block-three": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",
@@ -158,6 +161,7 @@
         "section-four-block-four": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",
@@ -174,6 +178,7 @@
         "section-four-block-five": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",
@@ -228,6 +233,7 @@
         "template--14494016372799__27d84ffb-123a-404d-b47a-63046b76f391-166625350155507553-0": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",
@@ -244,6 +250,7 @@
         "template--14494016372799__27d84ffb-123a-404d-b47a-63046b76f391-166625350155507553-1": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",
@@ -260,6 +267,7 @@
         "template--14494016372799__27d84ffb-123a-404d-b47a-63046b76f391-166625350155507553-2": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",
@@ -302,7 +310,7 @@
             "heading": "We let our reviews speak for themselves.",
             "text_size": 125,
             "subheading": "<p>4.98 average<br\/>213 reviews<\/p>",
-            "block_color": "#000",
+            "block_color": "#000000",
             "text_color": "text-light",
             "text_alignment": "text-left"
           }
@@ -378,7 +386,7 @@
         "title": "Vip Tiers",
         "text_size": 100,
         "text_alignment": "text-center",
-        "bg_color": "#F6F6F7",
+        "bg_color": "#f6f6f7",
         "width": "wrapper--full-padded",
         "padding_top": 60,
         "padding_bottom": 60
