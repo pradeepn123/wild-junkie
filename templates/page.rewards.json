@@ -9,7 +9,7 @@
             "text_position": "middle-center",
             "image": "shopify:\/\/shop_images\/Section_Header_Image_New.jpg",
             "image_position": "center-top",
-            "overlay_opacity": 10,
+            "overlay_opacity": 0,
             "text_color": "text-light",
             "title": "",
             "heading_size": 100,
