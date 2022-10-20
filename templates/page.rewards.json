@@ -291,6 +291,48 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "3bddfdbe-2edc-4399-943d-78e4e01439ab": {
+      "type": "section-accordions",
+      "blocks": {
+        "template--14494016372799__3bddfdbe-2edc-4399-943d-78e4e01439ab-1666253517202885a0-0": {
+          "type": "text",
+          "settings": {
+            "title": "How long does it take to get my products?",
+            "text": "<p>Domestic shipping can take up to 5 business days.<br\/><br\/>Foreign shipping could take up to 14 business days.<br\/><br\/>Due to global supply chain challenges, shipping times could be longer than usual.<\/p>"
+          }
+        },
+        "template--14494016372799__3bddfdbe-2edc-4399-943d-78e4e01439ab-1666253517202885a0-1": {
+          "type": "text",
+          "settings": {
+            "title": "Do you offer warranty for your products?",
+            "text": "<p>All our products are subject to quality control.<br\/><br\/>Our warranty provides a guarantee against manufacturer defects.<br\/><br\/>The guarantee covers any manufacturing, design, or material defect. Please notify us within 2 months of noticing any defects.<br\/><br\/>It does not cover blows, improper use, or other issues that are not attributable to a manufacturer defects.<\/p>"
+          }
+        },
+        "template--14494016372799__3bddfdbe-2edc-4399-943d-78e4e01439ab-1666253517202885a0-2": {
+          "type": "text",
+          "settings": {
+            "title": "Do you offer refunds?",
+            "text": "<p>Yes, we offer full and partial refunds.<br\/><br\/>Please enquire for more information about our Refund policy.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--14494016372799__3bddfdbe-2edc-4399-943d-78e4e01439ab-1666253517202885a0-0",
+        "template--14494016372799__3bddfdbe-2edc-4399-943d-78e4e01439ab-1666253517202885a0-1",
+        "template--14494016372799__3bddfdbe-2edc-4399-943d-78e4e01439ab-1666253517202885a0-2"
+      ],
+      "settings": {
+        "section_custom_class": "",
+        "title": "Frequently Asked Questions",
+        "subheading": "",
+        "text": "",
+        "tabs_bg_color": "",
+        "bg_color": "",
+        "text_color": "text-dark",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
@@ -300,6 +342,7 @@
     "main",
     "section-four",
     "fe2583b6-addb-43e6-8725-f017bbd1c52e",
-    "27d84ffb-123a-404d-b47a-63046b76f391"
+    "27d84ffb-123a-404d-b47a-63046b76f391",
+    "3bddfdbe-2edc-4399-943d-78e4e01439ab"
   ]
 }
