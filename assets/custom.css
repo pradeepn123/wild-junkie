@@ -237,6 +237,10 @@
     max-width: 100% !important;
 }
 
+.product__form__wrapper.variant--soldout .product__submit__buttons button[type=submit]{
+    display: none;
+}
+
 /* Media Queries */
 @media screen and (min-width: 768px){
     /* Footer Currency */
