@@ -292,6 +292,31 @@
         "padding_bottom": 60
       }
     },
+    "3e02bf34-21c9-4c5e-80cf-be01ee33cf72": {
+      "type": "section-overlapping-images",
+      "settings": {
+        "text_position": "right",
+        "text_alignment": "center",
+        "images_width": 750,
+        "images_offset": 60,
+        "image_1_position": "center-center",
+        "image_link_1": "",
+        "image_2_position": "center-center",
+        "image_link_2": "",
+        "hide_image_2": false,
+        "heading": "Our Story, Our Promise",
+        "description": "<p>Use this text to describe a product, promotion, or your company.<\/p>",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "btn--primary btn--small",
+        "video_text": "",
+        "video_link": "",
+        "bg_color": "",
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "3bddfdbe-2edc-4399-943d-78e4e01439ab": {
       "type": "section-accordions",
       "blocks": {
@@ -343,6 +368,7 @@
     "section-four",
     "fe2583b6-addb-43e6-8725-f017bbd1c52e",
     "27d84ffb-123a-404d-b47a-63046b76f391",
+    "3e02bf34-21c9-4c5e-80cf-be01ee33cf72",
     "3bddfdbe-2edc-4399-943d-78e4e01439ab"
   ]
 }
