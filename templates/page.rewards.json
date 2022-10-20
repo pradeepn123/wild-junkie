@@ -311,7 +311,7 @@
           "type": "testimonial",
           "settings": {
             "star_rating": 0,
-            "text": "<p>Wild:<\/p><p>- 5 Junkie Points per $1<\/p><p>- VIP Anniversary Discount<\/p>",
+            "text": "<p>- Wild - <\/p><p>-<\/p><p>- 5 Junkie Points per $1<\/p><p>- <\/p><p>- VIP Anniversary Discount<\/p>",
             "customer_name": "",
             "subheading": ""
           }
@@ -328,10 +328,10 @@
         "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-3": {
           "type": "testimonial",
           "settings": {
-            "star_rating": 5,
-            "text": "<p>Excellent customer service. I love their products!<\/p>",
-            "customer_name": "Eric Lopez",
-            "subheading": "<p>12 days ago<\/p>"
+            "star_rating": 0,
+            "text": "<p>- Wildest -<\/p><p>- <\/p><p>7 Junkie Points per $1<\/p><p>- <\/p><p>VIP Anniversary Discount<\/p><p>- <\/p><p>Birthday Gift<\/p><p>- <\/p><p>Early access to collection drops and sales<\/p><p>- <\/p><p>Free 2nd Day Air shipping on all orders<\/p>",
+            "customer_name": "",
+            "subheading": ""
           }
         },
         "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-4": {
