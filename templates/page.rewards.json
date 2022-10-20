@@ -387,7 +387,7 @@
         "text_size": 100,
         "text_alignment": "text-center",
         "bg_color": "rgba(0,0,0,0)",
-        "width": "wrapper",
+        "width": "wrapper--full-padded",
         "padding_top": 60,
         "padding_bottom": 60
       }
