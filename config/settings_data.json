@@ -23,6 +23,7 @@
     "quick_button": "buy",
     "show_payment_button": true,
     "cart_type": "drawer",
+    "free_shipping_limit": "25",
     "cart_custom_message_text": "",
     "social_facebook_link": "https:\/\/www.facebook.com\/wildjunkiebtq\/",
     "social_twitter_link": "",
