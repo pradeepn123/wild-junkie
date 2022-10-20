@@ -386,7 +386,7 @@
         "title": "Vip Tiers",
         "text_size": 100,
         "text_alignment": "text-center",
-        "bg_color": "#f6f6f7",
+        "bg_color": "rgba(0,0,0,0)",
         "width": "wrapper--full-padded",
         "padding_top": 60,
         "padding_bottom": 60
@@ -413,7 +413,7 @@
         "button_style": "btn--primary btn--small",
         "video_text": "",
         "video_link": "",
-        "bg_color": "",
+        "bg_color": "#F6F6F7",
         "width": "wrapper--full-padded",
         "padding_top": 60,
         "padding_bottom": 60
@@ -455,7 +455,7 @@
         "subheading": "",
         "text": "",
         "tabs_bg_color": "",
-        "bg_color": "",
+        "bg_color": "rgba(0,0,0,0)",
         "text_color": "text-dark",
         "padding_top": 60,
         "padding_bottom": 60
