@@ -296,8 +296,7 @@
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
 
   {{ content_for_header }}
-
-	{{ shop.metafields.loox["global_html_head"] }}
+{% render 'okendo-reviews-json-ld' %}
 {% capture boostersnippet %}{% include "booster-apps-common" %}{% endcapture %}{% unless boostersnippet contains "Liquid error" %}{{ boostersnippet }}{% endunless %}
 <!--AZEXO_Header_Scripts--> {% include 'azexo-header-scripts' %} <!--End_AZEXO_Header_Scripts--><!--AZEXO_Version_85--></head>
 
