@@ -9,7 +9,7 @@
             "text_position": "middle-center",
             "image": "shopify:\/\/shop_images\/Section_Header_Image_New.jpg",
             "image_position": "center-top",
-            "overlay_opacity": 10,
+            "overlay_opacity": 0,
             "text_color": "text-light",
             "title": "",
             "heading_size": 100,
@@ -50,7 +50,7 @@
       "settings": {
         "section_custom_class": "tabs_heading_center_align",
         "title": "Way to Earn",
-        "subheading": "",
+        "subheading": "You will earn points through the actions below",
         "text": "",
         "tabs_bg_color": "",
         "bg_color": "",
@@ -110,6 +110,7 @@
         "section-four-block-one": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",
@@ -126,6 +127,7 @@
         "section-four-block-two": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",
@@ -142,6 +144,7 @@
         "section-four-block-three": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",
@@ -158,6 +161,7 @@
         "section-four-block-four": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",
@@ -174,6 +178,7 @@
         "section-four-block-five": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",
@@ -228,6 +233,7 @@
         "template--14494016372799__27d84ffb-123a-404d-b47a-63046b76f391-166625350155507553-0": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",
@@ -244,6 +250,7 @@
         "template--14494016372799__27d84ffb-123a-404d-b47a-63046b76f391-166625350155507553-1": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",
@@ -260,6 +267,7 @@
         "template--14494016372799__27d84ffb-123a-404d-b47a-63046b76f391-166625350155507553-2": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",
@@ -288,6 +296,125 @@
         "enable_slider_mobile": true,
         "width": "wrapper",
         "add_gutter": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "99bbd947-2528-4c1b-8a0f-f2ea740368b3": {
+      "type": "section-testimonials",
+      "blocks": {
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-0": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "heading": "We let our reviews speak for themselves.",
+            "text_size": 125,
+            "subheading": "<p>4.98 average<br\/>213 reviews<\/p>",
+            "block_color": "#000000",
+            "text_color": "text-light",
+            "text_alignment": "text-left"
+          }
+        },
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-1": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 0,
+            "text": "<p>- Wild - <\/p><p>-<\/p><p>- 5 Junkie Points per $1<\/p><p>- <\/p><p>- VIP Anniversary Discount<\/p>",
+            "customer_name": "",
+            "subheading": ""
+          }
+        },
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-2": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 0,
+            "text": "<p>- Wilder - <\/p><p>-<\/p><p>6 Junkie Points per $1<\/p><p>-<\/p><p>VIP Anniversary Discount<\/p><p>- <\/p><p>Birthday Gift<\/p><p>- <\/p><p>Early access to collection drops and sales<\/p>",
+            "customer_name": "",
+            "subheading": ""
+          }
+        },
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-3": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 0,
+            "text": "<p>- Wildest -<\/p><p>- <\/p><p>7 Junkie Points per $1<\/p><p>- <\/p><p>VIP Anniversary Discount<\/p><p>- <\/p><p>Birthday Gift<\/p><p>- <\/p><p>Early access to collection drops and sales<\/p><p>- <\/p><p>Free 2nd Day Air shipping on all orders<\/p>",
+            "customer_name": "",
+            "subheading": ""
+          }
+        },
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-4": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "Sandy Boone",
+            "subheading": "<p>Verified customer<\/p>"
+          }
+        },
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-5": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "Dmitri Kristov",
+            "subheading": "<p>Verified customer<\/p>"
+          }
+        },
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-6": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "Amelia Ngoy",
+            "subheading": "<p>Verified customer<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-0",
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-1",
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-2",
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-3",
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-4",
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-5",
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-6"
+      ],
+      "settings": {
+        "title": "Vip Tiers",
+        "text_size": 100,
+        "text_alignment": "text-center",
+        "bg_color": "rgba(0,0,0,0)",
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "3e02bf34-21c9-4c5e-80cf-be01ee33cf72": {
+      "type": "section-overlapping-images",
+      "settings": {
+        "text_position": "right",
+        "text_alignment": "center",
+        "images_width": 750,
+        "images_offset": 60,
+        "image_1": "shopify:\/\/shop_images\/KENDALL.jpg",
+        "image_1_position": "center-center",
+        "image_link_1": "",
+        "image_2": "shopify:\/\/shop_images\/IMG_1409_5000xw3.jpg",
+        "image_2_position": "center-center",
+        "image_link_2": "",
+        "hide_image_2": false,
+        "heading": "Refer a Friend",
+        "description": "<p>Tell your friend about us Give $10 and Get $10<\/p>",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "btn--primary btn--small",
+        "video_text": "",
+        "video_link": "",
+        "bg_color": "#F6F6F7",
+        "width": "wrapper--full-padded",
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -328,7 +455,7 @@
         "subheading": "",
         "text": "",
         "tabs_bg_color": "",
-        "bg_color": "",
+        "bg_color": "rgba(0,0,0,0)",
         "text_color": "text-dark",
         "padding_top": 60,
         "padding_bottom": 60
@@ -343,6 +470,8 @@
     "section-four",
     "fe2583b6-addb-43e6-8725-f017bbd1c52e",
     "27d84ffb-123a-404d-b47a-63046b76f391",
+    "99bbd947-2528-4c1b-8a0f-f2ea740368b3",
+    "3e02bf34-21c9-4c5e-80cf-be01ee33cf72",
     "3bddfdbe-2edc-4399-943d-78e4e01439ab"
   ]
 }
