@@ -20,21 +20,45 @@
       assign is_active = true
     endif
   endif
+
+  assign collection_array =  "tops,bottoms,shoes,jewelry" | split : ','
+
 -%}
 
 <div class="collection__filter"{% if filter.type == 'list' %} data-collection-nav-grouped{% endif %}>
-  <button type="button" class="collection__filter__title{% if is_active %} is-expanded{% endif %}"
-    data-collection-sidebar-heading
-    aria-expanded="{{ is_active }}"
-    aria-controls="CollectionFilter--{{ filter.label | handle }}"
-    data-collapsible-trigger>
-    <span>{{ filter.label }}</span>
+  {%- if filter.type == 'list' and filter.param_name == 'filter.p.m.filter.style' -%}
+      
+      {%- if collection_array contains collection.handle -%}
+        <button type="button" class="collection__filter__title{% if is_active %} is-expanded{% endif %}"
+          data-collection-sidebar-heading
+          aria-expanded="{{ is_active }}"
+          aria-controls="CollectionFilter--{{ filter.label | handle }}"
+          data-collapsible-trigger>
+          <span>{{ filter.label }} </span>
+      
+          <span class="collection__filter__count" data-count="{{ active_values | default: 0 }}" data-collection-filter-group-count>
+            {%- render 'icon-toggle-plus' -%}
+            {%- render 'icon-toggle-minus' -%}
+          </span>
+        </button>
+      {%- endif -%}
+      
+    {% else %}
+    <button type="button" class="collection__filter__title{% if is_active %} is-expanded{% endif %}"
+      data-collection-sidebar-heading
+      aria-expanded="{{ is_active }}"
+      aria-controls="CollectionFilter--{{ filter.label | handle }}"
+      data-collapsible-trigger>
+      <span>{{ filter.label }} </span>
+  
+      <span class="collection__filter__count" data-count="{{ active_values | default: 0 }}" data-collection-filter-group-count>
+        {%- render 'icon-toggle-plus' -%}
+        {%- render 'icon-toggle-minus' -%}
+      </span>
+    </button>
+  {%- endif -%}
 
-    <span class="collection__filter__count" data-count="{{ active_values | default: 0 }}" data-collection-filter-group-count>
-      {%- render 'icon-toggle-plus' -%}
-      {%- render 'icon-toggle-minus' -%}
-    </span>
-  </button>
+ 
 
   {%- assign option_name_handle_separator = filter.label | handle | prepend: ',' | append: ',' -%}
   {%- assign enable_color_swatches = settings.enable_color_swatches_collection -%}
