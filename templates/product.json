@@ -264,10 +264,9 @@
         },
         "accordion-1": {
           "type": "text",
-          "disabled": true,
           "settings": {
-            "title": "Do you offer warranty for your products?",
-            "text": "<p>All our products are subject to quality control.<br\/><br\/>Our warranty provides a guarantee against manufacturer defects.<br\/><br\/>The guarantee covers any manufacturing, design, or material defect. Please notify us within 2 months of noticing any defects.<br\/><br\/>It does not cover blows, improper use, or other issues that are not attributable to a manufacturer defects.<\/p>"
+            "title": "I am not sure what size to get, can you help?",
+            "text": "<p>We are here for you and eager to do our best in getting you into the right size! If need further assistance after reviewing the size chart please contact us! For the quickest response call or text us at 830.330.041. If you prefer email or chat, those options are also available!<\/p>"
           }
         },
         "accordion-2": {
@@ -276,12 +275,21 @@
             "title": "Do you offer returns or exchanges?",
             "text": "<p>Yes, we offer both exchanges and returns. Products must be returned in new, unwashed and unworn condition with original tags. You can start a return or exchange <a href=\"https:\/\/returns.wildjunkie.com\/#\/\" target=\"_blank\" title=\"https:\/\/returns.wildjunkie.com\/#\/\"><strong>HERE<\/strong><\/a>!<br\/><br\/>For more information please visit our <a href=\"\/policies\/refund-policy\" target=\"_blank\" title=\"Refund Policy\">Refund Policy<\/a>.<\/p>"
           }
+        },
+        "5deb6769-1b15-41e9-8162-fbfbab15b717": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "title": "Heading",
+            "text": "<p>Use this text block to discuss some commonly asked questions like shipping and returns, sizing, warranties, or product and company details.<\/p>"
+          }
         }
       },
       "block_order": [
         "accordion-0",
         "accordion-1",
-        "accordion-2"
+        "accordion-2",
+        "5deb6769-1b15-41e9-8162-fbfbab15b717"
       ],
       "settings": {
         "section_custom_class": "",
