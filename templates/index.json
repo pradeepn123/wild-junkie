@@ -44,14 +44,14 @@
         "accordion-2": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/6X0A1063.jpg",
+            "image": "shopify:\/\/shop_images\/KENDALL.jpg",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_width": "normal",
             "text_position": "bottom-left",
             "text_color": "text-light",
-            "title": "New Arrivals",
-            "text": "Find the newest arrivals throughout all of our product line up here!",
+            "title": "Jackets",
+            "text": "Weather its aztec print, fringe or denim - we've got a jacket for it all!",
             "btn_text": "Shop Now",
             "btn_link": "shopify:\/\/collections\/new-arrivals",
             "btn_style": "btn--primary btn--small",
