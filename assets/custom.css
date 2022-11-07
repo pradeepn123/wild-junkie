@@ -420,3 +420,285 @@
             order: 1;
         }
 }
+
+/* Rewards Program CSS */
+
+.banner_container{
+    width: 100%;
+    height: 37.5rem;
+    position: relative;
+}
+.banner_text h1, .banner_text p{
+    color: #fff;
+}
+.banner_text h1{
+    line-height: 1;
+}
+.banner_text{
+    width: 33%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 50px;
+}
+.banner_btn{
+    width: 12.75rem;
+    height: 61px;
+    padding: 18px 22px !important;
+}
+@media (max-width: 767px){
+    .banner_text{
+        width: 70%;
+        padding-left: 20px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1023px){
+    .banner_text{
+        padding-left: 20px;
+    }
+}
+.reward_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 50px;
+}
+.reward_svg{
+    width: 7.188rem;
+    height: 6.125rem;
+}
+.earn_rewards_container h1, .earn_rewards_container p, .reward_block{
+    text-align: center;
+}
+.reward_block{
+    margin-bottom: 100px;
+}
+.earn_rewards_container{
+    padding: 100px 10% 0 10%;
+}
+
+@media (max-width: 767px){
+    .reward_container{
+        grid-template-columns: 1fr;
+    }
+    .earn_rewards_container{
+        padding: 30px 20px;
+    }
+    .reward_block{
+        margin-bottom: 50px;
+    }
+    .reward_block h3{
+        margin-top: 30px;
+    }
+    .earn_rewards_container h1{
+        font-size: 36px !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 1023px){
+    .reward_container{
+        grid-template-columns: 1fr 1fr;
+    }
+    .earn_rewards_container{
+        padding: 30px 20px;
+    }
+}
+.redeem_points_container{
+    background: #FFF9F5;
+    text-align: center;
+    padding: 100px 0;
+}
+.redeem_points{
+    display: flex;
+    flex-direction: row;
+    margin: 50px 20%;
+}
+.points_block1{
+    flex-basis: 50%;
+    position: relative;
+    margin-right: 40px;
+}
+.offer_value{
+    position: absolute;
+    color: #521017;
+    font-size: 56px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-10%, -50%);
+}
+.points_block2{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    margin: auto;
+    text-align: left;
+}
+.points_block2 h3{
+    font-size: 30px;
+    margin: 0;
+}
+.points_block2 p{
+    font-size: 16px;
+    margin-top: 15px;
+}
+.offer_svg{
+    position: relative;
+}
+.points_btn{
+    width: 12.75rem;
+    padding: 18px 22px !important;
+    margin-top: 32px;
+    font-size: 20px;
+}
+.vip_tiers_container{
+    text-align: center;
+    margin: 100px 5%;
+}
+.vip_tiers_container p{
+    margin-bottom: 5%;
+}
+@media (max-width: 470px){
+    .redeem_points{
+        margin: 50px 20px;
+    }
+}
+@media (max-width: 767px){
+    .redeem_points{
+        flex-direction: column;
+    }
+    .points_block1{
+        margin: 0 10%;
+    }
+    .points_block2{
+        text-align: center;
+        margin-top: 20px;
+    }
+    .points_block2 h3{
+        margin-bottom: 0;
+        font-size: 24px !important;
+    }
+    .offer_value{
+        font-size: 36px;
+    }
+    .redeem_points_container{
+        padding: 50px 0;
+    }
+    .vip_tiers_container{
+        margin: 50px 5%;
+    }
+    .redeem_points_container h1, .vip_tiers_container h1{
+        font-size: 36px !important;
+    }
+    .redeem_points_container a,.vip_tiers_container .banner_btn{
+        margin-top: 50px;
+    }
+    .banner_btn{
+        width: 10.938rem;
+        height: 47px;
+        padding: 10px 0 !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 1023px){
+    .redeem_points{
+        margin: 50px 40px;
+    }
+    .offer_value{
+        font-size: 46px;
+    }
+    .points_block2 h3{
+        margin-bottom: 0;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1205px){
+    .offer_value{
+        font-size: 36px;
+    }
+}
+.tier_header{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.tier_header h1{
+    margin: 10% 0;
+}
+.tier_svg svg{
+    display: block;
+    margin: 0 auto;
+}
+.tier_features_1, .tier_features_2, .tier_features_3{
+    text-align: center;
+    padding: 18px 0;
+    margin: 10px 30px;
+    border-radius: 10px;
+}
+
+@media (max-width: 767px){
+    .tier_features_1, .tier_features_2, .tier_features_3{
+        margin: 10px 0;
+    }
+    .tier_header{
+        margin-top: 50px;
+    }
+    .tier_header h1{
+        margin: 20px 0 50px 0;
+    }
+}
+
+.text_and_image_container{
+    display: flex;
+    flex-direction: row;
+    max-height: 600px;
+}
+.container_image{
+    flex-basis: 60%;
+}
+.container_image img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+.container_text{
+    flex-basis: 40%;
+    margin: auto;
+    text-align: center;
+}
+.refer_btn{
+    padding: 18px 75px;
+    width: 257px;
+}
+.container_text h1{
+    margin-bottom: 0;
+}
+@media (max-width: 767px){
+    .text_and_image_container{
+        flex-direction: column;
+    }
+    .container_text{
+        margin: 50px 20px;
+    }
+}
+.vip_tiers_block_list{
+    display: flex;
+}
+.vip_tiers_block_item{
+    width: 33.33%;
+}
+.vip_tiers_block_list hr{
+    display: none;
+}
+@media (max-width: 767px){
+    .vip_tiers_block_list{
+        flex-direction: column;
+    }
+    .vip_tiers_block_item{
+        width: 100%;
+    }
+    .vip_tiers_block_list hr{
+        display: block;
+        width: 100%;
+    }
+}
+#Layer_2 .cls-1, #Layer_4 .cls-1{
+    fill: #FE6D6D !important;
+    stroke-dasharray: 0 !important;
+    stroke: #FE6D6D !important;
+}
