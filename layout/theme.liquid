@@ -1,6 +1,18 @@
 <!doctype html>
 <html class="no-js no-touch" lang="{{ request.locale.iso_code }}">
 <head>
+  {%- if template.name == 'product' -%}
+  {%- if product.handle contains 'navidium' -%}
+  <script>
+  location.replace('/');
+  </script>
+  {%- endif -%}
+  {%- endif -%}
+  <style>
+    [data-handle*='navidium']{
+    display: none !important;
+    }
+  </style>
   <meta charset="utf-8">
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
@@ -359,6 +371,7 @@ template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}
 	{{ shop.metafields.loox["global_html_body"] }}
  <!--Gorgias Chat Widget Start--><script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=23034"></script><!--Gorgias Chat Widget End-->
 <!--AZEXO_Footer_Scripts--> {% include 'azexo-footer-scripts' %} <!--End_AZEXO_Footer_Scripts--> {% include 'smile-initializer' %}
+{% include 'navidium-widget-v4' %}
 
 </body>
 </html>
