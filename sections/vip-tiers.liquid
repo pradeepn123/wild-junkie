@@ -1,0 +1,191 @@
+<div class="vip_tiers_container">
+  <h1 style="font-size: {{ section.settings.title_font_size }}px">{{ section.settings.section_title }}</h1>
+  <p style="font-size: {{ section.settings.subtitle_font_size }}px">{{ section.settings.section_subtitle }}</p>
+  
+  <div class="vip_tiers_block_list">
+    <div class="vip_tiers_block_item">
+      <div class="tier_header">
+        <span class="tier_svg" style="width: 100%">
+          {{ section.settings.tierTypeSVG_1 }}
+        </span>
+        <h1>{{ section.settings.header1 }}</h1>
+      </div>
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'tierFeatures' %}
+              <div class="categories_block">
+                <p class="tier_features_1" {% if block.settings.tierFeaturesText_1 != blank %} style="border: 2px solid #868686;" {% else %} style= "display: none;" {% endif %}>{{ block.settings.tierFeaturesText_1 }}</p>
+              </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+     
+    <hr>
+     
+    <div class="vip_tiers_block_item">
+      <div class="tier_header">
+        <span class="tier_svg" style="width: 100%">
+          {{ section.settings.tierTypeSVG_2 }}
+        </span>
+        <h1>{{ section.settings.header2 }}</h1>
+      </div>
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'tierFeatures' %}
+              <div class="categories_block">
+                <p class="tier_features_2" {% if block.settings.tierFeaturesText_2 != blank %} style="border: 2px solid #EBA470;"{% else %} style= "display: none;" {% endif %}>{{ block.settings.tierFeaturesText_2 }}</p>
+              </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+     
+    <hr>
+     
+    <div class="vip_tiers_block_item">
+      <div class="tier_header">
+        <span class="tier_svg" style="width: 100%">
+          {{ section.settings.tierTypeSVG_3 }}
+        </span>
+        <h1>{{ section.settings.header3 }}</h1>
+      </div>
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'tierFeatures' %}
+              <div class="categories_block">
+                <p class="tier_features_3" {% if block.settings.tierFeaturesText_3 != blank %} style="border: 2px solid #FFBB22;"{% else %} style= "display: none;" {% endif %}>{{ block.settings.tierFeaturesText_3 }}</p>
+              </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <a href={{ section.settings.button_link }}>
+      <button class="btn banner_btn" style="background: {{ section.settings.button_colour }}; font-size: {{ section.settings.button_font_size }}px;">{{ section.settings.button_text }}</button>
+    </a>
+  {{ section.settings.sign_in_text }}
+</div>
+
+
+
+{%- schema -%}
+{
+  "name":"VIP Tiers",
+  "settings":[
+     {
+        "type":"text",
+        "id":"section_title",
+        "label":"Section title"
+     },
+     {
+        "type":"range",
+        "id":"title_font_size",
+        "label":"Title font size",
+        "min":0,
+        "max":100,
+        "step":2,
+        "default":48
+     },
+     {
+        "type":"text",
+        "id":"section_subtitle",
+        "label":"Section subtitle"
+     },
+     {
+        "type":"range",
+        "id":"subtitle_font_size",
+        "label":"Subtitle font size",
+        "min":0,
+        "max":50,
+        "step":2,
+        "default":16
+     },
+     {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text"
+    }, 
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Button font size",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "button_colour",
+      "label": "Button colour"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+     {
+      "type": "richtext",
+      "id": "sign_in_text",
+      "label": "Sign in text"
+     },
+     {
+      "type": "text",
+      "id": "header1",
+      "label": "Tier-type1"
+    }, 
+    {
+      "type": "html",
+      "id": "tierTypeSVG_1",
+      "label": "Tier-type SVG 1"
+    },
+    {
+      "type": "text",
+      "id": "header2",
+      "label": "Tier-type2"
+    }, 
+    {
+      "type": "html",
+      "id": "tierTypeSVG_2",
+      "label": "Tier-type SVG 2"
+    },
+    {
+      "type": "text",
+      "id": "header3",
+      "label": "Tier-type3"
+    }, 
+    {
+      "type": "html",
+      "id": "tierTypeSVG_3",
+      "label": "Tier-type SVG 3"
+    }
+  ],
+  "blocks": [ 
+    {
+      "name": "TierFeatures",
+      "type": "tierFeatures",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tierFeaturesText_1",
+          "label": "Tier features 1"
+        },
+        {
+          "type": "text",
+          "id": "tierFeaturesText_2",
+          "label": "Tier features 2"
+        },
+        {
+          "type": "text",
+          "id": "tierFeaturesText_3",
+          "label": "Tier features 3"
+        }
+      ]
+    }
+  ],
+  "presets":[
+     {
+        "name":"VIP Tiers"
+     }
+  ]
+}
+{%- endschema -%}
