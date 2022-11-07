@@ -1,0 +1,83 @@
+<div class="earn_rewards_container">
+  <h1 style="font-size: {{ section.settings.title_font_size }}px">{{ section.settings.section_title }}</h1>
+  <p style="font-size: {{ section.settings.subtitle_font_size }}px">{{ section.settings.section_subtitle }}</p>
+  <div class="reward_container">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'select' %}
+          <div class="reward_block">
+            {% if block.settings.svg_icon != blank %}
+              <span class="reward_svg">{{ block.settings.svg_icon }}</span>
+            {% endif %} 
+            <h3>{{ block.settings.reward_title }}</h3>
+            <p>{{ block.settings.reward_description }}</p>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+
+{%- schema -%}
+  {
+    "name": "Earn Rewards",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Section title"
+      },
+      {
+        "type": "range",
+        "id": "title_font_size",
+        "label": "Title font size",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "default": 48
+      },
+      {
+        "type": "text",
+        "id": "section_subtitle",
+        "label": "Section subtitle"
+      },
+      {
+        "type": "range",
+        "id": "subtitle_font_size",
+        "label": "Subtitle font size",
+        "min": 0,
+        "max": 50,
+        "step": 2,
+        "default": 16
+      }
+    ],
+    "blocks": [
+      {
+        "type": "select",
+        "name": "select",
+        "settings": [
+          {
+            "type": "html",
+            "id": "svg_icon",
+            "label": "SVG icon"
+          },
+          {
+            "type": "text",
+            "id": "reward_title",
+            "label": "Reward title"
+          },
+          {
+            "type": "text",
+            "id": "reward_description",
+            "label": "Reward description"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Earn Rewards"
+      }
+    ]
+  }
+{%- endschema -%}

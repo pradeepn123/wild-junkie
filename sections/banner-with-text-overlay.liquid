@@ -1,0 +1,118 @@
+<div class="banner_wrapper">
+  <div class="banner_container" style="background: url('{{ section.settings.banner_image | img_url: 'master'}}') no-repeat {% if "window.screen.width < 767px" %}30%{% endif %}; background-size: cover;">
+    <div class="banner_text">
+      <h1>{{ section.settings.banner_title }}</h1>
+      
+      <p style="font-size: {{ section.settings.banner_subtitle_font_size }}px">{{ section.settings.banner_subtitle }}</p>
+      {% style %}
+        @media (max-width: 767px){
+          .banner_text h1{
+            font-size: {{ section.settings.banner_title_font_size_mobile }}px
+          }
+        }
+        @media (min-width: 768px){
+          .banner_text h1{
+            font-size: {{ section.settings.banner_title_font_size }}px
+          }
+        }
+      {% endstyle %}
+      {% if section.settings.show_button and section.settings.button_text != blank %}
+        <a href={{ section.settings.button_link }}>
+          <button class="btn banner_btn" style="background: {{ section.settings.button_colour }}; font-size: {{ section.settings.button_font_size }}px;">{{ section.settings.button_text }}</button>
+        </a>
+      {% endif %}
+      {% if section.settings.add_text != blank %}
+        <p style="font-size: 14px">{{ section.settings.add_text }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{%- schema -%}
+  {
+    "name": "Banner with text overlay",
+    "settings": [
+      {
+        "type": "image_picker",
+        "label": "Banner Image",
+        "id": "banner_image"
+      },
+      {
+        "type": "text",
+        "id": "banner_title",
+        "label": "Banner title"
+      },
+      {
+        "type": "range",
+        "label": "Banner title font size",
+        "id": "banner_title_font_size",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "default": 64
+      },
+      {
+        "type": "range",
+        "label": "Banner title font size for mobile",
+        "id": "banner_title_font_size_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "default": 44
+      },
+      {
+        "type": "richtext",
+        "id": "banner_subtitle",
+        "label": "Banner Subtitle"
+      },
+      {
+        "type": "range",
+        "id": "banner_subtitle_font_size",
+        "label": "Banner subtitle font size",
+        "min": 0,
+        "max": 50,
+        "step": 2,
+        "default": 16
+      },
+      {
+        "type": "checkbox",
+        "id": "show_button",
+        "label": "Show Button?"
+      }, 
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button text"
+      }, 
+      {
+        "type": "range",
+        "id": "button_font_size",
+        "label": "Button font size",
+        "min": 0,
+        "max": 30,
+        "step": 2,
+        "default": 20
+      },
+      {
+        "type": "color",
+        "id": "button_colour",
+        "label": "Button colour"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "richtext",
+        "label": "Add text",
+        "id": "add_text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banner with text overlay"
+      }
+    ]
+  }
+{%- endschema -%}
