@@ -64,7 +64,7 @@
           "sticky_header": true,
           "header_border": false,
           "logo_not_home": "shopify:\/\/shop_images\/image_4bcd965e-c149-48dc-8d09-4afd61575c3d.png",
-          "logo_max_width": 50,
+          "logo_max_width": 80,
           "main-menu": "main-menu-new",
           "show_images": true,
           "image_aspect_ratio": 0.5,
