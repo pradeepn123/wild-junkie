@@ -63,8 +63,8 @@
         "settings": {
           "sticky_header": true,
           "header_border": false,
-          "logo_not_home": "shopify:\/\/shop_images\/DUP.logo.png",
-          "logo_max_width": 100,
+          "logo_not_home": "shopify:\/\/shop_images\/Wild-junkie-Christmas-logo.png",
+          "logo_max_width": 130,
           "main-menu": "main-menu-new",
           "show_images": true,
           "image_aspect_ratio": 0.5,
