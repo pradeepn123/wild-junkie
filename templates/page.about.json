@@ -563,31 +563,12 @@
     },
     "a77c4698-8921-4e3e-abad-8860a1951614": {
       "type": "section-custom-content",
-      "disabled": true,
       "blocks": {
-        "template--14461244735551__a77c4698-8921-4e3e-abad-8860a1951614-16653988075f05b7d1-1": {
-          "type": "text",
-          "settings": {
-            "text_position": "center",
-            "top_image_width": 100,
-            "text_color": "text-dark",
-            "subheading": "",
-            "title": "Tara",
-            "text": "<p>Tara is our Social Media Manager which over looks a lot! This position does everything from posting and replying to Instagram messages, arranging photoshoots and making sure all collaborations with influencers are meeting our expectations.  Currently she is a Senior at Texas State and we look forward to having her officially start her first career with us when she graduates in May 2023. When Tara is not in the office she enjoys traveling.<\/p>",
-            "button_text": "",
-            "button_link": "",
-            "button_style": "btn--primary btn--small",
-            "secondary_button_text": "",
-            "secondary_button_link": "",
-            "secondary_button_style": "btn--secondary btn--small",
-            "bg_color": ""
-          }
-        },
         "template--14461244735551__a77c4698-8921-4e3e-abad-8860a1951614-16653988075f05b7d1-0": {
           "type": "image",
           "settings": {
             "text_position": "middle-center",
-            "image": "shopify:\/\/shop_images\/IMG_1409_5000xw3_9977c419-d829-427f-bada-915f2bbc13ef.jpg",
+            "image": "shopify:\/\/shop_images\/John.jpg",
             "image_position": "center-center",
             "overlay_opacity": 10,
             "text_color": "text-light",
@@ -598,11 +579,29 @@
             "button_link": "",
             "button_style": "btn--primary btn--small"
           }
+        },
+        "template--14461244735551__a77c4698-8921-4e3e-abad-8860a1951614-16653988075f05b7d1-1": {
+          "type": "text",
+          "settings": {
+            "text_position": "center",
+            "top_image_width": 100,
+            "text_color": "text-dark",
+            "subheading": "",
+            "title": "John",
+            "text": "<p> ohn is our Affiliates Director. He is the man behind the 'gram and the organization behind all collaboration chaos! John keeps track of all influencers, models, ambassadors, collaborations, photoshoots and anything that has to do with our out of office girls! When John is not dealing with all the women of Wild Junkie he is busy running his own business with his husband, Carson. Together the two run and operate Apache Spirit Bison. Outside of work and being a good friend, John enjoys hunting, fishing, and taking their motorcycle for some back road cruising!<\/p>",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "secondary_button_style": "btn--secondary btn--small",
+            "bg_color": ""
+          }
         }
       },
       "block_order": [
-        "template--14461244735551__a77c4698-8921-4e3e-abad-8860a1951614-16653988075f05b7d1-1",
-        "template--14461244735551__a77c4698-8921-4e3e-abad-8860a1951614-16653988075f05b7d1-0"
+        "template--14461244735551__a77c4698-8921-4e3e-abad-8860a1951614-16653988075f05b7d1-0",
+        "template--14461244735551__a77c4698-8921-4e3e-abad-8860a1951614-16653988075f05b7d1-1"
       ],
       "settings": {
         "height": "five-fifty-height",
