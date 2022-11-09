@@ -3,9 +3,10 @@
     "color_body_bg": "#ffffff",
     "color_headings": "#000",
     "color_body_text": "#000",
-    "color_accent": "#ff6d6d",
+    "color_accent": "#006838",
     "color_borders_and_lines": "#d3d3d3",
-    "color_button_primary": "#ff6d6d",
+    "color_saving_badge": "#006838",
+    "color_button_primary": "#006838",
     "color_button_secondary": "#ffffff",
     "type_heading_font": "harmonia_sans_n6",
     "nav_size": 90,
@@ -85,10 +86,10 @@
           "b2e5833c-03f7-41d6-b51b-f0253a6c077b": {
             "type": "logo",
             "settings": {
-              "image": "shopify:\/\/shop_images\/wild-junkies-footer-Image.webp",
+              "image": "shopify:\/\/shop_images\/Wild-junkie-Christmas-logo.png",
               "logo_width": 140,
               "show_shop_name": false,
-              "shop__description__footer": "The largest selection of premium casual western wear.",
+              "shop__description__footer": "The largest selection of premium, wild western wear.",
               "shop__description__footer__fontSize": 16
             }
           },
