@@ -126,14 +126,6 @@
             "text": "<p>In the case when the<strong>product and packaging are unopened and undamaged<\/strong>, you are<strong>eligible<\/strong>for a full refund.<br\/><br\/>In the case when<strong>the packaging has been opened and the product has been used<\/strong>, you are<strong>eligible<\/strong>for a partial refund.<br\/><br\/>In the case when a<strong>product has been damaged<\/strong>, and the damage is not covered by your warranty, you are<strong>not eligible<\/strong>for a refund.<br\/><br\/>Please check our <a href=\"\/policies\/terms-of-service\" title=\"Terms of Service\">Terms of Service<\/a> to see if you're eligible for a refund.<\/p>"
           }
         },
-        "accordion_block_4_3": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "title": "Who pays the shipping costs in the case of a refund when the order doesn't have free shipping?",
-            "text": "<p>When an order does not include free shipping, all shipping costs (including the return shipping) are handled by the customer.<\/p>"
-          }
-        },
         "accordion_block_4_4": {
           "type": "text",
           "settings": {
@@ -147,15 +139,22 @@
             "title": "Who pays the shipping costs in the case of an exchange when the order was shipped with free shipping?",
             "text": "<p>When you return an item for exchange with free shipping, the cost of shipping will be deducted from your store credit for the return shipping only.<\/p>"
           }
+        },
+        "accordion_block_4_3": {
+          "type": "text",
+          "settings": {
+            "title": "Do you have an extended Christmas season return and exchange policy?",
+            "text": "<p>Yes we do! Any orders placed between November 1st and December 25th, can be return up until January 10th. Returns and exchanges <em><strong>must<\/strong><\/em> be in original packaging with tags and in unwashed and unworn condition. <\/p><p><\/p><p>These returns and exchanges can be processed normally through the returns portal <a href=\"https:\/\/returns.wildjunkie.com\/#\/\" target=\"_blank\" title=\"https:\/\/returns.wildjunkie.com\/#\/\">here<\/a>. <\/p>"
+          }
         }
       },
       "block_order": [
         "accordion_block_4_0",
         "accordion_block_4_1",
         "accordion_block_4_2",
-        "accordion_block_4_3",
         "accordion_block_4_4",
-        "cf6668f6-805c-4101-a5d4-f661b547dd04"
+        "cf6668f6-805c-4101-a5d4-f661b547dd04",
+        "accordion_block_4_3"
       ],
       "settings": {
         "section_custom_class": "tabs_heading_left_align",
