@@ -152,6 +152,7 @@
     },
     "accordion-section-3": {
       "type": "section-accordions",
+      "disabled": true,
       "blocks": {
         "accordion_block_3_0": {
           "type": "text",
@@ -199,18 +200,19 @@
           "type": "text",
           "settings": {
             "title": "Do you offer refunds?",
-            "text": "<p>Yes, we offer full and partial refunds.<br\/><br\/>Please enquire for more information about our Refund policy.<\/p>"
+            "text": "<p>We do not offer refunds back to original payment method. All refunds are done in form of store credit.<br\/><br\/>For more information please visit our <a href=\"\/policies\/refund-policy\" target=\"_blank\" title=\"Refund Policy\">Refund Policy<\/a>.<\/p>"
           }
         },
         "accordion_block_4_1": {
           "type": "text",
           "settings": {
-            "title": "How long after I complete a purchase can I ask for a refund?",
-            "text": "<p>A refund request can be submitted within a month after the purchase is made.<\/p>"
+            "title": "How long after I complete a purchase can I return or exchange a product?",
+            "text": "<p>Returns and exchanges must be submitted within 14 days of delivery. <\/p>"
           }
         },
         "accordion_block_4_2": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "title": "How much can I get refunded?",
             "text": "<p>In the case when the<strong>product and packaging are unopened and undamaged<\/strong>, you are<strong>eligible<\/strong>for a full refund.<br\/><br\/>In the case when<strong>the packaging has been opened and the product has been used<\/strong>, you are<strong>eligible<\/strong>for a partial refund.<br\/><br\/>In the case when a<strong>product has been damaged<\/strong>, and the damage is not covered by your warranty, you are<strong>not eligible<\/strong>for a refund.<br\/><br\/>Please check our <a href=\"\/policies\/terms-of-service\" title=\"Terms of Service\">Terms of Service<\/a> to see if you're eligible for a refund.<\/p>"
@@ -226,8 +228,8 @@
         "accordion_block_4_4": {
           "type": "text",
           "settings": {
-            "title": "Who pays the shipping costs in the case of a refund when the order has free shipping?",
-            "text": "<p>When an order includes free shipping, only the cost of the return shipping is handled by the customer.<\/p>"
+            "title": "Who pays the shipping costs in the case of a return or exchange when the order was shipped with free shipping?",
+            "text": "<p>When you return an item from an order with free shipping, the cost of shipping will be deducted from your store credit. <\/p>"
           }
         }
       },
@@ -240,7 +242,7 @@
       ],
       "settings": {
         "section_custom_class": "tabs_heading_left_align",
-        "title": "Returns & Refunds",
+        "title": "Returns & Exchanges",
         "subheading": "",
         "text": "",
         "tabs_bg_color": "",
