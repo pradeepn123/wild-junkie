@@ -285,6 +285,93 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "061eddab-2dd5-45c5-91d2-36052dd6dee9": {
+      "type": "section-accordions",
+      "blocks": {
+        "template--14490972684351__061eddab-2dd5-45c5-91d2-36052dd6dee9-166805630081160c1d-0": {
+          "type": "text",
+          "settings": {
+            "title": "My questions aren't answered here. How do I get ahold of you?",
+            "text": "<p>Good news - you can easily get ahold of us a few different ways!<\/p><p><\/p><p>For the fastest response, call or text us at 830.330.0413. If you prefer email, you can also reach us at help@wildjunkie.com and we will get back to you within 24 business hours.<\/p>"
+          }
+        },
+        "template--14490972684351__061eddab-2dd5-45c5-91d2-36052dd6dee9-166805630081160c1d-1": {
+          "type": "text",
+          "settings": {
+            "title": "I want to work or model for you, how do I apply?",
+            "text": ""
+          }
+        },
+        "template--14490972684351__061eddab-2dd5-45c5-91d2-36052dd6dee9-166805630081160c1d-2": {
+          "type": "text",
+          "settings": {
+            "title": "Do you want to collaborate with me?",
+            "text": "<p>We're always open to a productive collaboration. Please email John, our affiliates director, at john@wildjunkie.com. We look forward to hearing about your ideas!<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--14490972684351__061eddab-2dd5-45c5-91d2-36052dd6dee9-166805630081160c1d-0",
+        "template--14490972684351__061eddab-2dd5-45c5-91d2-36052dd6dee9-166805630081160c1d-1",
+        "template--14490972684351__061eddab-2dd5-45c5-91d2-36052dd6dee9-166805630081160c1d-2"
+      ],
+      "settings": {
+        "section_custom_class": "",
+        "title": "Other Questions",
+        "subheading": "",
+        "text": "",
+        "tabs_bg_color": "",
+        "bg_color": "",
+        "text_color": "text-dark",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "a2051a8b-f020-42bb-b7cc-313bba9024af": {
+      "type": "section-accordions",
+      "disabled": true,
+      "blocks": {
+        "template--14490972684351__a2051a8b-f020-42bb-b7cc-313bba9024af-1668056391286f0de2-0": {
+          "type": "text",
+          "settings": {
+            "title": "How long does it take to get my products?",
+            "text": "<p>Domestic shipping can take up to 5 business days.<br\/><br\/>Foreign shipping could take up to 14 business days.<br\/><br\/>Due to global supply chain challenges, shipping times could be longer than usual.<\/p>"
+          }
+        },
+        "template--14490972684351__a2051a8b-f020-42bb-b7cc-313bba9024af-1668056391286f0de2-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "title": "Do you offer warranty for your products?",
+            "text": "<p>All our products are subject to quality control.<br\/><br\/>Our warranty provides a guarantee against manufacturer defects.<br\/><br\/>The guarantee covers any manufacturing, design, or material defect. Please notify us within 2 months of noticing any defects.<br\/><br\/>It does not cover blows, improper use, or other issues that are not attributable to a manufacturer defects.<\/p>"
+          }
+        },
+        "template--14490972684351__a2051a8b-f020-42bb-b7cc-313bba9024af-1668056391286f0de2-2": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "title": "Do you offer refunds?",
+            "text": "<p>Yes, we offer full and partial refunds.<br\/><br\/>Please enquire for more information about our Refund policy.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--14490972684351__a2051a8b-f020-42bb-b7cc-313bba9024af-1668056391286f0de2-0",
+        "template--14490972684351__a2051a8b-f020-42bb-b7cc-313bba9024af-1668056391286f0de2-1",
+        "template--14490972684351__a2051a8b-f020-42bb-b7cc-313bba9024af-1668056391286f0de2-2"
+      ],
+      "settings": {
+        "section_custom_class": "",
+        "title": "Orders",
+        "subheading": "",
+        "text": "",
+        "tabs_bg_color": "",
+        "bg_color": "",
+        "text_color": "text-dark",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
@@ -293,6 +380,8 @@
     "accordion-section-2",
     "accordion-section-4",
     "accordion-section-3",
-    "accordion-section-1"
+    "accordion-section-1",
+    "061eddab-2dd5-45c5-91d2-36052dd6dee9",
+    "a2051a8b-f020-42bb-b7cc-313bba9024af"
   ]
 }
