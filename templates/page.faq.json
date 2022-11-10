@@ -257,6 +257,13 @@
             "title": "Do you offer live boxes?",
             "text": "<p>Yes we do! For more details please call, text or email us! Ask for Brooke :)<\/p>"
           }
+        },
+        "e6ca7f90-b840-428a-adeb-accb78a6ff9a": {
+          "type": "text",
+          "settings": {
+            "title": "Are you available on Faire?",
+            "text": "<p>Yes! We are happy to be featured as one of Faire's top shops! You can shop our Faire site <a href=\"https:\/\/wildjunkie.faire.com\/user\/sign-up\" target=\"_blank\" title=\"https:\/\/wildjunkie.faire.com\/user\/sign-up\">here<\/a> - this is also a great place to read our 325+ 5 ⭐️ reviews!<\/p><p><\/p><p>Faire is also a great place to shop because you can get free shipping, free 100% satisfaction backed returns and $100 store credit when you sign up!<\/p>"
+          }
         }
       },
       "block_order": [
@@ -264,7 +271,8 @@
         "accordion_block_1_2",
         "accordion_block_1_3",
         "accordion_block_1_4",
-        "13d31e60-222b-4ef3-b4dd-58a5b35861b6"
+        "13d31e60-222b-4ef3-b4dd-58a5b35861b6",
+        "e6ca7f90-b840-428a-adeb-accb78a6ff9a"
       ],
       "settings": {
         "section_custom_class": "tabs_heading_left_align",
