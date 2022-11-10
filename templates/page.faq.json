@@ -42,57 +42,6 @@
         "padding_bottom": 60
       }
     },
-    "accordion-section-1": {
-      "type": "section-accordions",
-      "disabled": true,
-      "blocks": {
-        "accordion_block_1_1": {
-          "type": "text",
-          "settings": {
-            "title": "Is my payment data safe with you?",
-            "text": "<p>All direct payment gateways adhere to the standards set by PCI-DSS as managed by the PCI Security Standards Council, which is a joint effort of brands like Visa, MasterCard, American Express, and Discover.<\/p>"
-          }
-        },
-        "accordion_block_1_2": {
-          "type": "text",
-          "settings": {
-            "title": "Do you accept online payments?",
-            "text": "<p>Yes, we accept online payments. All payment processing and vital customer information is quick, easy, and secure.<br\/><\/p><p>Learn more about our store's safe checkout experience (powered by Shopify) <a href=\"https:\/\/www.shopify.com\/legal\/terms#DataProtection\" target=\"_blank\" title=\"https:\/\/www.shopify.com\/legal\/terms#DataProtection\">here<\/a>.<\/p>"
-          }
-        },
-        "accordion_block_1_3": {
-          "type": "text",
-          "settings": {
-            "title": "Where can I learn more about the payment and processing on your store?",
-            "text": "<p>For more insight, you may also want to read Shopify’s Terms of Service <a href=\"https:\/\/www.shopify.com\/legal\/terms\" target=\"_blank\" title=\"https:\/\/www.shopify.com\/legal\/terms\">here<\/a> or Privacy Statement <a href=\"https:\/\/www.shopify.com\/legal\/privacy\" target=\"_blank\" title=\"https:\/\/www.shopify.com\/legal\/privacy\">here<\/a>.<\/p>"
-          }
-        },
-        "accordion_block_1_4": {
-          "type": "text",
-          "settings": {
-            "title": "What forms of payment do you accept?",
-            "text": "<p>We accept payments from major credit card companies like Visa, Mastercard, and American Express.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "accordion_block_1_1",
-        "accordion_block_1_2",
-        "accordion_block_1_3",
-        "accordion_block_1_4"
-      ],
-      "settings": {
-        "section_custom_class": "tabs_heading_left_align",
-        "title": "Payments & Safety",
-        "subheading": "",
-        "text": "",
-        "tabs_bg_color": "",
-        "bg_color": "",
-        "text_color": "text-dark",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
     "accordion-section-2": {
       "type": "section-accordions",
       "blocks": {
@@ -270,14 +219,72 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "accordion-section-1": {
+      "type": "section-accordions",
+      "blocks": {
+        "accordion_block_1_1": {
+          "type": "text",
+          "settings": {
+            "title": "I want to sell your products! How do I sign up to sell wholesale?",
+            "text": ""
+          }
+        },
+        "accordion_block_1_2": {
+          "type": "text",
+          "settings": {
+            "title": "Do you have minimum purchase requirements?",
+            "text": "<p>Our only purchase requirement for wholesale orders is six pieces per design! We <em><strong>do not<\/strong><\/em> have any monetary value requirements!<\/p>"
+          }
+        },
+        "accordion_block_1_3": {
+          "type": "text",
+          "settings": {
+            "title": "Do you offer drop shipping?",
+            "text": "<p>At this time we do not offer drop shipping. <\/p>"
+          }
+        },
+        "accordion_block_1_4": {
+          "type": "text",
+          "settings": {
+            "title": "I want to physically checkout your products. Do you sell samples?",
+            "text": "<p>No, we do not offer samples. If you'd like to see and\/or feel our quality you're welcome to purchase any of the products retail or come visit us at the Dallas Market Center during any of the apparel markets. For specific showcase dates you can visit the DMC website <a href=\"https:\/\/dallasmarketcenter.com\/markets\/\" target=\"_blank\" title=\"https:\/\/dallasmarketcenter.com\/markets\/\">here<\/a>, or call, text or email us at 830.330.0413! <\/p>"
+          }
+        },
+        "13d31e60-222b-4ef3-b4dd-58a5b35861b6": {
+          "type": "text",
+          "settings": {
+            "title": "Do you offer live boxes?",
+            "text": "<p>Yes we do! For more details please call, text or email us! Ask for Brooke :)<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_block_1_1",
+        "accordion_block_1_2",
+        "accordion_block_1_3",
+        "accordion_block_1_4",
+        "13d31e60-222b-4ef3-b4dd-58a5b35861b6"
+      ],
+      "settings": {
+        "section_custom_class": "tabs_heading_left_align",
+        "title": "Wholesale",
+        "subheading": "",
+        "text": "",
+        "tabs_bg_color": "",
+        "bg_color": "",
+        "text_color": "text-dark",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
     "50b28de9-249f-4ede-81ae-4e144fd308ab",
     "main",
-    "accordion-section-1",
     "accordion-section-2",
     "accordion-section-4",
-    "accordion-section-3"
+    "accordion-section-3",
+    "accordion-section-1"
   ]
 }
