@@ -227,7 +227,7 @@
           "type": "text",
           "settings": {
             "title": "How often are subscription boxes sent?",
-            "text": ""
+            "text": "<p>Your first box will be sent within five business days of placing your order! After this they will ship every 30, 60 or 90 days depending on whichever option you choose :)<\/p>"
           }
         },
         "accordion_block_3_1": {
@@ -241,7 +241,7 @@
           "type": "text",
           "settings": {
             "title": "How do I cancel my subscription box?",
-            "text": ""
+            "text": "<p>To cancel your subscription box, login to your account. <\/p>"
           }
         },
         "90cd453c-d978-41e3-ad4d-f3843bc906e7": {
