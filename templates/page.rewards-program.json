@@ -164,16 +164,8 @@
           "type": "tierFeatures",
           "settings": {
             "tierFeaturesText_1": "",
-            "tierFeaturesText_2": "Free Shipping 2x Year",
-            "tierFeaturesText_3": "Free 2nd Day Air Shipping"
-          }
-        },
-        "bfa9a696-720b-4dfc-ada0-86197fea9171": {
-          "type": "tierFeatures",
-          "settings": {
-            "tierFeaturesText_1": "",
-            "tierFeaturesText_2": "Early Access to Product Drops",
-            "tierFeaturesText_3": "Early Access to Product Drops"
+            "tierFeaturesText_2": "Free 2nd Day Air Shipping x1\/year",
+            "tierFeaturesText_3": "Free 2nd Day Air Shipping x2\/year"
           }
         },
         "1a0f027f-123c-49c6-94af-02024e36ca2c": {
@@ -191,14 +183,6 @@
             "tierFeaturesText_2": "",
             "tierFeaturesText_3": "Exclusive Access to free Product Shop"
           }
-        },
-        "03ccff6e-0ca8-4f68-9585-8938a623ac80": {
-          "type": "tierFeatures",
-          "settings": {
-            "tierFeaturesText_1": "",
-            "tierFeaturesText_2": "",
-            "tierFeaturesText_3": "Exclusive Access to Virtual Events"
-          }
         }
       },
       "block_order": [
@@ -206,10 +190,8 @@
         "1dca5a08-c3f7-4e15-9705-7857affdbc53",
         "acebe586-778c-47cb-8750-65144b7c4da0",
         "6b66e4e5-5cf6-41bb-b089-b885b5f7dea6",
-        "bfa9a696-720b-4dfc-ada0-86197fea9171",
         "1a0f027f-123c-49c6-94af-02024e36ca2c",
-        "30a8fb1c-f733-4a49-bd09-455499aab92f",
-        "03ccff6e-0ca8-4f68-9585-8938a623ac80"
+        "30a8fb1c-f733-4a49-bd09-455499aab92f"
       ],
       "settings": {
         "section_title": "Vip Tiers",
