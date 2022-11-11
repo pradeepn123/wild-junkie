@@ -227,6 +227,7 @@
     },
     "b342086f-8930-42b8-9c95-f142e2b9e570": {
       "type": "section-accordions",
+      "disabled": true,
       "blocks": {
         "template--14503872987199__b342086f-8930-42b8-9c95-f142e2b9e570-16675568749f33671c-0": {
           "type": "text",
