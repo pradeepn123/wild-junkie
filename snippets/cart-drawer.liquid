@@ -127,6 +127,15 @@
           {%- render 'icon-close-small' -%}
         </button>
       </div>
+      
+      <div class="cart-free-item"
+        {% if animations_enabled %}
+        data-aos="fade-up"
+        data-aos-delay="{{ animation_delay }}"
+          {%- assign animation_delay = animation_delay | plus: 50 -%}
+        {% endif %}>
+        {%- render 'cart-free-item', animation_delay: animation_delay -%}
+      </div>
 
       <div class="cart-drawer__items{% if cart_items_size == 0 %} hidden{% endif %}"
         data-items-holder
