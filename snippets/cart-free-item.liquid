@@ -1,43 +1,59 @@
-<div class="cart-free-item-main-section">
-    <div class="cart-free-item-wrapper">
-        <p>Your free item:</p>
-        <div class="cart-free-item-list cart-drawer__items">
-            <!-- Product loop     -->
-            <div class="cart__item">
-                <div class="cart__item__image">
-                    <a href="#">
-                        <img class="lazyload" src="https://cdn.shopify.com/s/files/1/0078/2178/7200/products/5J6A3406_180x.jpg?v=1668480868" alt="">
-                    </a>
-                </div>
-                <div class="cart__item__content">
-                    <div class="item_info_wrapper cart__item__info">
-                        <p class="cart__item__title">
-                            <a href="#">1x Mystery Graphic Tee</a>
-                        </p>
-                        <p class="cart__item__selected-options">
-                            <span>Size:</span>
-                        </p>
-                        <div class="cart__item__meta">      
-                            <div class="cart_item__size">
-                                <select name="id" class="product_form_select" aria-label="">
-                                    <option value="XL">Medium</option>
-                                    <option value="XL">Small</option>
-                                    <option value="XL">Extralarge</option>
-                                </select>
-                            </div>  
-                            <div class="cart_item__button">
-                                <div class="product__submit__buttons">                                    
-                                    <button type="submit" name="add" class="btn btn--submit product__submit__add">
-                                        <span>Add to Cart</span>
-                                        <!-- <div class="loader loader--line"><div class="loader-indeterminate"></div></div> -->
-                                    </button>                                
-                                </div> 
+{% if cartTotal >= 10000 %}
+    {% assign promotionalProduct = all_products["one-mystery-tee"] %}
+{% elsif cartTotal >= 5000 %}
+    {% assign promotionalProduct = all_products["yeehaw-knit-embroidered-beanie"] %}
+{% elsif cartTotal >= 2500 %}
+    {% assign promotionalProduct = all_products["faux-navajo-pearl-choker-ws"] %}
+{% endif %}
+
+{% unless promotionalLineProductId == promotionalProduct.id %}
+    <div class="cart-free-item-main-section">
+        <div class="cart-free-item-wrapper">
+            <p>Your free item:</p>
+            <div class="cart-free-item-list cart-drawer__items">
+                <!-- Product loop     -->
+                <div class="cart__item">
+                    <div class="cart__item__image">
+                        <a href="#">
+                            <img class="lazyload" src="{{promotionalProduct.featured_image | img_url : '160x'}}" alt="">
+                        </a>
+                    </div>
+                    {%- form 'product', product, class: 'product__form cart__item__content', data-product-form: '', id: "AddToCartForm--Promotional-Product", data-add-to-cart: '' -%}
+                        <input type="hidden" name="properties[Product Type]" value="Promotional" >
+                        <div class="item_info_wrapper cart__item__info">
+                            <p class="cart__item__title">
+                                <a href="{{promotionalProduct}}">1x {{promotionalProduct.title}}</a>
+                            </p>
+                            <p class="cart__item__selected-options">
+                                <span>{{ promotionalProduct.options_with_values | map: 'name' | uniq | join: ', ' }}:</span>
+                            </p>
+                            <div class="cart__item__meta">      
+                                <div class="cart_item__size">
+                                    <select name="id" class="product_form_select" aria-label="{{ promotionalProduct.options_with_values | map: 'name' | uniq | join: ', ' }}">
+                                        {%- for variant in promotionalProduct.variants -%}
+                                            <option
+                                            {% if variant == current_variant %}selected="selected"{% endif %}
+                                            {% unless variant.available %}disabled="disabled"{% endunless %}
+                                                value="{{ variant.id }}">
+                                                {{- variant.title -}}
+                                            </option>
+                                        {%- endfor -%}
+                                      </select>
+                                </div>
+                                <div class="cart_item__button">
+                                    <div class="product__submit__buttons">                                    
+                                        <button type="submit" name="add" class="btn btn--submit product__submit__add">
+                                            <span>Add to Cart</span>
+                                            <!-- <div class="loader loader--line"><div class="loader-indeterminate"></div></div> -->
+                                        </button>                                
+                                    </div> 
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {% endform %}
                 </div>
+                <!-- Product loop     -->
             </div>
-            <!-- Product loop     -->
         </div>
     </div>
-</div>
+{% endunless %}
