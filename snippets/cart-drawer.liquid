@@ -127,8 +127,8 @@
           {%- render 'icon-close-small' -%}
         </button>
       </div>
-      
       <div class="cart-free-item"
+        data-api-free-items
         {% if animations_enabled %}
         data-aos="fade-up"
         data-aos-delay="{{ animation_delay }}"
@@ -137,22 +137,21 @@
         {% assign cartTotal = 0 %}
         {% assign promotionalLineProductId = blank %}
         {% for line in cart.items %}
-            {% assign promotionalAvailable = false %}
-            {% for p in line.properties %}
-                {% if p.first == 'Product Type' and p.last == 'Promotional' %}
-                  {% assign promotionalAvailable = true %}
-                  {% assign promotionalLineProductId = line.product.id %}
-                {% endif %}
-            {% endfor %}
-            {% unless promotionalAvailable %}
-              {% assign cartTotal = cartTotal | plus : line.original_price %}
-            {% endunless %}
+          {% assign promotionalAvailable = false %}
+          {% for p in line.properties %}
+            {% if p.first == 'Product Type' and p.last == 'Promotional' %}
+              {% assign promotionalAvailable = true %}
+              {% assign promotionalLineProductId = line.product.id %}
+            {% endif %}
+          {% endfor %}
+          {% unless promotionalAvailable %}
+            {% assign cartTotal = cartTotal | plus : line.original_line_price %}
+          {% endunless %}
         {% endfor %}
         {% if cartTotal > 2500 %}
           {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal -%}
         {% endif %}
       </div>
-
       <div class="cart-drawer__items{% if cart_items_size == 0 %} hidden{% endif %}"
         data-items-holder
         {% if animations_enabled %}
