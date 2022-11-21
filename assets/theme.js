@@ -1887,8 +1887,8 @@ PaloAlto.CartDrawer = (function() {
       return fetch(theme.routes.root + 'cart.js')
       .then(this.handleErrors)
       .then(response => response.json())
-      .then(response => {
-        const promotionalProducts = response.items.filter(item => item.properties["Product Type"] == "Promotional")
+      .then(response => {        
+        const promotionalProducts = response.items.filter(item => item.properties && item.properties["Product Type"] == "Promotional")
         if (promotionalProducts.length == 0) {
           this.addToCart(formData, button);
           // Hook for cart/add.js event
@@ -1926,7 +1926,7 @@ PaloAlto.CartDrawer = (function() {
       if (data.items.length == 0) {
         return
       }
-      const paidProducts = data.items.filter(item => item.properties && item.properties["Product Type"] != "Promotional")
+      const paidProducts = data.items.filter(item => !item.properties || item.properties["Product Type"] != "Promotional")
       const promotionalProducts = data.items.filter(item => item.properties && item.properties["Product Type"] == "Promotional")
 
       if (paidProducts.length === 0) {

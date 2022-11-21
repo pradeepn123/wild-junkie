@@ -149,7 +149,7 @@
           {% endunless %}
         {% endfor %}
         {% if cartTotal > 2500 %}
-          {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal -%}
+          {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal, promotionalAvailable: promotionalAvailable -%}
         {% endif %}
       </div>
       <div class="cart-drawer__items{% if cart_items_size == 0 %} hidden{% endif %}"
