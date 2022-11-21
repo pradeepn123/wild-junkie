@@ -703,7 +703,7 @@
     stroke: #FE6D6D !important;
 }
 
-/* cart free item css here */
+/* cart drawer free item css here */
 
 .cart-free-item-main-section{
     padding: 10px var(--inner);
@@ -725,7 +725,7 @@
 }
 .cart-free-item-list .cart__item .cart__item__content .item_info_wrapper a{
     color: #FFFFFF;
-    font-size: 16px;
+    font-size: calc(0.815rem * var(--adjust-body));
 }
 .cart-free-item-list .cart__item .cart__item__content .item_info_wrapper .cart__item__selected-options{
     color: #FFFFFF;
@@ -742,17 +742,55 @@
     text-align: center;
     border: 0;
     font-size: 14px;
+    margin-right: 10px;
 }
 .cart-free-item-list .cart__item .cart__item__content .item_info_wrapper .cart__item__meta{
     display: flex;
     align-items: center;
     margin: 2px 0 0 0;
 }
-.cart-free-item-list .cart__item .cart__item__content .item_info_wrapper .cart__item__meta .cart_item__button{
-    
-}
 .cart-free-item-list .cart__item .cart__item__content .item_info_wrapper .cart__item__meta .cart_item__button .product__submit__add{
     padding: 5px 8px;
-    margin-left: 10px;
     min-width: inherit;
+    font-size: 14px;
+}
+
+/* cart page free item css here */
+.cart .cart-free-item-main-section{
+    padding: 15px 0;
+}
+.cart .cart-free-item-list .cart__item{
+    display: grid;
+    grid-template-columns: 0.5fr 2fr;
+}
+.cart .cart-free-item-list .cart__item .item_info_wrapper .cart__item__meta{
+    display: flex;
+    align-items: center;
+    margin: 2px 0 0 0;
+}
+.cart .cart-free-item-list .cart__item .cart__item__info{
+    max-width: inherit;
+}
+
+.cart .cart-free-item-list .cart__item .item_info_wrapper a{
+    color: #FFFFFF;
+    font-size: calc(1rem * var(--adjust-body));
+}
+.cart .cart-free-item-list .cart__item .item_info_wrapper .cart__item__selected-options{
+    color: #FFFFFF;
+    font-size: 14px;
+    margin: 6px 0 0 0;
+}
+.cart .cart-free-item-list .cart__item .cart__item__meta .product_form_select {
+    max-width: inherit;
+    padding: 6px 16px;
+    text-align: center;
+    border: 0;
+    margin-right: 10px;
+    font-size: 14px;
+}
+.cart .cart-free-item-list .cart__item .item_info_wrapper .cart__item__meta .cart_item__button .product__submit__add{
+    padding: 6px 16px;
+    min-width: inherit;
+    font-size: 14px;
 }

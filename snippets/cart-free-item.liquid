@@ -25,11 +25,12 @@
                                 <a href="{{promotionalProduct.url}}">1x {{promotionalProduct.title}}</a>
                             </p>
                             <p class="cart__item__selected-options">
-                                <span>{{ promotionalProduct.options_with_values | map: 'name' | uniq | join: ', ' }}:</span>
+                                <span class="{% if promotionalProduct.variants.size == 1 %} hidden{% endif %}">{{ promotionalProduct.options_with_values | map: 'name' | uniq | join: ', ' }}:</span>
                             </p>
-                            <div class="cart__item__meta">      
+
+                            <div class="cart__item__meta">
                                 <div class="cart_item__size">
-                                    <select name="id" class="product_form_select" aria-label="{{ promotionalProduct.options_with_values | map: 'name' | uniq | join: ', ' }}">
+                                    <select name="id" class="product_form_select {% if promotionalProduct.variants.size == 1 %} hidden{% endif %}" aria-label="{{ promotionalProduct.options_with_values | map: 'name' | uniq | join: ', ' }}">
                                         {%- for variant in promotionalProduct.variants -%}
                                             <option
                                             {% if variant == current_variant %}selected="selected"{% endif %}
@@ -41,11 +42,11 @@
                                       </select>
                                 </div>
                                 <div class="cart_item__button">
-                                    <div class="product__submit__buttons">                                    
+                                    <div class="product__submit__buttons">
                                         <button type="submit" name="add" class="btn btn--submit product__submit__add" data-add-to-cart="">
                                             <span>Add to Cart</span>
                                             <!-- <div class="loader loader--line"><div class="loader-indeterminate"></div></div> -->
-                                        </button>                                
+                                        </button>
                                     </div> 
                                 </div>
                             </div>
