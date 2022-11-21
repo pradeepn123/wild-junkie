@@ -14,6 +14,7 @@
   assign enable_gift_notes = settings.enable_gift_notes
   assign enable_accept_terms = settings.enable_accept_terms
   assign cart_custom_message_text = settings.cart_custom_message_text
+  assign free_promotional_product = section.settings.product_promotional
 
   capture cart_items
     render 'cart-line-items', part: 'line-items'
@@ -108,31 +109,33 @@
           <div class="cart__items__wrapper" data-items-wrapper>
             <div class="loader loader--line"><div class="loader-indeterminate"></div></div>
             
-            <div class="cart-free-item"
-              data-api-free-items
-              {% if animations_enabled %}
-              data-aos="fade-up"
-              data-aos-delay="{{ animation_delay }}"
-                {%- assign animation_delay = animation_delay | plus: 50 -%}
-              {% endif %}>
-              {% assign cartTotal = 0 %}
-              {% assign promotionalLineProductId = blank %}
-              {% for line in cart.items %}
-                {% assign promotionalAvailable = false %}
-                {% for p in line.properties %}
-                  {% if p.first == 'Product Type' and p.last == 'Promotional' %}
-                    {% assign promotionalAvailable = true %}
-                    {% assign promotionalLineProductId = line.product.id %}
-                  {% endif %}
+            {% if free_promotional_product == true %}
+              <div class="cart-free-item"
+                data-api-free-items
+                {% if animations_enabled %}
+                data-aos="fade-up"
+                data-aos-delay="{{ animation_delay }}"
+                  {%- assign animation_delay = animation_delay | plus: 50 -%}
+                {% endif %}>
+                {% assign cartTotal = 0 %}
+                {% assign promotionalLineProductId = blank %}
+                {% for line in cart.items %}
+                  {% assign promotionalAvailable = false %}
+                  {% for p in line.properties %}
+                    {% if p.first == 'Product Type' and p.last == 'Promotional' %}
+                      {% assign promotionalAvailable = true %}
+                      {% assign promotionalLineProductId = line.product.id %}
+                    {% endif %}
+                  {% endfor %}
+                  {% unless promotionalAvailable %}
+                    {% assign cartTotal = cartTotal | plus : line.original_line_price %}
+                  {% endunless %}
                 {% endfor %}
-                {% unless promotionalAvailable %}
-                  {% assign cartTotal = cartTotal | plus : line.original_line_price %}
-                {% endunless %}
-              {% endfor %}
-              {% if cartTotal > 2500 %}
-                {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal, promotionalAvailable: promotionalAvailable -%}
-              {% endif %}
-            </div>
+                {% if cartTotal > 2500 %}
+                  {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal, promotionalAvailable: promotionalAvailable -%}
+                {% endif %}
+              </div>
+            {% endif %}
             
             <div class="cart__items" data-items-holder>
               {{ cart_items }}
@@ -379,6 +382,16 @@
 {
   "name": "Cart",
   "settings": [
+    {
+      "type": "header",
+      "content": "Free Product Promotional"
+    },
+    {
+      "type": "checkbox",
+      "id": "product_promotional",
+      "label": "Show Promotional Product",
+      "default": false
+    },
     {
       "type": "header",
       "content": "Section spacing"
