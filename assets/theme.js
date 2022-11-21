@@ -1910,10 +1910,10 @@ PaloAlto.CartDrawer = (function() {
           method: 'post',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify(data),
-        });
+        })
+        .then(this.handleErrors)
+        .then(() => this.cartAddPromotionalProduct(formData, button))
       })
-      .then(this.handleErrors)
-      .then(() => this.cartAddPromotionalProduct(formData, button))
     },
 
 
@@ -1977,6 +1977,8 @@ PaloAlto.CartDrawer = (function() {
           this.newTotalItems = response.items.length;
 
           this.buildTotalPrice(response);
+
+          // ShopTrade to enabled Promotion need to be removed on Black Friday is over
           this.promotionalHandler(response)
 
           if (this.cartMessage.length > 0) {
@@ -2504,7 +2506,6 @@ PaloAlto.CartDrawer = (function() {
       if (this.cartDrawer) {
         this.openCartDrawer();
       }
-
       document.dispatchEvent(new CustomEvent('theme:cart:updateSuccess', {bubbles: true}));
     },
 
@@ -2529,18 +2530,26 @@ PaloAlto.CartDrawer = (function() {
     buildTotalPrice(data) {
       const cartDiscountsHolder = document.querySelector(selectors.cartDiscountsHolder);
 
-      if (data.original_total_price > data.total_price && data.cart_level_discount_applications.length > 0) {
+      const promotionalProducts = data.items.filter(item => item.properties && item.properties["Product Type"] == "Promotional")
+      const promotionalProductsCartTotal = promotionalProducts.reduce(function(acc, lineItem){
+        return acc + lineItem.original_line_price
+      }, 0)
+
+      const original_total_price = data.original_total_price - promotionalProductsCartTotal
+      const total_price = data.total_price - promotionalProductsCartTotal
+
+      if (original_total_price > total_price && data.cart_level_discount_applications.length > 0) {
         this.cartOriginalTotal.classList.remove(classes.hidden);
-        if (data.original_total_price === 0) {
+        if (original_total_price === 0) {
           this.cartOriginalTotalPrice.innerHTML = window.theme.strings.free;
         } else {
-          this.cartOriginalTotalPrice.innerHTML = slate.Currency.formatMoney(data.original_total_price, theme.moneyWithCurrencyFormat);
+          this.cartOriginalTotalPrice.innerHTML = slate.Currency.formatMoney(original_total_price, theme.moneyWithCurrencyFormat);
         }
       } else {
         this.cartOriginalTotal.classList.add(classes.hidden);
       }
 
-      this.cartTotal.innerHTML = data.total_price === 0 ? window.theme.strings.free : slate.Currency.formatMoney(data.total_price, theme.moneyWithCurrencyFormat);
+      this.cartTotal.innerHTML = total_price === 0 ? window.theme.strings.free : slate.Currency.formatMoney(total_price, theme.moneyWithCurrencyFormat);
 
       if (data.cart_level_discount_applications.length > 0) {
         const discountsMarkup = this.buildCartTotalDiscounts(data.cart_level_discount_applications);

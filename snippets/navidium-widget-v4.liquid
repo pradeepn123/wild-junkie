@@ -691,8 +691,15 @@
     let cart = cartData;
     if (cart == null) cart = await getCartCallback();
 
+    // ShopTrade to enable Promotion need to be removed on Black Friday is over
+    const promotionalProducts = cart.items.filter(item => item.properties && item.properties["Product Type"] == "Promotional")
+    const promotionalProductsCartTotal = promotionalProducts.reduce(function(acc, lineItem){
+      return acc + lineItem.original_line_price
+    }, 0)
+    const total_price = cart.total_price - promotionalProductsCartTotal
+
     let shopCurrency = '{{ shop.money_with_currency_format }}';
-    let totalPrice = Shopify.formatMoney(cart.total_price, shopCurrency);
+    let totalPrice = Shopify.formatMoney(total_price, shopCurrency);
     let cartItems = cart.items;
     let totalCount = cart.item_count;
     let opted_out = Boolean(JSON.parse(localStorage.getItem('nvd_opted_out')));
