@@ -1940,7 +1940,7 @@ PaloAlto.CartDrawer = (function() {
 
       let freeProductRemove;
 
-      if (cartTotal < 2500) {
+      if (cartTotal < 0000) {
         freeProductRemove = promotionalProducts.find(item => item.properties["Product Type"] == "Promotional")
       } else if (cartTotal < 5000) {
         freeProductRemove = promotionalProducts.find(item => item.product_id == 7063529291839)

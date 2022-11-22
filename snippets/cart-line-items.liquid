@@ -88,7 +88,7 @@
                 {%- for p in line_item.properties -%}
                   {%- assign property_first_char = p.first | slice: 0 -%}
                   {%- if p.last != blank and property_first_char != '_' -%}
-                    <p class="cart__item__property">                     
+                    <p class="cart__item__property">
                       <span>{{ p.first }}: </span>
                       <span>
                         {%- if p.last contains '/uploads/' -%}
@@ -104,8 +104,8 @@
             </div>
           </div>
           
-          {% if promotionalLine == true %}        
-            <p class="cart__item__price">Free</p>
+          {% if promotionalLine == true %}
+            <p class="cart__item_price cart_item_free_text">Free</p>
           {% else%}
             <p class="cart__item__price">
               {%- assign discounted = false -%}
@@ -168,9 +168,12 @@
           {% endif %}
         </div>
 
-        <div class="cart__item__bottom">
-          <div class="cart__item__quantity" data-quantity-holder>
-            <button type="button" class="cart__item__quantity-minus {% if promotionalLine == true %}hidden{% endif %}" data-quantity-minus data-quantity-button title="
+        <div class="cart__item__bottom {% if promotionalLine == true %}mt-0{% endif %}">
+          {% if promotionalLine == true %}
+            <p class="cart_item_free_text">FREE</p>
+          {% endif %}
+          <div class="cart__item__quantity {% if promotionalLine == true %}hidden{% endif %}" data-quantity-holder>
+            <button type="button" class="cart__item__quantity-minus" data-quantity-minus data-quantity-button title="
               {{- 'general.accessibility.decrease' | t }} - {{ line_item.product.title | strip_html -}}">
               <span class="visually-hidden">{{ 'general.accessibility.decrease' | t }}</span>
               {%- render 'icon-toggle-minus' -%}
@@ -186,12 +189,12 @@
             data-id="{{- line_item.key -}}" value="{{- quantity -}}" {% if promotionalLine == true %}disabled{% endif %}
             title="{{- 'cart.label.quantity' | t }} - {{ line_item.product.title | strip_html -}}" pattern="[0-9]*">
 
-            <button type="button" class="cart__item__quantity-plus {% if promotionalLine == true %}hidden{% endif %}" data-quantity-plus data-quantity-button title="
+            <button type="button" class="cart__item__quantity-plus" data-quantity-plus data-quantity-button title="
               {{- 'general.accessibility.increase' | t }} - {{ line_item.product.title | strip_html -}}">
               <span class="visually-hidden">{{ 'general.accessibility.increase' | t }}</span>
               {%- render 'icon-toggle-plus' -%}
             </button>
-          </div>
+          </div>          
 
           <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="cart__item__remove" data-item-remove data-id="{{ line_item.key }}" title="{{ 'cart.general.remove' | t }}">
             <span>{{ 'cart.general.remove' | t }}</span>

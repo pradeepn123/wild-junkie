@@ -743,6 +743,13 @@
     border: 0;
     font-size: 14px;
     margin-right: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #fff url('https://img.icons8.com/material-outlined/24/null/expand-arrow--v1.png') no-repeat;
+    background-position: calc(100% - 0.65rem) center !important;
+    padding-right: 1.4rem !important;
+    background-size: 14px;
 }
 .cart-free-item-list .cart__item .cart__item__content .item_info_wrapper .cart__item__meta{
     display: flex;
@@ -760,7 +767,21 @@
 .cart-drawer .cart-drawer__items .cart__item__content .cart__item__bottom .cart__item__quantity-plus.hidden{
     visibility: hidden;
 }
-
+.cart-drawer .cart_item_free_text{
+    margin: 0;
+    border: 1px solid #F03E55;
+    padding: 4px 28px;
+    border-radius: 4rem;
+    font-size: 12px;
+    color: #F03E55;
+    font-weight: 600;
+}
+.cart-drawer .free__product{
+    display: none;
+}
+.cart-drawer .cart__item_price.cart_item_free_text{
+    display: none;
+}
 /* cart page free item css here */
 .cart .cart-free-item-main-section{
     padding: 15px 0;
@@ -802,6 +823,13 @@
     border: 0;
     margin-right: 10px;
     font-size: 14px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #fff url('https://img.icons8.com/material-outlined/24/null/expand-arrow--v1.png') no-repeat;
+    background-position: calc(100% - 0.65rem) center !important;
+    padding-right: 2rem !important;
+    background-size: 16px;
 }
 .cart .cart-free-item-list .cart__item .item_info_wrapper .cart__item__meta .cart_item__button .product__submit__add{
     padding: 6px 16px;
@@ -815,6 +843,29 @@
     visibility: hidden;
 }
 
+.cart .cart__item_price.cart_item_free_text{
+    margin: 0 auto;
+    border: 1px solid #F03E55;
+    padding: 4px 28px;
+    border-radius: 4rem;
+    font-size: 12px;
+    color: #F03E55;
+    font-weight: 600;
+    display: block;
+    text-transform: uppercase;
+}
+.cart .cart__item__bottom.mt-0{
+    margin-top: 0;
+}
+.cart .cart_item_free_text{
+    display: none;
+}
+.cart .item_info_wrapper.cart__item__info .free__product{
+    display: block;
+    color: #F03E55;
+    font-size: 14px;
+    margin-top: 4px;
+}
 
 @media(max-width: 767px){
     .cart .cart-free-item-list .cart__item .item_info_wrapper .cart__item__meta .cart_item__button .product__submit__add{
