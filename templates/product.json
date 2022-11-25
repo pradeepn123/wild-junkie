@@ -40,7 +40,7 @@
           "type": "text",
           "settings": {
             "text": "<p><strong>BLACK FIRDAY SALE IS LIVE NOW!<\/strong><\/p>",
-            "icon_name": "smile",
+            "icon_name": "dollar-sign",
             "icon_color": "#ff6d6d",
             "icon_width": 20,
             "target_device_enabled": false,
