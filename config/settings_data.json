@@ -175,7 +175,7 @@
           "announcement-0": {
             "type": "text",
             "settings": {
-              "text": "<p>Spend $50 and get Free Faux Navajo Pearl Choker <a href=\"\/collections\" title=\"All collections\">Shop Now<\/a><\/p>",
+              "text": "<p>Spend $50 and get Free Faux Navajo Pearl Choker <a href=\"\/collections\" title=\"All collections\">SHOP NOW<\/a><\/p>",
               "icon_name": "smile",
               "icon_color": "",
               "icon_width": 15,
@@ -190,7 +190,7 @@
           "announcement-1": {
             "type": "text",
             "settings": {
-              "text": "<p>Spend $50 - $100 and get Free Mystery Graphic Tee - <a href=\"\/collections\" title=\"All collections\">Shop Now<\/a><\/p>",
+              "text": "<p>Spend $50 - $100 and get Free Mystery Graphic Tee - <a href=\"\/collections\" title=\"All collections\">SHOP NOW<\/a><\/p>",
               "icon_name": "smile",
               "icon_color": "",
               "icon_width": 15,
@@ -205,7 +205,7 @@
           "announcement-2": {
             "type": "text",
             "settings": {
-              "text": "<p>Spend $100+ and get Free Beanie <a href=\"\/collections\" title=\"All collections\">Shop Now<\/a><\/p>",
+              "text": "<p>Spend $100+ and get Free Beanie <a href=\"\/collections\" title=\"All collections\">SHOP NOW<\/a><\/p>",
               "icon_name": "smile",
               "icon_color": "",
               "icon_width": 15,
