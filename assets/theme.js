@@ -1942,9 +1942,11 @@ PaloAlto.CartDrawer = (function() {
         return acc + lineItem.original_line_price
       }, 0)
 
-      let freeProductRemove = promotionalProducts.find(item => [7063529291839, 6918441402431, 6968795004991].includes(item.product_id))
+      let freeProductRemove
 
-      if (cartTotal < 5000) {
+      if (cartTotal == 0) {
+        freeProductRemove = promotionalProducts.find(item => [7063529291839, 6918441402431, 6968795004991].includes(item.product_id))
+      } else if (cartTotal < 5000) {
         freeProductRemove = promotionalProducts.find(item => [7063529291839, 6918441402431].includes(item.product_id))
       } else if (cartTotal < 10000) {
         freeProductRemove = promotionalProducts.find(item => item.product_id == 7063529291839)
