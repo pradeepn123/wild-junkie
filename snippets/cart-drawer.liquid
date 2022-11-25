@@ -10,6 +10,7 @@
   assign show_continue_shopping = settings.show_continue_shopping
   assign show_empty_cart_buttons = settings.show_empty_cart_buttons
   assign empty_cart_buttons = settings.empty_cart_buttons | default: 'main-menu'
+  assign free_promotional_product = section.settings.product_promotional
 
   if settings.continue_shopping_link != blank
     assign continue_shopping_link = settings.continue_shopping_link
@@ -47,76 +48,76 @@
     <div class="cart-drawer__body" data-cart-drawer-body>
 
       {%- liquid
-  assign free_shipping_text = block.settings.message | default: settings.message
-  assign is_enable = false
+        assign free_shipping_text = block.settings.message | default: settings.message
+        assign is_enable = false
 
-  if block.settings.message != blank
-    assign is_enable = true
-  endif
+        if block.settings.message != blank
+          assign is_enable = true
+        endif
 
-  if settings.show_free_shipping_message and settings.free_shipping_limit != blank and free_shipping_text != blank
-    assign is_enable = true
-  endif
--%}
+        if settings.show_free_shipping_message and settings.free_shipping_limit != blank and free_shipping_text != blank
+          assign is_enable = true
+        endif
+      -%}
 
-{%- if is_enable -%}
-  {%- liquid
-    assign limit = settings.free_shipping_limit | plus: 0
-    assign limit_currency = limit | times: 100
-    assign cart_total_price = cart.total_price
-    assign subtotal_without_currency = cart_total_price | plus: 0 | divided_by: 100
-  -%}
+      {%- if is_enable -%}
+        {%- liquid
+          assign limit = settings.free_shipping_limit | plus: 0
+          assign limit_currency = limit | times: 100
+          assign cart_total_price = cart.total_price
+          assign subtotal_without_currency = cart_total_price | plus: 0 | divided_by: 100
+        -%}
 
-  {%- capture left_to_spend -%}
-    <span data-left-to-spend>
-      {%- if settings.currency_code_enable -%}
-        {{- limit_currency | minus: cart_total_price | money_with_currency | remove: '.00' | remove: ',00' -}}
-      {%- else -%}
-        {{- limit_currency | minus: cart_total_price | money_without_trailing_zeros -}}
+        {%- capture left_to_spend -%}
+          <span data-left-to-spend>
+            {%- if settings.currency_code_enable -%}
+              {{- limit_currency | minus: cart_total_price | money_with_currency | remove: '.00' | remove: ',00' -}}
+            {%- else -%}
+              {{- limit_currency | minus: cart_total_price | money_without_trailing_zeros -}}
+            {%- endif -%}
+          </span>
+        {%- endcapture -%}
+
+        {%- liquid
+          assign free_shipping_message = free_shipping_text | replace: '||amount||', left_to_spend
+          assign qualified_shipping_message = 'cart.general.qualified_shipping_message' | t
+          assign class_message = ''
+
+          if subtotal_without_currency >= limit
+            if qualified_shipping_message != blank
+              assign class_message = ' is-success'
+              assign is_default_message_hidden = ' is-hidden'
+            else
+              assign class_message = ' is-hidden'
+            endif
+          elsif subtotal_without_currency == 0
+            assign class_message = ' is-hidden'
+          endif
+
+          assign percent = limit | minus: subtotal_without_currency | times: 100 | divided_by: limit
+          assign percent = 100 | minus: percent
+        -%}
+
+        <p class="{% unless template.name == 'cart' or section.id == 'announcement-bar' %}cart-drawer__message {% endunless %}cart__message{{ class_message }}"
+          data-cart-message="{% if qualified_shipping_message != blank %}true{% else %}false{% endif %}"
+          data-limit="{{ limit }}"
+          data-cart-total-price="{{ cart_total_price }}"
+          {% if animations_enabled %}
+            data-aos="fade-up"
+            data-aos-delay="{{ animation_delay }}"
+            {%- assign animation_delay = animation_delay | plus: 100 -%}
+          {% endif %}>
+          <span class="cart__message__default{{ is_default_message_hidden }}" data-message-default>{{ free_shipping_message }}</span>
+
+          {%- if qualified_shipping_message != blank -%}
+            <span class="cart__message__success">{{ qualified_shipping_message }}</span>
+          {%- endif -%}
+
+          {%- unless is_top -%}
+            <progress class="cart__message__progress" data-cart-message-progress value="{{ percent }}" max="100"></progress>
+          {%- endunless -%}
+        </p>
       {%- endif -%}
-    </span>
-  {%- endcapture -%}
-
-  {%- liquid
-    assign free_shipping_message = free_shipping_text | replace: '||amount||', left_to_spend
-    assign qualified_shipping_message = 'cart.general.qualified_shipping_message' | t
-    assign class_message = ''
-
-    if subtotal_without_currency >= limit
-      if qualified_shipping_message != blank
-        assign class_message = ' is-success'
-        assign is_default_message_hidden = ' is-hidden'
-      else
-        assign class_message = ' is-hidden'
-      endif
-    elsif subtotal_without_currency == 0
-      assign class_message = ' is-hidden'
-    endif
-
-    assign percent = limit | minus: subtotal_without_currency | times: 100 | divided_by: limit
-    assign percent = 100 | minus: percent
-  -%}
-
-  <p class="{% unless template.name == 'cart' or section.id == 'announcement-bar' %}cart-drawer__message {% endunless %}cart__message{{ class_message }}"
-    data-cart-message="{% if qualified_shipping_message != blank %}true{% else %}false{% endif %}"
-    data-limit="{{ limit }}"
-    data-cart-total-price="{{ cart_total_price }}"
-    {% if animations_enabled %}
-      data-aos="fade-up"
-      data-aos-delay="{{ animation_delay }}"
-      {%- assign animation_delay = animation_delay | plus: 100 -%}
-    {% endif %}>
-    <span class="cart__message__default{{ is_default_message_hidden }}" data-message-default>{{ free_shipping_message }}</span>
-
-    {%- if qualified_shipping_message != blank -%}
-      <span class="cart__message__success">{{ qualified_shipping_message }}</span>
-    {%- endif -%}
-
-    {%- unless is_top -%}
-      <progress class="cart__message__progress" data-cart-message-progress value="{{ percent }}" max="100"></progress>
-    {%- endunless -%}
-  </p>
-{%- endif -%}
 
       <div class="cart__errors cart-drawer__errors" data-cart-errors>
         <p class="cart__errors__heading">{{- 'cart.general.limit_error' | t -}}</p>
@@ -127,6 +128,31 @@
           {%- render 'icon-close-small' -%}
         </button>
       </div>
+
+        <div class="cart-free-item"
+          data-api-free-items
+          {% if animations_enabled %}
+          data-aos="fade-up"
+          data-aos-delay="{{ animation_delay }}"
+            {%- assign animation_delay = animation_delay | plus: 50 -%}
+          {% endif %}>
+          {% assign cartTotal = 0 %}
+          {% assign promotionalLineProductId = blank %}
+          {% for line in cart.items %}
+            {% assign promotionalAvailable = false %}
+            {% for p in line.properties %}
+              {% if p.first == 'Product Type' and p.last == 'Promotional' %}
+                {% assign promotionalAvailable = true %}
+                {% assign promotionalLineProductId = line.product.id %}
+              {% endif %}
+            {% endfor %}
+            {% unless promotionalAvailable %}
+              {% assign cartTotal = cartTotal | plus : line.original_line_price %}
+            {% endunless %}
+          {% endfor %}
+          {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal, promotionalAvailable: promotionalAvailable -%}
+        </div>
+
 
       <div class="cart-drawer__items{% if cart_items_size == 0 %} hidden{% endif %}"
         data-items-holder
