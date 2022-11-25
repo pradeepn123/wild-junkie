@@ -64,7 +64,6 @@
         "settings": {
           "sticky_header": true,
           "header_border": false,
-          "product_promotional": true,
           "logo_not_home": "shopify:\/\/shop_images\/image_4bcd965e-c149-48dc-8d09-4afd61575c3d.png",
           "logo_max_width": 90,
           "main-menu": "main-menu-new",
@@ -175,42 +174,39 @@
         "blocks": {
           "announcement-0": {
             "type": "text",
-            "disabled": true,
             "settings": {
-              "text": "<p>New customers save 10% with code WELCOME10<\/p>",
-              "icon_name": "none",
+              "text": "<p>Spend $50 and get Free Faux Navajo Pearl Choker <a href=\"\/collections\" title=\"All collections\">Shop Now<\/a><\/p>",
+              "icon_name": "smile",
               "icon_color": "",
               "icon_width": 15,
               "target_url_enabled": false,
               "target_url": "",
               "target_referrer_enabled": false,
               "target_referrer": "",
-              "target_device_enabled": false,
-              "target_device": "mobile"
+              "target_device_enabled": true,
+              "target_device": "desktop"
             }
           },
           "announcement-1": {
             "type": "text",
-            "disabled": true,
             "settings": {
-              "text": "<p>New collections just released - <a href=\"\/collections\" title=\"All collections\">Shop now<\/a><\/p>",
-              "icon_name": "none",
+              "text": "<p>Spend $50 - $10 and get Free Mystery Graphic Tee - <a href=\"\/collections\" title=\"All collections\">Shop Now<\/a><\/p>",
+              "icon_name": "smile",
               "icon_color": "",
               "icon_width": 15,
               "target_url_enabled": false,
               "target_url": "",
               "target_referrer_enabled": false,
               "target_referrer": "",
-              "target_device_enabled": false,
+              "target_device_enabled": true,
               "target_device": "mobile"
             }
           },
           "announcement-2": {
             "type": "text",
-            "disabled": true,
             "settings": {
-              "text": "<p>Use code <strong>TENOFF<\/strong> for 10% off first purchase<\/p>",
-              "icon_name": "none",
+              "text": "<p>Spend $100+ and get Free Beanie <a href=\"\/collections\" title=\"All collections\">Shop Now<\/a><\/p>",
+              "icon_name": "smile",
               "icon_color": "",
               "icon_width": 15,
               "target_url_enabled": false,
@@ -228,13 +224,13 @@
           "announcement-2"
         ],
         "settings": {
-          "bg_color": "#f7f7f7",
-          "color": "#545454",
+          "bg_color": "#006838",
+          "color": "#ffffff",
           "layout": "slider",
           "padding": 10,
           "slider_speed": 7,
           "marquee_speed": 100,
-          "text_size": 100,
+          "text_size": 150,
           "message_spacing": 25
         }
       }
