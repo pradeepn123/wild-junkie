@@ -175,7 +175,7 @@
           "announcement-0": {
             "type": "text",
             "settings": {
-              "text": "<p><strong>🔥 Spend $50 and get Free Faux Navajo Pearl Choker<\/strong> <a href=\"\/collections\" title=\"All collections\"><strong>SHOP NOW<\/strong><\/a><\/p>",
+              "text": "<p><strong>🔥 Spend $50 and get Free Faux Navajo Pearl Choker<\/strong> <a href=\"https:\/\/wildjunkieboutique.com\/collections\/all\" title=\"https:\/\/wildjunkieboutique.com\/collections\/all\"><strong>SHOP NOW<\/strong><\/a><\/p>",
               "icon_name": "none",
               "icon_color": "",
               "icon_width": 15,
@@ -190,7 +190,7 @@
           "announcement-1": {
             "type": "text",
             "settings": {
-              "text": "<p><strong>🔥 Spend $50 - $100 and get Free Mystery Graphic Tee<\/strong> <a href=\"\/collections\" title=\"All collections\"><strong>SHOP NOW<\/strong><\/a><\/p>",
+              "text": "<p><strong>🔥 Spend $50 - $100 and get Free Mystery Graphic Tee<\/strong> <a href=\"https:\/\/wildjunkieboutique.com\/collections\/all\" title=\"https:\/\/wildjunkieboutique.com\/collections\/all\"><strong>SHOP NOW<\/strong><\/a><\/p>",
               "icon_name": "none",
               "icon_color": "",
               "icon_width": 15,
@@ -205,7 +205,7 @@
           "announcement-2": {
             "type": "text",
             "settings": {
-              "text": "<p><strong>🔥 Spend $100+ and get Free Beanie <\/strong><a href=\"\/collections\" title=\"All collections\"><strong>SHOP NOW<\/strong><\/a><\/p>",
+              "text": "<p><strong>🔥 Spend $100+ and get Free Beanie <\/strong><a href=\"https:\/\/wildjunkieboutique.com\/collections\/all\" title=\"https:\/\/wildjunkieboutique.com\/collections\/all\"><strong>SHOP NOW<\/strong><\/a><\/p>",
               "icon_name": "none",
               "icon_color": "",
               "icon_width": 15,
