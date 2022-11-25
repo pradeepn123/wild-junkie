@@ -1938,14 +1938,12 @@ PaloAlto.CartDrawer = (function() {
         return acc + lineItem.original_line_price
       }, 0)
 
-      let freeProductRemove;
+      let freeProductRemove = promotionalProducts.find(item => item.product_id == 6968795004991)
 
-      if (cartTotal < 0000) {
-        freeProductRemove = promotionalProducts.find(item => item.properties["Product Type"] == "Promotional")
-      } else if (cartTotal < 5000) {
-        freeProductRemove = promotionalProducts.find(item => item.product_id == 7063529291839)
-      } else if (cartTotal < 10000) {
+      if (cartTotal < 5000) {
         freeProductRemove = promotionalProducts.find(item => item.product_id == 6918441402431)
+      } else if (cartTotal < 10000) {
+        freeProductRemove = promotionalProducts.find(item => item.product_id == 7063529291839)
       }
 
       if (freeProductRemove) {
@@ -2536,7 +2534,7 @@ PaloAlto.CartDrawer = (function() {
       }, 0)
 
       const original_total_price = data.original_total_price - promotionalProductsCartTotal
-      const total_price = data.total_price - promotionalProductsCartTotal
+      const total_price = data.original_total_price - promotionalProductsCartTotal
 
       if (original_total_price > total_price && data.cart_level_discount_applications.length > 0) {
         this.cartOriginalTotal.classList.remove(classes.hidden);

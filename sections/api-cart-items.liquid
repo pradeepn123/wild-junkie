@@ -21,9 +21,7 @@
           {% assign cartTotal = cartTotal | plus : line.original_line_price %}
         {% endunless %}
       {% endfor %}
-      {% if cartTotal > 2500 %}
-        {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal -%}
-      {% endif %}
+      {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal -%}
     </div>
     <div data-api-line-items>
       {%- render 'cart-line-items', part: 'line-items' -%}

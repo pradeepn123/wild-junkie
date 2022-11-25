@@ -696,7 +696,7 @@
     const promotionalProductsCartTotal = promotionalProducts.reduce(function(acc, lineItem){
       return acc + lineItem.original_line_price
     }, 0)
-    const total_price = cart.total_price - promotionalProductsCartTotal
+    const total_price = cart.original_total_price - promotionalProductsCartTotal
 
     let shopCurrency = '{{ shop.money_with_currency_format }}';
     let totalPrice = Shopify.formatMoney(total_price, shopCurrency);

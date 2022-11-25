@@ -129,7 +129,6 @@
         </button>
       </div>
 
-      {% if free_promotional_product == true %}
         <div class="cart-free-item"
           data-api-free-items
           {% if animations_enabled %}
@@ -151,11 +150,9 @@
               {% assign cartTotal = cartTotal | plus : line.original_line_price %}
             {% endunless %}
           {% endfor %}
-          {% if cartTotal > 0000 %}
-            {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal, promotionalAvailable: promotionalAvailable -%}
-          {% endif %}
+          {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal, promotionalAvailable: promotionalAvailable -%}
         </div>
-      {% endif %}
+
 
       <div class="cart-drawer__items{% if cart_items_size == 0 %} hidden{% endif %}"
         data-items-holder
