@@ -176,7 +176,7 @@
             "type": "text",
             "settings": {
               "text": "<p>Spend $50 and get Free Faux Navajo Pearl Choker <a href=\"\/collections\" title=\"All collections\">SHOP NOW<\/a><\/p>",
-              "icon_name": "smile",
+              "icon_name": "zap",
               "icon_color": "",
               "icon_width": 15,
               "target_url_enabled": false,
@@ -191,7 +191,7 @@
             "type": "text",
             "settings": {
               "text": "<p>Spend $50 - $100 and get Free Mystery Graphic Tee - <a href=\"\/collections\" title=\"All collections\">SHOP NOW<\/a><\/p>",
-              "icon_name": "smile",
+              "icon_name": "zap",
               "icon_color": "",
               "icon_width": 15,
               "target_url_enabled": false,
@@ -206,7 +206,7 @@
             "type": "text",
             "settings": {
               "text": "<p>Spend $100+ and get Free Beanie <a href=\"\/collections\" title=\"All collections\">SHOP NOW<\/a><\/p>",
-              "icon_name": "smile",
+              "icon_name": "zap",
               "icon_color": "",
               "icon_width": 15,
               "target_url_enabled": false,
@@ -230,7 +230,7 @@
           "padding": 10,
           "slider_speed": 7,
           "marquee_speed": 100,
-          "text_size": 150,
+          "text_size": 130,
           "message_spacing": 25
         }
       }
