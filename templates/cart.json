@@ -3,6 +3,9 @@
     "main": {
       "type": "cart",
       "settings": {
+        "product_promotional": true,
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
