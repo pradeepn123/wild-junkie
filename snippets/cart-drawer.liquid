@@ -147,10 +147,15 @@
               {% endif %}
             {% endfor %}
             {% unless promotionalAvailable %}
-              {% assign cartTotal = cartTotal | plus : line.original_line_price %}
+              {% assign lineTitle = line.title | downcase %}
+              {% unless lineTitle contains "protection" %}
+                {% assign cartTotal = cartTotal | plus : line.original_line_price %}
+              {% endunless %}
             {% endunless %}
           {% endfor %}
-          {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal, promotionalAvailable: promotionalAvailable -%}
+          {% if cartTotal > 0 %}
+            {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal, promotionalAvailable: promotionalAvailable -%}
+          {% endif %}
         </div>
 
 
