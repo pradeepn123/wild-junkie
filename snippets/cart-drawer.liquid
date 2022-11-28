@@ -128,7 +128,7 @@
           {%- render 'icon-close-small' -%}
         </button>
       </div>
-
+      {% comment %}
         <div class="cart-free-item"
           data-api-free-items
           {% if animations_enabled %}
@@ -157,7 +157,7 @@
             {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal, promotionalAvailable: promotionalAvailable -%}
           {% endif %}
         </div>
-
+      {% endcomment %}
 
       <div class="cart-drawer__items{% if cart_items_size == 0 %} hidden{% endif %}"
         data-items-holder
