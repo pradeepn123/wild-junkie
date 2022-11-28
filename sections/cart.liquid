@@ -108,7 +108,7 @@
 
           <div class="cart__items__wrapper" data-items-wrapper>
             <div class="loader loader--line"><div class="loader-indeterminate"></div></div>
-            
+            {% comment %}
             {% if free_promotional_product == true %}
               <div class="cart-free-item"
                 data-api-free-items
@@ -136,7 +136,8 @@
                 {% endif %}
               </div>
             {% endif %}
-            
+            {% endcomment %}
+
             <div class="cart__items" data-items-holder>
               {{ cart_items }}
             </div>
