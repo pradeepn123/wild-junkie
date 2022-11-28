@@ -176,7 +176,7 @@
           "announcement-0": {
             "type": "text",
             "settings": {
-              "text": "<p>FREE Shipping on orders over $25 🔥 <\/p>",
+              "text": "<p>FREE Shipping on orders over $25 📦 <\/p>",
               "icon_name": "none",
               "icon_color": "",
               "icon_width": 15,
