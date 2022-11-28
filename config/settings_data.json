@@ -175,9 +175,8 @@
         "blocks": {
           "announcement-0": {
             "type": "text",
-            "disabled": true,
             "settings": {
-              "text": "<p><strong>🔥 Spend $50 and get Free Faux Navajo Pearl Choker<\/strong> <a href=\"https:\/\/wildjunkieboutique.com\/collections\/all\" title=\"https:\/\/wildjunkieboutique.com\/collections\/all\"><strong>SHOP NOW<\/strong><\/a><\/p>",
+              "text": "<p>FREE Shipping on orders over $25 🔥 <\/p>",
               "icon_name": "none",
               "icon_color": "",
               "icon_width": 15,
