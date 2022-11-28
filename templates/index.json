@@ -6,7 +6,7 @@
         "accordion-0": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Jeans-5.png",
+            "image": "shopify:\/\/shop_images\/valentine_s_day-2.png",
             "bg_position": "center-bottom",
             "overlay_opacity": 10,
             "text_width": "normal",
@@ -100,9 +100,9 @@
         "text-0": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>Free shipping on all US orders over $25<\/strong><\/p>",
-            "icon_name": "truck",
-            "icon_color": "",
+            "text": "<p><strong>CYBER MONDAY SALE IS LIVE NOW!<\/strong><\/p>",
+            "icon_name": "zap",
+            "icon_color": "#e73e52",
             "icon_width": 20,
             "target_device_enabled": false,
             "target_device": "mobile"
@@ -113,7 +113,7 @@
         "text-0"
       ],
       "settings": {
-        "bg_color": "#006838",
+        "bg_color": "#000000",
         "color": "#ffffff",
         "layout": "marquee",
         "padding": 20,

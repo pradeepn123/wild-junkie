@@ -1555,7 +1555,6 @@ PaloAlto.CartDrawer = (function() {
     additionalCheckoutButtons: '[data-additional-checkout-button]',
     apiContent: '[data-api-content]',
     apiLineItems: '[data-api-line-items]',
-    apiFreeItems: '[data-api-free-items]',
     apiUpsellItems: '[data-api-upsell-items]',
     buttonAddToCart: '[data-add-to-cart]',
     upsellButtonByHandle: '[data-handle]',
@@ -1716,8 +1715,6 @@ PaloAlto.CartDrawer = (function() {
       this.emptyMessage = document.querySelector(selectors.emptyMessage);
       this.buttonHolder = document.querySelector(selectors.buttonHolder);
       this.itemsHolder = document.querySelector(selectors.itemsHolder);
-      this.freeHolder = document.querySelector(selectors.apiFreeItems);
-
       this.cartItemsQty = document.querySelector(selectors.cartItemsQty);
       this.itemsWrapper = document.querySelector(selectors.itemsWrapper);
       this.items = document.querySelectorAll(selectors.item);
@@ -1864,11 +1861,7 @@ PaloAlto.CartDrawer = (function() {
             return;
           }
 
-          if (formData.includes("Product+Type%5D=Promotional")) {
-            return this.cartAddPromotionalProduct(formData, button, clickedElement)
-          } else {
-            this.addToCart(formData, button);
-          }
+          this.addToCart(formData, button);
 
           // Hook for cart/add.js event
           document.dispatchEvent(
@@ -1881,83 +1874,6 @@ PaloAlto.CartDrawer = (function() {
           );
         }
       });
-    },
-
-    cartAddPromotionalProduct(formData, button, clickedElement) {
-      return fetch(theme.routes.root + 'cart.js')
-      .then(this.handleErrors)
-      .then(response => response.json())
-      .then(response => {        
-        const promotionalProducts = response.items.filter(item => item.properties && item.properties["Product Type"] == "Promotional")
-        if (promotionalProducts.length == 0) {
-          this.addToCart(formData, button);
-          // Hook for cart/add.js event
-          document.dispatchEvent(
-            new CustomEvent('theme:cart:add', {
-              bubbles: true,
-              detail: {
-                selector: clickedElement,
-              },
-            }),
-          );
-          return
-        }
-        const data = {
-          id: promotionalProducts[0].key,
-          quantity: 0,
-        };
-        return fetch(theme.routes.root + 'cart/change.js', {
-          method: 'post',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(data),
-        })
-        .then(this.handleErrors)
-        .then(() => this.cartAddPromotionalProduct(formData, button))
-      })
-    },
-
-
-    /**
-     * handle promotional product addition/removal
-     *
-     * @return  {Void}
-     */
-    promotionalHandler(data) {
-      if (data.items.length == 0) {
-        return
-      }
-      const paidProducts = data.items.filter(item => {
-        if ((!item.properties || item.properties["Product Type"] != "Promotional") && !item.title.toLowerCase().includes("protection")) {
-          return item
-        }
-      })
-      const promotionalProducts = data.items.filter(item => item.properties && item.properties["Product Type"] == "Promotional")
-
-      if (paidProducts.length === 0) {
-        return fetch(theme.routes.root + 'cart/clear.js')
-        .then(this.handleErrors)
-        .then(this.getCart.bind(this))
-      }
-      const cartTotal = paidProducts.reduce(function(acc, lineItem){
-        return acc + lineItem.original_line_price
-      }, 0)
-
-      let freeProductRemove
-
-      if (cartTotal == 0) {
-        freeProductRemove = promotionalProducts.find(item => [7063529291839, 6918441402431, 6968795004991].includes(item.product_id))
-      } else if (cartTotal < 5000) {
-        freeProductRemove = promotionalProducts.find(item => [7063529291839, 6918441402431].includes(item.product_id))
-      } else if (cartTotal < 10000) {
-        freeProductRemove = promotionalProducts.find(item => item.product_id == 7063529291839)
-      }
-
-      if (freeProductRemove) {
-        return this.updateCart({
-          id: freeProductRemove.key,
-          quantity: 0,
-        });
-      }
     },
 
     /**
@@ -1981,9 +1897,6 @@ PaloAlto.CartDrawer = (function() {
           this.newTotalItems = response.items.length;
 
           this.buildTotalPrice(response);
-
-          // ShopTrade to enabled Promotion need to be removed on Black Friday is over
-          this.promotionalHandler(response)
 
           if (this.cartMessage.length > 0) {
             this.subtotal = response.total_price;
@@ -2483,7 +2396,6 @@ PaloAlto.CartDrawer = (function() {
     build(data) {
       const cartItemsData = data.querySelector(selectors.apiLineItems);
       const upsellItemsData = data.querySelector(selectors.apiUpsellItems);
-      const freeItemsData = data.querySelector(selectors.apiFreeItems);
       const cartEmptyData = Boolean(cartItemsData === null && upsellItemsData === null);
 
       if (this.totalItems !== this.newTotalItems) {
@@ -2495,11 +2407,9 @@ PaloAlto.CartDrawer = (function() {
       if (cartEmptyData) {
         this.itemsHolder.innerHTML = data;
         this.pairProductsHolder.innerHTML = '';
-        this.freeHolder.innerHTML = '';
       } else {
         this.itemsHolder.innerHTML = cartItemsData.innerHTML;
         this.pairProductsHolder.innerHTML = upsellItemsData.innerHTML;
-        this.freeHolder.innerHTML = freeItemsData.innerHTML;
 
         this.renderPairProducts();
       }
@@ -2510,7 +2420,6 @@ PaloAlto.CartDrawer = (function() {
       if (this.cartDrawer) {
         this.openCartDrawer();
       }
-      document.dispatchEvent(new CustomEvent('theme:cart:updateSuccess', {bubbles: true}));
     },
 
     /**
@@ -2534,26 +2443,18 @@ PaloAlto.CartDrawer = (function() {
     buildTotalPrice(data) {
       const cartDiscountsHolder = document.querySelector(selectors.cartDiscountsHolder);
 
-      const promotionalProducts = data.items.filter(item => item.properties && item.properties["Product Type"] == "Promotional")
-      const promotionalProductsCartTotal = promotionalProducts.reduce(function(acc, lineItem){
-        return acc + lineItem.original_line_price
-      }, 0)
-
-      const original_total_price = data.original_total_price - promotionalProductsCartTotal
-      const total_price = data.original_total_price - promotionalProductsCartTotal
-
-      if (original_total_price > total_price && data.cart_level_discount_applications.length > 0) {
+      if (data.original_total_price > data.total_price && data.cart_level_discount_applications.length > 0) {
         this.cartOriginalTotal.classList.remove(classes.hidden);
-        if (original_total_price === 0) {
+        if (data.original_total_price === 0) {
           this.cartOriginalTotalPrice.innerHTML = window.theme.strings.free;
         } else {
-          this.cartOriginalTotalPrice.innerHTML = slate.Currency.formatMoney(original_total_price, theme.moneyWithCurrencyFormat);
+          this.cartOriginalTotalPrice.innerHTML = slate.Currency.formatMoney(data.original_total_price, theme.moneyWithCurrencyFormat);
         }
       } else {
         this.cartOriginalTotal.classList.add(classes.hidden);
       }
 
-      this.cartTotal.innerHTML = total_price === 0 ? window.theme.strings.free : slate.Currency.formatMoney(total_price, theme.moneyWithCurrencyFormat);
+      this.cartTotal.innerHTML = data.total_price === 0 ? window.theme.strings.free : slate.Currency.formatMoney(data.total_price, theme.moneyWithCurrencyFormat);
 
       if (data.cart_level_discount_applications.length > 0) {
         const discountsMarkup = this.buildCartTotalDiscounts(data.cart_level_discount_applications);
