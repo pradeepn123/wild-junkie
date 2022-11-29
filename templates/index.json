@@ -99,6 +99,7 @@
       "blocks": {
         "text-0": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p><strong>CYBER MONDAY SALE IS LIVE NOW!<\/strong><\/p>",
             "icon_name": "zap",
