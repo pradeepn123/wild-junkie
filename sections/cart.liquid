@@ -108,7 +108,7 @@
 
           <div class="cart__items__wrapper" data-items-wrapper>
             <div class="loader loader--line"><div class="loader-indeterminate"></div></div>
-            {% comment %}
+            
             {% if free_promotional_product == true %}
               <div class="cart-free-item"
                 data-api-free-items
@@ -131,12 +131,12 @@
                     {% assign cartTotal = cartTotal | plus : line.original_line_price %}
                   {% endunless %}
                 {% endfor %}
-                {% if cartTotal > 0000 %}
+                {% if cartTotal > 5000 %}
                   {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal, promotionalAvailable: promotionalAvailable -%}
                 {% endif %}
               </div>
             {% endif %}
-            {% endcomment %}
+            
 
             <div class="cart__items" data-items-holder>
               {{ cart_items }}
