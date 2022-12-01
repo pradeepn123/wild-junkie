@@ -6,16 +6,16 @@
         "accordion-0": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/valentine_s_day-2.png",
+            "image": "shopify:\/\/shop_images\/6X0A9494.jpg",
             "bg_position": "center-bottom",
             "overlay_opacity": 10,
             "text_width": "normal",
             "text_position": "bottom-left",
             "text_color": "text-light",
-            "title": "BLACK FRIDAY!",
-            "text": "Come back everyday for new sales!\nDiscount applied at checkout.",
+            "title": "Rhinestone Cowgirl",
+            "text": "For the loudest and wildest cowgirls.",
             "btn_text": "Shop Now",
-            "btn_link": "shopify:\/\/collections\/jeans-pants",
+            "btn_link": "shopify:\/\/collections\/nfr-collection",
             "btn_style": "btn--primary btn--small",
             "btn_text_2": "",
             "btn_link_2": "",
@@ -25,16 +25,16 @@
         "accordion-1": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/SaleonSale-4.png",
+            "image": "shopify:\/\/shop_images\/Christmas-Collection.jpg",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_width": "normal",
             "text_position": "bottom-left",
             "text_color": "text-light",
-            "title": "Sale Section",
-            "text": "",
+            "title": "Christmas Collection",
+            "text": "Featuring everything from ugly sweaters, sequin skirts and graphic tees!",
             "btn_text": "Shop Now",
-            "btn_link": "shopify:\/\/collections\/sale",
+            "btn_link": "shopify:\/\/collections\/christmas",
             "btn_style": "btn--primary btn--small",
             "btn_text_2": "",
             "btn_link_2": "",
@@ -44,16 +44,16 @@
         "accordion-2": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/6X0A9494.jpg",
+            "image": "shopify:\/\/shop_images\/6X0A9351.jpg",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_width": "normal",
             "text_position": "bottom-left",
             "text_color": "text-light",
-            "title": "NFR",
-            "text": "Coming at you with a BANG - Wild Junkie's first ever NFR collection. Wherever Vegas takes you, we've got an outfit for you.",
+            "title": "Shackets and Jackets",
+            "text": "Shop the widest selection - and variety - of jackets here!",
             "btn_text": "Shop Now",
-            "btn_link": "shopify:\/\/collections\/nfr-collection",
+            "btn_link": "shopify:\/\/collections\/shackets-and-jackets",
             "btn_style": "btn--primary btn--small",
             "btn_text_2": "",
             "btn_link_2": "",
@@ -99,6 +99,7 @@
       "blocks": {
         "text-0": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p><strong>CYBER MONDAY SALE IS LIVE NOW!<\/strong><\/p>",
             "icon_name": "zap",
@@ -234,7 +235,7 @@
         "4cdca39d-cd0f-44e2-9ed0-317fbd191fab": {
           "type": "collection",
           "settings": {
-            "collection": "nfr-collection",
+            "collection": "christmas",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_position": "center",

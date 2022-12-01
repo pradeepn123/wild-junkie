@@ -2,6 +2,7 @@
   "sections": {
     "6b0ee484-3c6d-4ecf-8a26-2a5129a417dd": {
       "type": "section-marquee",
+      "disabled": true,
       "blocks": {
         "template--14490972127295__6b0ee484-3c6d-4ecf-8a26-2a5129a417dd-1669391392e79bd7e3-0": {
           "type": "message",
@@ -39,7 +40,7 @@
         "755d3448-cfce-481d-8f52-a12cfeefd370": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>BLACK FIRDAY SALE IS LIVE NOW!<\/strong><\/p>",
+            "text": "<p><strong>CYBER MONDAY SALE IS LIVE NOW!<\/strong><\/p>",
             "icon_name": "dollar-sign",
             "icon_color": "#ff6d6d",
             "icon_width": 20,
