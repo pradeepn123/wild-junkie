@@ -99,10 +99,9 @@
       "blocks": {
         "text-0": {
           "type": "text",
-          "disabled": true,
           "settings": {
-            "text": "<p><strong>CYBER MONDAY SALE IS LIVE NOW!<\/strong><\/p>",
-            "icon_name": "zap",
+            "text": "<p><strong>GET A FREE CHRISTMAS TEE, SPEND $50 OR ABOVE.<\/strong><\/p>",
+            "icon_name": "bell",
             "icon_color": "#e73e52",
             "icon_width": 20,
             "target_device_enabled": false,
