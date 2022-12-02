@@ -2,7 +2,6 @@
   "sections": {
     "6b0ee484-3c6d-4ecf-8a26-2a5129a417dd": {
       "type": "section-marquee",
-      "disabled": true,
       "blocks": {
         "template--14490972127295__6b0ee484-3c6d-4ecf-8a26-2a5129a417dd-1669391392e79bd7e3-0": {
           "type": "message",
