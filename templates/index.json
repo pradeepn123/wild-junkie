@@ -100,7 +100,7 @@
         "text-0": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>GET A FREE CHRISTMAS TEE, SPEND $50 OR ABOVE.<\/strong><\/p>",
+            "text": "<p><strong>GET A FREE <\/strong><a href=\"https:\/\/wildjunkieboutique.com\/products\/wild-junkie-christmas-graphic-tee\" target=\"_blank\" title=\"https:\/\/wildjunkieboutique.com\/products\/wild-junkie-christmas-graphic-tee\"><strong>CHRISTMAS TEE<\/strong><\/a><strong>, SPEND $50 OR ABOVE.<\/strong><\/p>",
             "icon_name": "bell",
             "icon_color": "#e73e52",
             "icon_width": 20,
