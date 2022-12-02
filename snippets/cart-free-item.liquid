@@ -1,8 +1,6 @@
-{% assign promotionalProduct = all_products["faux-navajo-pearl-choker-ws"] %}
-{% if cartTotal >= 10000 %}
-    {% assign promotionalProduct = all_products["yeehaw-knit-embroidered-beanie"] %}
-{% elsif cartTotal >= 5000 %}
-    {% assign promotionalProduct = all_products["one-mystery-tee"] %}
+
+{% if cartTotal >= 5000 %}
+    {% assign promotionalProduct = all_products["wild-junkie-christmas-graphic-tee"] %}
 {% endif %}
 
 {% unless promotionalLineProductId == promotionalProduct.id %}

@@ -1,6 +1,6 @@
 <div data-api-content>
   {%- if cart.item_count > 0 -%}
-    {% comment %}
+    
     <div class="cart-free-item" data-api-free-items
       {% if animations_enabled %}
       data-aos="fade-up"
@@ -25,11 +25,11 @@
           {% endunless %}
         {% endunless %}
       {% endfor %}
-      {% if cartTotal > 0 %}
+      {% if cartTotal > 5000 %}
         {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal -%}
       {% endif %}
     </div>
-    {% endcomment %}
+    
     <div data-api-line-items>
       {%- render 'cart-line-items', part: 'line-items' -%}
     </div>
