@@ -14,7 +14,7 @@
   assign enable_gift_notes = settings.enable_gift_notes
   assign enable_accept_terms = settings.enable_accept_terms
   assign cart_custom_message_text = settings.cart_custom_message_text
-  assign free_promotional_product = section.settings.product_promotional
+  assign free_promotional_product = settings.show_product_promotional
 
   capture cart_items
     render 'cart-line-items', part: 'line-items'

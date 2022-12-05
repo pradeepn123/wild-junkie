@@ -1983,7 +1983,9 @@ PaloAlto.CartDrawer = (function() {
           this.buildTotalPrice(response);
 
           // ShopTrade to enabled Promotion need to be removed on Black Friday is over
-          this.promotionalHandler(response)
+          if (theme.enable_promotional_products) {
+          	this.promotionalHandler(response)
+          }
 
           if (this.cartMessage.length > 0) {
             this.subtotal = response.total_price;
@@ -2495,11 +2497,15 @@ PaloAlto.CartDrawer = (function() {
       if (cartEmptyData) {
         this.itemsHolder.innerHTML = data;
         this.pairProductsHolder.innerHTML = '';
-        this.freeHolder.innerHTML = '';
+        if (this.freeHolder) {
+        	this.freeHolder.innerHTML = '';
+        }
       } else {
         this.itemsHolder.innerHTML = cartItemsData.innerHTML;
         this.pairProductsHolder.innerHTML = upsellItemsData.innerHTML;
-        this.freeHolder.innerHTML = freeItemsData.innerHTML;
+        if (this.freeHolder) {
+        	this.freeHolder.innerHTML = freeItemsData.innerHTML;
+        }
 
         this.renderPairProducts();
       }
