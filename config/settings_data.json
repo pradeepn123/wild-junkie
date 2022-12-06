@@ -174,8 +174,9 @@
         "blocks": {
           "announcement-0": {
             "type": "text",
+            "disabled": true,
             "settings": {
-              "text": "<p>FREE Shipping on orders over $25 📦 <\/p>",
+              "text": "<p>All orders ship within 24 hours! <\/p>",
               "icon_name": "none",
               "icon_color": "",
               "icon_width": 15,
