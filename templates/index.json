@@ -113,8 +113,8 @@
         "text-0"
       ],
       "settings": {
-        "bg_color": "#006838",
-        "color": "#ffffff",
+        "bg_color": "#e97e4c",
+        "color": "#ece2da",
         "layout": "marquee",
         "padding": 20,
         "slider_speed": 7,
