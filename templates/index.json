@@ -3,25 +3,6 @@
     "image-accordions-0": {
       "type": "section-image-accordions",
       "blocks": {
-        "accordion-0": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/6X0A9494.jpg",
-            "bg_position": "center-bottom",
-            "overlay_opacity": 10,
-            "text_width": "normal",
-            "text_position": "bottom-left",
-            "text_color": "text-light",
-            "title": "Rhinestone Cowgirl",
-            "text": "For the loudest and wildest cowgirls.",
-            "btn_text": "Shop Now",
-            "btn_link": "shopify:\/\/collections\/nfr-collection",
-            "btn_style": "btn--primary btn--small",
-            "btn_text_2": "",
-            "btn_link_2": "",
-            "btn_style_2": "btn--secondary btn--small"
-          }
-        },
         "accordion-1": {
           "type": "image",
           "settings": {
@@ -60,6 +41,25 @@
             "btn_style_2": "btn--secondary btn--small"
           }
         },
+        "accordion-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6X0A9494.jpg",
+            "bg_position": "center-bottom",
+            "overlay_opacity": 10,
+            "text_width": "normal",
+            "text_position": "bottom-left",
+            "text_color": "text-light",
+            "title": "Rhinestone Cowgirl",
+            "text": "For the loudest and wildest cowgirls.",
+            "btn_text": "Shop Now",
+            "btn_link": "shopify:\/\/collections\/nfr-collection",
+            "btn_style": "btn--primary btn--small",
+            "btn_text_2": "",
+            "btn_link_2": "",
+            "btn_style_2": "btn--secondary btn--small"
+          }
+        },
         "accordion-3": {
           "type": "image",
           "settings": {
@@ -81,9 +81,9 @@
         }
       },
       "block_order": [
-        "accordion-0",
         "accordion-1",
         "accordion-2",
+        "accordion-0",
         "accordion-3"
       ],
       "settings": {
