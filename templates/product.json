@@ -39,9 +39,9 @@
         "755d3448-cfce-481d-8f52-a12cfeefd370": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>FREE SHIPPING ON ORDERS OVER $25  <\/strong>📦 <\/p>",
+            "text": "<p><strong>FREE SHIPPING ON ORDERS OVER $35  <\/strong>📦 <\/p>",
             "icon_name": "heart",
-            "icon_color": "#ff6d6d",
+            "icon_color": "#e73e52",
             "icon_width": 20,
             "target_device_enabled": false,
             "target_device": "mobile"
@@ -55,7 +55,7 @@
         "755d3448-cfce-481d-8f52-a12cfeefd370"
       ],
       "settings": {
-        "bg_color": "#006838",
+        "bg_color": "#e97e4c",
         "color": "#ffffff",
         "layout": "marquee",
         "padding": 10,
@@ -109,7 +109,7 @@
             "icon_name": "check",
             "icon_color": "",
             "icon_width": 20,
-            "icon_text": "Free shipping over $25",
+            "icon_text": "Free shipping over $35",
             "text_size": 90,
             "width": "full",
             "text_alignment": "left",
@@ -378,7 +378,7 @@
           "settings": {
             "icon_name": "truck",
             "title": "Free Shipping",
-            "text": "<p>on all order over $25<\/p>"
+            "text": "<p>on all orders over $35<\/p>"
           }
         },
         "icon-1": {
