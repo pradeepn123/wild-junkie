@@ -70,12 +70,6 @@
     "main": {
       "type": "product",
       "blocks": {
-        "54d3bf08-7edb-4254-a5ae-b2195de93de0": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div id=\"63be821362297b001a6829e1\" class=\"htmlsnpt\"><\/div>"
-          }
-        },
         "b40be5b7-a29a-4754-8959-96af5397de5c": {
           "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/star-rating\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
           "settings": {
@@ -107,6 +101,12 @@
             "show_quantity": false,
             "show_payment_button": true,
             "enable_subscriptions_selectors": false
+          }
+        },
+        "54d3bf08-7edb-4254-a5ae-b2195de93de0": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"63be821362297b001a6829e1\" class=\"htmlsnpt\"><\/div>"
           }
         },
         "icon": {
@@ -165,11 +165,11 @@
         }
       },
       "block_order": [
-        "54d3bf08-7edb-4254-a5ae-b2195de93de0",
         "b40be5b7-a29a-4754-8959-96af5397de5c",
         "title",
         "inventory_countdown",
         "form",
+        "54d3bf08-7edb-4254-a5ae-b2195de93de0",
         "icon",
         "description",
         "product_accordions",
