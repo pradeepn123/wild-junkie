@@ -98,7 +98,7 @@
             "info_page_title_override": "",
             "show_slide_svg": true,
             "show_labels": true,
-            "show_quantity": false,
+            "show_quantity": true,
             "show_payment_button": true,
             "enable_subscriptions_selectors": false
           }
