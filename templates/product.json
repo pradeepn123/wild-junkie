@@ -180,6 +180,17 @@
         "padding_bottom": 60
       }
     },
+    "79faad2c-6c5c-438d-b040-67ca9cac02d7": {
+      "type": "section-custom-html",
+      "settings": {
+        "title": "",
+        "html": "<div id=\"63be821362297b001a6829e1\" class=\"htmlsnpt\"><\/div>",
+        "bg_color": "",
+        "width": "wrapper",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "section-testimonials": {
       "type": "section-testimonials",
       "disabled": true,
@@ -440,29 +451,18 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
-    },
-    "79faad2c-6c5c-438d-b040-67ca9cac02d7": {
-      "type": "section-custom-html",
-      "settings": {
-        "title": "",
-        "html": "<div id=\"63be821362297b001a6829e1\" class=\"htmlsnpt\"><\/div>",
-        "bg_color": "",
-        "width": "wrapper",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
     }
   },
   "order": [
     "6b0ee484-3c6d-4ecf-8a26-2a5129a417dd",
     "main",
+    "79faad2c-6c5c-438d-b040-67ca9cac02d7",
     "section-testimonials",
     "27108dd6-384a-44d5-8a6f-f174b3aeb828",
     "1665682367e6a8a8b7",
     "section-accordions",
     "section-icons-row",
     "related",
-    "loox-product-reviews-app-section",
-    "79faad2c-6c5c-438d-b040-67ca9cac02d7"
+    "loox-product-reviews-app-section"
   ]
 }
