@@ -440,6 +440,17 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "79faad2c-6c5c-438d-b040-67ca9cac02d7": {
+      "type": "section-custom-html",
+      "settings": {
+        "title": "",
+        "html": "<div id=\"63be7ffca7299d001a4cd766\" class=\"htmlsnpt\"><\/div>",
+        "bg_color": "",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
@@ -451,6 +462,7 @@
     "section-accordions",
     "section-icons-row",
     "related",
-    "loox-product-reviews-app-section"
+    "loox-product-reviews-app-section",
+    "79faad2c-6c5c-438d-b040-67ca9cac02d7"
   ]
 }
