@@ -1,6 +1,9 @@
 
-{% if cartTotal >= 5000 %}
-    {% assign promotionalProduct = all_products["wild-junkie-christmas-graphic-tee"] %}
+{% if cartTotal >= 100 %}
+    {% comment %}
+        Change Product handle During Next Promotion
+    {% endcomment %}
+    {% assign promotionalProduct = all_products["mystery-sticker"] %}
 {% endif %}
 
 {% unless promotionalLineProductId == promotionalProduct.id %}

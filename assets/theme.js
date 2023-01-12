@@ -1944,13 +1944,14 @@ PaloAlto.CartDrawer = (function() {
 
       let freeProductRemove
 
-      if (cartTotal == 0) {
-        freeProductRemove = promotionalProducts.find(item => [7063529291839, 6918441402431, 6968795004991].includes(item.product_id))
-      } else if (cartTotal < 5000) {
-        freeProductRemove = promotionalProducts.find(item => [7076903190591].includes(item.product_id))
-      } else if (cartTotal < 10000) {
-        freeProductRemove = promotionalProducts.find(item => item.product_id == 7063529291839)
+      if (cartTotal > 100) {
+        freeProductRemove = promotionalProducts.find(item => [7115663802431].includes(item.product_id))
       }
+      // else if (cartTotal < 5000) {
+      //   freeProductRemove = promotionalProducts.find(item => [7076903190591].includes(item.product_id))
+      // } else if (cartTotal < 10000) {
+      //   freeProductRemove = promotionalProducts.find(item => item.product_id == 7063529291839)
+      // }
 
       if (freeProductRemove) {
         return this.updateCart({

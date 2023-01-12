@@ -154,7 +154,7 @@
               {% endunless %}
             {% endunless %}
           {% endfor %}
-          {% if cartTotal > 5000 %}
+          {% if cartTotal > 100 %}
             {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal, promotionalAvailable: promotionalAvailable -%}
           {% endif %}
         </div>
