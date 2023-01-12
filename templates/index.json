@@ -620,7 +620,7 @@
       "type": "apps",
       "blocks": {
         "d4e60578-c7b8-402e-9033-b5e9a51c8efa": {
-          "type": "shopify:\/\/apps\/tikshop-tiktok-insta-feeds\/blocks\/tikshop-shoptrade\/9cc01fbc-7a70-4c25-8768-b96d953c7a70",
+          "type": "shopify:\/\/apps\/checkit-formerly-tikshop\/blocks\/tikshop-shoptrade\/9cc01fbc-7a70-4c25-8768-b96d953c7a70",
           "settings": {
           }
         }
