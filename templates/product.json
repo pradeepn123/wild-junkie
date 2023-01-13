@@ -2,7 +2,6 @@
   "sections": {
     "6b0ee484-3c6d-4ecf-8a26-2a5129a417dd": {
       "type": "section-marquee",
-      "disabled": true,
       "blocks": {
         "template--14490972127295__6b0ee484-3c6d-4ecf-8a26-2a5129a417dd-1669391392e79bd7e3-0": {
           "type": "message",
@@ -40,9 +39,9 @@
         "755d3448-cfce-481d-8f52-a12cfeefd370": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>CYBER MONDAY SALE IS LIVE NOW!<\/strong><\/p>",
-            "icon_name": "dollar-sign",
-            "icon_color": "#ff6d6d",
+            "text": "<p><strong>FREE SHIPPING ON ORDERS OVER $35  <\/strong>📦 <\/p>",
+            "icon_name": "heart",
+            "icon_color": "#e73e52",
             "icon_width": 20,
             "target_device_enabled": false,
             "target_device": "mobile"
@@ -56,7 +55,7 @@
         "755d3448-cfce-481d-8f52-a12cfeefd370"
       ],
       "settings": {
-        "bg_color": "#000000",
+        "bg_color": "#e97e4c",
         "color": "#ffffff",
         "layout": "marquee",
         "padding": 10,
@@ -99,9 +98,15 @@
             "info_page_title_override": "",
             "show_slide_svg": true,
             "show_labels": true,
-            "show_quantity": false,
+            "show_quantity": true,
             "show_payment_button": true,
             "enable_subscriptions_selectors": false
+          }
+        },
+        "54d3bf08-7edb-4254-a5ae-b2195de93de0": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"63be821362297b001a6829e1\" class=\"htmlsnpt\"><\/div>"
           }
         },
         "icon": {
@@ -110,7 +115,7 @@
             "icon_name": "check",
             "icon_color": "",
             "icon_width": 20,
-            "icon_text": "Free shipping over $25",
+            "icon_text": "Free shipping over $35",
             "text_size": 90,
             "width": "full",
             "text_alignment": "left",
@@ -164,6 +169,7 @@
         "title",
         "inventory_countdown",
         "form",
+        "54d3bf08-7edb-4254-a5ae-b2195de93de0",
         "icon",
         "description",
         "product_accordions",
@@ -175,9 +181,9 @@
         "enable_zoom": true,
         "enable_video_looping": false,
         "bg_color": "",
-        "block_padding": 20,
+        "block_padding": 5,
         "width": "wrapper",
-        "padding_top": 60,
+        "padding_top": 44,
         "padding_bottom": 60
       }
     },
@@ -379,7 +385,7 @@
           "settings": {
             "icon_name": "truck",
             "title": "Free Shipping",
-            "text": "<p>on all order over $25<\/p>"
+            "text": "<p>on all orders over $35<\/p>"
           }
         },
         "icon-1": {

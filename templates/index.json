@@ -3,38 +3,19 @@
     "image-accordions-0": {
       "type": "section-image-accordions",
       "blocks": {
-        "accordion-0": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/6X0A9494.jpg",
-            "bg_position": "center-bottom",
-            "overlay_opacity": 10,
-            "text_width": "normal",
-            "text_position": "bottom-left",
-            "text_color": "text-light",
-            "title": "Rhinestone Cowgirl",
-            "text": "For the loudest and wildest cowgirls.",
-            "btn_text": "Shop Now",
-            "btn_link": "shopify:\/\/collections\/nfr-collection",
-            "btn_style": "btn--primary btn--small",
-            "btn_text_2": "",
-            "btn_link_2": "",
-            "btn_style_2": "btn--secondary btn--small"
-          }
-        },
         "accordion-1": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Christmas-Collection.jpg",
+            "image": "shopify:\/\/shop_images\/6X0A3616.jpg",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_width": "normal",
             "text_position": "bottom-left",
             "text_color": "text-light",
-            "title": "Christmas Collection",
-            "text": "Featuring everything from ugly sweaters, sequin skirts and graphic tees!",
+            "title": "Denim",
+            "text": "A range of premium denim options.",
             "btn_text": "Shop Now",
-            "btn_link": "shopify:\/\/collections\/christmas",
+            "btn_link": "shopify:\/\/collections\/jeans-pants",
             "btn_style": "btn--primary btn--small",
             "btn_text_2": "",
             "btn_link_2": "",
@@ -54,6 +35,25 @@
             "text": "Shop the widest selection - and variety - of jackets here!",
             "btn_text": "Shop Now",
             "btn_link": "shopify:\/\/collections\/shackets-and-jackets",
+            "btn_style": "btn--primary btn--small",
+            "btn_text_2": "",
+            "btn_link_2": "",
+            "btn_style_2": "btn--secondary btn--small"
+          }
+        },
+        "accordion-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6X0A9494.jpg",
+            "bg_position": "center-bottom",
+            "overlay_opacity": 10,
+            "text_width": "normal",
+            "text_position": "bottom-left",
+            "text_color": "text-light",
+            "title": "Rhinestone Cowgirl",
+            "text": "For the loudest and wildest cowgirls.",
+            "btn_text": "Shop Now",
+            "btn_link": "shopify:\/\/collections\/nfr-collection",
             "btn_style": "btn--primary btn--small",
             "btn_text_2": "",
             "btn_link_2": "",
@@ -81,9 +81,9 @@
         }
       },
       "block_order": [
-        "accordion-0",
         "accordion-1",
         "accordion-2",
+        "accordion-0",
         "accordion-3"
       ],
       "settings": {
@@ -99,10 +99,9 @@
       "blocks": {
         "text-0": {
           "type": "text",
-          "disabled": true,
           "settings": {
-            "text": "<p><strong>CYBER MONDAY SALE IS LIVE NOW!<\/strong><\/p>",
-            "icon_name": "zap",
+            "text": "<p><strong>FREE SHIPPING ON ORDERS OVER $35 <\/strong>📦 <\/p>",
+            "icon_name": "bell",
             "icon_color": "#e73e52",
             "icon_width": 20,
             "target_device_enabled": false,
@@ -114,8 +113,8 @@
         "text-0"
       ],
       "settings": {
-        "bg_color": "#000000",
-        "color": "#ffffff",
+        "bg_color": "#e97e4c",
+        "color": "#ece2da",
         "layout": "marquee",
         "padding": 20,
         "slider_speed": 7,
