@@ -878,6 +878,13 @@
         padding-right: 0;
         width: calc(100% - 120px);
     }
+    /* Cart Page - Free Discount Product */
+    .cart__items .cart__item__content-inner{
+        justify-content: flex-start;
+    }
+    .cart .cart__item_price.cart_item_free_text{
+        margin: 0;
+    }
 }
 @media(min-width:768px) and (max-width:1024px){
     .cart .cart-free-item-list .cart__item{
