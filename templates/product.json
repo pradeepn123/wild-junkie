@@ -181,7 +181,7 @@
         "enable_zoom": true,
         "enable_video_looping": false,
         "bg_color": "",
-        "block_padding": 5,
+        "block_padding": 14,
         "width": "wrapper",
         "padding_top": 44,
         "padding_bottom": 60
