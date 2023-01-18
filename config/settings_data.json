@@ -87,7 +87,7 @@
           "b2e5833c-03f7-41d6-b51b-f0253a6c077b": {
             "type": "logo",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Wild-junkie-Christmas-logo.png",
+              "image": "shopify:\/\/shop_images\/image_4bcd965e-c149-48dc-8d09-4afd61575c3d.png",
               "logo_width": 140,
               "show_shop_name": false,
               "shop__description__footer": "The largest selection of premium, wild western wear.",
@@ -125,12 +125,12 @@
         "settings": {
           "width": "wrapper",
           "show_footer_wave": true,
-          "color_wave": "#ff6d6d",
+          "color_wave": "#e97e4c",
           "show_social_links": true,
           "show_payment_icons": true,
           "bottom_menu": "",
           "color_text": "#ffffff",
-          "color_bg": "#ff6d6d",
+          "color_bg": "#e97e4c",
           "color_border": "#ffffff",
           "show_locale_selector": false,
           "show_currency_selector": true,
