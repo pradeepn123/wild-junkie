@@ -1561,6 +1561,7 @@ PaloAlto.CartDrawer = (function() {
     upsellButtonByHandle: '[data-handle]',
     cartCloseError: '[data-cart-error-close]',
     cartDrawer: '[data-cart-drawer]',
+    cartNotify: '[data-cart-notify]',
     cartDrawerTemplate: '[data-cart-drawer-template]',
     cartDrawerToggle: '[data-cart-drawer-toggle]',
     cartDrawerBody: '[data-cart-drawer-body]',
@@ -1607,6 +1608,7 @@ PaloAlto.CartDrawer = (function() {
     added: 'is-added',
     isHidden: 'is-hidden',
     cartDrawerOpen: 'js-drawer-open-cart',
+    cartNotifyOpen: 'js-notify-open-cart',
     open: 'is-open',
     visible: 'is-visible',
     loading: 'is-loading',
@@ -1646,6 +1648,7 @@ PaloAlto.CartDrawer = (function() {
       // DOM Elements
       this.cartToggleButtons = document.querySelectorAll(selectors.cartDrawerToggle);
       this.cartDrawer = document.querySelector(selectors.cartDrawer);
+      this.cartNotify = document.querySelector(selectors.cartNotify)
 
       this.assignArguments();
 
@@ -2040,9 +2043,15 @@ PaloAlto.CartDrawer = (function() {
         },
         body: data,
       })
-        .then((response) => response.json())
+        .then((response) => {
+          return response.json()
+        })
         .then((response) => {
           if (button) {
+          	if (button.getAttribute("data-product-information") && button.getAttribute("data-product-information") != "null") {
+          		console.log(button.getAttribute("data-product-information"))
+          		this.showCartNotification = true
+          	}
             button.disabled = true;
           }
           this.addLoadingClass();
@@ -2302,8 +2311,33 @@ PaloAlto.CartDrawer = (function() {
 
       // Open cart drawer after cart items and events are loaded
       if (alwaysOpen) {
+      	if (this.showCartNotification) {
+      		return this.openCartNotification()
+      	}
         this.openCartDrawer();
       }
+    },
+
+    /**
+     * Open cart dropdown and add class on body
+     *
+     * @return  {Void}
+     */
+    openCartNotification() {
+
+      if (this.isCartDrawerOpen) { return; }
+
+      // Hook for cart drawer open event
+      document.dispatchEvent(new CustomEvent('theme:cart:open', {bubbles: true}));
+      document.dispatchEvent(new CustomEvent('theme:scroll:lock', {bubbles: true, detail: this.cartNotify}));
+
+      document.body.classList.add(classes.cartNotifyOpen);
+      this.cartNotify.classList.add(classes.open);
+
+      slate.a11y.trapFocus({
+        container: this.cartNotify,
+      });
+      this.isCartDrawerOpen = true;
     },
 
     /**
@@ -2386,7 +2420,10 @@ PaloAlto.CartDrawer = (function() {
       }
 
       document.body.classList.remove(classes.cartDrawerOpen, classes.isCartDrawerHidden);
+      document.body.classList.remove(classes.cartNotifyOpen, true);
       this.cartDrawer.classList.remove(classes.open);
+      this.cartNotify.classList.remove(classes.open);
+      this.showCartNotification = false
 
       // Enable page scroll right after the closing animation ends
       const timeout = 400;
@@ -2416,9 +2453,14 @@ PaloAlto.CartDrawer = (function() {
      */
 
     cartDrawerToggleEvents() {
-      if (!this.cartDrawer) { return; }
+      if (!this.cartDrawer || !this.cartNotify) { return; }
 
       // Close cart drawer on ESC key pressed
+      this.cartNotify.addEventListener('keyup', e => {
+        if (e.which === slate.utils.keyboardKeys.ESCAPE) {
+          this.closeCartDrawer();
+        }      	
+      })
       this.cartDrawer.addEventListener('keyup', (e) => {
         if (e.which === slate.utils.keyboardKeys.ESCAPE) {
           this.closeCartDrawer();
@@ -2441,9 +2483,9 @@ PaloAlto.CartDrawer = (function() {
       this.cartDrawerCloseEvent = (e) => {
         const isCartDrawerToggle = e.target.matches(selectors.cartDrawerToggle);
         const isCartDrawerChild = document.querySelector(selectors.cartDrawer).contains(e.target);
+        const isCartNotifyChild = document.querySelector(selectors.cartNotify).contains(e.target);
         const isPopupQuickView = e.target.closest(selectors.popupQuickView);
-
-        if (!isCartDrawerToggle && !isCartDrawerChild && !isPopupQuickView) {
+        if (!isCartDrawerToggle && !isCartDrawerChild && !isPopupQuickView && !isCartNotifyChild) {
           this.closeCartDrawer();
         }
       };
@@ -2484,6 +2526,12 @@ PaloAlto.CartDrawer = (function() {
      */
 
     build(data) {
+      if (this.showCartNotification) {
+      	this.showCartNotification = false
+      	document.dispatchEvent(new CustomEvent('theme:cart:updateSuccess', {bubbles: true}));
+      	return this.openCartNotification()
+      }
+
       const cartItemsData = data.querySelector(selectors.apiLineItems);
       const upsellItemsData = data.querySelector(selectors.apiUpsellItems);
       const freeItemsData = data.querySelector(selectors.apiFreeItems);
@@ -3609,6 +3657,7 @@ PaloAlto.QuickViewPopup = {
       fill: 'fill',
       isCartDrawerHidden: 'is-drawer-hidden',
       isCartDrawerOpen: 'js-drawer-open-cart',
+      isCartNotifyOpen: 'js-notify-open-cart'
     };
 
     this.attributes = {
@@ -6484,6 +6533,7 @@ PaloAlto.NavSearch = (function() {
   const classes = {
     pushUp: 'push-up',
     cartDrawerOpen: 'js-drawer-open-cart',
+    cartNotifyOpen: 'js-notify-open-cart',
     drawerOpen: 'js-drawer-open',
     isSearching: 'is-searching',
     isSearchVisible: 'is-search-visible',

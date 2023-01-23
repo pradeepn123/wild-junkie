@@ -1,0 +1,20 @@
+{%- liquid
+  assign animations_enabled = settings.animations_enabled
+  assign animation_delay = 200
+  assign animation_anchor = '#CartDrawer--' | append: section.id
+  assign subtotal = cart.total_price | plus: 0
+  assign original_subtotal = cart.original_total_price | plus: 0
+  assign cart_items_size = cart.item_count
+  assign cart_discount_size = cart.cart_level_discount_applications.size
+  assign continue_shopping_link = routes.all_products_collection_url
+  assign show_continue_shopping = settings.show_continue_shopping
+  assign show_empty_cart_buttons = settings.show_empty_cart_buttons
+  assign empty_cart_buttons = settings.empty_cart_buttons | default: 'main-menu'
+  assign free_promotional_product = section.settings.product_promotional
+
+  if settings.continue_shopping_link != blank
+    assign continue_shopping_link = settings.continue_shopping_link
+  endif
+-%}
+
+<div id="cart-notify" class="cart-notify" data-cart-notify></div>
