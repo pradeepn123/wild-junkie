@@ -248,30 +248,6 @@
         "padding_bottom": 0
       }
     },
-    "section-custom-content-1": {
-      "type": "section-custom-content",
-      "settings": {
-        "height": "five-fifty-height",
-        "custom_class_custom_content": "custom_content_height_650 custom-content-mobile-image-on-top",
-        "bg_color": "",
-        "width": "wrapper--full-padded",
-        "add_gutter": false,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "bb298499-ba2b-4bd3-9c88-20e0b995a050": {
-      "type": "section-custom-content",
-      "settings": {
-        "height": "five-fifty-height",
-        "custom_class_custom_content": "custom_content_height_650 custom-content-mobile-image-on-top",
-        "bg_color": "",
-        "width": "wrapper--full-padded",
-        "add_gutter": false,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
     "477aa243-565b-4d37-bdfd-942519cc246e": {
       "type": "section-custom-content",
       "blocks": {
@@ -755,8 +731,6 @@
     "dbf9049f-3852-4dbb-b672-b97fab9b1ce8",
     "662bf507-c2f3-4e69-8b98-5a814d75a6f1",
     "section-custom-content-0",
-    "section-custom-content-1",
-    "bb298499-ba2b-4bd3-9c88-20e0b995a050",
     "477aa243-565b-4d37-bdfd-942519cc246e",
     "8d8b7d54-70a3-4cea-9f39-ccc0c825707a",
     "28707cbf-eec1-41c3-92cd-91f0507255ce",
