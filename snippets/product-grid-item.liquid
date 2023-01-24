@@ -313,7 +313,9 @@
                   <input type="hidden" name="quantity" value="1">
                   <input type="hidden" name="id" value="{{ current_variant.id }}">
                   <button type="submit" name="add" class="btn--quick" data-add-to-cart data-product-id="{{ current_variant.id }}"{% if index > 1 %} tabindex="-1"{% endif %}
-                    data-product-information="{{ product.metafields.theme.upsell_list.value | json | escape }}">
+                    data-upsell-available="{% if product.metafields.theme.upsell_list.value != blank %}true{% endif %}"
+                    data-product-url="{{product.url}}"
+                  >
                     {%- render 'icon-toggle-plus' -%}
 
                     <span class="btn--quick__progress">

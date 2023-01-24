@@ -1554,6 +1554,11 @@ PaloAlto.CartDrawer = (function() {
     aos: '[data-aos]',
     additionalCheckoutButtons: '[data-additional-checkout-button]',
     apiContent: '[data-api-content]',
+    apiNotifyContent: '[data-api-notify-content]',
+    cartNotifyHolder: '[data-cart-notify-body]',
+    cartNotifyContent: '[data-cart-notify-content]',
+    cartNotifyPrimaryBtn: '[data-open-drawer-cart]',
+    cartNotifySecondaryBtn: '[data-continue-shopping]',
     apiLineItems: '[data-api-line-items]',
     apiFreeItems: '[data-api-free-items]',
     apiUpsellItems: '[data-api-upsell-items]',
@@ -1720,6 +1725,9 @@ PaloAlto.CartDrawer = (function() {
       this.buttonHolder = document.querySelector(selectors.buttonHolder);
       this.itemsHolder = document.querySelector(selectors.itemsHolder);
       this.freeHolder = document.querySelector(selectors.apiFreeItems);
+      this.cartNotifyHolder = document.querySelector(selectors.cartNotifyHolder)
+      this.cartNotifyContent = document.querySelector(selectors.cartNotifyContent)
+
       this.cartItemsQty = document.querySelector(selectors.cartItemsQty);
       this.itemsWrapper = document.querySelector(selectors.itemsWrapper);
       this.items = document.querySelectorAll(selectors.item);
@@ -1970,7 +1978,7 @@ PaloAlto.CartDrawer = (function() {
      * @return  {Void}
      */
 
-    getCart() {
+    getCart(productUrl) {
       // Render cart drawer if it exists but it's not loaded yet
       if (this.cartDrawer && !this.isCartDrawerLoaded) {
         const alwaysOpen = false;
@@ -1996,12 +2004,18 @@ PaloAlto.CartDrawer = (function() {
             this.updateProgress();
           }
 
-          return fetch(theme.routes.root + 'cart?section_id=api-cart-items');
+          if (productUrl) {
+						return fetch(productUrl + '&sections=api-cart-items,api-notify-content');
+          }
+
+          return fetch(theme.routes.root + 'cart?sections=api-cart-items,api-notify-content');
         })
-        .then((response) => response.text())
+        .then((response) => response.json())
         .then((response) => {
-          const element = document.createElement('div');
-          element.innerHTML = response;
+          const cartElement = document.createElement('div');
+          const notifyElement = document.createElement('div')
+          cartElement.innerHTML = response["api-cart-items"];
+          notifyElement.innerHTML = response["api-notify-content"]
 
           this.removeLoadingClass();
 
@@ -2013,8 +2027,9 @@ PaloAlto.CartDrawer = (function() {
             }
           });
 
-          const cleanResponse = element.querySelector(selectors.apiContent);
-          this.build(cleanResponse);
+          const cleanResponse = cartElement.querySelector(selectors.apiContent);
+          const cleanNotifyResponse = notifyElement.querySelector(selectors.apiNotifyContent)
+          this.build(cleanResponse, cleanNotifyResponse);
           this.updateItemsQuantity(this.cartItemCount);
         })
         .catch((error) => console.log(error));
@@ -2048,8 +2063,7 @@ PaloAlto.CartDrawer = (function() {
         })
         .then((response) => {
           if (button) {
-          	if (button.getAttribute("data-product-information") && button.getAttribute("data-product-information") != "null") {
-          		console.log(button.getAttribute("data-product-information"))
+          	if (button.getAttribute("data-upsell-available") == "true") {
           		this.showCartNotification = true
           	}
             button.disabled = true;
@@ -2065,7 +2079,7 @@ PaloAlto.CartDrawer = (function() {
           }
 
           if (this.cartDrawerEnabled) {
-            this.getCart();
+            this.getCart(response.url);
 
             if (button !== null) {
               button.classList.remove(classes.loading);
@@ -2323,9 +2337,12 @@ PaloAlto.CartDrawer = (function() {
      *
      * @return  {Void}
      */
-    openCartNotification() {
+    openCartNotification(data) {
 
       if (this.isCartDrawerOpen) { return; }
+      this.cartNotifyContent.innerHTML = data.querySelector(selectors.cartNotifyContent).innerHTML
+      // update data into modal
+      this.addCartNotificationEvents()
 
       // Hook for cart drawer open event
       document.dispatchEvent(new CustomEvent('theme:cart:open', {bubbles: true}));
@@ -2334,10 +2351,32 @@ PaloAlto.CartDrawer = (function() {
       document.body.classList.add(classes.cartNotifyOpen);
       this.cartNotify.classList.add(classes.open);
 
+      // Cart elements opening animation
+      this.cartNotify.querySelectorAll(selectors.aos).forEach((item) => {
+        item.classList.add(classes.aosAnimate);
+      });
+
       slate.a11y.trapFocus({
         container: this.cartNotify,
       });
       this.isCartDrawerOpen = true;
+    },
+
+    addCartNotificationEvents() {
+			const cartNotifyPrimaryBtn = this.cartNotify.querySelector(selectors.cartNotifyPrimaryBtn)
+			const cartNotifySecondaryBtn = this.cartNotify.querySelector(selectors.cartNotifySecondaryBtn)
+			cartNotifyPrimaryBtn.addEventListener("click", this.toggleNotifyDrawer.bind(this))
+			cartNotifySecondaryBtn.addEventListener("click", this.closeCartDrawer.bind(this))
+    },
+
+    toggleNotifyDrawer() {
+    	if (this.isCartDrawerOpen) {
+    		this.isCartDrawerOpen = false
+      	document.body.classList.remove(classes.cartNotifyOpen, true);
+  	    this.cartNotify.classList.remove(classes.open);
+	      this.showCartNotification = false
+    	}
+      return this.getCart()
     },
 
     /**
@@ -2525,11 +2564,11 @@ PaloAlto.CartDrawer = (function() {
      * @return  {Void}
      */
 
-    build(data) {
+    build(data, cleanNotifyResponse) {
       if (this.showCartNotification) {
       	this.showCartNotification = false
       	document.dispatchEvent(new CustomEvent('theme:cart:updateSuccess', {bubbles: true}));
-      	return this.openCartNotification()
+      	return this.openCartNotification(cleanNotifyResponse)
       }
 
       const cartItemsData = data.querySelector(selectors.apiLineItems);
