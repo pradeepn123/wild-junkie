@@ -2376,7 +2376,7 @@ PaloAlto.CartDrawer = (function() {
   	    this.cartNotify.classList.remove(classes.open);
 	      this.showCartNotification = false
     	}
-      return this.getCart()
+      return this.openCartDrawer()
     },
 
     /**
@@ -2565,12 +2565,6 @@ PaloAlto.CartDrawer = (function() {
      */
 
     build(data, cleanNotifyResponse) {
-      if (this.showCartNotification) {
-      	this.showCartNotification = false
-      	document.dispatchEvent(new CustomEvent('theme:cart:updateSuccess', {bubbles: true}));
-      	return this.openCartNotification(cleanNotifyResponse)
-      }
-
       const cartItemsData = data.querySelector(selectors.apiLineItems);
       const upsellItemsData = data.querySelector(selectors.apiUpsellItems);
       const freeItemsData = data.querySelector(selectors.apiFreeItems);
@@ -2601,7 +2595,10 @@ PaloAlto.CartDrawer = (function() {
       this.cartEvents();
       this.initQuantity();
 
-      if (this.cartDrawer) {
+      if (this.showCartNotification) {
+      	this.showCartNotification = false
+      	this.openCartNotification(cleanNotifyResponse)
+      } else if (this.cartDrawer) {
         this.openCartDrawer();
       }
       document.dispatchEvent(new CustomEvent('theme:cart:updateSuccess', {bubbles: true}));

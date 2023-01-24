@@ -20563,6 +20563,7 @@ body.notification-visible .popup.popup--visible {
 .upsell__item__image a img {
   height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 
 .notify-product-card .upsell__item__price {
