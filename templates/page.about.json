@@ -250,46 +250,6 @@
     },
     "section-custom-content-1": {
       "type": "section-custom-content",
-      "blocks": {
-        "text": {
-          "type": "text",
-          "settings": {
-            "text_position": "center",
-            "top_image_width": 100,
-            "text_color": "text-dark",
-            "subheading": "",
-            "title": "Ace",
-            "text": "<p>Ace is Brooke's other side kick. He's the first one to greet anyone that arrives - especially delivery drivers because they have the good snacks! Ace has his own couch in Brooke's office where he enjoys snoring the afternoon away between all the action at the warehouse.<\/p>",
-            "button_text": "",
-            "button_link": "",
-            "button_style": "btn--primary btn--small",
-            "secondary_button_text": "",
-            "secondary_button_link": "",
-            "secondary_button_style": "btn--secondary btn--small",
-            "bg_color": "#ffffff"
-          }
-        },
-        "image": {
-          "type": "image",
-          "settings": {
-            "text_position": "middle-center",
-            "image": "shopify:\/\/shop_images\/Ace.jpg",
-            "image_position": "center-center",
-            "overlay_opacity": 10,
-            "text_color": "text-light",
-            "title": "",
-            "heading_size": 100,
-            "text": "",
-            "button_text": "",
-            "button_link": "",
-            "button_style": "btn--primary btn--small"
-          }
-        }
-      },
-      "block_order": [
-        "text",
-        "image"
-      ],
       "settings": {
         "height": "five-fifty-height",
         "custom_class_custom_content": "custom_content_height_650 custom-content-mobile-image-on-top",
@@ -302,46 +262,6 @@
     },
     "bb298499-ba2b-4bd3-9c88-20e0b995a050": {
       "type": "section-custom-content",
-      "blocks": {
-        "template--14461244735551__bb298499-ba2b-4bd3-9c88-20e0b995a050-16653988075f05b7d1-0": {
-          "type": "image",
-          "settings": {
-            "text_position": "middle-center",
-            "image": "shopify:\/\/shop_images\/IMG_3436_2.jpg",
-            "image_position": "center-center",
-            "overlay_opacity": 10,
-            "text_color": "text-light",
-            "title": "",
-            "heading_size": 100,
-            "text": "",
-            "button_text": "",
-            "button_link": "",
-            "button_style": "btn--primary btn--small"
-          }
-        },
-        "template--14461244735551__bb298499-ba2b-4bd3-9c88-20e0b995a050-16653988075f05b7d1-1": {
-          "type": "text",
-          "settings": {
-            "text_position": "center",
-            "top_image_width": 100,
-            "text_color": "text-dark",
-            "subheading": "",
-            "title": "Colin",
-            "text": "<p>Colin plays many roles at Wild Junkie. He hauls and transports all big loads to the warehouse in bulk weekly and helps us keep our warehouse in tip-top shape. We also use his technical skills when adding anything IT. He's known to bring the team good snacks too - secretly we just keep him around for that! When he's not helping us add new racks in the warehouse or mastering an efficient floor plan, he is busy with his own developing and roofing company. A moment that Colin is not doing something is rare but he too enjoys time.<\/p>",
-            "button_text": "",
-            "button_link": "",
-            "button_style": "btn--primary btn--small",
-            "secondary_button_text": "",
-            "secondary_button_link": "",
-            "secondary_button_style": "btn--secondary btn--small",
-            "bg_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--14461244735551__bb298499-ba2b-4bd3-9c88-20e0b995a050-16653988075f05b7d1-0",
-        "template--14461244735551__bb298499-ba2b-4bd3-9c88-20e0b995a050-16653988075f05b7d1-1"
-      ],
       "settings": {
         "height": "five-fifty-height",
         "custom_class_custom_content": "custom_content_height_650 custom-content-mobile-image-on-top",
