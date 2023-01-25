@@ -2346,7 +2346,6 @@ PaloAlto.CartDrawer = (function() {
 
       // Hook for cart drawer open event
       document.dispatchEvent(new CustomEvent('theme:cart:open', {bubbles: true}));
-      document.dispatchEvent(new CustomEvent('theme:scroll:lock', {bubbles: true, detail: this.cartNotify}));
 
       document.body.classList.add(classes.cartNotifyOpen);
       this.cartNotify.classList.add(classes.open);
