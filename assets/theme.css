@@ -20501,6 +20501,24 @@ body.notification-visible .popup.popup--visible {
   padding: 0 20px;
 }
 
+.notify__items .cart__item__info {
+  max-width: 200px;
+}
+
+.notify__items .cart__item__info .product__price--regular {
+  margin: 0 0 8px 0;
+}
+
+.notify__items .cart__item__info .product__price--compare {
+  margin: 0 0px 8px 0;
+  font-size: 11px;
+}
+
+.notify__items .cart__item__info .product__discount__percentage {
+  font-size: 11px;
+  opacity: 0.5;
+}
+
 .notify-action .cart__text {
   max-width: calc(var(--drawer-width) - var(--inner));
   padding-top: 12px;
