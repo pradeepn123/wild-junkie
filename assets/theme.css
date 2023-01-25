@@ -20547,7 +20547,7 @@ body.notification-visible .popup.popup--visible {
   font-size: 13px;
   line-height: 1.5;
   font-weight: 600;
-  padding: 13px 0 5px;
+  padding: 13px 0 8px;
 }
 
 .upsell__item__image a {
@@ -20569,4 +20569,17 @@ body.notification-visible .popup.popup--visible {
 .notify-product-card .upsell__item__price {
   font-size: 13px;
   font-weight: 600;
+}
+
+.notify-product-card .upsell__item__price .product__price--regular {
+  display: block;
+  margin: 0 6px 2px 0;
+}
+
+.notify-product-card .upsell__item__price .product__price--compare {
+  margin: 8px 0;
+}
+
+.notify-product-card .upsell__item__price .product__discount__percentage {
+  opacity: 0.5;
 }

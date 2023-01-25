@@ -173,13 +173,11 @@
                                     {% if upsell_variant.compare_at_price %}
                                         <s data-compare-price class="product__price--compare">
                                             {%- liquid
-                                                if currency_code_enable
-                                                    echo upsell_variant.compare_at_price | money_with_currency
-                                                else
-                                                    echo upsell_variant.compare_at_price | money
-                                                endif
+                                                echo upsell_variant.compare_at_price | money
                                             -%}
                                         </s>
+                                        <span class="product__discount__percentage">
+                                            ({{ upsell_variant.compare_at_price | minus: upsell_variant.price | times: 100.0 | divided_by: upsell_variant.compare_at_price | money_without_currency | times: 100 | remove: '.0'}}% Off)</span>
                                     {% endif %}
                                 </div>
                             </div>
