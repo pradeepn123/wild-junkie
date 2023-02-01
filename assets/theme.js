@@ -1554,6 +1554,11 @@ PaloAlto.CartDrawer = (function() {
     aos: '[data-aos]',
     additionalCheckoutButtons: '[data-additional-checkout-button]',
     apiContent: '[data-api-content]',
+    apiNotifyContent: '[data-api-notify-content]',
+    cartNotifyHolder: '[data-cart-notify-body]',
+    cartNotifyContent: '[data-cart-notify-content]',
+    cartNotifyPrimaryBtn: '[data-open-drawer-cart]',
+    cartNotifySecondaryBtn: '[data-continue-shopping]',
     apiLineItems: '[data-api-line-items]',
     apiFreeItems: '[data-api-free-items]',
     apiUpsellItems: '[data-api-upsell-items]',
@@ -1561,6 +1566,7 @@ PaloAlto.CartDrawer = (function() {
     upsellButtonByHandle: '[data-handle]',
     cartCloseError: '[data-cart-error-close]',
     cartDrawer: '[data-cart-drawer]',
+    cartNotify: '[data-cart-notify]',
     cartDrawerTemplate: '[data-cart-drawer-template]',
     cartDrawerToggle: '[data-cart-drawer-toggle]',
     cartDrawerBody: '[data-cart-drawer-body]',
@@ -1607,6 +1613,7 @@ PaloAlto.CartDrawer = (function() {
     added: 'is-added',
     isHidden: 'is-hidden',
     cartDrawerOpen: 'js-drawer-open-cart',
+    cartNotifyOpen: 'js-notify-open-cart',
     open: 'is-open',
     visible: 'is-visible',
     loading: 'is-loading',
@@ -1646,6 +1653,7 @@ PaloAlto.CartDrawer = (function() {
       // DOM Elements
       this.cartToggleButtons = document.querySelectorAll(selectors.cartDrawerToggle);
       this.cartDrawer = document.querySelector(selectors.cartDrawer);
+      this.cartNotify = document.querySelector(selectors.cartNotify)
 
       this.assignArguments();
 
@@ -1717,6 +1725,9 @@ PaloAlto.CartDrawer = (function() {
       this.buttonHolder = document.querySelector(selectors.buttonHolder);
       this.itemsHolder = document.querySelector(selectors.itemsHolder);
       this.freeHolder = document.querySelector(selectors.apiFreeItems);
+      this.cartNotifyHolder = document.querySelector(selectors.cartNotifyHolder)
+      this.cartNotifyContent = document.querySelector(selectors.cartNotifyContent)
+
       this.cartItemsQty = document.querySelector(selectors.cartItemsQty);
       this.itemsWrapper = document.querySelector(selectors.itemsWrapper);
       this.items = document.querySelectorAll(selectors.item);
@@ -1967,7 +1978,7 @@ PaloAlto.CartDrawer = (function() {
      * @return  {Void}
      */
 
-    getCart() {
+    getCart(productUrl) {
       // Render cart drawer if it exists but it's not loaded yet
       if (this.cartDrawer && !this.isCartDrawerLoaded) {
         const alwaysOpen = false;
@@ -1993,12 +2004,18 @@ PaloAlto.CartDrawer = (function() {
             this.updateProgress();
           }
 
-          return fetch(theme.routes.root + 'cart?section_id=api-cart-items');
+          if (productUrl) {
+						return fetch(productUrl + '&sections=api-cart-items,api-notify-content');
+          }
+
+          return fetch(theme.routes.root + 'cart?sections=api-cart-items,api-notify-content');
         })
-        .then((response) => response.text())
+        .then((response) => response.json())
         .then((response) => {
-          const element = document.createElement('div');
-          element.innerHTML = response;
+          const cartElement = document.createElement('div');
+          const notifyElement = document.createElement('div')
+          cartElement.innerHTML = response["api-cart-items"];
+          notifyElement.innerHTML = response["api-notify-content"]
 
           this.removeLoadingClass();
 
@@ -2010,8 +2027,9 @@ PaloAlto.CartDrawer = (function() {
             }
           });
 
-          const cleanResponse = element.querySelector(selectors.apiContent);
-          this.build(cleanResponse);
+          const cleanResponse = cartElement.querySelector(selectors.apiContent);
+          const cleanNotifyResponse = notifyElement.querySelector(selectors.apiNotifyContent)
+          this.build(cleanResponse, cleanNotifyResponse);
           this.updateItemsQuantity(this.cartItemCount);
         })
         .catch((error) => console.log(error));
@@ -2040,9 +2058,14 @@ PaloAlto.CartDrawer = (function() {
         },
         body: data,
       })
-        .then((response) => response.json())
+        .then((response) => {
+          return response.json()
+        })
         .then((response) => {
           if (button) {
+          	if (button.getAttribute("data-upsell-available") == "true") {
+          		this.showCartNotification = true
+          	}
             button.disabled = true;
           }
           this.addLoadingClass();
@@ -2056,7 +2079,7 @@ PaloAlto.CartDrawer = (function() {
           }
 
           if (this.cartDrawerEnabled) {
-            this.getCart();
+            this.getCart(response.url);
 
             if (button !== null) {
               button.classList.remove(classes.loading);
@@ -2302,8 +2325,57 @@ PaloAlto.CartDrawer = (function() {
 
       // Open cart drawer after cart items and events are loaded
       if (alwaysOpen) {
+      	if (this.showCartNotification) {
+      		return this.openCartNotification()
+      	}
         this.openCartDrawer();
       }
+    },
+
+    /**
+     * Open cart dropdown and add class on body
+     *
+     * @return  {Void}
+     */
+    openCartNotification(data) {
+
+      if (this.isCartDrawerOpen) { return; }
+      this.cartNotifyContent.innerHTML = data.querySelector(selectors.cartNotifyContent).innerHTML
+      // update data into modal
+      this.addCartNotificationEvents()
+
+      // Hook for cart drawer open event
+      document.dispatchEvent(new CustomEvent('theme:cart:open', {bubbles: true}));
+
+      document.body.classList.add(classes.cartNotifyOpen);
+      this.cartNotify.classList.add(classes.open);
+
+      // Cart elements opening animation
+      this.cartNotify.querySelectorAll(selectors.aos).forEach((item) => {
+        item.classList.add(classes.aosAnimate);
+      });
+
+      slate.a11y.trapFocus({
+        container: this.cartNotify,
+      });
+      this.isCartDrawerOpen = true;
+    },
+
+    addCartNotificationEvents() {
+			const cartNotifyPrimaryBtn = this.cartNotify.querySelector(selectors.cartNotifyPrimaryBtn)
+			const cartNotifySecondaryBtn = this.cartNotify.querySelector(selectors.cartNotifySecondaryBtn)
+			cartNotifyPrimaryBtn.addEventListener("click", this.toggleNotifyDrawer.bind(this))
+			cartNotifySecondaryBtn.addEventListener("click", this.closeCartDrawer.bind(this))
+    },
+
+    toggleNotifyDrawer() {
+    	if (this.isCartDrawerOpen) {
+    		this.isCartDrawerOpen = false
+      	document.body.classList.remove(classes.cartNotifyOpen, true);
+  	    this.cartNotify.classList.remove(classes.open);
+	      this.showCartNotification = false
+    	}
+      return this.openCartDrawer()
     },
 
     /**
@@ -2386,7 +2458,10 @@ PaloAlto.CartDrawer = (function() {
       }
 
       document.body.classList.remove(classes.cartDrawerOpen, classes.isCartDrawerHidden);
+      document.body.classList.remove(classes.cartNotifyOpen, true);
       this.cartDrawer.classList.remove(classes.open);
+      this.cartNotify.classList.remove(classes.open);
+      this.showCartNotification = false
 
       // Enable page scroll right after the closing animation ends
       const timeout = 400;
@@ -2416,9 +2491,14 @@ PaloAlto.CartDrawer = (function() {
      */
 
     cartDrawerToggleEvents() {
-      if (!this.cartDrawer) { return; }
+      if (!this.cartDrawer || !this.cartNotify) { return; }
 
       // Close cart drawer on ESC key pressed
+      this.cartNotify.addEventListener('keyup', e => {
+        if (e.which === slate.utils.keyboardKeys.ESCAPE) {
+          this.closeCartDrawer();
+        }      	
+      })
       this.cartDrawer.addEventListener('keyup', (e) => {
         if (e.which === slate.utils.keyboardKeys.ESCAPE) {
           this.closeCartDrawer();
@@ -2441,9 +2521,9 @@ PaloAlto.CartDrawer = (function() {
       this.cartDrawerCloseEvent = (e) => {
         const isCartDrawerToggle = e.target.matches(selectors.cartDrawerToggle);
         const isCartDrawerChild = document.querySelector(selectors.cartDrawer).contains(e.target);
+        const isCartNotifyChild = document.querySelector(selectors.cartNotify).contains(e.target);
         const isPopupQuickView = e.target.closest(selectors.popupQuickView);
-
-        if (!isCartDrawerToggle && !isCartDrawerChild && !isPopupQuickView) {
+        if (!isCartDrawerToggle && !isCartDrawerChild && !isPopupQuickView && !isCartNotifyChild) {
           this.closeCartDrawer();
         }
       };
@@ -2483,7 +2563,7 @@ PaloAlto.CartDrawer = (function() {
      * @return  {Void}
      */
 
-    build(data) {
+    build(data, cleanNotifyResponse) {
       const cartItemsData = data.querySelector(selectors.apiLineItems);
       const upsellItemsData = data.querySelector(selectors.apiUpsellItems);
       const freeItemsData = data.querySelector(selectors.apiFreeItems);
@@ -2514,7 +2594,10 @@ PaloAlto.CartDrawer = (function() {
       this.cartEvents();
       this.initQuantity();
 
-      if (this.cartDrawer) {
+      if (this.showCartNotification) {
+      	this.showCartNotification = false
+      	this.openCartNotification(cleanNotifyResponse)
+      } else if (this.cartDrawer) {
         this.openCartDrawer();
       }
       document.dispatchEvent(new CustomEvent('theme:cart:updateSuccess', {bubbles: true}));
@@ -3609,6 +3692,7 @@ PaloAlto.QuickViewPopup = {
       fill: 'fill',
       isCartDrawerHidden: 'is-drawer-hidden',
       isCartDrawerOpen: 'js-drawer-open-cart',
+      isCartNotifyOpen: 'js-notify-open-cart'
     };
 
     this.attributes = {
@@ -6484,6 +6568,7 @@ PaloAlto.NavSearch = (function() {
   const classes = {
     pushUp: 'push-up',
     cartDrawerOpen: 'js-drawer-open-cart',
+    cartNotifyOpen: 'js-notify-open-cart',
     drawerOpen: 'js-drawer-open',
     isSearching: 'is-searching',
     isSearchVisible: 'is-search-visible',
