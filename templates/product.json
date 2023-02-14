@@ -81,14 +81,8 @@
           "settings": {
             "subheading": "none",
             "show_rating": false,
-            "show_rating_count": false
-          }
-        },
-        "inventory_countdown": {
-          "type": "inventory_countdown",
-          "settings": {
-            "max_inventory": 10,
-            "hide_inventory_count": true
+            "show_rating_count": false,
+            "price_color": "#fe6d6d"
           }
         },
         "form": {
@@ -109,18 +103,9 @@
             "custom_liquid": "<div id=\"63be821362297b001a6829e1\" class=\"htmlsnpt\"><\/div>"
           }
         },
-        "icon": {
-          "type": "icon",
+        "b5bde45b-a057-45b5-a1a3-a03595b4bedf": {
+          "type": "shippingAndReturn",
           "settings": {
-            "icon_name": "check",
-            "icon_color": "",
-            "icon_width": 20,
-            "icon_text": "Free shipping over $35",
-            "text_size": 90,
-            "width": "full",
-            "text_alignment": "left",
-            "bg_color": "#ffffff",
-            "remove_padding": true
           }
         },
         "description": {
@@ -128,14 +113,25 @@
           "settings": {
           }
         },
+        "upsell": {
+          "type": "upsell",
+          "settings": {
+            "product_list": "{{ product.metafields.theme.upsell_list.value }}"
+          }
+        },
+        "da5bea6d-6762-4f56-87a2-6b9c243717fa": {
+          "type": "modelSizeAndFit",
+          "settings": {
+          }
+        },
         "product_accordions": {
           "type": "product_accordions",
           "settings": {
-            "accordion_heading_1": "",
-            "accordion_text_1": "",
+            "accordion_heading_1": "Shipping & Returns",
+            "accordion_text_1": "<p>Free hassle free Return within 14 days of delivery!<\/p>",
             "accordion_page_1": "",
             "accordion_heading_2": "",
-            "accordion_text_2": "",
+            "accordion_text_2": "<p>Temp Accordion<\/p>",
             "accordion_page_2": "",
             "accordion_heading_3": "",
             "accordion_text_3": "",
@@ -149,32 +145,50 @@
             "show_size_chart_accordion": false
           }
         },
+        "inventory_countdown": {
+          "type": "inventory_countdown",
+          "disabled": true,
+          "settings": {
+            "max_inventory": 10,
+            "hide_inventory_count": true
+          }
+        },
+        "icon": {
+          "type": "icon",
+          "disabled": true,
+          "settings": {
+            "icon_name": "check",
+            "icon_color": "",
+            "icon_width": 20,
+            "icon_text": "Free shipping over $35",
+            "text_size": 90,
+            "width": "full",
+            "text_alignment": "left",
+            "bg_color": "#ffffff",
+            "remove_padding": true
+          }
+        },
         "share-button": {
           "type": "share-button",
           "disabled": true,
           "settings": {
             "text": "Share"
           }
-        },
-        "upsell": {
-          "type": "upsell",
-          "disabled": true,
-          "settings": {
-            "product_list": "{{ product.metafields.theme.upsell_list.value }}"
-          }
         }
       },
       "block_order": [
         "b40be5b7-a29a-4754-8959-96af5397de5c",
         "title",
-        "inventory_countdown",
         "form",
         "54d3bf08-7edb-4254-a5ae-b2195de93de0",
-        "icon",
+        "b5bde45b-a057-45b5-a1a3-a03595b4bedf",
         "description",
+        "upsell",
+        "da5bea6d-6762-4f56-87a2-6b9c243717fa",
         "product_accordions",
-        "share-button",
-        "upsell"
+        "inventory_countdown",
+        "icon",
+        "share-button"
       ],
       "settings": {
         "image_size": "medium",
@@ -416,9 +430,9 @@
         "icons_width": 30,
         "heading": "",
         "subheading": "",
-        "bg_color": "#f6f6f7",
-        "box_color": "rgba(0,0,0,0)",
-        "text_color": "#000000",
+        "bg_color": "#fafafa",
+        "box_color": "",
+        "text_color": "#333333",
         "button_text": "",
         "button_link": "",
         "button_style": "secondary btn--small",

@@ -753,7 +753,7 @@
         "id": "hide_inventory_count",
         "label": "Hide inventory count",
         "default": true
-      }, {
+      },{
         "type": "header",
         "content": "Subscriptions",
         "info": "Learn more about [subscriptions](https:\/\/help.shopify.com\/en\/manual\/products\/subscriptions)"
@@ -792,10 +792,12 @@
             "label": "Drawer"
           }
         ]
-      }, {
+      },
+      {
         "type": "header",
         "content": "Free Product Promotional (Only drawer cart)"
-      }, {
+      },
+      {
         "type": "checkbox",
         "id": "show_product_promotional",
         "label": "Show Promotional Product",
