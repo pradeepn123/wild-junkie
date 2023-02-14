@@ -111,7 +111,6 @@
         },
         "icon": {
           "type": "icon",
-          "disabled": true,
           "settings": {
             "icon_name": "check",
             "icon_color": "",
@@ -131,7 +130,6 @@
         },
         "product_accordions": {
           "type": "product_accordions",
-          "disabled": true,
           "settings": {
             "accordion_heading_1": "",
             "accordion_text_1": "",
