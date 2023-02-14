@@ -111,6 +111,7 @@
         },
         "icon": {
           "type": "icon",
+          "disabled": true,
           "settings": {
             "icon_name": "check",
             "icon_color": "",
