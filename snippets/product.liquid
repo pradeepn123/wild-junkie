@@ -261,7 +261,7 @@
   {% endif %}>
   <div class="product__price" data-price-wrapper>
     {%- unless product == blank -%}
-      <span data-product-price class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}">
+      <span data-product-price class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}" style="color: {{ block.settings.price_color }}">
         {%- liquid
           if current_variant.price == 0
             echo 'products.product.free' | t
@@ -337,11 +337,23 @@
     {%- endif -%}
 
     <span data-price-off class="product__price--off hidden">
-      <span data-price-off-type>{{ 'products.product.sale' | t }}</span>
-      <em>•</em>
-      {{ 'products.product.save' | t }}
+      {% comment %}
+          <em>•</em>
+          {{ 'products.product.save' | t }}
+      {% endcomment %}
       <span data-price-off-amount></span>
+      <span data-price-off-type>{{ 'products.product.sale' | t }}</span>
     </span>
+  </div>
+  <div class="product__quantity">
+    <div class="product__quantity__outer__icon"><div class="product__quantity__inner__icon"></div></div>
+    {% comment %}
+      {% if current_variant.inventory_quantity <= 5  %} Only {% endif %} {{ current_variant.inventory_quantity }} Left
+    {% endcomment %}
+    {%- render 'inventory-countdown-numbers',
+      current_variant: current_variant,
+      product_variants: product.variants
+    -%}
   </div>
 
   {%- if block.settings.show_rating or settings.show_rating and section_type == 'quickview' -%}
@@ -1175,6 +1187,28 @@
               </div>
             {%- endunless -%}
 
+            {% when 'shippingAndReturn' %}
+            <div class="product__block shipping__and__return__container rte"
+              {% if animations_enabled %}
+                data-aos="fade-up"
+                data-aos-anchor="{{ animation_anchor }}"
+                data-aos-delay="{{ animation_delay }}"
+                {%- assign animation_delay = animation_delay | plus: 150 -%}
+              {% endif %}
+              {{ block.shopify_attributes }}>
+              <div class="shipping__and__return">
+                <div class="shipping__and__return__content">
+                  <span class="shipping__and__return__icons">{% render 'shipping-svg' %}</span>
+                  <span class="shipping__and__return__description">Free Shipping on all <br><strong>orders over $35</strong></span>
+                </div>
+
+                <div class="shipping__and__return__content">
+                  <span class="shipping__and__return__icons">{%render 'returns-svg' %}</span>
+                  <span class="shipping__and__return__description">Free hassle free Return within <strong>14 days of delivery!</strong></span>
+                </div>
+              </div>
+            </div>
+
           {%- when 'pickup' -%}
             {%- comment -%} Surface pickup availability {%- endcomment -%}
             <div class="product__block product-single__store-availability-container"
@@ -1187,6 +1221,8 @@
               {% endif %}
               {{ block.shopify_attributes }}></div>
 
+           
+
           {%- when 'description' -%}
             <div class="product__block product__description rte"
               {% if animations_enabled %}
@@ -1198,18 +1234,10 @@
               {{ block.shopify_attributes }}>
               {%- unless product == blank -%}
               {% unless block.settings.show_size_chart_accordion == false %}
-                <div class="product__accordion">
-                  <button class="product__accordion__title" aria-controls="ProductAccordion--page-description" data-collapsible-trigger>
-                    Product Description
-                    {%- render 'icon-toggle-plus' -%}
-                    {%- render 'icon-toggle-minus' -%}
-                  </button>
-                  <div class="product__accordion__content" id="ProductAccordion--page-description" data-collapsible-container>
-                    <div class="product__accordion__inner rte" data-collapsible-content>
-                        {{- product.description -}}
-                    </div>
-                  </div>
-                </div>
+                <p class="product__description__heading">
+                  Product Description
+                </p>
+                {{ product.description }}
               {% endunless %}
 
               {%- else -%}
@@ -1228,7 +1256,7 @@
               {% endif %}
               {{ block.shopify_attributes }}>
               {%- render 'product-accordions', block_settings: block.settings -%}
-
+              {% comment%}
               {% unless product.metafields.custom.size_chart == blank %}
                 <div class="product__accordion">
                   <button class="product__accordion__title" aria-controls="ProductAccordion--page-size-chart" data-collapsible-trigger>
@@ -1244,7 +1272,40 @@
                   </div>
                 </div>
               {% endunless %}
+              {% endcomment %}
             </div>
+
+            {%- when 'modelSizeAndFit' -%}
+            {% if product.metafields.my_fields.model_info_image != blank and product.metafields.my_fields.model_info != blank %}
+              <div class="product__block model__size__and__fit__parent rte"
+              {% if animations_enabled %}
+                data-aos="fade-up"
+                data-aos-anchor="{{ animation_anchor }}"
+                data-aos-delay="{{ animation_delay }}"
+                {%- assign animation_delay = animation_delay | plus: 150 -%}
+              {% endif %}
+                {{ block.shopify_attributes }}>
+                <div class="product__accordion model__size__and__fit">
+                  <button class="product__accordion__title" aria-controls="ProductAccordion--page-size-chart" data-collapsible-trigger>
+                    Model Size and Fit
+                    {%- render 'icon-toggle-plus' -%}
+                    {%- render 'icon-toggle-minus' -%}
+                  </button>
+
+                  <div class="product__accordion__content" id="ProductAccordion--page-size-chart" data-collapsible-container>
+                    <div class="product__accordion__inner rte" data-collapsible-content>
+                    <div class="model__size__and__fit__content">
+                      <div class="model__size__and__fit__image">
+                        {{ product.metafields.my_fields.model_info_image | img_url: '300x300' | img_tag }}
+                      </div>
+                      <div class="model__size__and__fit__right__content">
+                          {{ product.metafields.my_fields.model_info }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
 
           {%- when 'upsell' -%}
             {%- liquid

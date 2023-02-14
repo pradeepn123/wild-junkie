@@ -26,23 +26,25 @@
   <div class="{{ section_width }}">
     {%- render 'product' section: section, unique: section.id -%}
 
-    {% if product.metafields.my_fields.model_info and product.metafields.my_fields.model_info_image %}
-      <div class="model_info_container">
-        <div class="model_info_parent">
-          <div class="model_info_image">
-            {{ product.metafields.my_fields.model_info_image | img_url: '2048x'  | img_tag }}
-          </div>
-          <div class="model_info_blocks_data_container">
-            <div class="product__block product__title-and-price aos-init aos-animate model_info_blocks_data_container_title" data-aos="fade-up" data-aos-anchor="#FeaturedProduct--template--14488613486655__main" data-aos-delay="300">
-              <h1 class="product__title">Model Size</h1>
+    {% comment %}
+        {% if product.metafields.my_fields.model_info and product.metafields.my_fields.model_info_image %}
+        <div class="model_info_container">
+          <div class="model_info_parent sahrudh">
+            <div class="model_info_image">
+              {{ product.metafields.my_fields.model_info_image | img_url: '2048x'  | img_tag }}
             </div>
-            <p>
-              {{ product.metafields.my_fields.model_info }}
-            </p>
+            <div class="model_info_blocks_data_container">
+              <div class="product__block product__title-and-price aos-init aos-animate model_info_blocks_data_container_title" data-aos="fade-up" data-aos-anchor="#FeaturedProduct--template--14488613486655__main" data-aos-delay="300">
+                <h1 class="product__title">Model Size</h1>
+              </div>
+                <div class="model__info__content">
+                  {{ product.metafields.my_fields.model_info }}
+                </div>
+            </div>
           </div>
         </div>
-      </div>
-    {% endif %}
+      {% endif %}
+    {% endcomment%}
 
   </div>
 </section>
@@ -189,6 +191,20 @@
         "type": "@app"
       },
       {
+        "type": "shippingAndReturn",
+        "name": "Shipping and Return",
+        "limit": 1,
+        "settings": [
+          
+        ]
+      },
+      {
+        "type": "modelSizeAndFit",
+        "name": "Model Size and Fit",
+        "limit": 1,
+        "settings": []
+      },
+      {
         "type": "title",
         "name": "Title and price",
         "limit": 1,
@@ -227,6 +243,16 @@
             "id": "show_rating_count",
             "label": "Show rating count",
             "default": false
+          },
+          {
+            "type": "header",
+            "content": "Price Styles"
+          },
+          {
+            "type" : "color",
+            "id": "price_color",
+            "label": "Price Color",
+            "default": "#FE6D6D"
           }
         ]
       },
@@ -453,7 +479,24 @@
             ]
           }
         ]
-      }, {
+      }, 
+      {
+        "type": "twoIcons",
+        "name": "Two Icons",
+        "settings":[
+          {
+            "type": "image_picker",
+            "id": "image_two_icons",
+            "label":"Choose icon"
+          },
+          {
+            "type": "text",
+            "id": "twoicons__text",
+            "label": "Text for Two Icons"
+          }
+        ]
+      },
+      {
         "type": "icon",
         "name": "Icon",
         "settings": [
