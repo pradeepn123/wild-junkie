@@ -175,7 +175,7 @@
               assign custom_collection_image = block.settings.custom_collection_image
               assign custom_bg_color = block.settings.bg_color
               assign has_color_overlay = block.settings.show_color
-
+              assign custom_collection_text = block.settings.custom_collection_text
               if carousel
                 assign animation_delay = forloop.index0
               else
@@ -186,7 +186,7 @@
                 cycle 1, 2, 3
               endcapture
 
-              render 'collection-grid-item', collection: collection, item_width: item_width, item_width_mobile: item_width_mobile, custom_collection_image: custom_collection_image, custom_bg_color: custom_bg_color, has_color_overlay: has_color_overlay, animation_delay: animation_delay, animation_anchor: animation_anchor, carousel: carousel, image_shape: image_shape, block_shopify_attributes: block.shopify_attributes, placeholder_index: placeholder_index, text_over_image: text_over_image, text_color: text_color, unique: unique
+              render 'collection-grid-item', collection: collection, item_width: item_width, item_width_mobile: item_width_mobile, custom_collection_image: custom_collection_image, custom_bg_color: custom_bg_color, has_color_overlay: has_color_overlay, animation_delay: animation_delay, animation_anchor: animation_anchor, carousel: carousel, image_shape: image_shape, block_shopify_attributes: block.shopify_attributes, placeholder_index: placeholder_index, text_over_image: text_over_image, text_color: text_color, unique: unique, custom_collection_text: custom_collection_text
             endfor
           else
             comment
