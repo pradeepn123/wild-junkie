@@ -111,10 +111,76 @@
                 flex: 1 0 60%;
                 justify-content: space-between;
             }
-    /* Product Page - Model Size and Chart */
-        /* .model__size__and__fit{
-            grid-column: span 2;
-        } */
+    /* Product Page - Hero Section - Upsell */
+        .product__page__upsell__heading{
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 18px;
+            color: #000;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .product__page__upsell .product-upsell__holder{
+            border: 1px solid #B9B9B9;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .product__page__upsell .product-upsell__holder .product-upsell{
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+        .product__page__upsell .product-upsell .product-upsell__content .product-upsell__title{
+            font-family: 'Montserrat';
+            color: #000;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .product__page__upsell .product-upsell .product-upsell__content .product-upsell__price{
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .product__page__upsell .product-upsell .product-upsell__content .product-upsell__btn{
+            border: var(--BORDER-WIDTH) solid #FE6D6D;
+            background-color: #FE6D6D;
+            color: #FFFFFF;
+
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .product__page__upsell .product-upsell .product-upsell__content .product-upsell__btn::before{
+            background-color: #FFF;
+            color: #FFF;
+        }
+
+        .product__page__upsell .product-upsell .product-upsell__content .product-upsell__btn.btn--secondary:hover{
+            color: var(--button-primary-bg) !important;
+        }
+
+        .product__page__upsell .product-upsell__holder .product-upsell .product-upsell__image{
+            height: 120px;
+            width: 120px;
+            margin: 0;
+        }
+
+        .product__popup__link{
+            font-weight: 400;
+            color: #FE6D6D;
+        }
+
+        .product__popup__link::before , .no-touch .product__popup__link::after{
+            background-color: #FE6D6D !important;
+            height: 1px !important;
+        }
+    /* Product Page - Size Chart Guide */
+        .size_chart_product_container{
+            align-items: baseline;
+        }
 
 /* Footer Styles */
 .site-footer{

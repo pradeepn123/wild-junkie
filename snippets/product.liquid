@@ -449,7 +449,9 @@
       {%- else -%}
         {{ info_page_title_override }}
       {%- endunless -%}
-      {% render 'icon-ruler' %}
+      {% comment %}
+        {% render 'icon-ruler' %}
+      {% endcomment %}
     </button>
   {%- endcapture -%}
 
@@ -555,7 +557,7 @@
   {%- endif -%}
 
   {%- unless show_size_link_as_label or size_chart_button == blank -%}
-    <div class="product__form__size-chart"
+    <div class="product__form__size-chart sahrudh1"
       {% if animations_enabled %}
         data-aos="fade-up"
         data-aos-anchor="{{ animation_anchor }}"
@@ -708,7 +710,10 @@
               <fieldset class="radio__fieldset radio__fieldset--{{ settings.color_swatches_product_style }}">
                 <legend class="radio__legend{% if is_size_option and info_page != blank %} radio__legend--flex radio__legend--size-chart{% endif %}">
                   {%- if is_size_option and show_labels and info_page != blank -%}
+                  <div class="size_chart_product_container" style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
+                    <span class="radio__legend__label" data-chart="{{ block.settings.info_page }}">{{ option.name | escape_once }}</span>
                     {{- size_chart_button -}}
+                  </div>
                   {%- else -%}
                     <span class="radio__legend__label">{{ option.name | escape_once }}</span>
                   {%- endif -%}
@@ -824,20 +829,6 @@
     {%- comment -%} Delete the following line to block the theme from updating subscription prices {%- endcomment -%}
     <span data-subscription-watch-price></span>
   {%- endif -%}
-
-
-    {% if block.settings.show_slide_svg != blank %}
-      <div class="product-page-svg">
-        {% case product_metafield_size %}
-          {% when 'True to Size' %}
-            {% render 'true-to-size' %}
-          {% when 'Runs Small' %}
-            {% render 'runs-small' %}
-          {% when 'Runs Large' %}
-            {% render 'runs-large' %}
-        {% endcase %}
-      </div>
-    {% endif %}
 
 
   {%- if quantity_position_bottom and show_quantity -%}
@@ -1317,12 +1308,12 @@
 
               capture upsell_items
                 for upsell_product in upsell_products
-                  render 'upsell-product', upsell_product: upsell_product, index: forloop.index, unique: upsell_unique
+                  render 'upsell-product-page-hero-banner', upsell_product: upsell_product, index: forloop.index, unique: upsell_unique
                 endfor
 
                 if legacy_upsell_product
                   assign index = upsell_product_list_count | plus: 1
-                  render 'upsell-product', upsell_product: legacy_upsell_product, index: index, unique: upsell_unique
+                  render 'upsell-product-page-hero-banner', upsell_product: legacy_upsell_product, index: index, unique: upsell_unique
                 endif
               endcapture
 
