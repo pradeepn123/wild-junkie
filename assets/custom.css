@@ -1078,3 +1078,67 @@
     }
 
 }
+
+/* Product Page - Style With It Section */
+    /* Container */
+        .style_it_with_section .style_it_with_product_page .style_it_with_container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            column-gap: 88px;
+        }
+    
+    /* Left Container */
+        .style_it_with_section .style_it_with_product_page .style_it_with_container .style_it_with_product_page_image{
+            flex: 1 0 30%;
+        }
+        .style_it_with_section .style_it_with_product_page .style_it_with_container .style_it_with_product_page_image img{
+            height: 100%;
+            object-fit: cover;
+        }
+
+    /* Right Container */
+        .style_it_with_section .style_it_with_product_page .style_it_with_container .style_it_with_product_page_carousel {
+            flex: 1 0 70%;
+        }
+        .style_it_with_section .style_it_with_product_page .style_it_with_container .style_it_with_product_page_carousel .style_it_with_section_content{
+            height: 100%;
+            background-color: lightblue;
+        }
+
+/* Style it with - Upsell - style_it_with_upsell */
+    /* Dots */
+    .style_it_with_section_content .flickity-page-dots{
+        display: none;
+    }
+    /* Container */
+    .style-it-with-upsell-container{
+        /* display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; */
+        /* overflow: hidden; */
+    }
+    .style-it-with-upsell-container .style_it_with_upsell{
+        margin-right: 67px;
+    }
+    /* Each Block */
+        .style-it-with-upsell-container .style_it_with_upsell .product-upsell__holder{
+            border-radius: 0;
+            padding: 0;
+        }
+        .style-it-with-upsell-container .style_it_with_upsell .product-upsell__holder .product-upsell{
+            flex-direction: column-reverse;
+        }
+    /* Content Container */
+        .style_it_with_upsell .product-upsell__holder .product-upsell .product-upsell__content{
+            width: 100%;
+        }
+    /* Images */
+        .style_it_with_upsell .product-upsell__holder .product-upsell .product-upsell__image{
+            height: 387px;
+            width: 297px;
+        }
+                .style_it_with_upsell .product-upsell__holder .product-upsell .product-upsell__image a,
+        .style_it_with_upsell .product-upsell__holder .product-upsell .product-upsell__image img{
+            border-radius: 0;
+        }
