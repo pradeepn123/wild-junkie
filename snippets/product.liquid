@@ -557,7 +557,7 @@
   {%- endif -%}
 
   {%- unless show_size_link_as_label or size_chart_button == blank -%}
-    <div class="product__form__size-chart sahrudh1"
+    <div class="product__form__size-chart"
       {% if animations_enabled %}
         data-aos="fade-up"
         data-aos-anchor="{{ animation_anchor }}"
@@ -707,7 +707,7 @@
             {% endif %}>
             {%- if enable_variant_boxes or is_swatch_option -%}
               {%- assign current_value = current_variant.options[forloop.index0] -%}
-              <fieldset class="radio__fieldset radio__fieldset--{{ settings.color_swatches_product_style }}">
+              <fieldset class="radio__fieldset radio__fieldset--{{ settings.color_swatches_product_style }} sahrudh1">
                 <legend class="radio__legend{% if is_size_option and info_page != blank %} radio__legend--flex radio__legend--size-chart{% endif %}">
                   {%- if is_size_option and show_labels and info_page != blank -%}
                   <div class="size_chart_product_container" style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
@@ -715,7 +715,8 @@
                     {{- size_chart_button -}}
                   </div>
                   {%- else -%}
-                    <span class="radio__legend__label">{{ option.name | escape_once }}</span>
+                    <span class="radio__legend__label" data-option-parent-{{ option.name }}="{{ option.name }}">{{ option.name | escape_once }}</span>
+                    <span data-option-{{ option.name | handle }}>: {{ option.selected_value }}</span>
                   {%- endif -%}
                 </legend>
                 {%- for value in option.values -%}
@@ -1018,7 +1019,7 @@
         </fieldset>
       {%- else -%}
         <div class="select__fieldset">
-          <span class="radio__legend">
+          <span class="radio__legend sahurdh2">
             <span class="radio__legend__label" id="onboarding-{{ section.id }}-option-0-label">{{- 'homepage.onboarding.color' | t -}}</span>
           </span>
 
@@ -1058,7 +1059,7 @@
       {% endif %}>
       {%- if enable_variant_boxes -%}
         <fieldset class="radio__fieldset">
-          <legend class="radio__legend">
+          <legend class="radio__legend sahruhd3">
             <span class="radio__legend__label">{{- 'homepage.onboarding.size' | t -}}</span>
           </legend>
 
