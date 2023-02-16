@@ -716,7 +716,7 @@
                   </div>
                   {%- else -%}
                     <span class="radio__legend__label" data-option-parent-{{ option.name }}="{{ option.name }}">{{ option.name | escape_once }}</span>
-                    <span data-option-{{ option.name | handle }}>: {{ option.selected_value }}</span>
+                    <span data-option-{{ option.name | handle }} class="option-name-class">: {{ option.selected_value }}</span>
                   {%- endif -%}
                 </legend>
                 {%- for value in option.values -%}

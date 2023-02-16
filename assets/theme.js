@@ -1151,10 +1151,10 @@ PaloAlto.ProductForm = (function() {
       if (variant && variant.id) {
         this.variantElement.value = variant.id.toString();
         document.querySelector(
-          'span[data-option-parent-size="Size"'
+          'span[data-option-parent-size="Size"]'
         ).nextElementSibling.innerText = ": "+variant.option1;
         document.querySelector(
-           'span[data-option-parent-color="Color"'
+           'span[data-option-parent-color="Color"]'
          ).nextElementSibling.innerText = ": " + variant.option2;
       } else {
         this.variantElement.value = '';

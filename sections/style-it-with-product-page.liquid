@@ -6,7 +6,7 @@
 
 {% if section.settings.style_with_it_image != blank and section.settings.product_list.count > 0 %}
 <div class="style_it_with_product_page">
-    <div class="wrapper">
+    <div class="wrapper_style_it_with_page">
         <div class="style_it_with_container">
             {% if section.settings.style_with_it_image %}
                 <div class="style_it_with_product_page_image">
@@ -39,7 +39,7 @@
                             assign legacy_upsell_product = product.metafields.custom.style_it_with_section_products.value
                         %}
                         <div class="style-it-with-upsell-container">
-                            <div class="carousel-parent" data-flickity='{ "autoPlay": false }'>
+                            <div class="carousel-parent" data-flickity='{ "autoPlay": false, "contain": true }'>
                                 {% for item in legacy_upsell_product %}
                                     {% render 'upsell-style-with-it', upsell_product: item, index: 1, unique: upsell_unique %}
                                 {% endfor %}
