@@ -1148,11 +1148,21 @@ PaloAlto.ProductForm = (function() {
     // Private Methods
     // -----------------------------------------------------------------------------
     _setIdInputValue(variant) {
+
+      const reqClothesSizes = {
+        "Small": "S",
+        "Medium": "M",
+        "Large": "L",
+        "X Large": "XL",
+        "2X Large": "XXL",
+        "3X Large" : "XXXL"
+      }
+
       if (variant && variant.id) {
         this.variantElement.value = variant.id.toString();
         document.querySelector(
           'span[data-option-parent-size="Size"]'
-        ).nextElementSibling.innerText = ": "+variant.option1;
+        ).nextElementSibling.innerText = ": "+ reqClothesSizes[variant.option1];
         document.querySelector(
            'span[data-option-parent-color="Color"]'
          ).nextElementSibling.innerText = ": " + variant.option2;

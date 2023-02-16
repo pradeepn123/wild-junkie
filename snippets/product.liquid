@@ -716,6 +716,7 @@
                   </div>
                   {%- else -%}
                     <span class="radio__legend__label" data-option-parent-{{ option.name }}="{{ option.name }}">{{ option.name | escape_once }}</span>
+                    {% comment %} sahrudh {% endcomment %}
                     <span data-option-{{ option.name | handle }} class="option-name-class">: {{ option.selected_value }}</span>
                   {%- endif -%}
                 </legend>
@@ -741,7 +742,18 @@
                     </span>
                   {%- else -%}
                     {% comment %} radio button {% endcomment %}
-                    <span class="radio__button">
+                    {%- capture shirtSizes -%}
+                      "Small": S,
+                      "Medium": M,
+                      "Large": L,
+                      "X Large": XL,
+                      "2X Large": XXL,
+                      "3X Large": XXXL
+                    {%- endcapture -%}
+                    {% assign shirtSizesNew = shirtSizes | split:',' %}
+
+                    <span class="radio__button ">
+                    {% comment %} sahrudh1 {% endcomment %}
                       <input
                         type="radio"
                         class="radio__input"
@@ -751,7 +763,23 @@
                         value="{{ value | escape_once }}" id="{{ input_id }}"
                         {% if value == current_value %}checked{% endif %}>
                       <label for="{{ input_id }}" class="radio__label">
-                        <span>{{ value | escape_once }}</span>
+                        {% comment %} <span>{{ shirtSizesNew[value] | escape_once }} {{shirtSizesNew['value']}} {{ value }}</span> {% endcomment %}
+                        <span>
+                          {% case value %}
+                            {% when 'Small' %}
+                            S
+                            {% when 'Medium' %}
+                            M
+                            {% when 'Large' %}
+                            L
+                            {% when 'X Large' %}
+                            XL
+                            {% when '2X Large' %}
+                            XXL 
+                            {% when '3X Large'%}
+                            XXXL
+                          {% endcase %}
+                        </span>
                       </label>
                     </span>
                   {%- endif -%}
@@ -1011,7 +1039,8 @@
                   id="option-{{ value }}-0-{{ section.id }}"
                   {% if forloop.index == 1 %}checked{% endif %}>
                 <label for="option-{{ value }}-0-{{ section.id }}" class="radio__label">
-                  <span>{{ value | escape_once }}</span>
+                  <span>{{ value | escape_once }} </span>
+                  {% comment %} sahrudh {% endcomment %}
                 </label>
               </span>
             {%- endfor -%}
@@ -1019,7 +1048,7 @@
         </fieldset>
       {%- else -%}
         <div class="select__fieldset">
-          <span class="radio__legend sahurdh2">
+          <span class="radio__legend">
             <span class="radio__legend__label" id="onboarding-{{ section.id }}-option-0-label">{{- 'homepage.onboarding.color' | t -}}</span>
           </span>
 
