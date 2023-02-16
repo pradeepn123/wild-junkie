@@ -11680,7 +11680,7 @@ PaloAlto.Product = (function() {
     new PaloAlto.ProductAddForm(container);
     new PaloAlto.Zoom(container);
 
-    // this.initProductSlider();
+    this.initProductSlider();
     this.initUpsellSlider();
     this.initMediaSwitch();
     this.initProductVideo();
@@ -11692,6 +11692,9 @@ PaloAlto.Product = (function() {
 
     /* Product Slider */
     initProductSlider: function() {
+      if (window.innerWidth > 900) {
+        return;
+      }
       const slider = this.container.querySelector(selectors.productMediaSlider);
       const thumbs = this.container.querySelector(selectors.productMediaThumbs);
       const media = this.container.querySelectorAll(selectors.productMediaWrapper);
