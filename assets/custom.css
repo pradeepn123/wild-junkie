@@ -229,6 +229,7 @@
             font-style: normal;
             font-weight: 600;
             font-size: 12px;
+            width: max-content;
         }
 
         .product__page__upsell .product-upsell .product-upsell__content .product-upsell__btn::before{
@@ -1224,6 +1225,12 @@
         .style-it-with-upsell-container .style_it_with_upsell .product-upsell__holder .product-upsell{
             flex-direction: column-reverse;
         }
+        .style_it_with_upsell.product__page__upsell .product-upsell .product-upsell__content .product-upsell__title{
+            font-family: Londrina Solid;
+        }
+        .style_it_with_upsell.product__page__upsell .product-upsell .product-upsell__content .product-upsell__price{
+            font-weight: 400;
+        }
     /* Content Container */
         .style_it_with_upsell .product-upsell__holder .product-upsell .product-upsell__content{
             width: 100%;
@@ -1233,7 +1240,7 @@
             height: 387px;
             width: 297px;
         }
-                .style_it_with_upsell .product-upsell__holder .product-upsell .product-upsell__image a,
+        .style_it_with_upsell .product-upsell__holder .product-upsell .product-upsell__image a,
         .style_it_with_upsell .product-upsell__holder .product-upsell .product-upsell__image img{
             border-radius: 0;
         }

@@ -1162,7 +1162,8 @@ PaloAlto.ProductForm = (function() {
         this.variantElement.value = variant.id.toString();
         document.querySelector(
           'span[data-option-parent-size="Size"]'
-        ).nextElementSibling.innerText = ": "+ reqClothesSizes[variant.option1];
+        ).nextElementSibling.innerText = ": "+ ((reqClothesSizes[variant.option1]) ? reqClothesSizes[variant.option1] : variant.option1); 
+        // debugger;
         document.querySelector(
            'span[data-option-parent-color="Color"]'
          ).nextElementSibling.innerText = ": " + variant.option2;
