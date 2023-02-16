@@ -16,7 +16,7 @@
             {% if section.settings.product_list.count > 0 %}
                 <div class="style_it_with_product_page_carousel">
                     <div class="style_it_with_section_content">
-                        <h2 class="style_it_with_section_heading h4"
+                        <h2 class="style_it_with_section_heading h2"
                         {% if animations_enabled %}
                         data-aos="fade-up"
                         data-aos-delay="{{ animation_delay }}"
@@ -39,7 +39,7 @@
                             assign legacy_upsell_product = product.metafields.custom.style_it_with_section_products.value
                         %}
                         <div class="style-it-with-upsell-container">
-                            <div class="carousel-parent" data-flickity='{ "autoPlay": false, "contain": true }'>
+                            <div class="carousel-parent" data-flickity='{ "autoPlay": false, "contain": true}'>
                                 {% for item in legacy_upsell_product %}
                                     {% render 'upsell-style-with-it', upsell_product: item, index: 1, unique: upsell_unique %}
                                 {% endfor %}
