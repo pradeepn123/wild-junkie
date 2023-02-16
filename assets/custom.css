@@ -42,6 +42,9 @@
     .style_it_with_product_page .wrapper_style_it_with_page{
         padding-left: var(--gutter) !important;
     }
+    .product-single__media-slide:first-child {
+        grid-column: 1/3;
+    }
 }
 @media screen and (min-width: 1200px){
     .style_it_with_section .style_it_with_product_page .style_it_with_container {
@@ -66,7 +69,8 @@
 }
 
 /* Products Page Hero Section */
-
+    /* Product Page - Gallery */
+    
     /* Product Page - Slider */
         .product-single .product-single__wrapper .product-single__gallery .flickity-slider:first-child>div .product-single__media.product-single__media--image .product-single__media--image-height{
             padding-top: 100% !important;

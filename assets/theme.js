@@ -11680,7 +11680,7 @@ PaloAlto.Product = (function() {
     new PaloAlto.ProductAddForm(container);
     new PaloAlto.Zoom(container);
 
-    this.initProductSlider();
+    // this.initProductSlider();
     this.initUpsellSlider();
     this.initMediaSwitch();
     this.initProductVideo();

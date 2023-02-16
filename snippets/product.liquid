@@ -707,7 +707,7 @@
             {% endif %}>
             {%- if enable_variant_boxes or is_swatch_option -%}
               {%- assign current_value = current_variant.options[forloop.index0] -%}
-              <fieldset class="radio__fieldset radio__fieldset--{{ settings.color_swatches_product_style }} sahrudh1">
+              <fieldset class="radio__fieldset radio__fieldset--{{ settings.color_swatches_product_style }}">
                 <legend class="radio__legend{% if is_size_option and info_page != blank %} radio__legend--flex radio__legend--size-chart{% endif %}">
                   {%- if is_size_option and show_labels and info_page != blank -%}
                   <div class="size_chart_product_container" style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
@@ -1059,7 +1059,7 @@
       {% endif %}>
       {%- if enable_variant_boxes -%}
         <fieldset class="radio__fieldset">
-          <legend class="radio__legend sahruhd3">
+          <legend class="radio__legend">
             <span class="radio__legend__label">{{- 'homepage.onboarding.size' | t -}}</span>
           </legend>
 
