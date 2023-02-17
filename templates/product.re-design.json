@@ -203,6 +203,7 @@
     },
     "13766605-d46b-4b68-8682-39cac646af75": {
       "type": "style-it-with-product-page",
+      "disabled": true,
       "settings": {
         "style_it_with_heading": "",
         "product_list": "{{ product.metafields.custom.style_it_with_section_products.value }}",
@@ -253,7 +254,9 @@
         "template--14566594117695__4d82cf0c-8a3b-4a70-9748-13a5f715ac20-1676641358bffd9c5d-0"
       ],
       "settings": {
+        "tab_collection_custom_class": "",
         "title": "Style it with",
+        "subheading_main": "",
         "bg_color": "",
         "width": "wrapper--full-padded",
         "padding_top": 60,
