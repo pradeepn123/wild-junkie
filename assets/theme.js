@@ -13117,7 +13117,7 @@ PaloAlto.countdown = function (container) {
     	    		<div>Days</div>
 	        	</div><div class="seperator">:</div>`
         	} else {
-        		container.innerHTML += dayString.join("") + "d : "
+        		container.innerHTML += dayString.join("") + `<span class='font_format'>d : </span>`
         	}
         }
 
@@ -13133,7 +13133,7 @@ PaloAlto.countdown = function (container) {
     	    		<div>Hours</div>
 		        </div><div class="seperator">:</div>`
 			} else {
-				container.innerHTML += hoursString.join("") + "h : "
+				container.innerHTML += hoursString.join("") + `<span class='font_format'>h : </span>`
 			}
         } else {
         	if (isBoxType) {
@@ -13158,7 +13158,7 @@ PaloAlto.countdown = function (container) {
     	    		<div>Minutes</div>
 	        	</div><div class="seperator">:</div>`
 	        } else {
-	        	container.innerHTML += minuteString.join("") + "m : "
+	        	container.innerHTML += minuteString.join("") + `<span class='font_format'>m : </span>`
 	        }
         } else {
         	if (isBoxType) {
@@ -13179,10 +13179,10 @@ PaloAlto.countdown = function (container) {
         if (isBoxType) {
 	        container.innerHTML += `<div class="countdown-timer">
     	    	<div>${secondString.map(str => `<span>${str}</span>`).join('')}</div>
-    	    	<div>Minutes</div>
+    	    	<div>Seconds</div>
 	    	   </div>`
 	    } else {
-	    	container.innerHTML += secondString.join("") + "s"
+	    	container.innerHTML += secondString.join("") + `<span class='font_format'>s</span>`
 	    }
 
 	    clearInterval(x);

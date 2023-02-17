@@ -411,8 +411,7 @@
 .countdown-timer-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
-    width: fit-content;
+    align-items: center; 
 }
 .countdown-timer-wrapper .seperator{
     display: none;
@@ -443,8 +442,8 @@
         font-size: 18px;
     }
 
-    .countdown-timer {
-
+    #salesday .countdown-timer-wrapper .countdown-timer {
+        margin-bottom: 10px;
     }
 
     .countdown-timer span {
@@ -635,7 +634,9 @@
     font-size: 26px;
     color: #FE6D6D;
 }
-
+#salesday .collection-marbles .list-collections-section{
+    padding-top: 0;
+}
 #salesday .section__heading{
     font-family: Yeseva One;
 }
@@ -667,6 +668,17 @@
 #salesday .deal-information .text{
     margin-left: 40px;
 }
+#salesday .tab-collections{
+    margin-top: 30px;
+}
+#salesday .tab-collections .section__header .section__heading{
+    font-family: Yeseva One;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 69px;
+    color: #fe6d6d;
+}
 #salesday .deal-information .text::before{
     position: absolute;
     content: "";
@@ -695,12 +707,21 @@
     text-align: center;
     color: #fff;
     font-size: 22px;
+    font-family: Yeseva One;
+}
+.collection-marbles .great_offer_timer .great_offer_timer_inner .offer_text_heading .font_main_timer{
+    font-size: 40px;
+}
+.collection-marbles .great_offer_timer .great_offer_timer_inner .offer_text_heading .font_main_timer .font_format{
+    font-size: 24px;
 }
 
 .featured-collection__inner .featured-collection__top {
     display: block;
 }
-
+#salesday .collection-marbles .great_offer_timer{
+    margin-bottom: 30px;
+}
 @media screen and (min-width: 1200px) {
 
     /* Footer Logo Block */
@@ -718,17 +739,23 @@
     }
     .countdown-timer span {
         font-size: 46px;
-    }    
+    }
+    .collection-marbles .great_offer_timer{
+        margin-bottom: 70px;
+    }
 }
 
 @media screen and (min-width: 1440px) {
     .countdown-timer-wrapper{
         display: flex;
-        align-items: center;
+        align-items: baseline;
         width: inherit;
     }
     .countdown-timer-wrapper .seperator{
         display: block;
+    }
+    .countdown-timer-wrapper .countdown-timer{
+        text-align: center;
     }
 }
 @media (min-width:1024px) and (max-width: 1200px) {
