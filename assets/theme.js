@@ -13145,6 +13145,7 @@ PaloAlto.countdown = function (container) {
         container.innerHTML += `<div class="countdown-timer">
         	${secondString.map(str => `<span>${str}</span>`).join('')}
 	       </div>`
+	    clearInterval(x);
 
         if (distance < 0) {
         	document.querySelector("#" + container.dataset.targetContainer).remove()

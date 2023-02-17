@@ -118,6 +118,13 @@
 
 {%- capture section_heading_content -%}
   {% if section.settings.offer_date != blank and section.settings.offer_time != blank %}
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        setTimeout(function() {
+          PaloAlto.countdown(document.querySelector(".countdown-timer-wrapper"))
+        })
+      });
+    </script>
     <div class="offer-counter-{{ section.id }}">
       <div class="deal-information">        
         <span class="text">
