@@ -1248,3 +1248,15 @@
 .product__submit__buttons-primary {
     margin-bottom: 1rem;   
 }
+
+.product-single__media-slider:after {
+    content: 'flickity';
+    display: none; /* hide :after */
+}
+
+@media screen and ( min-width: 1024px ) {
+    /* disable Flickity for large devices */
+    .product-single__media-slider:after {
+        content: '';
+    }
+}

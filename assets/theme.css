@@ -16175,7 +16175,7 @@ body.notification-visible .popup.popup--visible {
   }
 }
 
-/* Product Page - Gallery Styles */
+/*/* Product Page - Gallery Styles */
 @media only screen and (min-width: 1024px) {
   .product-single__wrapper {
     display: grid;
@@ -16267,7 +16267,7 @@ body.notification-visible .popup.popup--visible {
     width: 50%;
   }
 }
-/* Product Page - Gallery Styles End */
+/*/*
 
 .product__block hr {
   margin: 0;

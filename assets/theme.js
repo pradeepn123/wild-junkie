@@ -11712,10 +11712,6 @@ PaloAlto.Product = (function() {
 
     /* Product Slider */
     initProductSlider: function() {
-      if (window.innerWidth > 1024) {
-        return;
-      }
-
       const slider = this.container.querySelector(selectors.productMediaSlider);
       const thumbs = this.container.querySelector(selectors.productMediaThumbs);
       const media = this.container.querySelectorAll(selectors.productMediaWrapper);
@@ -11725,6 +11721,7 @@ PaloAlto.Product = (function() {
           wrapAround: true,
           pageDots: false,
           adaptiveHeight: true,
+          watchCSS: true,
           on: {
             ready: () => {
               slider.setAttribute(attributes.tabindex, '-1');

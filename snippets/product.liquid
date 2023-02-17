@@ -885,8 +885,8 @@
         </button>
       </div>
     </div>
-    <div class="product__submit__buttons">
-      {%- if show_payment_button -%}
+    {%- if show_payment_button -%}
+      <div class="product__submit__buttons">    
         <div class="product__submit__item{% if sold_out %} hidden{% endif %}"
           data-buy-it-now
           {% if animations_enabled %}
@@ -897,9 +897,8 @@
           {% endif %}>
           {{ form | payment_button }}
         </div>
-      {%- endif -%}
-      <div class="swym-button-bar swym-wishlist-button-bar swym-inject"><div class="swym-btn-container swym-inject" data-position="default"><button class="btn swym-button swym-add-to-wishlist swym-inject swym-has-fave-count swym-icontext swym-heart swym-loaded" onclick="event.preventDefault();" aria-label="Add to Wishlist"><span class="swym-wishlist-cta">Add to Wishlist</span></button><span class="swym-fave-count" data-count="0">0</span></div></div>
-    </div>
+      </div>
+    {%- endif -%}
 
     <div data-cart-errors-container class="product__form__errors"></div>
   </div>
