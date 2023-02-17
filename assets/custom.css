@@ -183,6 +183,18 @@
     .footer-currency .select-popout__toggle {
         padding: var(--form-top) var(--arrow-size) var(--form-top) 0;
     }
+    #salesday .featured-collection__inner {
+        display: grid;
+        grid-template-columns: repeat(2,minmax(0,1fr));
+        gap: calc(var(--grid-gutter) * 2);
+        grid-template-areas: "column-left column-right";
+    }
+    #salesday .featured-collection__inner .featured-collection__top {
+        grid-area: column-left;
+    }
+    #salesday .featured-collection__inner--splitright .featured-collection__top {
+        grid-area: column-right;
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -553,5 +565,22 @@
         row-gap: 30px;
     }
 }
+
+.featured-collection--split-left, .featured-collection--split-right {
+    overflow: visible;
+}
+
+#salesday #PageContainer{
+    overflow: visible;
+}
+#salesday .featured-collection__top-inner {
+    position: sticky;
+    top: 60px;
+}
+
+.featured-collection__inner .featured-collection__top {
+    display: block;
+}
+
 
 /*sale-offers section css ends here*/
