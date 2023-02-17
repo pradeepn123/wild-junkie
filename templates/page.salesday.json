@@ -274,6 +274,7 @@
     },
     "3bfc0f34-6a94-4f43-b141-4903f22962f2": {
       "type": "section-text",
+      "disabled": true,
       "blocks": {
         "template--14560545767487__3bfc0f34-6a94-4f43-b141-4903f22962f2-16758647324dc0caa5-0": {
           "type": "subheading",
@@ -350,7 +351,7 @@
         "4a51ae35-3c4a-49f6-8668-f46e5fb1bcd4"
       ],
       "settings": {
-        "title": "",
+        "title": "Grab the top deals",
         "bg_color": "",
         "width": "wrapper--full-padded",
         "padding_top": 20,
