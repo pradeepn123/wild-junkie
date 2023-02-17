@@ -1149,24 +1149,15 @@ PaloAlto.ProductForm = (function() {
     // -----------------------------------------------------------------------------
     _setIdInputValue(variant) {
 
-      const reqClothesSizes = {
-        "Small": "S",
-        "Medium": "M",
-        "Large": "L",
-        "X Large": "XL",
-        "2X Large": "XXL",
-        "3X Large" : "XXXL"
-      }
-
       if (variant && variant.id) {
-        this.variantElement.value = variant.id.toString();
-        document.querySelector(
-          'span[data-option-parent-size="Size"]'
-        ).nextElementSibling.innerText = ": "+ ((reqClothesSizes[variant.option1]) ? reqClothesSizes[variant.option1] : variant.option1); 
-        // debugger;
-        document.querySelector(
-           'span[data-option-parent-color="Color"]'
-         ).nextElementSibling.innerText = ": " + variant.option2;
+      	this.variantElement.value = variant.id.toString();
+      	this.product.options.forEach((optionLabel, index) => {
+      		const optionalLabelSpan = document.querySelector(`span[data-option-parent-${optionLabel.toLowerCase()}=${optionLabel.toLowerCase()}]`
+        	)
+        	if (optionalLabelSpan) {
+        		optionalLabelSpan.nextElementSibling.innerText = variant[`option${index + 1}`]
+        	}
+      	})
       } else {
         this.variantElement.value = '';
       }

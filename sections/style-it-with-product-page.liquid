@@ -5,78 +5,72 @@
 -%}
 
 {% if section.settings.style_with_it_image != blank and section.settings.product_list.count > 0 %}
-<div class="style_it_with_product_page">
-    <div class="wrapper_style_it_with_page">
-        <div class="style_it_with_container">
-            {% if section.settings.style_with_it_image %}
-                <div class="style_it_with_product_page_image">
-                    <img src="{{ section.settings.style_with_it_image | img_url: 'master' }}" alt="">
-                </div>
-            {% endif %}
-            {% if section.settings.product_list.count > 0 %}
-                <div class="style_it_with_product_page_carousel">
-                    <div class="style_it_with_section_content">
-                        <h2 class="style_it_with_section_heading h2"
-                        {% if animations_enabled %}
-                        data-aos="fade-up"
-                        data-aos-delay="{{ animation_delay }}"
-                        data-aos-anchor="{{ animation_anchor_heading }}"
-                        {%- assign animation_delay = animation_delay | plus: 150 -%}
+    <div class="style_it_with_product_page">
+        <div class="wrapper_style_it_with_page">
+            <div class="style_it_with_container">
+                {% if section.settings.style_with_it_image %}
+                    <div class="style_it_with_product_page_image">
+                        <img src="{{ section.settings.style_with_it_image | img_url: 'master' }}" alt="">
+                    </div>
+                {% endif %}
+                {% if section.settings.product_list.count > 0 %}
+                    <div class="style_it_with_product_page_carousel">
+                        <div class="style_it_with_section_content">
+                            <h2 class="style_it_with_section_heading h2"
+                            {% if animations_enabled %}
+                                data-aos="fade-up"
+                                data-aos-delay="{{ animation_delay }}"
+                                data-aos-anchor="{{ animation_anchor_heading }}"
+                                {%- assign animation_delay = animation_delay | plus: 150 -%}
                             {% endif %}>
-                            Style it with
-                        </h2>
-                        <p class="style_it_with_section_subheading"
-                        {% if animations_enabled %}
-                        data-aos="fade-up"
-                        data-aos-delay="{{ animation_delay }}"
-                        {% comment %} data-aos-anchor="{{ animation_anchor_heading }}" {% endcomment %}
-                        {%- assign animation_delay = animation_delay | plus: 150 -%}
-                            {% endif %}>
-                            Why stop with one when you can have a complete look .
-                        </p>
-                        {% liquid 
-                            assign upsell_unique = section.id
-                            assign legacy_upsell_product = product.metafields.custom.style_it_with_section_products.value
-                        %}
-                        <div class="style-it-with-upsell-container">
-                            <div class="carousel-parent" data-flickity='{ "autoPlay": false, "contain": true}'>
-                                {% for item in legacy_upsell_product %}
-                                    {% render 'upsell-style-with-it', upsell_product: item, index: 1, unique: upsell_unique %}
-                                {% endfor %}
+                                Style it with
+                            </h2>
+                            <p class="style_it_with_section_subheading"
+                            {% if animations_enabled %}
+                            data-aos="fade-up"
+                            data-aos-delay="{{ animation_delay }}"
+                            {%- assign animation_delay = animation_delay | plus: 150 -%}
+                                {% endif %}>
+                                Why stop with one when you can have a complete look .
+                            </p>
+                            {% liquid 
+                                assign upsell_unique = section.id
+                                assign legacy_upsell_product = product.metafields.custom.style_it_with_section_products.value
+                            %}
+                            <div class="style-it-with-upsell-container">
+                                <div class="carousel-parent" data-flickity='{ "autoPlay": false, "contain": true}'>
+                                    {% for item in legacy_upsell_product %}
+                                        {% render 'upsell-style-with-it', upsell_product: item, index: 1, unique: upsell_unique %}
+                                    {% endfor %}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            {% endif %}
+                {% endif %}
+            </div>
         </div>
     </div>
-</div>
 {% endif %}
+
 {% schema %}
 {
-    "name": "Style it With",
+    "name": "Style it With Something",
     "class": "style_it_with_section",
-    "settings": [
-        {
-            "type": "text",
-            "id": "style_it_with_heading",
-            "label": "Choose Heading"
-        },
-        {
-            "type": "product_list",
-            "id": "product_list",
-            "label": "Product List"
-        },
-        {
-            "type": "image_picker",
-            "id":"style_with_it_image",
-            "label": "Image"
-        }
-    ],
-    "presets": [
-        {
-            "name": "Style it with"
-        }
-    ]
+    "settings": [{
+        "type": "text",
+        "id": "style_it_with_heading",
+        "label": "Choose Heading"
+    }, {
+        "type": "product_list",
+        "id": "product_list",
+        "label": "Product List"
+    }, {
+        "type": "image_picker",
+        "id":"style_with_it_image",
+        "label": "Image"
+    }],
+    "presets": [{
+        "name": "Style it with"
+    }]
 }
 {% endschema %} 

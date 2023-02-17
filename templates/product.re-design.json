@@ -81,21 +81,23 @@
           "settings": {
             "subheading": "none",
             "show_rating": false,
-            "show_rating_count": false
+            "show_rating_count": false,
+            "price_color": "#fe6d6d"
           }
         },
-        "inventory_countdown": {
-          "type": "inventory_countdown",
+        "5af88f28-3084-4623-8d84-72483f2cb6b0": {
+          "type": "divider",
           "settings": {
-            "max_inventory": 10,
-            "hide_inventory_count": true
+            "show_line": true,
+            "padding_top": 20,
+            "padding_bottom": 20
           }
         },
         "form": {
           "type": "form",
           "settings": {
-            "info_page": "",
-            "info_page_title_override": "",
+            "info_page": "{{ product.metafields.custom.size_chart_page.value }}",
+            "info_page_title_override": "Size Guide",
             "show_slide_svg": true,
             "show_labels": true,
             "show_quantity": true,
@@ -109,18 +111,9 @@
             "custom_liquid": "<div id=\"63be821362297b001a6829e1\" class=\"htmlsnpt\"><\/div>"
           }
         },
-        "icon": {
-          "type": "icon",
+        "b5bde45b-a057-45b5-a1a3-a03595b4bedf": {
+          "type": "shippingAndReturn",
           "settings": {
-            "icon_name": "check",
-            "icon_color": "",
-            "icon_width": 20,
-            "icon_text": "Free shipping over $35",
-            "text_size": 90,
-            "width": "full",
-            "text_alignment": "left",
-            "bg_color": "#ffffff",
-            "remove_padding": true
           }
         },
         "description": {
@@ -128,14 +121,25 @@
           "settings": {
           }
         },
+        "upsell": {
+          "type": "upsell",
+          "settings": {
+            "product_list": "{{ product.metafields.theme.upsell_list.value }}"
+          }
+        },
+        "da5bea6d-6762-4f56-87a2-6b9c243717fa": {
+          "type": "modelSizeAndFit",
+          "settings": {
+          }
+        },
         "product_accordions": {
           "type": "product_accordions",
           "settings": {
-            "accordion_heading_1": "",
-            "accordion_text_1": "",
+            "accordion_heading_1": "Shipping & Returns",
+            "accordion_text_1": "<p>Free hassle free Return within 14 days of delivery!<\/p>",
             "accordion_page_1": "",
             "accordion_heading_2": "",
-            "accordion_text_2": "",
+            "accordion_text_2": "<p>Temp Accordion<\/p>",
             "accordion_page_2": "",
             "accordion_heading_3": "",
             "accordion_text_3": "",
@@ -149,32 +153,51 @@
             "show_size_chart_accordion": false
           }
         },
+        "inventory_countdown": {
+          "type": "inventory_countdown",
+          "disabled": true,
+          "settings": {
+            "max_inventory": 10,
+            "hide_inventory_count": true
+          }
+        },
+        "icon": {
+          "type": "icon",
+          "disabled": true,
+          "settings": {
+            "icon_name": "check",
+            "icon_color": "",
+            "icon_width": 20,
+            "icon_text": "Free shipping over $35",
+            "text_size": 90,
+            "width": "full",
+            "text_alignment": "left",
+            "bg_color": "#ffffff",
+            "remove_padding": true
+          }
+        },
         "share-button": {
           "type": "share-button",
           "disabled": true,
           "settings": {
             "text": "Share"
           }
-        },
-        "upsell": {
-          "type": "upsell",
-          "disabled": true,
-          "settings": {
-            "product_list": "{{ product.metafields.theme.upsell_list.value }}"
-          }
         }
       },
       "block_order": [
         "b40be5b7-a29a-4754-8959-96af5397de5c",
         "title",
-        "inventory_countdown",
+        "5af88f28-3084-4623-8d84-72483f2cb6b0",
         "form",
         "54d3bf08-7edb-4254-a5ae-b2195de93de0",
-        "icon",
+        "b5bde45b-a057-45b5-a1a3-a03595b4bedf",
         "description",
+        "upsell",
+        "da5bea6d-6762-4f56-87a2-6b9c243717fa",
         "product_accordions",
-        "share-button",
-        "upsell"
+        "inventory_countdown",
+        "icon",
+        "share-button"
       ],
       "settings": {
         "image_size": "medium",
@@ -187,93 +210,12 @@
         "padding_bottom": 60
       }
     },
-    "section-testimonials": {
-      "type": "section-testimonials",
-      "disabled": true,
-      "blocks": {
-        "text": {
-          "type": "text",
-          "settings": {
-            "heading": "We asked, you answered. Notable feedback from our customers",
-            "text_size": 125,
-            "subheading": "<p>4.98 average<br\/>213 reviews<\/p>",
-            "block_color": "#000000",
-            "text_color": "text-light",
-            "text_alignment": "text-left"
-          }
-        },
-        "testimonial-1": {
-          "type": "testimonial",
-          "settings": {
-            "star_rating": 5,
-            "text": "<p>As a hiker and traveler, their bags are the perfect combo.<\/p>",
-            "customer_name": "John Edmonson",
-            "subheading": "<p>Happy customer<\/p>"
-          }
-        },
-        "testimonial-2": {
-          "type": "testimonial",
-          "settings": {
-            "star_rating": 5,
-            "text": "<p>Been buying their products for years and they're all top notch.<\/p>",
-            "customer_name": "Lindsay Smith",
-            "subheading": "<p>Los Angeles, CA<\/p>"
-          }
-        },
-        "testimonial-3": {
-          "type": "testimonial",
-          "settings": {
-            "star_rating": 5,
-            "text": "<p>Quality products with a unique design. I can't recommend enough.<\/p>",
-            "customer_name": "Eric Lopez",
-            "subheading": "<p>12 days ago<\/p>"
-          }
-        },
-        "testimonial-4": {
-          "type": "testimonial",
-          "settings": {
-            "star_rating": 5,
-            "text": "<p>I wear their apparel hiking, kayaking and bicycling, and I'm always super comfy in all activities.<\/p>",
-            "customer_name": "Mallory Cruz",
-            "subheading": "<p>Vancouver, BC<\/p>"
-          }
-        },
-        "testimonial-5": {
-          "type": "testimonial",
-          "settings": {
-            "star_rating": 5,
-            "text": "<p>The materials used are second to none! Long-lasting and high quality. what more can you ask for? <\/p>",
-            "customer_name": "Sasha Dixon",
-            "subheading": "<p>Toronto, ON<\/p>"
-          }
-        },
-        "testimonial-6": {
-          "type": "testimonial",
-          "settings": {
-            "star_rating": 5,
-            "text": "<p>Amazing customer service. You can tell that they really care about their customers and their whole company.<\/p>",
-            "customer_name": "Neon Dash",
-            "subheading": "<p>New York<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "text",
-        "testimonial-1",
-        "testimonial-2",
-        "testimonial-3",
-        "testimonial-4",
-        "testimonial-5",
-        "testimonial-6"
-      ],
+    "531f5cea-58c7-454b-a867-1e270fa10952": {
+      "type": "style-it-with-product-page",
       "settings": {
-        "title": "",
-        "text_size": 100,
-        "text_alignment": "text-left",
-        "bg_color": "",
-        "width": "wrapper--full-padded",
-        "padding_top": 30,
-        "padding_bottom": 100
+        "style_it_with_heading": "",
+        "product_list": "{{ product.metafields.custom.style_it_with_section_products.value }}",
+        "style_with_it_image": "{{ product.metafields.custom.style_it_with_section_image.value }}"
       }
     },
     "27108dd6-384a-44d5-8a6f-f174b3aeb828": {
@@ -416,9 +358,9 @@
         "icons_width": 30,
         "heading": "",
         "subheading": "",
-        "bg_color": "#f6f6f7",
-        "box_color": "rgba(0,0,0,0)",
-        "text_color": "#000000",
+        "bg_color": "#fafafa",
+        "box_color": "",
+        "text_color": "#333333",
         "button_text": "",
         "button_link": "",
         "button_style": "secondary btn--small",
@@ -452,7 +394,7 @@
   "order": [
     "6b0ee484-3c6d-4ecf-8a26-2a5129a417dd",
     "main",
-    "section-testimonials",
+    "531f5cea-58c7-454b-a867-1e270fa10952",
     "27108dd6-384a-44d5-8a6f-f174b3aeb828",
     "1665682367e6a8a8b7",
     "section-accordions",

@@ -1,21 +1,13 @@
 {
   "sections": {
-<<<<<<< HEAD
     "13dc39a9-db4a-4a80-8748-092a982f1a34": {
-=======
-    "section-custom-content-json": {
->>>>>>> 7bc06fa (Update Size Chart Guide in Product Pages)
       "type": "section-custom-content",
       "blocks": {
         "template--14490298581055__13dc39a9-db4a-4a80-8748-092a982f1a34-16656776048b20adc6-0": {
           "type": "image",
           "settings": {
             "text_position": "middle-center",
-<<<<<<< HEAD
             "image": "shopify:\/\/shop_images\/Section_Header_Image_New.jpg",
-=======
-            "image": "shopify://shop_images/Section_Header_Image_New.jpg",
->>>>>>> 7bc06fa (Update Size Chart Guide in Product Pages)
             "image_position": "center-top",
             "overlay_opacity": 10,
             "text_color": "text-light",
@@ -41,11 +33,7 @@
         "padding_bottom": 20
       }
     },
-<<<<<<< HEAD
     "326111f5-7846-4733-8496-cd535bbe6524": {
-=======
-    "section-accordions-json": {
->>>>>>> 7bc06fa (Update Size Chart Guide in Product Pages)
       "type": "section-accordions",
       "disabled": true,
       "blocks": {
@@ -57,13 +45,9 @@
           }
         }
       },
-<<<<<<< HEAD
       "block_order": [
         "362a8ae2-2303-4068-b18f-c190576a6f48"
       ],
-=======
-      "block_order": ["362a8ae2-2303-4068-b18f-c190576a6f48"],
->>>>>>> 7bc06fa (Update Size Chart Guide in Product Pages)
       "settings": {
         "section_custom_class": "tabs_heading_left_align",
         "title": "Shipping Policy",
@@ -76,11 +60,7 @@
         "padding_bottom": 0
       }
     },
-<<<<<<< HEAD
     "d5a241ff-4a9a-4897-985e-1fec9ac2e59d": {
-=======
-    "section-custom-content-json-new": {
->>>>>>> 7bc06fa (Update Size Chart Guide in Product Pages)
       "type": "section-custom-content",
       "disabled": true,
       "blocks": {
@@ -126,15 +106,9 @@
     }
   },
   "order": [
-<<<<<<< HEAD
     "13dc39a9-db4a-4a80-8748-092a982f1a34",
     "326111f5-7846-4733-8496-cd535bbe6524",
     "d5a241ff-4a9a-4897-985e-1fec9ac2e59d",
-=======
-    "section-custom-content-json",
-    "section-accordions-json",
-    "section-custom-content-json-new",
->>>>>>> 7bc06fa (Update Size Chart Guide in Product Pages)
     "main"
   ]
 }
