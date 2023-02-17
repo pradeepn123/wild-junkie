@@ -97,7 +97,12 @@
       #FeaturedCollection--{{ section.id }} .carousel--mobile { --item-width-mobile: calc(90% / {{ columns_mobile }} - var(--grid-gutter)); }
     {%- endif %}
   }
- 
+
+  .offer-counter-{{ section.id }} .deal-information {
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+  }
 
 {%- endstyle -%}
 
@@ -108,6 +113,39 @@
 {%- endcapture -%}
 
 {%- capture section_heading_content -%}
+  {% if section.settings.offer_date != blank and section.settings.offer_time != blank %}
+    <div class="offer-counter-{{ section.id }}">
+      <div class="deal-information">
+        <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left: 5px;">
+          <circle opacity="0.3" cx="14.5" cy="14.5" r="14.5" fill="#FFCF54"/>
+          <circle cx="14.5" cy="14.5" r="9.5" fill="#FFCF54"/>
+        </svg>
+        <span class="text">
+          Deals ends in:
+        </span>
+      </div>
+      <div class="countdown-timer-wrapper">
+        <div class="countdown-timer">
+          <span>2</span>
+        </div>
+        <div class="seperator">:</div>
+        <div class="countdown-timer">
+          <span>2</span>
+          <span>1</span>
+        </div>
+        <div class="seperator">:</div>
+        <div class="countdown-timer">
+          <span>3</span>
+          <span>4</span>
+        </div>
+        <div class="seperator">:</div>
+        <div class="countdown-timer">
+          <span>4</span>
+          <span>9</span>
+        </div>
+      </div>
+    </div>
+  {% endif %}
   <div class="section__header featured-collection__top__wrapper">
     {%- if heading != blank -%}
       <h2 class="section__heading h2"

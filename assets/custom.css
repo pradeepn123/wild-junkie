@@ -402,6 +402,59 @@
     color: #000000;
 }
 
+.deal-information .text {
+    font-size: 26px;
+    color: #FE6D6D;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: bold;
+    margin-left: 10px;
+    line-height: 39px;
+}
+
+.countdown-timer-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.countdown-timer {
+    margin-left: 5px;
+}
+
+.countdown-timer span {
+    background: black;
+    color: white;
+    padding: 3px 22px;
+    border-radius: 7px;
+    font-family: 'Yeseva One';
+    font-size: 50px;
+}
+
+.seperator {
+    font-size: 50px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+@media (min-width:320px) and (max-width: 767px) {
+    .deal-information .text {
+        font-size: 18px;
+    }
+
+    .countdown-timer {
+
+    }
+
+    .countdown-timer span {
+
+    }
+
+    .seperator {
+        font-size: 18px;
+    }
+}
+
+
 @media (min-width:320px) and (max-width: 767px) {
     .text__wrapper .text__heading p {
         font-size: 19px;
