@@ -153,6 +153,7 @@
             color: #000;
             margin-bottom: 30px;
             font-weight: 700;
+            margin-top: 0;
         }
         .product__description {
             margin-bottom: 13px !important;
@@ -221,6 +222,7 @@
     /* Product Page - Hero Section - Upsell */
         .product__page__upsell{
             margin-bottom: 16px;
+            margin-top: 10px;
         }
         .product__page__upsell__heading{
             font-style: normal;
@@ -282,7 +284,6 @@
         .product__popup__link{
             font-weight: 400;
             color: #FE6D6D;
-            padding-right: 10px;
         }
 
         .product__popup__link::before , .no-touch .product__popup__link::after{
@@ -562,6 +563,15 @@
     /* Footer Logo Block */
     .site-footer{
         padding-top: 83px;
+    }
+    .product__selectors{
+        row-gap: 32px;
+    }
+    .product__submit__holder{
+        margin-top: 5px;
+    }
+    .product__submit__buttons-primary{
+        margin-bottom: 25px;
     }
 }
 
@@ -1302,4 +1312,7 @@
 }
 .product__block.product__accordions{
     border-bottom: 1px solid #E8E8E8;
+}
+.radio__fieldset{
+    width: 100%;
 }

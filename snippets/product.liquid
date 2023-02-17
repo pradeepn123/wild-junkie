@@ -2089,8 +2089,6 @@
 
   {{- form_fields -}}
 
-  {{- size_chart_modal -}}
-
   <noscript>
     <select name="id" class="product__form__select" aria-label="{{ product.options_with_values | map: 'name' | uniq | join: ', ' }}">
       {%- for variant in product.variants -%}
@@ -2194,6 +2192,8 @@
       </div>
     {%- endunless -%}
   </div>
+
+{{- size_chart_modal -}}
 
   <script type="application/json" id="ProductJson-{{ unique }}" data-product-json>{{ product | json }}</script>
   <script type="application/json" id="ModelJson-{{ unique }}">{{ product.media | where: 'media_type', 'model' | json }}</script>
