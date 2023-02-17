@@ -13202,3 +13202,10 @@ window.addEventListener('load', () => {
   preventOverflow(document);
   loadingAnimation();
 });
+
+document.addEventListener('DOMContentLoaded', (event) => {
+	const timer = document.querySelectorAll("[data-coundown-timer]")
+	timer.forEach(element => {
+		PaloAlto.countdown(element)
+	})
+});

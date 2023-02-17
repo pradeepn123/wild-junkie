@@ -52,6 +52,7 @@
     },
     "460d6cd6-ea44-436e-aad9-efab0d9193f5": {
       "type": "section-marquee",
+      "disabled": true,
       "blocks": {
         "template--14560545767487__460d6cd6-ea44-436e-aad9-efab0d9193f5-1675864641072a5818-0": {
           "type": "message",
@@ -256,6 +257,7 @@
         "image_shape": "circle",
         "title": "Greatest deals",
         "text_size": 130,
+        "sub_heading": "<p>Explore collections that has exclusive   offers<\/p>",
         "overlay_text": false,
         "text_color": "text-dark",
         "overlay_opacity": 0,
@@ -264,6 +266,8 @@
         "width": "wrapper--full-padded",
         "padding_top": 70,
         "padding_bottom": 70,
+        "great_offer_image": "shopify:\/\/shop_images\/countdown_strip.png",
+        "offer_text": "offer ends in : 20h : 34m : 49s",
         "offer_date": "02\/23\/2023",
         "offer_time": "00:30"
       }
