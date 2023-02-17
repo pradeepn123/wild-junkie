@@ -228,21 +228,7 @@
     }
 }
 
-@media screen and (min-width: 1200px) {
 
-    /* Footer Logo Block */
-    .site-footer {
-        padding-top: 83px;
-    }
-    #salesday .collection-marbles .section__header .section__heading{
-        font-size: 60px !important;        
-    }
-    .featured-collection--split-left .featured-collection__top-inner .section__header .section__heading, 
-    .featured-collection--split-right .featured-collection__top-inner .section__header .section__heading{
-        font-size: 80px;
-        width: 70%;
-    }
-}
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     .footer__svg {
@@ -423,12 +409,18 @@
 }
 
 .countdown-timer-wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
+    width: fit-content;
+}
+.countdown-timer-wrapper .seperator{
+    display: none;
 }
 
-.countdown-timer {
-    margin-left: 5px;
+
+.countdown-timer span {
+    margin: 0 1px;
 }
 
 .countdown-timer span {
@@ -437,7 +429,7 @@
     padding: 3px 22px;
     border-radius: 7px;
     font-family: 'Yeseva One';
-    font-size: 50px;
+    font-size: 28px;
 }
 
 .seperator {
@@ -533,15 +525,7 @@
     }
 }
 
-@media (min-width:1024px) and (max-width: 1200px) {
-    .shipping-flex .offer-block .offer-paragraph {
-        font-size: 22px;
-    }
 
-    .shipping-flex .offer-block .offer-subtext {
-        font-size: 24px;
-    }
-}
 
 /*shipping flex section css ends here*/
 
@@ -674,6 +658,8 @@
 #salesday .featured-collection--split-left .featured-collection__top-inner .section__header .section__heading, 
 #salesday .featured-collection--split-right .featured-collection__top-inner .section__header .section__heading{
     color: #000000;
+    font-size: 28px;
+    margin-bottom: 0;
 }
 #salesday .deal-information{
     position: relative;
@@ -715,5 +701,44 @@
     display: block;
 }
 
+@media screen and (min-width: 1200px) {
+
+    /* Footer Logo Block */
+    .site-footer {
+        padding-top: 83px;
+    }
+    #salesday .collection-marbles .section__header .section__heading{
+        font-size: 60px !important;        
+    }
+    .featured-collection--split-left .featured-collection__top-inner .section__header .section__heading, 
+    .featured-collection--split-right .featured-collection__top-inner .section__header .section__heading{
+        font-size: 80px !important;
+        width: 70%;
+        margin-bottom: inherit !important;
+    }
+    .countdown-timer span {
+        font-size: 46px;
+    }    
+}
+
+@media screen and (min-width: 1440px) {
+    .countdown-timer-wrapper{
+        display: flex;
+        align-items: center;
+        width: inherit;
+    }
+    .countdown-timer-wrapper .seperator{
+        display: block;
+    }
+}
+@media (min-width:1024px) and (max-width: 1200px) {
+    .shipping-flex .offer-block .offer-paragraph {
+        font-size: 22px;
+    }
+
+    .shipping-flex .offer-block .offer-subtext {
+        font-size: 24px;
+    }   
+}
 
 /*sale-offers section css ends here*/
