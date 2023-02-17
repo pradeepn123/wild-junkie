@@ -20,6 +20,48 @@
     .shop-pay-terms {
       --payment-terms-background-color: {{ bg_color }}}
   {%- endif -%}
+  
+  {% if template.suffix == 're-design'%}
+    @media screen and (max-width: 480px){
+      .shipping__and__return__container .shipping__and__return .shipping__and__return__content{
+        padding: 15px 10px !important;
+      }
+    }
+    @media screen and (min-width: 1024px){
+      .product__price--regular{
+        font-size: 22px;
+      }
+      .product__title-and-price .product__title{
+        width: 90%;
+      }
+    }
+    {% comment %} Quantity Low {% endcomment %}
+    .variant__countdown--low{
+      color: #FE7A1A;
+    }
+    {% comment %} Payment More Options {% endcomment %}
+    .shopify-payment-button__more-options{
+      text-decoration: underline;
+    }
+    {% comment %} Product Description {% endcomment %}
+    .product__description .product__description__heading{
+      text-transform: uppercase;
+    }
+    .product-single__details .product__block.product__price-and-badge.aos-init.aos-animate{
+      align-items: center;
+    }
+    {% comment %} Shipping and Return {% endcomment %}
+    .shipping__and__return__container .shipping__and__return .shipping__and__return__content{
+      padding: 25px 30px;
+    }
+    {% comment %} Model Size And Fit  {% endcomment %}
+    {% comment %} .model__size__and__fit .model__size__and__fit__content{
+      column-gap: 10px;
+    } {% endcomment %}
+    .model__size__and__fit .model__size__and__fit__content .model__size__and__fit__right__content{
+      column-gap: 10px;
+    }
+  {% endif %}
 {%- endstyle -%}
 
 <section id="ProductTemplate--{{ section.id }}" class="section-padding product-single" data-enable-history-state="true" data-section-type="product-template" data-section-id="{{ section.id }}">

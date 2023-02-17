@@ -85,6 +85,14 @@
             "price_color": "#fe6d6d"
           }
         },
+        "1381bcb5-bb77-4152-8518-7e2d742d95bd": {
+          "type": "divider",
+          "settings": {
+            "show_line": true,
+            "padding_top": 1,
+            "padding_bottom": 1
+          }
+        },
         "inventory_countdown": {
           "type": "inventory_countdown",
           "disabled": true,
@@ -179,6 +187,7 @@
       "block_order": [
         "b40be5b7-a29a-4754-8959-96af5397de5c",
         "title",
+        "1381bcb5-bb77-4152-8518-7e2d742d95bd",
         "inventory_countdown",
         "form",
         "54d3bf08-7edb-4254-a5ae-b2195de93de0",
@@ -409,6 +418,7 @@
     },
     "loox-product-reviews-app-section": {
       "type": "apps",
+      "disabled": true,
       "settings": {
         "bg_color": "",
         "width": "wrapper",
