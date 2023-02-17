@@ -367,7 +367,7 @@
 
 /*Banner section css starts here*/
 .slide__image__container .slide__image__inner .slide__image {
-    background-size: contain;
+    /* background-size: contain; */
 }
 
 
@@ -460,8 +460,6 @@
         font-size: 19px;
         line-height: 28px;
     }
-
-
 }
 
 /*Greatest deals section css starts here*/
@@ -630,6 +628,18 @@
     position: sticky;
     top: 60px;
 }
+
+#salesday .navlink--toplevel{
+    color: #000000;
+}
+
+#salesday .navlink--icon svg{
+    fill: #000000;
+}
+/* #salesday .featured-content-section__wrapper .rich-text__background-image{
+    background-size: auto;
+    margin-top: 75px;
+} */
 
 .featured-collection__inner .featured-collection__top {
     display: block;
