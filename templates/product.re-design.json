@@ -82,22 +82,21 @@
             "subheading": "none",
             "show_rating": false,
             "show_rating_count": false,
-            "price_color": "#fe6d6d"
+            "price_color": "#FE6D6D"
           }
         },
-        "5af88f28-3084-4623-8d84-72483f2cb6b0": {
-          "type": "divider",
+        "inventory_countdown": {
+          "type": "inventory_countdown",
           "settings": {
-            "show_line": true,
-            "padding_top": 20,
-            "padding_bottom": 20
+            "max_inventory": 10,
+            "hide_inventory_count": true
           }
         },
         "form": {
           "type": "form",
           "settings": {
-            "info_page": "{{ product.metafields.custom.size_chart_page.value }}",
-            "info_page_title_override": "Size Guide",
+            "info_page": "",
+            "info_page_title_override": "",
             "show_slide_svg": true,
             "show_labels": true,
             "show_quantity": true,
@@ -111,9 +110,18 @@
             "custom_liquid": "<div id=\"63be821362297b001a6829e1\" class=\"htmlsnpt\"><\/div>"
           }
         },
-        "b5bde45b-a057-45b5-a1a3-a03595b4bedf": {
-          "type": "shippingAndReturn",
+        "icon": {
+          "type": "icon",
           "settings": {
+            "icon_name": "check",
+            "icon_color": "",
+            "icon_width": 20,
+            "icon_text": "Free shipping over $35",
+            "text_size": 90,
+            "width": "full",
+            "text_alignment": "left",
+            "bg_color": "#ffffff",
+            "remove_padding": true
           }
         },
         "description": {
@@ -121,25 +129,14 @@
           "settings": {
           }
         },
-        "upsell": {
-          "type": "upsell",
-          "settings": {
-            "product_list": "{{ product.metafields.theme.upsell_list.value }}"
-          }
-        },
-        "da5bea6d-6762-4f56-87a2-6b9c243717fa": {
-          "type": "modelSizeAndFit",
-          "settings": {
-          }
-        },
         "product_accordions": {
           "type": "product_accordions",
           "settings": {
-            "accordion_heading_1": "Shipping & Returns",
-            "accordion_text_1": "<p>Free hassle free Return within 14 days of delivery!<\/p>",
+            "accordion_heading_1": "",
+            "accordion_text_1": "",
             "accordion_page_1": "",
             "accordion_heading_2": "",
-            "accordion_text_2": "<p>Temp Accordion<\/p>",
+            "accordion_text_2": "",
             "accordion_page_2": "",
             "accordion_heading_3": "",
             "accordion_text_3": "",
@@ -153,51 +150,32 @@
             "show_size_chart_accordion": false
           }
         },
-        "inventory_countdown": {
-          "type": "inventory_countdown",
-          "disabled": true,
-          "settings": {
-            "max_inventory": 10,
-            "hide_inventory_count": true
-          }
-        },
-        "icon": {
-          "type": "icon",
-          "disabled": true,
-          "settings": {
-            "icon_name": "check",
-            "icon_color": "",
-            "icon_width": 20,
-            "icon_text": "Free shipping over $35",
-            "text_size": 90,
-            "width": "full",
-            "text_alignment": "left",
-            "bg_color": "#ffffff",
-            "remove_padding": true
-          }
-        },
         "share-button": {
           "type": "share-button",
           "disabled": true,
           "settings": {
             "text": "Share"
           }
+        },
+        "upsell": {
+          "type": "upsell",
+          "disabled": true,
+          "settings": {
+            "product_list": "{{ product.metafields.theme.upsell_list.value }}"
+          }
         }
       },
       "block_order": [
         "b40be5b7-a29a-4754-8959-96af5397de5c",
         "title",
-        "5af88f28-3084-4623-8d84-72483f2cb6b0",
+        "inventory_countdown",
         "form",
         "54d3bf08-7edb-4254-a5ae-b2195de93de0",
-        "b5bde45b-a057-45b5-a1a3-a03595b4bedf",
-        "description",
-        "upsell",
-        "da5bea6d-6762-4f56-87a2-6b9c243717fa",
-        "product_accordions",
-        "inventory_countdown",
         "icon",
-        "share-button"
+        "description",
+        "product_accordions",
+        "share-button",
+        "upsell"
       ],
       "settings": {
         "image_size": "medium",
@@ -210,7 +188,7 @@
         "padding_bottom": 60
       }
     },
-    "531f5cea-58c7-454b-a867-1e270fa10952": {
+    "13766605-d46b-4b68-8682-39cac646af75": {
       "type": "style-it-with-product-page",
       "settings": {
         "style_it_with_heading": "",
@@ -358,9 +336,9 @@
         "icons_width": 30,
         "heading": "",
         "subheading": "",
-        "bg_color": "#fafafa",
-        "box_color": "",
-        "text_color": "#333333",
+        "bg_color": "#f6f6f7",
+        "box_color": "rgba(0,0,0,0)",
+        "text_color": "#000000",
         "button_text": "",
         "button_link": "",
         "button_style": "secondary btn--small",
@@ -394,7 +372,7 @@
   "order": [
     "6b0ee484-3c6d-4ecf-8a26-2a5129a417dd",
     "main",
-    "531f5cea-58c7-454b-a867-1e270fa10952",
+    "13766605-d46b-4b68-8682-39cac646af75",
     "27108dd6-384a-44d5-8a6f-f174b3aeb828",
     "1665682367e6a8a8b7",
     "section-accordions",
