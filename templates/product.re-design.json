@@ -82,11 +82,12 @@
             "subheading": "none",
             "show_rating": false,
             "show_rating_count": false,
-            "price_color": "#FE6D6D"
+            "price_color": "#fe6d6d"
           }
         },
         "inventory_countdown": {
           "type": "inventory_countdown",
+          "disabled": true,
           "settings": {
             "max_inventory": 10,
             "hide_inventory_count": true
@@ -95,7 +96,7 @@
         "form": {
           "type": "form",
           "settings": {
-            "info_page": "",
+            "info_page": "{{ product.metafields.custom.size_chart_page.value }}",
             "info_page_title_override": "",
             "show_slide_svg": true,
             "show_labels": true,
@@ -112,6 +113,7 @@
         },
         "icon": {
           "type": "icon",
+          "disabled": true,
           "settings": {
             "icon_name": "check",
             "icon_color": "",
@@ -124,16 +126,39 @@
             "remove_padding": true
           }
         },
+        "f4e9f903-48e6-4a5b-9290-0f73c6da736f": {
+          "type": "shippingAndReturn",
+          "settings": {
+          }
+        },
         "description": {
           "type": "description",
+          "settings": {
+          }
+        },
+        "share-button": {
+          "type": "share-button",
+          "disabled": true,
+          "settings": {
+            "text": "Share"
+          }
+        },
+        "upsell": {
+          "type": "upsell",
+          "settings": {
+            "product_list": "{{ product.metafields.theme.upsell_list.value }}"
+          }
+        },
+        "f43f225a-d6d8-416a-b2c6-84523a34d470": {
+          "type": "modelSizeAndFit",
           "settings": {
           }
         },
         "product_accordions": {
           "type": "product_accordions",
           "settings": {
-            "accordion_heading_1": "",
-            "accordion_text_1": "",
+            "accordion_heading_1": "Shipping & Returns",
+            "accordion_text_1": "<p>Free hassle free Return within<strong>14 days of delivery!<\/strong><\/p>",
             "accordion_page_1": "",
             "accordion_heading_2": "",
             "accordion_text_2": "",
@@ -149,20 +174,6 @@
             "accordion_page_5": "",
             "show_size_chart_accordion": false
           }
-        },
-        "share-button": {
-          "type": "share-button",
-          "disabled": true,
-          "settings": {
-            "text": "Share"
-          }
-        },
-        "upsell": {
-          "type": "upsell",
-          "disabled": true,
-          "settings": {
-            "product_list": "{{ product.metafields.theme.upsell_list.value }}"
-          }
         }
       },
       "block_order": [
@@ -172,10 +183,12 @@
         "form",
         "54d3bf08-7edb-4254-a5ae-b2195de93de0",
         "icon",
+        "f4e9f903-48e6-4a5b-9290-0f73c6da736f",
         "description",
-        "product_accordions",
         "share-button",
-        "upsell"
+        "upsell",
+        "f43f225a-d6d8-416a-b2c6-84523a34d470",
+        "product_accordions"
       ],
       "settings": {
         "image_size": "medium",

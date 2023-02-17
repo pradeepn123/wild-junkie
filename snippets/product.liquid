@@ -711,13 +711,13 @@
                     <div>
                       <span class="radio__legend__label" data-option-parent-{{ option.name | downcase }}="{{ option.name | downcase }}" data-chart="{{ block.settings.info_page }}">{{ option.name | escape_once }}:
                       </span>
-                      <span data-option-{{ option.name | handle }} class="option-name-class">: {{ option.selected_value }}</span>
+                      <span data-option-{{ option.name | handle }} class="option-name-class">{{ option.selected_value }}</span>
                     </div>
                     {{- size_chart_button -}}
                   </div>
                   {%- else -%}
                     <span class="radio__legend__label" data-option-parent-{{ option.name | downcase }}="{{ option.name | downcase }}">{{ option.name | escape_once }}:</span>
-                    <span data-option-{{ option.name | handle }} class="option-name-class">: {{ option.selected_value }}</span>
+                    <span data-option-{{ option.name | handle }} class="option-name-class">{{ option.selected_value }}</span>
                   {%- endif -%}
                 </legend>
                 {%- for value in option.values -%}
@@ -831,6 +831,18 @@
     <span data-subscription-watch-price></span>
   {%- endif -%}
 
+  {% if block.settings.show_slide_svg != blank and template.suffix != "re-design" %}
+      <div class="product-page-svg" {{template.suffix }}>
+        {% case product_metafield_size %}
+          {% when 'True to Size' %}
+            {% render 'true-to-size' %}
+          {% when 'Runs Small' %}
+            {% render 'runs-small' %}
+          {% when 'Runs Large' %}
+            {% render 'runs-large' %}
+        {% endcase %}
+      </div>
+    {% endif %}
 
   {%- if quantity_position_bottom and show_quantity -%}
     <div class="selector-wrapper selector-wrapper--qty"
