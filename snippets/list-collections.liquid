@@ -137,19 +137,22 @@
   }
 {%- endstyle -%}
 
-<div class="great_offer_timer">
-  <div class="great_offer_timer_inner">
-    <div class="offer_text_heading">
-      <p>{{ section.settings.offer_text }}</p>
-    </div>
-  </div>
-</div>
-
 <section id="ListCollections--{{ section.id }}"
   class="section-padding list-collections-section list-collections-section--{{ layout }}"
   data-section-type="list-collections"
   data-section-id="{{ section.id }}"
   data-columns="{{ columns }}">
+
+  <div class="great_offer_timer">
+    <div class="great_offer_timer_inner">
+      <div class="offer_text_heading">
+        <p>
+          {{ section.settings.offer_text }}
+          <span data-date="{{ section.settings.offer_date }}" data-time="{{ section.settings.offer_time }}" data-target-container="ListCollections--{{ section.id }}" data-coundown-timer ></span>
+        </p>
+      </div>
+    </div>
+  </div>
 
   <div class="{{ section_width }}">
     <div class="main_sec_heading">

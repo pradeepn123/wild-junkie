@@ -13098,20 +13098,27 @@ PaloAlto.countdown = function (container) {
         const now = new Date().getTime(),
         distance = countDown - now;
 
-        const isBoxType = container.dataset.box
+        const isBoxType = container.dataset.box == "true"
         const days = Math.floor(distance / (day))
         let hours = Math.floor((distance % (day)) / (hour))
         let minutes = Math.floor((distance % (hour)) / (minute))
         let seconds = Math.floor((distance % (minute)) / second)
 
+        container.innerHTML = ''
         if (days > 0) {
         	dayString = hours.toString().split('')
         	if (dayString.length == 1) {
-        		dayString.push('0')
+        		dayString = ["0", days.toString()]
         	}
-        	container.innerHTML = `<div class="countdown-timer">
-        		${dayString.map(str => `<span>${str}</span>`).join('')}
-        	</div><div class="seperator">:</div>`
+
+        	if (isBoxType) {
+        		container.innerHTML += `<div class="countdown-timer">
+    	    		<div>${dayString.map(str => `<span>${str}</span>`).join('')}</div>
+    	    		<div>Days</div>
+	        	</div><div class="seperator">:</div>`
+        	} else {
+        		container.innerHTML += dayString.join("") + "d : "
+        	}
         }
 
         if (hours > 0) {
@@ -13119,11 +13126,25 @@ PaloAlto.countdown = function (container) {
         	if (hoursString.length == 1) {
         		hoursString = ["0", hours.toString()]
         	}
-        	container.innerHTML += `<div class="countdown-timer">
-        		${hoursString.map(str => `<span>${str}</span>`).join('')}
-	        </div><div class="seperator">:</div>`
+
+			if (isBoxType) {
+        		container.innerHTML += `<div class="countdown-timer">
+    	    		<div>${hoursString.map(str => `<span>${str}</span>`).join('')}</div>
+    	    		<div>Hours</div>
+		        </div><div class="seperator">:</div>`
+			} else {
+				container.innerHTML += hoursString.join("") + "h : "
+			}
         } else {
-        	container.innerHTML += `<div class="countdown-timer"><span>0</span><span>0</span></div>`
+        	if (isBoxType) {
+        		container.innerHTML += `
+        			<div class="countdown-timer">
+        				<div><span>0</span><span>0</span></div>
+        				<div>Hours</div>
+        			</div>`
+        	} else {
+        		container.innerHTML += '00h : '
+        	}
         }
 
         if (minutes > 0) {
@@ -13131,20 +13152,39 @@ PaloAlto.countdown = function (container) {
         	if (minuteString.length == 1) {
         		minuteString = ["0", minutes.toString()]
         	}
-        	container.innerHTML += `<div class="countdown-timer">
-        		${minuteString.map(str => `<span>${str}</span>`).join('')}
-	        </div><div class="seperator">:</div>`
+        	if (isBoxType) {
+        		container.innerHTML += `<div class="countdown-timer">
+    	    		<div>${minuteString.map(str => `<span>${str}</span>`).join('')}</div>
+    	    		<div>Minutes</div>
+	        	</div><div class="seperator">:</div>`
+	        } else {
+	        	container.innerHTML += minuteString.join("") + "m : "
+	        }
         } else {
-        	container.innerHTML += `<div class="countdown-timer"><span>0</span><span>0</span></div>`
+        	if (isBoxType) {
+        		container.innerHTML += `
+        			<div class="countdown-timer">
+        				<div><span>0</span><span>0</span></div>
+        				<div>Minutes</div>
+        			</div>`
+        	} else {
+        		container.innerHTML += '00m : '
+        	}
         }
 
         secondString = seconds.toString().split('')
         if (secondString.length == 1) {
         	secondString = ["0", seconds.toString()]
         }
-        container.innerHTML += `<div class="countdown-timer">
-        	${secondString.map(str => `<span>${str}</span>`).join('')}
-	       </div>`
+        if (isBoxType) {
+	        container.innerHTML += `<div class="countdown-timer">
+    	    	<div>${secondString.map(str => `<span>${str}</span>`).join('')}</div>
+    	    	<div>Minutes</div>
+	    	   </div>`
+	    } else {
+	    	container.innerHTML += secondString.join("") + "s"
+	    }
+
 	    clearInterval(x);
 
         if (distance < 0) {
