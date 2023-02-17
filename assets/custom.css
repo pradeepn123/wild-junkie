@@ -234,6 +234,14 @@
     .site-footer {
         padding-top: 83px;
     }
+    #salesday .collection-marbles .section__header .section__heading{
+        font-size: 60px !important;        
+    }
+    .featured-collection--split-left .featured-collection__top-inner .section__header .section__heading, 
+    .featured-collection--split-right .featured-collection__top-inner .section__header .section__heading{
+        font-size: 80px;
+        width: 70%;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -620,7 +628,7 @@
 }
 
 .featured-collection--split-left, .featured-collection--split-right {
-    overflow: visible;
+    overflow: visible;    
 }
 
 #salesday #PageContainer{
@@ -639,12 +647,68 @@
     fill: #000000;
 }
 
+#salesday .collection-marbles .section__header .section__heading{
+    font-size: 26px;
+    color: #FE6D6D;
+}
+
 #salesday .section__heading{
     font-family: Yeseva One;
 }
+
 #salesday .list-collections__item .list-collections__item__outer .list-collections__item__content{
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
+}
+
+#salesday .main_sec_heading{
+    margin-bottom: 40px;
+}
+
+#salesday .main_sec_heading .section__header{
+    margin-bottom: 0;   
+}
+#salesday .main_sec_heading .sub_heading{
+    font-family: 'Poppins';
+}
+#salesday .featured-collection--split-left .featured-collection__top-inner .section__header .section__heading, 
+#salesday .featured-collection--split-right .featured-collection__top-inner .section__header .section__heading{
+    color: #000000;
+}
+#salesday .deal-information{
+    position: relative;
+}
+#salesday .deal-information .text{
+    margin-left: 40px;
+}
+#salesday .deal-information .text::before{
+    position: absolute;
+    content: "";
+    background: #FFCF54;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    left: 10px;
+    top: 50%;
+    display: block;
+    transform: translateY(-50%);
+    animation: salespulse 1.5s infinite;
+}
+@keyframes salespulse {
+    0% {
+        box-shadow: 0 0 0 0 #FFCF54;
+    }
+    100% {
+        box-shadow: 0 0 0 12px rgba(251, 179, 47, 0.0039215686);
+    }
+}
+
+.collection-marbles .great_offer_timer .great_offer_timer_inner .offer_text_heading p{
+    margin: 0;
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+    font-size: 22px;
 }
 
 .featured-collection__inner .featured-collection__top {

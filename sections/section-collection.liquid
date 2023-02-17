@@ -58,8 +58,9 @@
   #FeaturedCollection--{{ section.id }} .section__text {
     --adjust-body: calc(var(--FONT-ADJUST-BODY) * {{ text_size }});
   }
-  #FeaturedCollection--{{ section.id }} .section__heading{
-    font-size: 80px !important;
+  #FeaturedCollection--{{ section.id }}.featured-collection--carousel .section__heading{
+    font-size: 26px;
+    color: #FE6D6D;
   }
 
   {%- if bg_color != 'rgba(0,0,0,0)' and bg_color != '' -%}
@@ -78,6 +79,9 @@
       {%- if is_split -%}
         --grid: repeat(2, minmax(0, 1fr));
       {%- endif -%}
+    }
+    #FeaturedCollection--{{ section.id }}.featured-collection--carousel .section__heading{
+      font-size: 56px;
     }
   }
 
@@ -115,11 +119,7 @@
 {%- capture section_heading_content -%}
   {% if section.settings.offer_date != blank and section.settings.offer_time != blank %}
     <div class="offer-counter-{{ section.id }}">
-      <div class="deal-information">
-        <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left: 5px;">
-          <circle opacity="0.3" cx="14.5" cy="14.5" r="14.5" fill="#FFCF54"/>
-          <circle cx="14.5" cy="14.5" r="9.5" fill="#FFCF54"/>
-        </svg>
+      <div class="deal-information">        
         <span class="text">
           Deals ends in:
         </span>

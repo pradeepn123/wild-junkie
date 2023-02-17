@@ -5,6 +5,7 @@
   assign height = section.settings.height
   assign image_size = section.settings.image_size
   assign image_shape = section.settings.image_shape
+  assign offer_bg_image = section.settings.great_offer_image
   assign columns = section.settings.columns
   assign columns_small = columns | at_most: 4
   assign columns_mobile = section.settings.columns_mobile | plus: 0 | at_least: 1
@@ -109,6 +110,11 @@
       --image-size: {{ image_size | append: '%' }};
     {%- endif -%}
   }
+  {%- if offer_bg_image != blank -%}
+    .great_offer_timer_inner{
+      background-image: url({{ offer_bg_image | img_url: '2048x' }});
+    }
+  {%- endif -%}
 
   {%- if text_size != blank -%}
     #ListCollections--{{ section.id }} .list-collections__item__title { --adjust-heading: calc(var(--FONT-ADJUST-HEADING) * {{ adjust_heading }}); }
@@ -131,6 +137,14 @@
   }
 {%- endstyle -%}
 
+<div class="great_offer_timer">
+  <div class="great_offer_timer_inner">
+    <div class="offer_text_heading">
+      <p>{{ section.settings.offer_text }}</p>
+    </div>
+  </div>
+</div>
+
 <section id="ListCollections--{{ section.id }}"
   class="section-padding list-collections-section list-collections-section--{{ layout }}"
   data-section-type="list-collections"
@@ -138,27 +152,34 @@
   data-columns="{{ columns }}">
 
   <div class="{{ section_width }}">
-    {%- if section.settings.title != blank -%}
-      <div class="section__header">
-        <h2 class="section__heading h2"
-          {% if animations_enabled %}
-            data-aos="fade-up"
-            data-aos-anchor="{{ animation_anchor }}"
-            data-aos-delay="{{ animation_delay }}"
-            {%- assign animation_delay = animation_delay | plus: 150 -%}
-          {% endif %}>{{ section.settings.title | escape }}</h2>
-
-        {%- if settings.show_spacer_lines -%}
-          <hr class="section__heading-line"
+    <div class="main_sec_heading">
+      {%- if section.settings.title != blank or section.settings.sub_heading != blank -%}
+        <div class="section__header">
+          <h2 class="section__heading h2"
             {% if animations_enabled %}
               data-aos="fade-up"
               data-aos-anchor="{{ animation_anchor }}"
               data-aos-delay="{{ animation_delay }}"
               {%- assign animation_delay = animation_delay | plus: 150 -%}
-            {% endif %}>
+            {% endif %}>{{ section.settings.title | escape }}</h2>
+
+          {%- if settings.show_spacer_lines -%}
+            <hr class="section__heading-line"
+              {% if animations_enabled %}
+                data-aos="fade-up"
+                data-aos-anchor="{{ animation_anchor }}"
+                data-aos-delay="{{ animation_delay }}"
+                {%- assign animation_delay = animation_delay | plus: 150 -%}
+              {% endif %}>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.sub_heading != blank-%}
+          <div class="section__heading sub_heading">
+            {{ section.settings.sub_heading }}
+          </div>
         {%- endif -%}
-      </div>
-    {%- endif -%}
+      {%- endif -%}
+    </div>
 
     <div class="{% if carousel %}carousel__container{% else %}grid__container{% endif %}">
       <div class="{% if carousel %}carousel{% else %}{{ grid_class }}{% endif %}{{ mobile_class }}"
