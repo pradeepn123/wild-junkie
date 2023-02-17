@@ -13086,6 +13086,73 @@ PaloAlto.updateHash = function(hash) {
   $('#' + hash).attr('tabindex', -1).focus();
 };
 
+PaloAlto.countdown = function (container) {
+    const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
+
+    const endTime = container.dataset.date + " " + container.dataset.time
+    const countDown = new Date(endTime).getTime(),
+    x = setInterval(function() {    
+        const now = new Date().getTime(),
+        distance = countDown - now;
+
+        const isBoxType = container.dataset.box
+        const days = Math.floor(distance / (day))
+        let hours = Math.floor((distance % (day)) / (hour))
+        let minutes = Math.floor((distance % (hour)) / (minute))
+        let seconds = Math.floor((distance % (minute)) / second)
+
+        if (days > 0) {
+        	dayString = hours.toString().split('')
+        	if (dayString.length == 1) {
+        		dayString.push('0')
+        	}
+        	container.innerHTML = `<div class="countdown-timer">
+        		${dayString.map(str => `<span>${str}</span>`).join('')}
+        	</div><div class="seperator">:</div>`
+        }
+
+        if (hours > 0) {
+        	hoursString = hours.toString().split('')
+        	if (hoursString.length == 1) {
+        		hoursString.push('0')
+        	}
+        	container.innerHTML += `<div class="countdown-timer">
+        		${hoursString.map(str => `<span>${str}</span>`).join('')}
+	        </div><div class="seperator">:</div>`
+        } else {
+        	container.innerHTML += `<div class="countdown-timer"><span>0</span><span>0</span></div>`
+        }
+
+        if (minutes > 0) {
+        	minuteString = minutes.toString().split('')
+        	if (minuteString.length == 1) {
+        		minuteString.push('0')
+        	}
+        	container.innerHTML += `<div class="countdown-timer">
+        		${minuteString.map(str => `<span>${str}</span>`).join('')}
+	        </div><div class="seperator">:</div>`
+        } else {
+        	container.innerHTML += `<div class="countdown-timer"><span>0</span><span>0</span></div>`
+        }
+
+        secondString = seconds.toString().split('')
+        if (secondString.length == 1) {
+        	secondString.push('0')
+        }
+        container.innerHTML += `<div class="countdown-timer">
+        	${secondString.map(str => `<span>${str}</span>`).join('')}
+	       </div>`
+
+        if (distance < 0) {
+        	document.querySelector("#" + container.dataset.targetContainer).remove()
+          	clearInterval(x);
+        }
+    }, 1)
+}
+
 const isTouchDevice = () => {
   return (('ontouchstart' in window) ||
     (navigator.maxTouchPoints > 0) ||
