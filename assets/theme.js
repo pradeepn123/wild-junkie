@@ -13117,7 +13117,7 @@ PaloAlto.countdown = function (container) {
         if (hours > 0) {
         	hoursString = hours.toString().split('')
         	if (hoursString.length == 1) {
-        		hoursString.push('0')
+        		hoursString = ["0", hours.toString()]
         	}
         	container.innerHTML += `<div class="countdown-timer">
         		${hoursString.map(str => `<span>${str}</span>`).join('')}
@@ -13129,7 +13129,7 @@ PaloAlto.countdown = function (container) {
         if (minutes > 0) {
         	minuteString = minutes.toString().split('')
         	if (minuteString.length == 1) {
-        		minuteString.push('0')
+        		minuteString = ["0", minutes.toString()]
         	}
         	container.innerHTML += `<div class="countdown-timer">
         		${minuteString.map(str => `<span>${str}</span>`).join('')}
@@ -13140,7 +13140,7 @@ PaloAlto.countdown = function (container) {
 
         secondString = seconds.toString().split('')
         if (secondString.length == 1) {
-        	secondString.push('0')
+        	secondString = ["0", seconds.toString()]
         }
         container.innerHTML += `<div class="countdown-timer">
         	${secondString.map(str => `<span>${str}</span>`).join('')}
