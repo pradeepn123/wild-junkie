@@ -294,6 +294,7 @@
     },
     "section-accordions": {
       "type": "section-accordions",
+      "disabled": true,
       "blocks": {
         "accordion-0": {
           "type": "text",
@@ -345,6 +346,7 @@
     },
     "section-icons-row": {
       "type": "section-icons-row",
+      "disabled": true,
       "blocks": {
         "icon-0": {
           "type": "text",
@@ -396,7 +398,7 @@
       "type": "related-products",
       "settings": {
         "limit": 4,
-        "product_recommendations_heading": "You May Also Like",
+        "product_recommendations_heading": "We think you’ll Love them",
         "heading_font_size": 40,
         "heading_font_size_mobile": 28,
         "bg_color": "",
