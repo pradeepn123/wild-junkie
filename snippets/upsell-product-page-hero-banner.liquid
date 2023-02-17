@@ -13,8 +13,8 @@
     assign show_upsell = true
   endif
 
-  assign upsell_form_id = "Style-UpsellForm--" | append: unique
-  assign upsell_button_id = "Style-UpsellButton--" | append: unique
+  assign upsell_form_id = "UpsellForm--" | append: unique
+  assign upsell_button_id = "UpsellButton--" | append: unique
 
   assign single_variant = false
   if upsell_product.variants.size == 1
@@ -23,13 +23,15 @@
 -%}
 
 {%- if show_upsell -%}
-  <div class="product__page__upsell style_it_with_upsell"
-    {% if animations_enabled %}
-      data-aos="fade-up"
-      data-aos-anchor="{{ animation_anchor }}"
-      data-aos-delay="{{ animation_delay }}"
-      {%- assign animation_delay = animation_delay | plus: 150 -%}
-    {% endif %} {{ block.shopify_attributes }}>
+  <div class="product__page__upsell"
+              {% if animations_enabled %}
+                data-aos="fade-up"
+                data-aos-anchor="{{ animation_anchor }}"
+                data-aos-delay="{{ animation_delay }}"
+                {%- assign animation_delay = animation_delay | plus: 150 -%}
+              {% endif %}
+              {{ block.shopify_attributes }}>
+    <div class="product__page__upsell__heading">Style With It</div>
     <div class="product-upsell__holder{% if upsell_error %} product-upsell__holder--onboarding{% endif %}" data-upsell-holder>
       <div class="product-upsell">
         <div class="product-upsell__content">
@@ -56,8 +58,18 @@
                   data-add-to-cart
                   data-focus-element
                   data-upsell-btn>
-                  <span class="product-upsell__btn-hidden" data-upsell-btn-text>Quick Add</span>
-                  <span class="product-upsell__btn-text">Quick Add</span>
+                  <span class="product-upsell__btn-hidden" data-upsell-btn-text>{{ 'products.product.add_to_cart' | t }}</span>
+                  <span class="product-upsell__btn-text">{{ 'products.product.add_to_cart' | t }}</span>
+                  <span class="product-upsell__btn-price">&nbsp;-&nbsp;
+                    {%- liquid
+                      if upsell_variant.price == 0
+                        echo 'products.product.free' | t
+                      else
+                        echo upsell_variant.price | money
+                      endif
+                    -%}
+                  </span>
+
                   <span class="product-upsell__btn-progress">
                     <svg height="18" width="18" class="svg-loader">
                       <circle r="7" cx="9" cy="9" />

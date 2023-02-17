@@ -3262,6 +3262,11 @@ PaloAlto.Drawer = {
     const drawer = document.querySelector(`#${e.target.getAttribute('aria-controls')}`);
 
     if (!drawer) { return; }
+
+    const productSingleDetails = document.querySelector(".product-single__details")
+    if (productSingleDetails) {
+        productSingleDetails.style.position = 'unset'
+    }
     const drawerScroller = drawer.querySelector(this.selectors.scroller) || drawer;
     const drawerCloseButton = drawer.querySelector(this.selectors.drawerToggle);
 
@@ -3284,6 +3289,11 @@ PaloAlto.Drawer = {
     if (!document.body.classList.contains(this.classes.drawerOpen)) { return; }
 
     const drawer = document.querySelector(`${this.selectors.drawer}.${this.classes.open}`);
+
+    const productSingleDetails = document.querySelector(".product-single__details")
+    if (productSingleDetails) {
+        productSingleDetails.style.position = ''
+    }
 
     this.drawerToggleButtons.forEach((button) => {
       button.setAttribute(this.attributes.ariaExpanded, false);
@@ -11635,6 +11645,7 @@ PaloAlto.Product = (function() {
     links: 'a, button',
     upsellProduct: '[data-upsell-holder]',
     upsellProductSlider: '[data-upsell-slider]',
+    styleItWithUpsell: '[data-style-it-with]'
   };
 
   const classes = {
@@ -11670,8 +11681,15 @@ PaloAlto.Product = (function() {
     this.scrollToReviews();
 
     this.collapsible = new PaloAlto.initCollapsible(this.container);
+    this.styleItWithContainer = document.querySelector(selectors.styleItWithUpsell)
+
     PaloAlto.initSwatches.makeSwatch(container);
     PaloAlto.QuickViewPopup.init(container);
+
+    if (this.styleItWithContainer) {
+        PaloAlto.QuickViewPopup.init(this.styleItWithContainer);
+    }
+
     new PaloAlto.ShareButton(container);
 
     // Skip initialization of product form, slider and media functions if section has onboarding content only
@@ -11694,9 +11712,10 @@ PaloAlto.Product = (function() {
 
     /* Product Slider */
     initProductSlider: function() {
-      if (window.innerWidth > 900) {
+      if (window.innerWidth > 1024) {
         return;
       }
+
       const slider = this.container.querySelector(selectors.productMediaSlider);
       const thumbs = this.container.querySelector(selectors.productMediaThumbs);
       const media = this.container.querySelectorAll(selectors.productMediaWrapper);

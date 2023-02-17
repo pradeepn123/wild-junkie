@@ -1244,3 +1244,7 @@
         .style_it_with_upsell .product-upsell__holder .product-upsell .product-upsell__image img{
             border-radius: 0;
         }
+
+.product__submit__buttons-primary {
+    margin-bottom: 1rem;   
+}

@@ -439,7 +439,7 @@
   {%- assign specific_pages_arr = specific_pages | split: ',' -%}
 
   {%- capture size_chart_button -%}
-    <button type="button" class="product__popup__link" href="{{ info_page.url }}" aria-controls="size-chart--{{ section.id }}" data-drawer-toggle>
+    <button type="button" class="product__popup__link" href="{{ info_page.url }}" aria-controls="size-chart--{{ section.id }}" data-drawer-toggle aria-expanded="false">
       {%- unless info_page_title_override != blank-%}
         {%- if pages[specific_pages_arr[0]].title != blank -%}
           {{ pages[specific_pages_arr[0]].title }}
@@ -449,9 +449,6 @@
       {%- else -%}
         {{ info_page_title_override }}
       {%- endunless -%}
-      {% comment %}
-        {% render 'icon-ruler' %}
-      {% endcomment %}
     </button>
   {%- endcapture -%}
 
@@ -854,7 +851,7 @@
   {%- endif -%}
 
   <div class="product__submit__holder{% if show_payment_button %} product__submit__holder--spb{% endif %}{% if show_newsletter %} product__submit__holder--notification{% endif %}" data-product-id="{{ product.id }}">
-    <div class="product__submit__buttons">
+    <div class="product__submit__buttons product__submit__buttons-primary">
       <div class="product__submit__item"
         {% if animations_enabled %}
           data-aos="fade-up"
@@ -887,7 +884,8 @@
           <div class="loader loader--line"><div class="loader-indeterminate"></div></div>
         </button>
       </div>
-
+    </div>
+    <div class="product__submit__buttons">
       {%- if show_payment_button -%}
         <div class="product__submit__item{% if sold_out %} hidden{% endif %}"
           data-buy-it-now
@@ -900,6 +898,7 @@
           {{ form | payment_button }}
         </div>
       {%- endif -%}
+      <div class="swym-button-bar swym-wishlist-button-bar swym-inject"><div class="swym-btn-container swym-inject" data-position="default"><button class="btn swym-button swym-add-to-wishlist swym-inject swym-has-fave-count swym-icontext swym-heart swym-loaded" onclick="event.preventDefault();" aria-label="Add to Wishlist"><span class="swym-wishlist-cta">Add to Wishlist</span></button><span class="swym-fave-count" data-count="0">0</span></div></div>
     </div>
 
     <div data-cart-errors-container class="product__form__errors"></div>
