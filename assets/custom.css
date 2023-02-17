@@ -1316,3 +1316,9 @@
 .radio__fieldset{
     width: 100%;
 }
+
+/* Product Page - Tbas Collection - Style It With */
+.product_page_tab_collection .section__header .section__heading,
+.product_page_tab_collection .section__header .section__subheading__main{
+    text-align: left;
+}
