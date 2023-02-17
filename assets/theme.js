@@ -13185,7 +13185,7 @@ PaloAlto.countdown = function (container) {
 	    	container.innerHTML += secondString.join("") + `<span class='font_format'>s</span>`
 	    }
 
-	    clearInterval(x);
+	    // clearInterval(x);
 
         if (distance < 0) {
         	document.querySelector("#" + container.dataset.targetContainer).remove()
