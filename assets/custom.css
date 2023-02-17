@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Yeseva+One&display=swap');
 /* Header Hover Styles */
 
 /* Text Highlight */
@@ -541,7 +543,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 30px;
     text-align: center;
-    margin: 70px 60px;
+    margin: 0 70px 60px;
 }
 
 .sale-section .sale-block .sale-icon {
@@ -636,10 +638,14 @@
 #salesday .navlink--icon svg{
     fill: #000000;
 }
-/* #salesday .featured-content-section__wrapper .rich-text__background-image{
-    background-size: auto;
-    margin-top: 75px;
-} */
+
+#salesday .section__heading{
+    font-family: Yeseva One;
+}
+#salesday .list-collections__item .list-collections__item__outer .list-collections__item__content{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
 
 .featured-collection__inner .featured-collection__top {
     display: block;
