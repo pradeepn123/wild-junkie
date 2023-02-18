@@ -1,8 +1,9 @@
 {% if section.settings.show-sezzle-widget or request.design_mode %}
 <script type="text/javascript"> document.sezzleConfig = {
 				"configGroups": [{
-					"targetXPath": "#ProductPrice",
-					"urlMatch": "product"
+					"targetXPath": ".sizzle-wrapper",
+					"urlMatch": "product",
+					"renderToPath": "."
 				},{
 					"targetXPath": ".cart__subtotal-price",
 					"urlMatch": "cart"
@@ -10,8 +11,14 @@
 					"targetXPath": ".cart__subtotal",
 					"urlMatch": "cart"
 				}]
-				} </script>
-<script src="https://widget.sezzle.com/v1/javascript/price-widget?uuid=aa28ad6f-caf0-48ad-95c2-6b59711e1e5d"></script>
+				}
+	console.log("AHSKASHAKHSKHAS")
+</script>
+	{% if product != blank and template.suffix == "re-design" %}
+		{{- 'sezzle-price-widget.js' | asset_url | script_tag -}}
+	{% else %}
+		<script src='https://widget.sezzle.com/v1/javascript/price-widget?uuid=aa28ad6f-caf0-48ad-95c2-6b59711e1e5d'></script>
+	{% endif %}
 {% endif %}
 
 <style>

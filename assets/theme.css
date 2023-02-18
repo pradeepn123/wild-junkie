@@ -20700,3 +20700,7 @@ body.notification-visible .popup.popup--visible {
 .notify-product-card .upsell__item__price .product__discount__percentage {
   opacity: 0.5;
 }
+
+.sizzle-wrapper {
+  display: none;
+}

@@ -64,6 +64,19 @@
   endunless
 -%}
 
+{% style %}
+  {% if template.suffix == 're-design' %}
+    .sezzle-button-text {
+      text-align: center !important;
+      margin-top: 10px !important;
+    }
+    .shop-pay-terms {
+      text-align: center !important;
+      margin-top: -10px;
+    }
+  {% endif %}
+{% endstyle %}
+
 <div class="product-single__wrapper{% if image_size %} product__wrapper--{{ image_size }}{% endif %}" data-section-id="{{ unique }}" data-product>
   {%- comment -%} Product media {%- endcomment -%}
   {%- unless product == blank -%}
@@ -453,7 +466,7 @@
   {%- endcapture -%}
 
   {%- capture size_chart_modal -%}
-    <div class="product__popup drawer drawer--left" id="size-chart--{{ section.id }}" aria-hidden="true" role="dialog" data-drawer>
+    <div class="product__popup drawer drawer--right" id="size-chart--{{ section.id }}" aria-hidden="true" role="dialog" data-drawer>
       <button type="button" class="drawer__close-button" aria-controls="size-chart--{{ section.id }}" data-drawer-toggle>
         <span class="visually-hidden">{{ 'general.accessibility.close_drawer' | t }}</span>
         {%- render 'icon-close-small' -%}
@@ -564,11 +577,10 @@
       {{- size_chart_button -}}
     </div>
   {%- endunless -%}
-
-  {% comment %} Shop pay split payment terms {% endcomment %}
-  <div class="shop-pay-terms">{{ form | payment_terms }}</div>
-  
-  
+  {% if template.suffix != "re-design" %}
+    {% comment %} Shop pay split payment terms {% endcomment %}
+    <div class="shop-pay-terms">{{ form | payment_terms }}</div>
+  {% endif %}
 
   {%- assign quantity_position_bottom = true -%}
 
@@ -830,8 +842,7 @@
     {%- comment -%} Delete the following line to block the theme from updating subscription prices {%- endcomment -%}
     <span data-subscription-watch-price></span>
   {%- endif -%}
-
-  {% if block.settings.show_slide_svg != blank and template.suffix != "re-design" %}
+    {% if block.settings.show_slide_svg != blank and template.suffix != "re-design" %}
       <div class="product-page-svg" {{template.suffix }}>
         {% case product_metafield_size %}
           {% when 'True to Size' %}
@@ -911,9 +922,27 @@
         </div>
       </div>
     {%- endif -%}
-
+    {% if template.suffix == 're-design' %}
+      <div class="sizzle-wrapper">
+        <span data-product-price class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}">
+          {%- liquid
+            if current_variant.price == 0
+              echo 'products.product.free' | t
+            elsif currency_code_enable
+              echo current_variant.price | money_with_currency
+            else
+              echo current_variant.price | money
+            endif
+          -%}
+        </span>
+      </div>
+    {% endif %}
     <div data-cart-errors-container class="product__form__errors"></div>
   </div>
+  {% if template.suffix == 're-design'%}
+    {% comment %} Shop pay split payment terms {% endcomment %}
+    <div class="shop-pay-terms">{{ form | payment_terms }}</div>
+  {% endif %}
 {%- endform -%}
               </div>
             {%- else -%}
@@ -1518,7 +1547,7 @@
                   {{ text }}
                 </button>
 
-                <div class="product__popup drawer drawer--left" id="popup-text--{{ block.id }}" aria-hidden="true" role="dialog" data-drawer>
+                <div class="product__popup drawer drawer--right" id="popup-text--{{ block.id }}" aria-hidden="true" role="dialog" data-drawer>
                   <button type="button" class="drawer__close-button" aria-controls="popup-text--{{ block.id }}" data-drawer-toggle>
                     <span class="visually-hidden">{{ 'general.accessibility.close_drawer' | t }}</span>
                     {%- render 'icon-close-small' -%}
@@ -1750,7 +1779,7 @@
   {%- endcapture -%}
 
   {%- capture size_chart_modal -%}
-    <div class="product__popup drawer drawer--left" id="size-chart--{{ section.id }}" aria-hidden="true" role="dialog" data-drawer>
+    <div class="product__popup drawer drawer--right" id="size-chart--{{ section.id }}" aria-hidden="true" role="dialog" data-drawer>
       <button type="button" class="drawer__close-button" aria-controls="size-chart--{{ section.id }}" data-drawer-toggle>
         <span class="visually-hidden">{{ 'general.accessibility.close_drawer' | t }}</span>
         {%- render 'icon-close-small' -%}
@@ -1836,7 +1865,6 @@
 {%- endif -%}
 
 {%- form 'product', product, class: 'product__form', data-product-form: '', id: product_form_id -%}
-  {% comment %} The input with name="id" submits to cart {% endcomment %}
   <input type="hidden" name="id" value="{{ current_variant.id }}" data-product-select>
 
   {%- unless show_quantity -%}
