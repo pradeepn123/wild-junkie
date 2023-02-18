@@ -93,19 +93,11 @@
             "padding_bottom": 1
           }
         },
-        "inventory_countdown": {
-          "type": "inventory_countdown",
-          "disabled": true,
-          "settings": {
-            "max_inventory": 10,
-            "hide_inventory_count": true
-          }
-        },
         "form": {
           "type": "form",
           "settings": {
             "info_page": "{{ product.metafields.custom.size_chart_page.value }}",
-            "info_page_title_override": "",
+            "info_page_title_override": "Size Guide",
             "show_slide_svg": true,
             "show_labels": true,
             "show_quantity": true,
@@ -119,21 +111,6 @@
             "custom_liquid": "<div id=\"63be821362297b001a6829e1\" class=\"htmlsnpt\"><\/div>"
           }
         },
-        "icon": {
-          "type": "icon",
-          "disabled": true,
-          "settings": {
-            "icon_name": "check",
-            "icon_color": "",
-            "icon_width": 20,
-            "icon_text": "Free shipping over $35",
-            "text_size": 90,
-            "width": "full",
-            "text_alignment": "left",
-            "bg_color": "#ffffff",
-            "remove_padding": true
-          }
-        },
         "f4e9f903-48e6-4a5b-9290-0f73c6da736f": {
           "type": "shippingAndReturn",
           "settings": {
@@ -142,13 +119,6 @@
         "description": {
           "type": "description",
           "settings": {
-          }
-        },
-        "share-button": {
-          "type": "share-button",
-          "disabled": true,
-          "settings": {
-            "text": "Share"
           }
         },
         "upsell": {
@@ -188,13 +158,10 @@
         "b40be5b7-a29a-4754-8959-96af5397de5c",
         "title",
         "1381bcb5-bb77-4152-8518-7e2d742d95bd",
-        "inventory_countdown",
         "form",
         "54d3bf08-7edb-4254-a5ae-b2195de93de0",
-        "icon",
         "f4e9f903-48e6-4a5b-9290-0f73c6da736f",
         "description",
-        "share-button",
         "upsell",
         "f43f225a-d6d8-416a-b2c6-84523a34d470",
         "product_accordions"

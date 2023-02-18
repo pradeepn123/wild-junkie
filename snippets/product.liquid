@@ -68,11 +68,42 @@
   {% if template.suffix == 're-design' %}
     .sezzle-button-text {
       text-align: center !important;
-      margin-top: 10px !important;
+      margin: 16px !important;
     }
+
+    .sezzle-payment-amount {
+      margin: 0 !important;
+    }
+
     .shop-pay-terms {
       text-align: center !important;
-      margin-top: -10px;
+      margin-bottom: 10px;
+    }
+
+    .swatch__button .swatch__label {
+      width: calc(var(--swatch-size) - 5px);
+      height: calc(var(--swatch-size) - 5px);
+    }
+
+    .swatch__button .swatch__label:after {
+      width: calc(var(--swatch-size) - 10px);
+      height: 3px;
+    }
+
+    .swatch__button .swatch__label:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      z-index: 2;
+      width: calc(var(--swatch-size) - 10px);
+      height: calc(var(--swatch-size) - 10px);
+      border-radius: 50%;
+      border: 3px solid var(--white);
+      opacity: 0;
+      visibility: hidden;
     }
   {% endif %}
 {% endstyle %}
@@ -747,9 +778,11 @@
                         {% if value == current_value %}checked{% endif %}>
                       <label for="{{ input_id }}" class="swatch__label" data-swatch="{{ value | escape_once }}" data-tooltip="{{ value | escape_once }}">
                         <span class="visually-hidden">{{ value | escape_once }}</span>
-                        {%- if settings.color_swatches_product_style == 'circle' -%}
-                          {%- render 'icon-check' -%}
-                        {%- endif -%}
+                        {% if template.suffix != "re-design" %}
+                          {%- if settings.color_swatches_product_style == 'circle' -%}
+                            {%- render 'icon-check' -%}
+                          {%- endif -%}
+                        {% endif %}
                       </label>
                     </span>
                   {%- else -%}
@@ -922,23 +955,26 @@
         </div>
       </div>
     {%- endif -%}
-    {% if template.suffix == 're-design' %}
-      <div class="sizzle-wrapper">
-        <span data-product-price class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}">
-          {%- liquid
-            if current_variant.price == 0
-              echo 'products.product.free' | t
-            elsif currency_code_enable
-              echo current_variant.price | money_with_currency
-            else
-              echo current_variant.price | money
-            endif
-          -%}
-        </span>
-      </div>
-    {% endif %}
     <div data-cart-errors-container class="product__form__errors"></div>
   </div>
+{%- endform -%}
+{% assign product_form_id = "AddToCartForm--shop-pay" | append: unique %}
+{% if template.suffix == 're-design' %}
+  <div class="sizzle-wrapper">
+    <span data-product-price class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}">
+      {%- liquid
+        if current_variant.price == 0
+          echo 'products.product.free' | t
+        elsif currency_code_enable
+          echo current_variant.price | money_with_currency
+        else
+          echo current_variant.price | money
+        endif
+      -%}
+    </span>
+  </div>
+{% endif %}
+{%- form 'product', product, class: 'product__form', data-product-form: '', id: product_form_id -%}
   {% if template.suffix == 're-design'%}
     {% comment %} Shop pay split payment terms {% endcomment %}
     <div class="shop-pay-terms">{{ form | payment_terms }}</div>
