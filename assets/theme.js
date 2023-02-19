@@ -11721,7 +11721,7 @@ PaloAlto.Product = (function() {
           wrapAround: true,
           pageDots: false,
           adaptiveHeight: true,
-          watchCSS: true,
+          watchCSS: slider.dataset.watchCss == 'true',
           on: {
             ready: () => {
               slider.setAttribute(attributes.tabindex, '-1');

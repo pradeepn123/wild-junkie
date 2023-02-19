@@ -39,7 +39,7 @@
 
 <section
   id="TabCollections--{{ section.id }}"
-  class="section-padding tab-collections {{ section.settings.tab_collection_custom_class }}"
+  class="section-padding tab-collections"
   data-section-id="{{ section.id }}"
   data-section-type="tab-collections"
   data-columns="{{ columns }}">
@@ -66,16 +66,6 @@
         {%- endif -%}
       </div>
     {%- endif -%}
-
-    {% if section.settings.subheading_main != blank %}
-      <p class="section__subheading__main"
-          {% if animations_enabled %}
-            data-aos="fade-up"
-            data-aos-anchor="{{ animation_anchor }}"
-            data-aos-delay="{{ animation_delay }}"
-            {%- assign animation_delay = animation_delay | plus: 150 -%}
-          {% endif %}>{{ section.settings.subheading_main }}</p>
-    {% endif %}
 
     {%- if section.blocks.size > 0 -%}
       {%- assign current_idx = 0 -%}
@@ -304,20 +294,10 @@
       "content": "Layout"
     },
     {
-      "type": "text",
-      "id": "tab_collection_custom_class",
-      "label": "Custom Class"
-    },
-    {
       "label": "Heading",
       "id": "title",
       "type": "text",
       "default": "Best Sellers"
-    },
-    {
-      "type": "text",
-      "id":"subheading_main",
-      "label": "Sub Heading"
     },
     {
       "type": "header",

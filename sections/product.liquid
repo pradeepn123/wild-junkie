@@ -63,6 +63,16 @@
     .model__size__and__fit .model__size__and__fit__content .model__size__and__fit__right__content{
       column-gap: 10px;
     }
+    @media screen and (min-width: 1024px) {
+      .product__title-and-price .product__title {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .product-single__wrapper {
+        grid-template-columns: 55% auto;
+      }
+    }
   {% endif %}
 {%- endstyle -%}
 

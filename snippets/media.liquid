@@ -37,7 +37,7 @@
 -%}
 
 <div id="{{ media_wrapper_id }}"
-  class="product-single__media-slide{% unless featured_media == media %} media--hidden{% endunless %}"
+  class="product-single__media-slide{% unless featured_media == media %} media--hidden{% endunless %} {% if xIndex == 1 %}media--first-selected{% endif %}"
   data-id="{{ media.id }}"
   data-aspectratio="{{ media_aspect_ratio }}"
   data-media-id="{{ unique }}-{{ media.id }}"

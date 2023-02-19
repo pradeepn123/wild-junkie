@@ -87,7 +87,7 @@
     }
 
     .shop-pay-terms {
-      text-align: center !important;
+      text-align: center;
       margin-bottom: 10px;
       max-width: 430px;
     }
@@ -103,19 +103,9 @@
     }
 
     .swatch__button .swatch__label:before {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
-      z-index: 2;
       width: calc(var(--swatch-size) - 10px);
       height: calc(var(--swatch-size) - 10px);
-      border-radius: 50%;
       border: 3px solid var(--white);
-      opacity: 0;
-      visibility: hidden;
     }
 
     #BIS_trigger {
@@ -126,10 +116,35 @@
       font-size: calc(2rem * var(--adjust-heading));
       margin-bottom: -5px;
     }
+
+    .shop-pay-terms {
+      text-align: unset !important;
+      margin-bottom: unset !important;
+      max-width: unset !important;
+    }
+
+    .swatch__button .swatch__label {
+      width: var(--swatch-size);
+      height: var(--swatch-size);
+    }
+
+    .swatch__button .swatch__label:after {
+      width: var(--swatch-size) !important;
+      height: var(--BORDER-WIDTH) !important;
+    }
+
+    .swatch__button .swatch__label:before {
+      width: calc(var(--swatch-size) - 6px);
+      height: calc(var(--swatch-size) - 6px);
+      border: var(--BORDER-WIDTH) solid var(--white);
+    }
+    #BIS_trigger {
+      margin-top: 0px !important;
+    }
   {% endif %}
 {% endstyle %}
 
-<div class="product-single__wrapper{% if image_size %} product__wrapper--{{ image_size }}{% endif %}" data-section-id="{{ unique }}" data-product>
+<div class="product-single__wrapper{% if image_size %} product__wrapper--{{ image_size }}{% endif %} {% if template.suffix == 're-design' %}product-new-single__wrapper{% endif %}" data-section-id="{{ unique }}" data-product data-template="{{template.suffix}}">
   {%- comment -%} Product media {%- endcomment -%}
   {%- unless product == blank -%}
     <div class="product-single__gallery"
@@ -143,10 +158,14 @@
         data-aos-delay="{{ animation_delay }}"
         {%- assign animation_delay = animation_delay | plus: 150 -%}
       {% endif %}>
-      <div class="product-single__media-slider{% if product.media.size == 1 %} product-single__media-slider--single{% endif %}" data-product-single-media-slider>
+      <div class="product-single__media-slider{% if product.media.size == 1 %} product-single__media-slider--single{% endif %}" data-product-single-media-slider data-watch-css="{% if template.suffix == 're-design' %}true{% else %}false{% endif %}">
         {%- if product.media.size > 0 -%}
           {%- comment -%} Show Featured media first {%- endcomment -%}
-          {%- render 'media', unique: unique, current_variant: current_variant, media: featured_media, featured_media: featured_media, enable_video_looping: enable_video_looping, enable_zoom: enable_zoom, section_type: section_type -%}
+          {% assign xIndex = 0 %}
+          {% if template.suffix == "re-design" %}
+            {% assign xIndex = 1 %}
+          {% endif %}
+          {%- render 'media', unique: unique, current_variant: current_variant, media: featured_media, featured_media: featured_media, enable_video_looping: enable_video_looping, enable_zoom: enable_zoom, section_type: section_type, xIndex: xIndex -%}
 
           {%- comment -%} Loop product media skipping the featured {%- endcomment -%}
           {%- for media in product.media -%}
@@ -1408,12 +1427,19 @@
 
               capture upsell_items
                 for upsell_product in upsell_products
-                  render 'upsell-product-page-hero-banner', upsell_product: upsell_product, index: forloop.index, unique: upsell_unique
+                  if template.suffix == "re-design"
+                    render 'upsell-product-page-hero-banner', upsell_product: upsell_product, index: forloop.index, unique: upsell_unique
+                    break
+                  endif
+                  render 'upsell-product', upsell_product: upsell_product, index: forloop.index, unique: upsell_unique
                 endfor
 
                 if legacy_upsell_product
                   assign index = upsell_product_list_count | plus: 1
-                  render 'upsell-product-page-hero-banner', upsell_product: legacy_upsell_product, index: index, unique: upsell_unique
+                  if template.suffix == "re-design"
+                    render 'upsell-product-page-hero-banner', upsell_product: legacy_upsell_product, index: index, unique: upsell_unique
+                  endif
+                  render 'upsell-product', upsell_product: upsell_product, index: forloop.index, unique: upsell_unique
                 endif
               endcapture
 
