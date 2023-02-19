@@ -1,5 +1,6 @@
 {%- comment -%}
   /sections/product-template
+  Okendo Accent color: #E97E4C
 {%- endcomment -%}
 {%- liquid
   assign bg_color = section.settings.bg_color
@@ -35,10 +36,11 @@
         width: 90%;
       }
     }
-    {% comment %} Quantity Low {% endcomment %}
-    .variant__countdown--low{
-      color: #FE7A1A;
+    .sezzle-checkout-button-wrapper {
+      max-width: 330px;
+      line-height: 24px;
     }
+
     {% comment %} Payment More Options {% endcomment %}
     .shopify-payment-button__more-options{
       text-decoration: underline;

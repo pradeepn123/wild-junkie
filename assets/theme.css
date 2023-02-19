@@ -8910,18 +8910,26 @@ body.js-notify-open-cart {
 
 .variant__countdown--in {
   --dot-color: var(--COLOR-SUCCESS);
+  color: var(--COLOR-SUCCESS);
+  font-weight: 500;
 }
 
 .variant__countdown--low {
   --dot-color: var(--COLOR-WARN);
+  color: var(--COLOR-WARN);
+  font-weight: 500;
 }
 
 .variant__countdown--out {
-  --dot-color: var(--COLOR-ERROR);
+  --dot-color: var(--text-alpha-50);
+  color: var(--text-alpha-50);
+  font-weight: 500;
 }
 
 .variant__countdown--unavailable {
   --dot-color: var(--text-alpha-50);
+  color: var(--text-alpha-50);
+  font-weight: 500;
 }
 
 .count-is-in .variant__countdown--in,

@@ -66,18 +66,30 @@
 
 {% style %}
   {% if template.suffix == 're-design' %}
+    .sezzle-shopify-info-button {
+      display: flex;
+      justify-content: center;
+    }
+
     .sezzle-button-text {
       text-align: center !important;
       margin: 16px !important;
+      line-height: 24px !important;
     }
 
     .sezzle-payment-amount {
       margin: 0 !important;
     }
 
+    .shop-pay-terms-wrapper.product__form {
+      display: flex;
+      justify-content: center;
+    }
+
     .shop-pay-terms {
       text-align: center !important;
       margin-bottom: 10px;
+      max-width: 430px;
     }
 
     .swatch__button .swatch__label {
@@ -104,6 +116,15 @@
       border: 3px solid var(--white);
       opacity: 0;
       visibility: hidden;
+    }
+
+    #BIS_trigger {
+      margin-top: -15px !important;
+    }
+  {% else %}
+    .product__title {
+      font-size: calc(2rem * var(--adjust-heading));
+      margin-bottom: -5px;
     }
   {% endif %}
 {% endstyle %}
@@ -305,7 +326,7 @@
   {% endif %}>
   <div class="product__price" data-price-wrapper>
     {%- unless product == blank -%}
-      <span data-product-price class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}" style="color: {{ block.settings.price_color }}">
+      <span data-product-price class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}" {% if template.suffix == 're-design' %}style="color: {{ block.settings.price_color }}"{% endif %}>
         {%- liquid
           if current_variant.price == 0
             echo 'products.product.free' | t
@@ -394,10 +415,12 @@
     {% comment %}
       {% if current_variant.inventory_quantity <= 5  %} Only {% endif %} {{ current_variant.inventory_quantity }} Left
     {% endcomment %}
-    {%- render 'inventory-countdown-numbers',
-      current_variant: current_variant,
-      product_variants: product.variants
-    -%}
+    {% if template.suffix == "re-design" %}
+      {%- render 'inventory-countdown-numbers',
+        current_variant: current_variant,
+        product_variants: product.variants
+      -%}
+    {% endif %}
   </div>
 
   {%- if block.settings.show_rating or settings.show_rating and section_type == 'quickview' -%}
@@ -974,7 +997,7 @@
     </span>
   </div>
 {% endif %}
-{%- form 'product', product, class: 'product__form', data-product-form: '', id: product_form_id -%}
+{%- form 'product', product, class: 'product__form shop-pay-terms-wrapper', data-product-form: '', id: product_form_id -%}
   {% if template.suffix == 're-design'%}
     {% comment %} Shop pay split payment terms {% endcomment %}
     <div class="shop-pay-terms">{{ form | payment_terms }}</div>
@@ -1290,31 +1313,30 @@
                 data-aos-delay="{{ animation_delay }}"
                 {%- assign animation_delay = animation_delay | plus: 150 -%}
               {% endif %}
-              {{ block.shopify_attributes }}></div>
-
-           
-
-          {%- when 'description' -%}
-            <div class="product__block product__description rte"
-              {% if animations_enabled %}
-                data-aos="fade-up"
-                data-aos-anchor="{{ animation_anchor }}"
-                data-aos-delay="{{ animation_delay }}"
-                {%- assign animation_delay = animation_delay | plus: 150 -%}
-              {% endif %}
               {{ block.shopify_attributes }}>
-              {%- unless product == blank -%}
-              {% unless block.settings.show_size_chart_accordion == false %}
-                <p class="product__description__heading">
-                  Product Description
-                </p>
-                {{ product.description }}
-              {% endunless %}
-
-              {%- else -%}
-                <p>{{ 'homepage.onboarding.single_product_description' | t }}</p>
-              {%- endunless -%}
             </div>
+          {%- when 'description' -%}
+            {% if template.suffix == "re-design" %}
+              <div class="product__block product__description rte"
+                {% if animations_enabled %}
+                  data-aos="fade-up"
+                  data-aos-anchor="{{ animation_anchor }}"
+                  data-aos-delay="{{ animation_delay }}"
+                  {%- assign animation_delay = animation_delay | plus: 150 -%}
+                {% endif %}
+                {{ block.shopify_attributes }}>
+                {%- unless product == blank -%}
+                  {% unless block.settings.show_size_chart_accordion == false %}
+                    <p class="product__description__heading">
+                      Product Description
+                    </p>
+                    {{ product.description }}
+                  {% endunless %}
+                {%- else -%}
+                  <p>{{ 'homepage.onboarding.single_product_description' | t }}</p>
+                {%- endunless -%}
+              </div>
+            {% endif %}
 
           {%- when 'product_accordions' -%}
             {%- comment -%} Accordions {%- endcomment -%}
@@ -1327,25 +1349,23 @@
               {% endif %}
               {{ block.shopify_attributes }}>
               {%- render 'product-accordions', block_settings: block.settings -%}
-              {% comment%}
-              {% unless product.metafields.custom.size_chart == blank %}
-                <div class="product__accordion">
-                  <button class="product__accordion__title" aria-controls="ProductAccordion--page-size-chart" data-collapsible-trigger>
-                    Size Chart
-                    {%- render 'icon-toggle-plus' -%}
-                    {%- render 'icon-toggle-minus' -%}
-                  </button>
-
-                  <div class="product__accordion__content" id="ProductAccordion--page-size-chart" data-collapsible-container>
-                    <div class="product__accordion__inner rte" data-collapsible-content>
-                        {{ product.metafields.custom.size_chart | img_url: '500x500' | img_tag }}
+              {% if template.suffix != "re-design" %}
+                {% unless product.metafields.custom.size_chart == blank %}
+                  <div class="product__accordion">
+                    <button class="product__accordion__title" aria-controls="ProductAccordion--page-size-chart" data-collapsible-trigger>
+                      Size Chart
+                      {%- render 'icon-toggle-plus' -%}
+                      {%- render 'icon-toggle-minus' -%}
+                    </button>
+                    <div class="product__accordion__content" id="ProductAccordion--page-size-chart" data-collapsible-container>
+                      <div class="product__accordion__inner rte" data-collapsible-content>
+                          {{ product.metafields.custom.size_chart | img_url: '500x500' | img_tag }}
+                      </div>
                     </div>
                   </div>
-                </div>
-              {% endunless %}
-              {% endcomment %}
+                {% endunless %}
+              {% endif %}
             </div>
-
             {%- when 'modelSizeAndFit' -%}
             {% if product.metafields.my_fields.model_info_image != blank and product.metafields.my_fields.model_info != blank %}
               <div class="product__block model__size__and__fit__parent rte"

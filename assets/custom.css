@@ -1,3 +1,24 @@
+.btn--primary-quick-add {
+    border: var(--BORDER-WIDTH) solid #FE6D6D;
+    background-color: #FE6D6D;
+    color: #FFFFFF;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;       
+}
+
+.btn--primary-quick-add:before {
+    background-color: #FFF;
+    color: #FFF;
+}
+
+.btn--primary-quick-add:hover {
+    color: var(--button-primary-bg) !important;
+    border-color: #FE6D6D !important;
+}
+
 @media screen and (max-width: 1199px){
     .style_it_with_section .style_it_with_product_page .style_it_with_container{
         height: 550px;
