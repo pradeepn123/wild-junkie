@@ -1004,26 +1004,29 @@
 {%- endform -%}
 {% assign product_form_id = "AddToCartForm--shop-pay" | append: unique %}
 {% if template.suffix == 're-design' %}
-  <div class="sizzle-wrapper">
-    <span data-product-price class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}">
-      {%- liquid
-        if current_variant.price == 0
-          echo 'products.product.free' | t
-        elsif currency_code_enable
-          echo current_variant.price | money_with_currency
-        else
-          echo current_variant.price | money
-        endif
-      -%}
-    </span>
-  </div>
-{% endif %}
-{%- form 'product', product, class: 'product__form shop-pay-terms-wrapper', data-product-form: '', id: product_form_id -%}
-  {% if template.suffix == 're-design'%}
-    {% comment %} Shop pay split payment terms {% endcomment %}
-    <div class="shop-pay-terms">{{ form | payment_terms }}</div>
+  {% if current_variant.price < 5000 %}
+    <div class="sizzle-wrapper">
+      <span data-product-price class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}">
+        {%- liquid
+          if current_variant.price == 0
+            echo 'products.product.free' | t
+          elsif currency_code_enable
+            echo current_variant.price | money_with_currency
+          else
+            echo current_variant.price | money
+          endif
+        -%}
+      </span>
+    </div>
+  {% else %}
+    {%- form 'product', product, class: 'product__form shop-pay-terms-wrapper', data-product-form: '', id: product_form_id -%}
+      {% if template.suffix == 're-design'%}
+        {% comment %} Shop pay split payment terms {% endcomment %}
+        <div class="shop-pay-terms">{{ form | payment_terms }}</div>
+      {% endif %}
+    {%- endform -%}
   {% endif %}
-{%- endform -%}
+{% endif %}
               </div>
             {%- else -%}
               <div class="product__block product__form__wrapper{{ hide_labels_class }}"
