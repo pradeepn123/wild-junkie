@@ -66,7 +66,6 @@
 
 {% if section_type != 'quickview' %}
   {% style %}
-    {% if template.suffix == 're-design' %}
       .sezzle-shopify-info-button {
         display: flex;
         justify-content: center;
@@ -112,41 +111,10 @@
       #BIS_trigger {
         margin-top: -15px !important;
       }
-    {% else %}
-      .product__title {
-        font-size: calc(2rem * var(--adjust-heading));
-        margin-bottom: -5px;
-      }
-
-      .shop-pay-terms {
-        text-align: unset !important;
-        margin-bottom: unset !important;
-        max-width: unset !important;
-      }
-
-      .swatch__button .swatch__label {
-        width: var(--swatch-size);
-        height: var(--swatch-size);
-      }
-
-      .swatch__button .swatch__label:after {
-        width: var(--swatch-size) !important;
-        height: var(--BORDER-WIDTH) !important;
-      }
-
-      .swatch__button .swatch__label:before {
-        width: calc(var(--swatch-size) - 6px);
-        height: calc(var(--swatch-size) - 6px);
-        border: var(--BORDER-WIDTH) solid var(--white);
-      }
-      #BIS_trigger {
-        margin-top: 0px !important;
-      }
-    {% endif %}
   {% endstyle %}
 {% endif %}
 
-<div class="product-single__wrapper{% if image_size %} product__wrapper--{{ image_size }}{% endif %} {% if template.suffix == 're-design' %}product-new-single__wrapper{% endif %}" data-section-id="{{ unique }}" data-product data-template="{{template.suffix}}">
+<div class="product-single__wrapper{% if image_size %} product__wrapper--{{ image_size }}{% endif %} {% if section_type != 'quickview' %}product-new-single__wrapper{% endif%}" data-section-id="{{ unique }}" data-product data-template="{{template.suffix}}">
   {%- comment -%} Product media {%- endcomment -%}
   {%- unless product == blank -%}
     <div class="product-single__gallery"
@@ -160,13 +128,10 @@
         data-aos-delay="{{ animation_delay }}"
         {%- assign animation_delay = animation_delay | plus: 150 -%}
       {% endif %}>
-      <div class="product-single__media-slider{% if product.media.size == 1 %} product-single__media-slider--single{% endif %}" data-product-single-media-slider data-watch-css="{% if template.suffix == 're-design' %}true{% else %}false{% endif %}">
+      <div class="product-single__media-slider{% if product.media.size == 1 %} product-single__media-slider--single{% endif %}" data-product-single-media-slider data-watch-css="{% if section_type != 'quickview' %}true{% else %}false{% endif %}">
         {%- if product.media.size > 0 -%}
           {%- comment -%} Show Featured media first {%- endcomment -%}
-          {% assign xIndex = 0 %}
-          {% if template.suffix == "re-design" %}
-            {% assign xIndex = 1 %}
-          {% endif %}
+          {% assign xIndex = 1 %}
           {%- render 'media', unique: unique, current_variant: current_variant, media: featured_media, featured_media: featured_media, enable_video_looping: enable_video_looping, enable_zoom: enable_zoom, section_type: section_type, xIndex: xIndex -%}
 
           {%- comment -%} Loop product media skipping the featured {%- endcomment -%}
@@ -347,7 +312,7 @@
   {% endif %}>
   <div class="product__price" data-price-wrapper>
     {%- unless product == blank -%}
-      <span data-product-price class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}" {% if template.suffix == 're-design' %}style="color: {{ block.settings.price_color }}"{% endif %}>
+      <span data-product-price class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}" style="color: {{ block.settings.price_color }}">
         {%- liquid
           if current_variant.price == 0
             echo 'products.product.free' | t
@@ -436,12 +401,10 @@
     {% comment %}
       {% if current_variant.inventory_quantity <= 5  %} Only {% endif %} {{ current_variant.inventory_quantity }} Left
     {% endcomment %}
-    {% if template.suffix == "re-design" %}
-      {%- render 'inventory-countdown-numbers',
-        current_variant: current_variant,
-        product_variants: product.variants
-      -%}
-    {% endif %}
+    {%- render 'inventory-countdown-numbers',
+      current_variant: current_variant,
+      product_variants: product.variants
+    -%}
   </div>
 
   {%- if block.settings.show_rating or settings.show_rating and section_type == 'quickview' -%}
@@ -652,10 +615,6 @@
       {{- size_chart_button -}}
     </div>
   {%- endunless -%}
-  {% if template.suffix != "re-design" %}
-    {% comment %} Shop pay split payment terms {% endcomment %}
-    <div class="shop-pay-terms">{{ form | payment_terms }}</div>
-  {% endif %}
 
   {%- assign quantity_position_bottom = true -%}
 
@@ -822,11 +781,6 @@
                         {% if value == current_value %}checked{% endif %}>
                       <label for="{{ input_id }}" class="swatch__label" data-swatch="{{ value | escape_once }}" data-tooltip="{{ value | escape_once }}">
                         <span class="visually-hidden">{{ value | escape_once }}</span>
-                        {% if template.suffix != "re-design" %}
-                          {%- if settings.color_swatches_product_style == 'circle' -%}
-                            {%- render 'icon-check' -%}
-                          {%- endif -%}
-                        {% endif %}
                       </label>
                     </span>
                   {%- else -%}
@@ -919,18 +873,6 @@
     {%- comment -%} Delete the following line to block the theme from updating subscription prices {%- endcomment -%}
     <span data-subscription-watch-price></span>
   {%- endif -%}
-    {% if block.settings.show_slide_svg != blank and template.suffix != "re-design" %}
-      <div class="product-page-svg" {{template.suffix }}>
-        {% case product_metafield_size %}
-          {% when 'True to Size' %}
-            {% render 'true-to-size' %}
-          {% when 'Runs Small' %}
-            {% render 'runs-small' %}
-          {% when 'Runs Large' %}
-            {% render 'runs-large' %}
-        {% endcase %}
-      </div>
-    {% endif %}
 
   {%- if quantity_position_bottom and show_quantity -%}
     <div class="selector-wrapper selector-wrapper--qty"
@@ -1003,8 +945,8 @@
   </div>
 {%- endform -%}
 {% assign product_form_id = "AddToCartForm--shop-pay" | append: unique %}
-{% if template.suffix == 're-design' %}
-  {% if current_variant.price < 5000 %}
+
+  {% if current_variant.price < 5000 and section_type != 'quickview' %}
     <div class="sizzle-wrapper">
       <span data-product-price class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}">
         {%- liquid
@@ -1020,13 +962,10 @@
     </div>
   {% else %}
     {%- form 'product', product, class: 'product__form shop-pay-terms-wrapper', data-product-form: '', id: product_form_id -%}
-      {% if template.suffix == 're-design'%}
-        {% comment %} Shop pay split payment terms {% endcomment %}
-        <div class="shop-pay-terms">{{ form | payment_terms }}</div>
-      {% endif %}
+      {% comment %} Shop pay split payment terms {% endcomment %}
+      <div class="shop-pay-terms">{{ form | payment_terms }}</div>
     {%- endform -%}
   {% endif %}
-{% endif %}
               </div>
             {%- else -%}
               <div class="product__block product__form__wrapper{{ hide_labels_class }}"
@@ -1341,7 +1280,6 @@
               {{ block.shopify_attributes }}>
             </div>
           {%- when 'description' -%}
-            {% if template.suffix == "re-design" %}
               <div class="product__block product__description rte"
                 {% if animations_enabled %}
                   data-aos="fade-up"
@@ -1361,32 +1299,8 @@
                   <p>{{ 'homepage.onboarding.single_product_description' | t }}</p>
                 {%- endunless -%}
               </div>
-            {% endif %}
 
           {%- when 'product_accordions' -%}
-            {% if template.suffix != "re-design" %}
-              <div class="product__block product__accordions product__description__not__redesign"
-                  {% if animations_enabled %}
-                    data-aos="fade-up"
-                    data-aos-anchor="{{ animation_anchor }}"
-                    data-aos-delay="{{ animation_delay }}"
-                    {%- assign animation_delay = animation_delay | plus: 150 -%}
-                  {% endif %}
-                  {{ block.shopify_attributes }}>
-                    <div class="product__accordion">
-                      <button class="product__accordion__title" aria-controls="ProductAccordion--page-product-description" data-collapsible-trigger>
-                        Product Description
-                        {%- render 'icon-toggle-plus' -%}
-                        {%- render 'icon-toggle-minus' -%}
-                      </button>
-                      <div class="product__accordion__content" id="ProductAccordion--page-product-description" data-collapsible-container>
-                        <div class="product__accordion__inner rte" data-collapsible-content>
-                            {{ product.description }}
-                        </div>
-                      </div>
-                    </div>
-              </div>
-            {% endif %}
             {%- comment -%} Accordions {%- endcomment -%}
             <div class="product__block product__accordions"
               {% if animations_enabled %}
@@ -1397,24 +1311,9 @@
               {% endif %}
               {{ block.shopify_attributes }}>
               {%- render 'product-accordions', block_settings: block.settings -%}
-              {% if template.suffix != "re-design" %}
-                {% unless product.metafields.custom.size_chart == blank %}
-                  <div class="product__accordion">
-                    <button class="product__accordion__title product__block__size__chart" aria-controls="ProductAccordion--page-size-chart" data-collapsible-trigger>
-                      Size Chart
-                      {%- render 'icon-toggle-plus' -%}
-                      {%- render 'icon-toggle-minus' -%}
-                    </button>
-                    <div class="product__accordion__content" id="ProductAccordion--page-size-chart" data-collapsible-container>
-                      <div class="product__accordion__inner rte" data-collapsible-content>
-                          {{ product.metafields.custom.size_chart | img_url: '500x500' | img_tag }}
-                      </div>
-                    </div>
-                  </div>
-                {% endunless %}
-              {% endif %}
             </div>
             {%- when 'modelSizeAndFit' -%}
+            {% if product.metafields.custom.enable_model_size_fit != blank and  product.metafields.custom.enable_model_size_fit %}
             {% if product.metafields.my_fields.model_info_image != blank and product.metafields.my_fields.model_info != blank %}
               <div class="product__block model__size__and__fit__parent rte"
               {% if animations_enabled %}
@@ -1445,7 +1344,7 @@
                 </div>
               </div>
             {% endif %}
-
+            {% endif %}
           {%- when 'upsell' -%}
             {%- liquid
               assign upsell_unique = unique | append: block.id
@@ -1456,19 +1355,13 @@
 
               capture upsell_items
                 for upsell_product in upsell_products
-                  if template.suffix == "re-design"
-                    render 'upsell-product-page-hero-banner', upsell_product: upsell_product, index: forloop.index, unique: upsell_unique
-                    break
-                  endif
-                  render 'upsell-product', upsell_product: upsell_product, index: forloop.index, unique: upsell_unique
+                  render 'upsell-product-page-hero-banner', upsell_product: upsell_product, index: forloop.index, unique: upsell_unique
+                  break
                 endfor
 
                 if legacy_upsell_product
                   assign index = upsell_product_list_count | plus: 1
-                  if template.suffix == "re-design"
-                    render 'upsell-product-page-hero-banner', upsell_product: legacy_upsell_product, index: index, unique: upsell_unique
-                  endif
-                  render 'upsell-product', upsell_product: upsell_product, index: forloop.index, unique: upsell_unique
+                  render 'upsell-product-page-hero-banner', upsell_product: legacy_upsell_product, index: index, unique: upsell_unique
                 endif
               endcapture
 
@@ -2002,7 +1895,6 @@
   {%- endunless -%}
 
   {% comment %} Shop pay split payment terms {% endcomment %}
-  <div class="shop-pay-terms">{{ form | payment_terms }}</div>
   {%- assign quantity_position_bottom = true -%}
 
   {%- capture quantity_selector -%}

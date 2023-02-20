@@ -12,9 +12,8 @@
 					"urlMatch": "cart"
 				}]
 				}
-	console.log("AHSKASHAKHSKHAS")
 </script>
-	{% if product != blank and template.suffix == "re-design" %}
+	{% if product != blank and template.suffix != "re-design" %}
 		{{- 'sezzle-price-widget.js' | asset_url | script_tag -}}
 	{% else %}
 		<script src='https://widget.sezzle.com/v1/javascript/price-widget?uuid=aa28ad6f-caf0-48ad-95c2-6b59711e1e5d'></script>
