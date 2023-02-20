@@ -1,5 +1,6 @@
-/*shipping flex section css starts here*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Yeseva+One&display=swap');
 
+/*shipping flex section css starts here*/
 .shipping-flex .offer-block {
     display: flex;
     justify-content: space-around;
