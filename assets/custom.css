@@ -264,6 +264,8 @@
             border: 1px solid #B9B9B9;
             border-radius: 5px;
             background-color: #fff;
+            display: flex;
+            flex-direction: row;
         }
         .product__page__upsell .product-upsell__holder .product-upsell{
             flex-direction: row-reverse;
