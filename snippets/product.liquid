@@ -1306,14 +1306,6 @@
             {%- endunless -%}
 
             {% when 'shippingAndReturn' %}
-            {% assign reqCounter = 0 %}
-            {% for tags in product.tags %}
-              {% if tags == "final sale" %}
-                {% assign newreqCounter = reqCounter | plus : 1 %}
-                {% comment %} {% increment reqCounter %} {% endcomment %}
-              {% endif %}
-            {% endfor %}
-            {% assign totalReqVar = newreqCounter | plus : reqCounter %}
             <div class="product__block shipping__and__return__container rte"
               {% if animations_enabled %}
                 data-aos="fade-up"
@@ -1323,17 +1315,16 @@
               {% endif %}
               {{ block.shopify_attributes }}>
               <div class="shipping__and__return ">
-                <div class="shipping__and__return__content {% if totalReqVar < 1 %}shipping__and__returns__single__block{% endif %}">
+                <div class="shipping__and__return__content {% if product.tags contains "final sale" %}shipping__and__returns__single__block{% endif %}">
                   <span class="shipping__and__return__icons">{% render 'shipping-svg' %}</span>
                   <span class="shipping__and__return__description">Free Shipping on all <strong>orders over $35</strong></span>
                 </div>
-
-                {% if newreqCounter == 1 %}
+                {% unless product.tags contains "final sale" %}
                   <div class="shipping__and__return__content">
                     <span class="shipping__and__return__icons">{%render 'returns-svg' %}</span>
                     <span class="shipping__and__return__description">Free hassle free Return within <strong>14 days of delivery!</strong></span>
                   </div>
-                {% endif %}
+                {% endunless %}
               </div>
             </div>
 
