@@ -64,85 +64,87 @@
   endunless
 -%}
 
-{% style %}
-  {% if template.suffix == 're-design' %}
-    .sezzle-shopify-info-button {
-      display: flex;
-      justify-content: center;
-    }
+{% if section_type != 'quickview' %}
+  {% style %}
+    {% if template.suffix == 're-design' %}
+      .sezzle-shopify-info-button {
+        display: flex;
+        justify-content: center;
+      }
 
-    .sezzle-button-text {
-      text-align: center !important;
-      margin: 16px !important;
-      line-height: 24px !important;
-    }
+      .sezzle-button-text {
+        text-align: center !important;
+        margin: 16px !important;
+        line-height: 24px !important;
+      }
 
-    .sezzle-payment-amount {
-      margin: 0 !important;
-    }
+      .sezzle-payment-amount {
+        margin: 0 !important;
+      }
 
-    .shop-pay-terms-wrapper.product__form {
-      display: flex;
-      justify-content: center;
-    }
+      .shop-pay-terms-wrapper.product__form {
+        display: flex;
+        justify-content: center;
+      }
 
-    .shop-pay-terms {
-      text-align: center;
-      margin-bottom: 10px;
-      max-width: 430px;
-    }
+      .shop-pay-terms {
+        text-align: center;
+        margin-bottom: 10px;
+        max-width: 430px;
+      }
 
-    .swatch__button .swatch__label {
-      width: calc(var(--swatch-size) - 5px);
-      height: calc(var(--swatch-size) - 5px);
-    }
+      .swatch__button .swatch__label {
+        width: calc(var(--swatch-size) - 5px);
+        height: calc(var(--swatch-size) - 5px);
+      }
 
-    .swatch__button .swatch__label:after {
-      width: calc(var(--swatch-size) - 10px);
-      height: 3px;
-    }
+      .swatch__button .swatch__label:after {
+        width: calc(var(--swatch-size) - 10px);
+        height: 3px;
+      }
 
-    .swatch__button .swatch__label:before {
-      width: calc(var(--swatch-size) - 10px);
-      height: calc(var(--swatch-size) - 10px);
-      border: 3px solid var(--white);
-    }
+      .swatch__button .swatch__label:before {
+        width: calc(var(--swatch-size) - 10px);
+        height: calc(var(--swatch-size) - 10px);
+        border: 3px solid var(--white);
+      }
 
-    #BIS_trigger {
-      margin-top: -15px !important;
-    }
-  {% else %}
-    .product__title {
-      font-size: calc(2rem * var(--adjust-heading));
-      margin-bottom: -5px;
-    }
+      #BIS_trigger {
+        margin-top: -15px !important;
+      }
+    {% else %}
+      .product__title {
+        font-size: calc(2rem * var(--adjust-heading));
+        margin-bottom: -5px;
+      }
 
-    .shop-pay-terms {
-      text-align: unset !important;
-      margin-bottom: unset !important;
-      max-width: unset !important;
-    }
+      .shop-pay-terms {
+        text-align: unset !important;
+        margin-bottom: unset !important;
+        max-width: unset !important;
+      }
 
-    .swatch__button .swatch__label {
-      width: var(--swatch-size);
-      height: var(--swatch-size);
-    }
+      .swatch__button .swatch__label {
+        width: var(--swatch-size);
+        height: var(--swatch-size);
+      }
 
-    .swatch__button .swatch__label:after {
-      width: var(--swatch-size) !important;
-      height: var(--BORDER-WIDTH) !important;
-    }
+      .swatch__button .swatch__label:after {
+        width: var(--swatch-size) !important;
+        height: var(--BORDER-WIDTH) !important;
+      }
 
-    .swatch__button .swatch__label:before {
-      width: calc(var(--swatch-size) - 6px);
-      height: calc(var(--swatch-size) - 6px);
-      border: var(--BORDER-WIDTH) solid var(--white);
-    }
-    #BIS_trigger {
-      margin-top: 0px !important;
-    }
-  {% endif %}
-{% endstyle %}
+      .swatch__button .swatch__label:before {
+        width: calc(var(--swatch-size) - 6px);
+        height: calc(var(--swatch-size) - 6px);
+        border: var(--BORDER-WIDTH) solid var(--white);
+      }
+      #BIS_trigger {
+        margin-top: 0px !important;
+      }
+    {% endif %}
+  {% endstyle %}
+{% endif %}
 
 <div class="product-single__wrapper{% if image_size %} product__wrapper--{{ image_size }}{% endif %} {% if template.suffix == 're-design' %}product-new-single__wrapper{% endif %}" data-section-id="{{ unique }}" data-product data-template="{{template.suffix}}">
   {%- comment -%} Product media {%- endcomment -%}
