@@ -1,0 +1,477 @@
+{
+  "sections": {
+    "section-one": {
+      "type": "section-custom-content",
+      "blocks": {
+        "block-one": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Section_Header_Image_New.jpg",
+            "image_position": "center-top",
+            "overlay_opacity": 0,
+            "text_color": "text-light",
+            "title": "",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "block-one"
+      ],
+      "settings": {
+        "height": "three-hundred-height",
+        "custom_class_custom_content": "",
+        "bg_color": "",
+        "width": "wrapper",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 20
+      }
+    },
+    "section-two": {
+      "type": "section-accordions",
+      "blocks": {
+        "362a8ae2-2303-4068-b18f-c190576a6f48": {
+          "type": "text",
+          "settings": {
+            "title": "",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "362a8ae2-2303-4068-b18f-c190576a6f48"
+      ],
+      "settings": {
+        "section_custom_class": "tabs_heading_center_align",
+        "title": "Way to Earn",
+        "subheading": "You will earn points through the actions below",
+        "text": "",
+        "tabs_bg_color": "",
+        "bg_color": "",
+        "text_color": "text-dark",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "section-three": {
+      "type": "section-custom-content",
+      "disabled": true,
+      "blocks": {
+        "template--14490298581055__d5a241ff-4a9a-4897-985e-1fec9ac2e59d-166567704666a6f91f-1": {
+          "type": "text",
+          "settings": {
+            "text_position": "left",
+            "top_image_width": 100,
+            "text_color": "text-dark",
+            "subheading": "",
+            "title": "Shipping Policy",
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "secondary_button_style": "btn--secondary btn--small",
+            "bg_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--14490298581055__d5a241ff-4a9a-4897-985e-1fec9ac2e59d-166567704666a6f91f-1"
+      ],
+      "settings": {
+        "height": "three-hundred-height",
+        "custom_class_custom_content": "",
+        "bg_color": "",
+        "width": "wrapper--full",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_title": false,
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "section-four": {
+      "type": "section-grid",
+      "blocks": {
+        "section-four-block-one": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Sign Up",
+            "text": "and earn 100 Points",
+            "button_text": "",
+            "link": "",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "text_color": "text-light"
+          }
+        },
+        "section-four-block-two": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Place an order",
+            "text": "5 Points for every $1 spent",
+            "button_text": "",
+            "link": "",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "text_color": "text-light"
+          }
+        },
+        "section-four-block-three": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Celebrate a birthday",
+            "text": "and earn 250 Points",
+            "button_text": "",
+            "link": "",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "text_color": "text-light"
+          }
+        },
+        "section-four-block-four": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Follow on Instagram",
+            "text": "and earn 100 Points",
+            "button_text": "",
+            "link": "",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "text_color": "text-light"
+          }
+        },
+        "section-four-block-five": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Complete a Referral",
+            "text": "500 Points",
+            "button_text": "",
+            "link": "",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "text_color": "text-light"
+          }
+        }
+      },
+      "block_order": [
+        "section-four-block-one",
+        "section-four-block-two",
+        "section-four-block-three",
+        "section-four-block-four",
+        "section-four-block-five"
+      ],
+      "settings": {
+        "height": "auto",
+        "heading_size": 150,
+        "button_style": "btn--secondary btn--small",
+        "secondary_button_style": "btn--secondary btn--small",
+        "bg_color": "",
+        "enable_slider_mobile": true,
+        "width": "wrapper",
+        "add_gutter": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "fe2583b6-addb-43e6-8725-f017bbd1c52e": {
+      "type": "section-accordions",
+      "settings": {
+        "section_custom_class": "",
+        "title": "How to Redeem Points",
+        "subheading": "Rewards that you can redeem using your rewards points",
+        "text": "",
+        "tabs_bg_color": "",
+        "bg_color": "",
+        "text_color": "text-dark",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "27d84ffb-123a-404d-b47a-63046b76f391": {
+      "type": "section-grid",
+      "blocks": {
+        "template--14494016372799__27d84ffb-123a-404d-b47a-63046b76f391-166625350155507553-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "$20 off coupon",
+            "text": "2000 Points",
+            "button_text": "",
+            "link": "",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "text_color": "text-light"
+          }
+        },
+        "template--14494016372799__27d84ffb-123a-404d-b47a-63046b76f391-166625350155507553-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "10% Off Coupon",
+            "text": "1000 Points",
+            "button_text": "",
+            "link": "",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "text_color": "text-light"
+          }
+        },
+        "template--14494016372799__27d84ffb-123a-404d-b47a-63046b76f391-166625350155507553-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Box_Backgrund.png",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "5% Off Coupon",
+            "text": "500 Points",
+            "button_text": "",
+            "link": "",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "text_color": "text-light"
+          }
+        }
+      },
+      "block_order": [
+        "template--14494016372799__27d84ffb-123a-404d-b47a-63046b76f391-166625350155507553-0",
+        "template--14494016372799__27d84ffb-123a-404d-b47a-63046b76f391-166625350155507553-1",
+        "template--14494016372799__27d84ffb-123a-404d-b47a-63046b76f391-166625350155507553-2"
+      ],
+      "settings": {
+        "height": "auto",
+        "heading_size": 150,
+        "button_style": "btn--secondary btn--small",
+        "secondary_button_style": "btn--secondary btn--small",
+        "bg_color": "",
+        "enable_slider_mobile": true,
+        "width": "wrapper",
+        "add_gutter": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "99bbd947-2528-4c1b-8a0f-f2ea740368b3": {
+      "type": "section-testimonials",
+      "blocks": {
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-0": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "heading": "We let our reviews speak for themselves.",
+            "text_size": 125,
+            "subheading": "<p>4.98 average<br\/>213 reviews<\/p>",
+            "block_color": "#000000",
+            "text_color": "text-light",
+            "text_alignment": "text-left"
+          }
+        },
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-1": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 0,
+            "text": "<p>- Wild - <\/p><p>-<\/p><p>- 5 Junkie Points per $1<\/p><p>- <\/p><p>- VIP Anniversary Discount<\/p>",
+            "customer_name": "",
+            "subheading": ""
+          }
+        },
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-2": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 0,
+            "text": "<p>- Wilder - <\/p><p>-<\/p><p>6 Junkie Points per $1<\/p><p>-<\/p><p>VIP Anniversary Discount<\/p><p>- <\/p><p>Birthday Gift<\/p><p>- <\/p><p>Early access to collection drops and sales<\/p>",
+            "customer_name": "",
+            "subheading": ""
+          }
+        },
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-3": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 0,
+            "text": "<p>- Wildest -<\/p><p>- <\/p><p>7 Junkie Points per $1<\/p><p>- <\/p><p>VIP Anniversary Discount<\/p><p>- <\/p><p>Birthday Gift<\/p><p>- <\/p><p>Early access to collection drops and sales<\/p><p>- <\/p><p>Free 2nd Day Air shipping on all orders<\/p>",
+            "customer_name": "",
+            "subheading": ""
+          }
+        },
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-4": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "Sandy Boone",
+            "subheading": "<p>Verified customer<\/p>"
+          }
+        },
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-5": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "Dmitri Kristov",
+            "subheading": "<p>Verified customer<\/p>"
+          }
+        },
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-6": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "Amelia Ngoy",
+            "subheading": "<p>Verified customer<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-0",
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-1",
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-2",
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-3",
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-4",
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-5",
+        "template--14494016372799__99bbd947-2528-4c1b-8a0f-f2ea740368b3-1666253517aa3fe929-6"
+      ],
+      "settings": {
+        "title": "Vip Tiers",
+        "text_size": 100,
+        "text_alignment": "text-center",
+        "bg_color": "rgba(0,0,0,0)",
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "3e02bf34-21c9-4c5e-80cf-be01ee33cf72": {
+      "type": "section-overlapping-images",
+      "settings": {
+        "text_position": "right",
+        "text_alignment": "center",
+        "images_width": 750,
+        "images_offset": 60,
+        "image_1": "shopify:\/\/shop_images\/KENDALL.jpg",
+        "image_1_position": "center-center",
+        "image_link_1": "",
+        "image_2": "shopify:\/\/shop_images\/IMG_1409_5000xw3.jpg",
+        "image_2_position": "center-center",
+        "image_link_2": "",
+        "hide_image_2": false,
+        "heading": "Refer a Friend",
+        "description": "<p>Tell your friend about us Give $10 and Get $10<\/p>",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "btn--primary btn--small",
+        "video_text": "",
+        "video_link": "",
+        "bg_color": "#F6F6F7",
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "3bddfdbe-2edc-4399-943d-78e4e01439ab": {
+      "type": "section-accordions",
+      "blocks": {
+        "template--14494016372799__3bddfdbe-2edc-4399-943d-78e4e01439ab-1666253517202885a0-0": {
+          "type": "text",
+          "settings": {
+            "title": "How long does it take to get my products?",
+            "text": "<p>Domestic shipping can take up to 5 business days.<br\/><br\/>Foreign shipping could take up to 14 business days.<br\/><br\/>Due to global supply chain challenges, shipping times could be longer than usual.<\/p>"
+          }
+        },
+        "template--14494016372799__3bddfdbe-2edc-4399-943d-78e4e01439ab-1666253517202885a0-1": {
+          "type": "text",
+          "settings": {
+            "title": "Do you offer warranty for your products?",
+            "text": "<p>All our products are subject to quality control.<br\/><br\/>Our warranty provides a guarantee against manufacturer defects.<br\/><br\/>The guarantee covers any manufacturing, design, or material defect. Please notify us within 2 months of noticing any defects.<br\/><br\/>It does not cover blows, improper use, or other issues that are not attributable to a manufacturer defects.<\/p>"
+          }
+        },
+        "template--14494016372799__3bddfdbe-2edc-4399-943d-78e4e01439ab-1666253517202885a0-2": {
+          "type": "text",
+          "settings": {
+            "title": "Do you offer refunds?",
+            "text": "<p>Yes, we offer full and partial refunds.<br\/><br\/>Please enquire for more information about our Refund policy.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--14494016372799__3bddfdbe-2edc-4399-943d-78e4e01439ab-1666253517202885a0-0",
+        "template--14494016372799__3bddfdbe-2edc-4399-943d-78e4e01439ab-1666253517202885a0-1",
+        "template--14494016372799__3bddfdbe-2edc-4399-943d-78e4e01439ab-1666253517202885a0-2"
+      ],
+      "settings": {
+        "section_custom_class": "",
+        "title": "Frequently Asked Questions",
+        "subheading": "",
+        "text": "",
+        "tabs_bg_color": "",
+        "bg_color": "rgba(0,0,0,0)",
+        "text_color": "text-dark",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "section-one",
+    "section-two",
+    "section-three",
+    "main",
+    "section-four",
+    "fe2583b6-addb-43e6-8725-f017bbd1c52e",
+    "27d84ffb-123a-404d-b47a-63046b76f391",
+    "99bbd947-2528-4c1b-8a0f-f2ea740368b3",
+    "3e02bf34-21c9-4c5e-80cf-be01ee33cf72",
+    "3bddfdbe-2edc-4399-943d-78e4e01439ab"
+  ]
+}

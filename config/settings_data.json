@@ -3,9 +3,10 @@
     "color_body_bg": "#ffffff",
     "color_headings": "#000",
     "color_body_text": "#000",
-    "color_accent": "#ff6d6d",
+    "color_accent": "#e73e52",
     "color_borders_and_lines": "#d3d3d3",
-    "color_button_primary": "#ff6d6d",
+    "color_saving_badge": "#e97e4c",
+    "color_button_primary": "#e73e52",
     "color_button_secondary": "#ffffff",
     "type_heading_font": "harmonia_sans_n6",
     "nav_size": 90,
@@ -14,6 +15,7 @@
     "button_style": "pill",
     "show_product_gray_bg": false,
     "enable_color_swatches_product": true,
+    "products_per_row_on_mobile": "2",
     "image_size": "cover",
     "image_aspect_ratio": 1.5,
     "product_grid_hover": "image",
@@ -23,6 +25,9 @@
     "quick_button": "buy",
     "show_payment_button": true,
     "cart_type": "drawer",
+    "show_product_promotional": true,
+    "free_shipping_limit": "35",
+    "cart_custom_message_text": "",
     "social_facebook_link": "https:\/\/www.facebook.com\/wildjunkiebtq\/",
     "social_twitter_link": "",
     "social_pinterest_link": "https:\/\/in.pinterest.com\/wildjunkiebtq\/",
@@ -31,20 +36,22 @@
     "social_tiktok_link": "",
     "social_snapchat_link": "",
     "social_rss_link": "",
-    "favicon": "",
+    "loading_image": "shopify:\/\/shop_images\/Wild_junkie_Favicon.png",
+    "currency_code_enable": false,
+    "favicon": "shopify:\/\/shop_images\/Wild_junkie_Favicon.png",
     "checkout_header_image": "",
-    "checkout_logo_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/Wild_Junkie_Logo.png",
     "checkout_logo_position": "left",
-    "checkout_logo_size": "medium",
+    "checkout_logo_size": "large",
     "checkout_body_background_image": "",
     "checkout_body_background_color": "#ffffff",
     "checkout_input_background_color_mode": "white",
     "checkout_sidebar_background_image": "",
-    "checkout_sidebar_background_color": "#fafafa",
-    "checkout_heading_font": "Helvetica Neue",
-    "checkout_body_font": "Helvetica Neue",
-    "checkout_accent_color": "#1990c6",
-    "checkout_button_color": "#1990c6",
+    "checkout_sidebar_background_color": "#ece2da",
+    "checkout_heading_font": "Oswald",
+    "checkout_body_font": "Roboto",
+    "checkout_accent_color": "#e73e52",
+    "checkout_button_color": "#e73e52",
     "checkout_error_color": "#ff6d6d",
     "type_body_font": "chivo_n4",
     "enable_color_swatches": true,
@@ -59,18 +66,19 @@
         "settings": {
           "sticky_header": true,
           "header_border": false,
-          "logo_not_home": "shopify:\/\/shop_images\/DUP.logo.png",
-          "logo_max_width": 100,
+          "logo_not_home": "shopify:\/\/shop_images\/image_4bcd965e-c149-48dc-8d09-4afd61575c3d.png",
+          "logo_max_width": 90,
           "main-menu": "main-menu-new",
           "show_images": true,
           "image_aspect_ratio": 0.5,
           "menu_alignment": "left",
           "highlight_item": "Sale",
-          "highlight_item_color": "#ff6d6d",
+          "highlight_item_color": "#e73e52",
           "show_search": true,
           "menu_searches_list": "",
           "show_search_links": true,
           "header_transparent": true,
+          "logo": "shopify:\/\/shop_images\/Wild_Junkie_Logo.png",
           "header_text_color": "white"
         }
       },
@@ -80,10 +88,10 @@
           "b2e5833c-03f7-41d6-b51b-f0253a6c077b": {
             "type": "logo",
             "settings": {
-              "image": "shopify:\/\/shop_images\/wild-junkies-footer-Image.webp",
+              "image": "shopify:\/\/shop_images\/image_4bcd965e-c149-48dc-8d09-4afd61575c3d.png",
               "logo_width": 140,
               "show_shop_name": false,
-              "shop__description__footer": "We supply women with high quality wild western fashion products and the best customer service. All products made in the USA!",
+              "shop__description__footer": "The largest selection of premium, wild western wear.",
               "shop__description__footer__fontSize": 16
             }
           },
@@ -118,7 +126,7 @@
         "settings": {
           "width": "wrapper",
           "show_footer_wave": true,
-          "color_wave": "#ff6d6d",
+          "color_wave": "#000000",
           "show_social_links": true,
           "show_payment_icons": true,
           "bottom_menu": "",
@@ -170,7 +178,7 @@
             "type": "text",
             "disabled": true,
             "settings": {
-              "text": "<p>New customers save 10% with code WELCOME10<\/p>",
+              "text": "<p>All orders ship within 24 hours! <\/p>",
               "icon_name": "none",
               "icon_color": "",
               "icon_width": 15,
@@ -178,15 +186,15 @@
               "target_url": "",
               "target_referrer_enabled": false,
               "target_referrer": "",
-              "target_device_enabled": false,
-              "target_device": "mobile"
+              "target_device_enabled": true,
+              "target_device": "desktop"
             }
           },
           "announcement-1": {
             "type": "text",
             "disabled": true,
             "settings": {
-              "text": "<p>New collections just released - <a href=\"\/collections\" title=\"All collections\">Shop now<\/a><\/p>",
+              "text": "<p><strong>🔥 Spend $50 - $100 and get Free Mystery Graphic Tee<\/strong> <a href=\"https:\/\/wildjunkieboutique.com\/collections\/all\" title=\"https:\/\/wildjunkieboutique.com\/collections\/all\"><strong>SHOP NOW<\/strong><\/a><\/p>",
               "icon_name": "none",
               "icon_color": "",
               "icon_width": 15,
@@ -202,7 +210,7 @@
             "type": "text",
             "disabled": true,
             "settings": {
-              "text": "<p>Use code <strong>TENOFF<\/strong> for 10% off first purchase<\/p>",
+              "text": "<p><strong>🔥 Spend $100+ and get Free Beanie <\/strong><a href=\"https:\/\/wildjunkieboutique.com\/collections\/all\" title=\"https:\/\/wildjunkieboutique.com\/collections\/all\"><strong>SHOP NOW<\/strong><\/a><\/p>",
               "icon_name": "none",
               "icon_color": "",
               "icon_width": 15,
@@ -221,14 +229,25 @@
           "announcement-2"
         ],
         "settings": {
-          "bg_color": "#f7f7f7",
-          "color": "#545454",
+          "bg_color": "#e73e52",
+          "color": "#ffffff",
           "layout": "slider",
           "padding": 10,
           "slider_speed": 7,
           "marquee_speed": 100,
-          "text_size": 100,
+          "text_size": 130,
           "message_spacing": 25
+        }
+      },
+      "sezzle-widget": {
+        "type": "sezzle-widget",
+        "settings": {
+          "show-sezzle-widget": true,
+          "color": "inherit",
+          "font-size": 14,
+          "font-family": "inherit",
+          "product-page-alignment": "auto",
+          "cart-page-alignment": "auto"
         }
       }
     },

@@ -1,0 +1,224 @@
+{
+  "sections": {
+    "6b0ee484-3c6d-4ecf-8a26-2a5129a417dd": {
+      "type": "section-marquee",
+      "disabled": true,
+      "blocks": {
+        "755d3448-cfce-481d-8f52-a12cfeefd370": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>FREE SHIPPING ON ORDERS OVER $35  <\/strong>📦 <\/p>",
+            "icon_name": "heart",
+            "icon_color": "#e73e52",
+            "icon_width": 20,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        }
+      },
+      "block_order": [
+        "755d3448-cfce-481d-8f52-a12cfeefd370"
+      ],
+      "settings": {
+        "bg_color": "#e97e4c",
+        "color": "#ffffff",
+        "layout": "marquee",
+        "padding": 10,
+        "slider_speed": 7,
+        "marquee_speed": 100,
+        "text_size": 150,
+        "message_spacing": 25,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "product",
+      "blocks": {
+        "b40be5b7-a29a-4754-8959-96af5397de5c": {
+          "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/star-rating\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "subheading": "none",
+            "show_rating": false,
+            "show_rating_count": false,
+            "price_color": "#fe6d6d"
+          }
+        },
+        "1381bcb5-bb77-4152-8518-7e2d742d95bd": {
+          "type": "divider",
+          "settings": {
+            "show_line": true,
+            "padding_top": 1,
+            "padding_bottom": 1
+          }
+        },
+        "form": {
+          "type": "form",
+          "settings": {
+            "info_page": "{{ product.metafields.custom.size_chart_page.value }}",
+            "info_page_title_override": "Size Guide",
+            "show_slide_svg": true,
+            "show_labels": true,
+            "show_quantity": false,
+            "show_payment_button": true,
+            "enable_subscriptions_selectors": false
+          }
+        },
+        "54d3bf08-7edb-4254-a5ae-b2195de93de0": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"63be821362297b001a6829e1\" class=\"htmlsnpt\"><\/div>"
+          }
+        },
+        "f4e9f903-48e6-4a5b-9290-0f73c6da736f": {
+          "type": "shippingAndReturn",
+          "settings": {
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "upsell": {
+          "type": "upsell",
+          "settings": {
+            "product_list": "{{ product.metafields.theme.upsell_list.value }}"
+          }
+        },
+        "f43f225a-d6d8-416a-b2c6-84523a34d470": {
+          "type": "modelSizeAndFit",
+          "settings": {
+          }
+        },
+        "product_accordions": {
+          "type": "product_accordions",
+          "settings": {
+            "accordion_heading_1": "Shipping & Returns",
+            "accordion_text_1": "<p>Free hassle free Return within <strong>14 days of delivery!<\/strong><\/p>",
+            "accordion_page_1": "",
+            "accordion_heading_2": "",
+            "accordion_text_2": "",
+            "accordion_page_2": "",
+            "accordion_heading_3": "",
+            "accordion_text_3": "",
+            "accordion_page_3": "",
+            "accordion_heading_4": "",
+            "accordion_text_4": "",
+            "accordion_page_4": "",
+            "accordion_heading_5": "",
+            "accordion_text_5": "",
+            "accordion_page_5": "",
+            "show_size_chart_accordion": false
+          }
+        }
+      },
+      "block_order": [
+        "b40be5b7-a29a-4754-8959-96af5397de5c",
+        "title",
+        "1381bcb5-bb77-4152-8518-7e2d742d95bd",
+        "form",
+        "54d3bf08-7edb-4254-a5ae-b2195de93de0",
+        "f4e9f903-48e6-4a5b-9290-0f73c6da736f",
+        "description",
+        "upsell",
+        "f43f225a-d6d8-416a-b2c6-84523a34d470",
+        "product_accordions"
+      ],
+      "settings": {
+        "image_size": "large",
+        "enable_zoom": true,
+        "enable_video_looping": false,
+        "bg_color": "",
+        "block_padding": 14,
+        "width": "wrapper",
+        "padding_top": 0,
+        "padding_bottom": 51
+      }
+    },
+    "d66bd041-4896-4ef6-9680-7fb668f72704": {
+      "type": "style-with-it-crousel",
+      "settings": {
+        "title": "Style it with",
+        "subheading_main": "Why stop with one when you can have a complete look.",
+        "product_list": "{{ product.metafields.custom.style_it_with_section_products.value }}",
+        "show_image": true,
+        "image": "{{ product.metafields.custom.style_it_with_section_image.value }}",
+        "style_it_with_custom_class": "product_page_tab_collection",
+        "bg_color": "",
+        "width": "wrapper--full-padded",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "27108dd6-384a-44d5-8a6f-f174b3aeb828": {
+      "type": "text-Highlight",
+      "settings": {
+        "text": "Customer Reviews",
+        "Vertical__Text__alignment": "center",
+        "horizontal_text_alignment": "center",
+        "section__background": "#ffffff",
+        "section__text__color": "#000000",
+        "show__collection__button": true,
+        "btn-text": "",
+        "btn-url": "",
+        "section__height": 100,
+        "desktop__font__size": 30,
+        "section__padding": 0,
+        "section__margin": 60,
+        "mobile__font__size": 20,
+        "section__mobile__height": 0,
+        "section__mobile__padding": 0,
+        "section__mobile__margin": 20
+      }
+    },
+    "1665682367e6a8a8b7": {
+      "type": "apps",
+      "blocks": {
+        "869380d9-4a43-4777-939a-952f46a94fcb": {
+          "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/reviews-widget\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "869380d9-4a43-4777-939a-952f46a94fcb"
+      ],
+      "settings": {
+        "bg_color": "",
+        "width": "wrapper",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "related": {
+      "type": "related-products",
+      "settings": {
+        "limit": 4,
+        "product_recommendations_heading": "We think you’ll Love them",
+        "heading_font_size": 40,
+        "heading_font_size_mobile": 28,
+        "bg_color": "",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "6b0ee484-3c6d-4ecf-8a26-2a5129a417dd",
+    "main",
+    "d66bd041-4896-4ef6-9680-7fb668f72704",
+    "27108dd6-384a-44d5-8a6f-f174b3aeb828",
+    "1665682367e6a8a8b7",
+    "related"
+  ]
+}

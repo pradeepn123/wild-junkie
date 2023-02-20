@@ -1,0 +1,190 @@
+{%- liquid
+  assign animations_enabled = settings.animations_enabled
+  assign animation_anchor = '.notify__product'
+  assign item_animation_delay = animation_delay | default: 250
+  assign selected_variant = product.selected_or_first_available_variant
+  assign currency_code_enable = settings.currency_code_enable
+-%}
+
+
+<div data-api-notify-content>
+    <div data-cart-notify-content>
+        <div class="cart__item__content notify__items">
+            <div
+                class="notify__success_add"
+                data-aos="fade-up"
+                data-aos-anchor="{{ animation_anchor }}"
+                data-aos-delay="{{ item_animation_delay }}"
+            >
+                {%- assign item_animation_delay = item_animation_delay | plus: 150 -%}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 12.7273L9.48387 16L18 8" stroke="#F03E55" stroke-width="3"/>
+                    <circle cx="12" cy="12" r="10.5" stroke="#F03E55" stroke-width="3"/>
+                </svg>
+                <div style="margin-left: 10px;">
+                    It's in the cart!
+                </div>
+            </div>
+            <div class="notify__product" id="notify__product__information">
+                <div class="cart__item"
+                    data-aos="fade-up"
+                    data-aos-anchor="{{ animation_anchor }}"
+                    data-aos-delay="{{ item_animation_delay }}"
+                    {%- assign item_animation_delay = item_animation_delay | plus: 150 -%}
+                >
+                    <div class="cart__item__image">
+                        <a href="{{ product.url }}">
+                            {%- liquid
+                                assign image = product.featured_image
+                                assign image_url_pattern = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
+                                assign image_widths = "[90,160,180,270,320]"
+                            -%}
+                            <img
+                                class="lazyload"
+                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                data-src="{{ image_url_pattern }}"
+                                data-aspectratio="{{ image.aspect_ratio | default: 1 }}"
+                                data-widths= "{{ image_widths }}"
+                                data-sizes="auto"
+                                alt="{{ product.title | strip_html | escape }}"
+                            >
+                            <noscript>
+                                <img src="{{ image | img_url: '160x' }}" alt="{{ product.title | strip_html | escape }}">
+                            </noscript>
+                        </a>
+                    </div>
+                    <div class="cart__item__content">
+                        <div class="cart__item__content-inner">
+                            <div class="cart__item__info">
+                                <p class="cart__item__title">
+                                    <a href="{{- product.url -}}">
+                                        {{- product.title | strip_html -}}
+                                    </a>
+                                </p>
+                                <div class="cart__item__meta">
+                                    {%- unless product.has_only_default_variant -%}
+                                        {%- for product_option in product.options_with_values -%}
+                                            {%- assign option_downcase = product_option.name | downcase -%}
+                                            <p class="cart__item__selected-options">
+                                                <span>{{ product_option.name }}:</span>
+                                                {%- for option_value in product_option.values -%}
+                                                    {%- if selected_variant.matched and option_value == product_option.selected_value -%}
+                                                        <span class="option-value">{{- option_value -}}</span>
+                                                    {%- endif -%}
+                                                {%- endfor -%}
+                                            </p>
+                                        {%- endfor -%}
+                                    {%- endunless -%}
+                                </div>
+                                <div class="cart__item__price">
+                                    <span data-product-price class="product__price--regular{% if selected_variant.compare_at_price > selected_variant.price %} product__price--sale{% endif %}">
+                                        {%- liquid
+                                            if selected_variant.price == 0
+                                                echo 'products.product.free' | t
+                                            elsif currency_code_enable
+                                                echo selected_variant.price | money_with_currency
+                                            else
+                                                echo selected_variant.price | money
+                                            endif
+                                        -%}
+                                    </span>
+                                    {% if selected_variant.compare_at_price %}
+                                        <s data-compare-price class="product__price--compare">
+                                            {%- liquid
+                                                echo selected_variant.compare_at_price | money | remove: '.0'
+                                            -%}
+                                        </s>
+                                        <span class="product__discount__percentage">
+                                            ({{ selected_variant.compare_at_price | minus: selected_variant.price | times: 100.0 | divided_by: selected_variant.compare_at_price | money_without_currency | times: 100 | remove: '.0'}}% Off)
+                                        </span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="notify-action"
+                    data-aos="fade-up"
+                    data-aos-anchor="{{ animation_anchor }}"
+                    data-aos-delay="{{ item_animation_delay }}"
+                >
+                    <button class="cart__checkout btn" data-open-drawer-cart>
+                        View Cart
+                    </button>
+                    <p class="cart__text">
+                        <button data-continue-shopping>Keep Shopping</button>
+                    </p>
+                </div>
+                <div class="seperator"></div>
+                <div class="notify__upsell">
+                    <div
+                        class="notify__upsell__header"
+                        data-aos="fade-up"
+                        data-aos-anchor="{{ animation_anchor }}"
+                        data-aos-delay="{{ item_animation_delay }}"
+                    >
+                        {%- assign item_animation_delay = item_animation_delay | plus: 150 -%}
+                        You Might also like these?
+                    </div>
+                    <div class="notify__upsell__content">
+                        {% for upsell_product in product.metafields.theme.upsell_list.value %}
+                            {% assign upsell_variant = upsell_product.selected_or_first_available_variant %}
+                            <div class="notify-product-card">
+                                <div class="upsell__item__image">
+                                    <a href="{{ upsell_product.url }}">
+                                        {%- liquid
+                                            assign image = upsell_product.featured_image
+                                            assign image_url_pattern = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
+                                            assign image_widths = "[90,160,180,270,320]"
+                                        -%}
+                                        <img
+                                            class="lazyload"
+                                            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                            data-src="{{ image_url_pattern }}"
+                                            data-aspectratio="{{ image.aspect_ratio | default: 1 }}"
+                                            data-widths= "{{ image_widths }}"
+                                            data-sizes="auto"
+                                            alt="{{ product.title | strip_html | escape }}"
+                                        >
+                                        <noscript>
+                                            <img src="{{ image | img_url: '160x' }}" alt="{{ upsell_product.title | strip_html | escape }}">
+                                        </noscript>
+                                    </a>
+                                </div>
+                                <div class="upsell__item__product_title">
+                                    <a href="{{ upsell_product.url }}">
+                                        {{ upsell_product.title }}
+                                    </a>
+                                </div>
+                                <div class="upsell__item__price">
+                                    <span data-product-price class="product__price--regular{% if upsell_variant.compare_at_price > upsell_variant.price %} product__price--sale{% endif %}">
+                                        {%- liquid
+                                            if upsell_variant.price == 0
+                                                echo 'products.product.free' | t
+                                            elsif currency_code_enable
+                                                echo upsell_variant.price | money_with_currency
+                                            else
+                                                echo upsell_variant.price | money
+                                            endif
+                                        -%}
+                                    </span>
+                                    {% if upsell_variant.compare_at_price %}
+                                        <s data-compare-price class="product__price--compare">
+                                            {%- liquid
+                                                echo upsell_variant.compare_at_price | money | remove: '.0'
+                                            -%}
+                                        </s>
+                                        <span class="product__discount__percentage">
+                                            ({{ upsell_variant.compare_at_price | minus: upsell_variant.price | times: 100.0 | divided_by: upsell_variant.compare_at_price | money_without_currency | times: 100 | remove: '.0'}}% Off)
+                                        </span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

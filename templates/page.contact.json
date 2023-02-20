@@ -1,9 +1,85 @@
 {
   "sections": {
+    "a16c8e73-e6ca-4694-9e92-f4d08b08fa92": {
+      "type": "section-custom-content",
+      "blocks": {
+        "template--14490298482751__a16c8e73-e6ca-4694-9e92-f4d08b08fa92-1665687699061d3dff-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Section_Header_Image_New.jpg",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "Contact Us",
+            "heading_size": 100,
+            "text": "We are here to help you! Drop a Message we will get back to you as soon as possible.",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--14490298482751__a16c8e73-e6ca-4694-9e92-f4d08b08fa92-1665687699061d3dff-0"
+      ],
+      "settings": {
+        "height": "three-hundred-height",
+        "custom_class_custom_content": "",
+        "bg_color": "",
+        "width": "wrapper",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "locations": {
+      "type": "section-locations",
+      "blocks": {
+        "locations-0": {
+          "type": "locations",
+          "settings": {
+            "title": "Wild Junkie, 5231 FM2325, Wimberley Texas 78676, United States",
+            "working_time": "<p>Email: help@wildjunkie.com<\/p><p>Call \/ Text: 830-330-0413<\/p>",
+            "image": "shopify:\/\/shop_images\/DSCF4641_dbf82838-5cd8-4052-a500-09dc1f34dbda.jpg"
+          }
+        },
+        "locations-1": {
+          "type": "locations",
+          "disabled": true,
+          "settings": {
+            "title": "566 Emerson Street Palo Alto, California",
+            "working_time": "<p>Mon - Fri: 8am - 5pm<\/p><p>Sat: Closed<\/p><p>Sun: Closed<\/p>"
+          }
+        },
+        "locations-2": {
+          "type": "locations",
+          "disabled": true,
+          "settings": {
+            "title": "566 Emerson Street Palo Alto, California",
+            "working_time": "<p>Mon - Fri: 8am - 5pm<\/p><p>Sat: Closed<\/p><p>Sun: Closed<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "locations-0",
+        "locations-1",
+        "locations-2"
+      ],
+      "settings": {
+        "subheading": "OFFICE",
+        "title": "Corporate Address",
+        "bg_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "main": {
       "type": "main-page",
       "settings": {
-        "show_page_title": true
+        "show_page_title": false,
+        "padding_top": 30,
+        "padding_bottom": 0
       }
     },
     "contact-form": {
@@ -12,7 +88,7 @@
         "contact-form-0": {
           "type": "heading",
           "settings": {
-            "title": "Contact us"
+            "title": ""
           }
         },
         "contact-form-1": {
@@ -44,39 +120,16 @@
         "contact-form-3"
       ],
       "settings": {
-      }
-    },
-    "locations": {
-      "type": "section-locations",
-      "blocks": {
-        "locations-0": {
-          "type": "locations",
-          "settings": {
-          }
-        },
-        "locations-1": {
-          "type": "locations",
-          "settings": {
-          }
-        },
-        "locations-2": {
-          "type": "locations",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "locations-0",
-        "locations-1",
-        "locations-2"
-      ],
-      "settings": {
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
   "order": [
-    "main",
+    "a16c8e73-e6ca-4694-9e92-f4d08b08fa92",
     "locations",
+    "main",
     "contact-form"
   ]
 }

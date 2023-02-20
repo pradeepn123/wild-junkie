@@ -19,6 +19,15 @@
     #RelatedProducts--{{ section.id }} { background-color: {{ bg_color }}; }
     #RelatedProducts--{{ section.id }} .product-grid-item { --bg: {{ bg_color }}; }
   {%- endif -%}
+
+  .related-products .section__header .h4{
+    font-size: {{ section.settings.heading_font_size }}px;
+  }
+  @media screen and (max-width: 480px){
+    .related-products .section__header .h4{
+      font-size: {{ section.settings.heading_font_size_mobile }}px;
+    }
+  }
 {%- endstyle -%}
 
 <section
@@ -98,6 +107,26 @@
       "id": "product_recommendations_heading",
       "label": "Heading",
       "default": "You May Also Like"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading Font Size",
+      "min": 20,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading Mobile Font Size",
+      "min": 10,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "default": 28
     },
     {
       "type": "header",

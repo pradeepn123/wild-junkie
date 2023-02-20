@@ -1,0 +1,261 @@
+<!-- /sections/section-tab-collections -->
+{%- liquid
+  assign section_width = section.settings.width
+  assign columns = settings.products_per_row_on_desktop | plus: 0
+  assign columns_small = columns | at_most: 2
+  assign bg_color = section.settings.bg_color
+  assign animations_enabled = settings.animations_enabled
+  assign animation_anchor = '#StyleWithIt--' | append: section.id
+  assign animation_delay = 150
+-%}
+
+{%- style -%}
+  #StyleWithIt--{{ section.id }} {
+    --PT: {{ section.settings.padding_top }}px;
+    --PB: {{ section.settings.padding_bottom }}px;
+  }
+
+  {%- if bg_color != 'rgba(0,0,0,0)' and bg_color != '' -%}
+    #StyleWithIt--{{ section.id }} {
+      background-color: {{ bg_color }};
+    }
+    #StyleWithIt--{{ section.id }} .product-grid-item {
+      --bg: {{ bg_color }};
+    }
+  {%- endif -%}
+
+  @media screen and (min-width: 1024px) {
+    #StyleWithIt--{{ section.id }} {
+      --grid: repeat({{ columns }}, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 1023px) {
+    #StyleWithIt--{{ section.id }} {
+      --grid: repeat({{ columns_small }}, minmax(0, 1fr));
+    }
+  }
+{%- endstyle -%}
+
+{%- assign upsell_products = section.settings.product_list -%}
+{% if upsell_products.count > 0 %}
+  <section
+    id="StyleWithIt--{{ section.id }}"
+    class="section-padding tab-collections {{ section.settings.style_it_with_custom_class }}"
+    data-section-id="{{ section.id }}"
+    data-section-type="tab-collections"
+    data-columns="{{ columns }}">
+
+    <div class="{{ section_width }}">
+      {%- if section.settings.title != empty -%}
+        <div class="section__header">
+          <h2 class="section__heading h2"
+            {% if animations_enabled %}
+              data-aos="fade-up"
+              data-aos-anchor="{{ animation_anchor }}"
+              data-aos-delay="{{ animation_delay }}"
+              {%- assign animation_delay = animation_delay | plus: 150 -%}
+            {% endif %}>{{ section.settings.title }}</h2>
+
+          {%- if settings.show_spacer_lines -%}
+            <hr class="section__heading-line"
+            {% if animations_enabled %}
+              data-aos="fade-up"
+              data-aos-delay="{{ animation_delay }}"
+              data-aos-anchor="{{ animation_anchor }}"
+            {% endif %}>
+            {%- assign animation_delay = animation_delay | plus: 150 -%}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {% if section.settings.subheading_main != blank %}
+        <p class="section__subheading__main"
+            {% if animations_enabled %}
+              data-aos="fade-up"
+              data-aos-anchor="{{ animation_anchor }}"
+              data-aos-delay="{{ animation_delay }}"
+              {%- assign animation_delay = animation_delay | plus: 150 -%}
+            {% endif %}>{{ section.settings.subheading_main }}</p>
+      {% endif %}
+
+      <div class="tab-collections-wrapper">
+        {%- assign tabs = '' -%}
+
+        {%- liquid
+          assign upsell_unique = unique | append: section.id
+          assign upsell_product_list_count = upsell_products.count
+          assign legacy_upsell_product = product.metafields.theme.upsell.value | default: false
+          assign image = section.settings.image | default: product.featured_image
+          assign index = upsell_product_list_count
+
+          assign heading = section.settings.heading
+          assign overlay_opacity = section.settings.overlay_opacity | times: 0.01
+          assign show_image = section.settings.show_image
+        -%}
+
+        {%- style -%}
+          #StyleWithIt--{{ section.id }} .item--{{ section.id }} { --overlay-opacity: {{ overlay_opacity }}; }
+        {%- endstyle -%}
+
+        {%- capture tabs -%}
+          {{ tabs }}
+          <div class="tab__content current">
+            <div class="tab-collections__container carousel__container">
+              <div class="carousel carousel--mobile" data-slider data-slider-id="slider--{{ section.id }}" {% if show_image %} data-slider-show-image{% endif %}>
+                {%- if show_image -%}
+                  {%- assign animation_delay = 150 -%}
+                  <div class="product-grid-item product-grid-item--featured carousel__item one-third mobile--one-whole"
+                    data-slide
+                    {% if animations_enabled %}
+                      data-aos="fade-up"
+                      data-aos-anchor="{{ animation_anchor }}"
+                      data-aos-delay="{{ animation_delay }}"
+                    {% endif %}>
+                    {%- capture featured_image -%}
+                      <div class="tab-collections__featured-item item--{{ section.id }}">
+                        <div class="tab-collections__featured-image{% if image != blank %} lazyload{% endif %}"
+                          {% if image != blank %}
+                            aria-label="{{ image.alt | strip_html | escape }}"
+                            data-bgset="{% render 'bgset', image: image %}"
+                          {% endif %}
+                          role="img">
+                        </div>
+                        <noscript>
+                          <div class="tab-collections__featured-image"
+                            {% if image != blank %}
+                              aria-label="{{ image.alt | strip_html | escape }}"
+                              style="background-image: url({{ image | img_url: '600x' }})"
+                            {% endif %}
+                            role="img">
+                          </div>
+                        </noscript>
+                        <div class="overlay"></div>
+                      </div>
+                    {%- endcapture -%}
+                        {%- if link_text == blank and link != blank -%}
+                          <a href="{{ link }}">{{ featured_image }}</a>
+                        {%- else -%}
+                          {{- featured_image -}}
+                        {%- endif -%}
+                  </div>
+                {%- endif -%}
+                {%- if upsell_products != blank -%}
+                  {% comment %} Check if there are any products in the collection {% endcomment %}
+
+                  {%- for product in upsell_products limit: 12 -%}
+                    {%- assign product_index = forloop.index0 -%}
+                    {%- if show_image -%}
+                      {%- assign product_index = forloop.index -%}
+                    {%- endif -%}
+                    {%- assign items_animation_delay = product_index -%}
+                    {%- render 'style-it-with-grid-item', product: product, carousel: true, animation_anchor: animation_anchor, animation_delay: items_animation_delay -%}
+                  {%- endfor -%}
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- endcapture -%}
+        <div class="tabs__contents" >
+          {{ tabs }}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Style it With",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
+      "label": "Primary heading",
+      "id": "title",
+      "type": "text"
+    },
+    {
+      "type": "text",
+      "id":"subheading_main",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Product"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show image",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Featured image"
+    },
+    {
+      "type": "text",
+      "id": "style_it_with_custom_class",
+      "label": "Custom Class"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "default": "wrapper--full-padded",
+      "options": [
+        { "value": "wrapper--full-padded", "label": "Full width padded" },
+        { "value": "wrapper", "label": "Page width" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Style it with (Crousel)",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

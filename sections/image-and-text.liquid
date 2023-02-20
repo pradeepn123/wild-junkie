@@ -1,0 +1,74 @@
+<div class="text_and_image_container" style="background: {{ section.settings.section_background_color }}">
+  <div class="container_image">
+    <img src="{{ section.settings.refer_image | img_url: '1024x' }}" />
+  </div>
+  <div class="container_text">
+    <h1>{{ section.settings.text_title }}</h1>
+    <p>{{ section.settings.text_subtitle }}</p>
+    {% if section.settings.show_button %}
+      <a href="{{ section.settings.button_link }}"><button class="btn refer_btn" style="background: {{ section.settings.button_color }}; font-size: {{ section.settings.button_font_size }}px;">{{ section.settings.button_text }}</button></a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name":"Image and text",
+  "settings":[
+     {
+        "type":"image_picker",
+        "id":"refer_image",
+        "label":"Add an image"
+     },
+     {
+        "type":"text",
+        "id":"text_title",
+        "label":"Text title"
+     },
+     {
+        "type":"text",
+        "id":"text_subtitle",
+        "label":"Text subtitle"
+     },
+     {
+        "type":"checkbox",
+        "id":"show_button",
+        "label":"Show button?"
+     },
+     {
+        "type":"text",
+        "id":"button_text",
+        "label":"Button text"
+     },
+     {
+        "type":"range",
+        "id":"button_font_size",
+        "label":"button font size",
+        "min":0,
+        "max":50,
+        "step":1,
+        "default":20
+     },
+     {
+        "type":"color",
+        "id":"button_color",
+        "label":"Button color"
+     },
+     {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+     },
+     {
+      "type": "color",
+      "id": "section_background_color",
+      "label": "Section background color"
+     }
+  ],
+  "presets":[
+     {
+        "name":"Image and text"
+     }
+  ]
+}
+{% endschema%}

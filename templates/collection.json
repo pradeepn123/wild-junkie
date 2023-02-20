@@ -1,13 +1,13 @@
 {
   "sections": {
-    "section-custom-content": {
-      "type": "section-custom-content",
+    "4c118976-e1eb-4014-902b-8ac62986d878": {
+      "type": "collection-page-section-custom-content",
       "blocks": {
-        "image": {
+        "template--14513718034495__4c118976-e1eb-4014-902b-8ac62986d878-166851258861839195-0": {
           "type": "image",
           "settings": {
             "text_position": "middle-center",
-            "image": "{{ collection.image }}",
+            "image": "shopify:\/\/shop_images\/Bags-_-Purses.jpg",
             "image_position": "center-center",
             "overlay_opacity": 10,
             "text_color": "text-light",
@@ -16,7 +16,41 @@
             "text": "",
             "button_text": "",
             "button_link": "",
-            "button_style": "btn--primary btn--small"
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "template--14513718034495__4c118976-e1eb-4014-902b-8ac62986d878-166851258861839195-0"
+      ],
+      "settings": {
+        "height": "four-fifty-height",
+        "custom_class_custom_content": "collections_page_mobile_image",
+        "bg_color": "",
+        "width": "wrapper--full",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "section-custom-content": {
+      "type": "section-custom-content",
+      "disabled": true,
+      "blocks": {
+        "image": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Bags-_-Purses.jpg",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "{{ collection.title }}",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary"
           }
         }
       },
@@ -25,25 +59,26 @@
       ],
       "settings": {
         "height": "four-fifty-height",
+        "custom_class_custom_content": "collections_page_mobile_image",
         "bg_color": "",
-        "width": "wrapper--full-padded",
+        "width": "wrapper--full",
         "add_gutter": false,
-        "padding_top": 1,
-        "padding_bottom": 1
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "hero": {
       "type": "collection-image-with-title",
       "disabled": true,
       "settings": {
-        "banner_height": "three-fifty-height",
+        "banner_height": "two-fifty-height",
         "text_position": "middle-center",
         "show_image": true,
         "text_color": "text-light",
         "overlay_opacity": 10,
         "banner_bg_color": "#fafafa",
-        "padding_top": 1,
-        "padding_bottom": 0
+        "padding_top": 20,
+        "padding_bottom": 20
       }
     },
     "section-collection-marbles": {
@@ -133,6 +168,7 @@
     }
   },
   "order": [
+    "4c118976-e1eb-4014-902b-8ac62986d878",
     "section-custom-content",
     "hero",
     "section-collection-marbles",

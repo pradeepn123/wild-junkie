@@ -3,38 +3,19 @@
     "image-accordions-0": {
       "type": "section-image-accordions",
       "blocks": {
-        "accordion-0": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/6X0A9494.jpg",
-            "bg_position": "center-bottom",
-            "overlay_opacity": 10,
-            "text_width": "normal",
-            "text_position": "bottom-left",
-            "text_color": "text-light",
-            "title": "NFR Collection",
-            "text": "Coming out with a bang - Wild Junkies first ever NFR Collection is here! Shop our hand picked items for only the most specular nights in Vegas.",
-            "btn_text": "Shop Now",
-            "btn_link": "shopify:\/\/collections\/nfr-collection",
-            "btn_style": "btn--primary btn--small",
-            "btn_text_2": "",
-            "btn_link_2": "",
-            "btn_style_2": "btn--secondary btn--small"
-          }
-        },
         "accordion-1": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/6X0A3699.jpg",
+            "image": "shopify:\/\/shop_images\/6X0A3616.jpg",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_width": "normal",
             "text_position": "bottom-left",
             "text_color": "text-light",
-            "title": "Graphic Tees",
-            "text": "Shop our wide selection of unique and exclusive graphic tees in sizes up to XXL giving you an option to wear any as t-shirt dress.",
+            "title": "Denim",
+            "text": "A range of premium denim options.",
             "btn_text": "Shop Now",
-            "btn_link": "shopify:\/\/collections\/graphic-tees",
+            "btn_link": "shopify:\/\/collections\/jeans-pants",
             "btn_style": "btn--primary btn--small",
             "btn_text_2": "",
             "btn_link_2": "",
@@ -44,16 +25,35 @@
         "accordion-2": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/6X0A1063.jpg",
+            "image": "shopify:\/\/shop_images\/6X0A9351.jpg",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_width": "normal",
             "text_position": "bottom-left",
             "text_color": "text-light",
-            "title": "New Arrivals",
-            "text": "Find the newest arrivals throughout all of our product line up here!",
+            "title": "Shackets and Jackets",
+            "text": "Shop the widest selection - and variety - of jackets here!",
             "btn_text": "Shop Now",
-            "btn_link": "shopify:\/\/collections\/new-arrivals",
+            "btn_link": "shopify:\/\/collections\/shackets-and-jackets",
+            "btn_style": "btn--primary btn--small",
+            "btn_text_2": "",
+            "btn_link_2": "",
+            "btn_style_2": "btn--secondary btn--small"
+          }
+        },
+        "accordion-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6X0A9494.jpg",
+            "bg_position": "center-bottom",
+            "overlay_opacity": 10,
+            "text_width": "normal",
+            "text_position": "bottom-left",
+            "text_color": "text-light",
+            "title": "Rhinestone Cowgirl",
+            "text": "For the loudest and wildest cowgirls.",
+            "btn_text": "Shop Now",
+            "btn_link": "shopify:\/\/collections\/nfr-collection",
             "btn_style": "btn--primary btn--small",
             "btn_text_2": "",
             "btn_link_2": "",
@@ -63,16 +63,16 @@
         "accordion-3": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/6X0A4070.jpg",
+            "image": "shopify:\/\/shop_images\/6X0A4059.jpg",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_width": "normal",
             "text_position": "bottom-left",
             "text_color": "text-light",
-            "title": "Authentic Turquoise",
-            "text": "Shop our curated selection of authentic turquoise and Navajo pearls!",
+            "title": "Jewelry",
+            "text": "You've never seen such a unique a variety of premium jewelry and thats a promise!",
             "btn_text": "Shop Now",
-            "btn_link": "shopify:\/\/collections\/real-turquoise-jewelry",
+            "btn_link": "shopify:\/\/collections\/jewelry",
             "btn_style": "btn--primary btn--small",
             "btn_text_2": "",
             "btn_link_2": "",
@@ -81,9 +81,9 @@
         }
       },
       "block_order": [
-        "accordion-0",
         "accordion-1",
         "accordion-2",
+        "accordion-0",
         "accordion-3"
       ],
       "settings": {
@@ -100,9 +100,9 @@
         "text-0": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>Free shipping on all US orders over $25<\/strong><\/p>",
-            "icon_name": "truck",
-            "icon_color": "",
+            "text": "<p><strong>FREE SHIPPING ON ORDERS OVER $35 <\/strong>📦 <\/p>",
+            "icon_name": "bell",
+            "icon_color": "#e73e52",
             "icon_width": 20,
             "target_device_enabled": false,
             "target_device": "mobile"
@@ -113,8 +113,8 @@
         "text-0"
       ],
       "settings": {
-        "bg_color": "#ff6d6d",
-        "color": "#ffffff",
+        "bg_color": "#e97e4c",
+        "color": "#ece2da",
         "layout": "marquee",
         "padding": 20,
         "slider_speed": 7,
@@ -147,6 +147,7 @@
       "settings": {
         "text": "Our Collections",
         "Vertical__Text__alignment": "center",
+        "horizontal_text_alignment": "space-between",
         "section__background": "#ffffff",
         "section__text__color": "#000000",
         "show__collection__button": true,
@@ -216,13 +217,41 @@
             "button_text": "",
             "text_color": "text-light"
           }
+        },
+        "2a73ef4b-6ee7-4668-9666-c902b6306d35": {
+          "type": "collection",
+          "settings": {
+            "collection": "accessories",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "show_description": true,
+            "button_text": "",
+            "text_color": "text-light"
+          }
+        },
+        "4cdca39d-cd0f-44e2-9ed0-317fbd191fab": {
+          "type": "collection",
+          "settings": {
+            "collection": "christmas",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "show_description": true,
+            "button_text": "",
+            "text_color": "text-light"
+          }
         }
       },
       "block_order": [
         "39c7ed22-848d-4a94-afd8-12d2462dc1d6",
         "47fffd63-2890-4c40-87eb-058d0a869645",
         "10e0781c-0da8-4176-90c5-28c4a64e9fdc",
-        "28667974-591a-4943-9cf1-3dc944bee1b9"
+        "28667974-591a-4943-9cf1-3dc944bee1b9",
+        "2a73ef4b-6ee7-4668-9666-c902b6306d35",
+        "4cdca39d-cd0f-44e2-9ed0-317fbd191fab"
       ],
       "settings": {
         "height": "fullscreen",
@@ -281,6 +310,7 @@
       ],
       "settings": {
         "height": "six-fifty-height",
+        "custom_class_custom_content": "",
         "bg_color": "",
         "width": "wrapper--full-padded",
         "add_gutter": true,
@@ -325,7 +355,7 @@
           "type": "button",
           "settings": {
             "button__block__text": "Shop Now",
-            "button__block__url": "shopify:\/\/collections",
+            "button__block__url": "shopify:\/\/products\/wild-junkie-subscription-box",
             "text__color": "#ffffff",
             "bg__color": "#ff6d6d"
           }
@@ -453,6 +483,7 @@
       "settings": {
         "text": "Reviews from our  customers",
         "Vertical__Text__alignment": "center",
+        "horizontal_text_alignment": "space-between",
         "section__background": "#ffffff",
         "section__text__color": "#000000",
         "show__collection__button": true,
@@ -473,7 +504,6 @@
       "blocks": {
         "88e66c62-0469-41b5-ae47-4578d66c6a53": {
           "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/media-carousel\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "disabled": true,
           "settings": {
             "product": ""
           }
@@ -488,10 +518,18 @@
         },
         "3062e846-645b-4344-b870-1a14df8d13fe": {
           "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/reviews-carousel\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "disabled": true,
           "settings": {
             "show_heading": false,
             "heading": "",
             "badge_link": "",
+            "product": ""
+          }
+        },
+        "7e84f444-1360-41fc-a612-435394b2c1f0": {
+          "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/media-grid\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "disabled": true,
+          "settings": {
             "product": ""
           }
         }
@@ -499,20 +537,89 @@
       "block_order": [
         "88e66c62-0469-41b5-ae47-4578d66c6a53",
         "3308ee70-357d-46c5-9c8c-97b1fe475b07",
-        "3062e846-645b-4344-b870-1a14df8d13fe"
+        "3062e846-645b-4344-b870-1a14df8d13fe",
+        "7e84f444-1360-41fc-a612-435394b2c1f0"
       ],
       "settings": {
         "bg_color": "",
         "width": "wrapper",
-        "padding_top": 17,
-        "padding_bottom": 15
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "a0ed315a-680d-44c7-b3ef-6fb07715cf1f": {
+      "type": "section-collection",
+      "settings": {
+        "collection": "best-sellers",
+        "title": "Best Sellers",
+        "text": "",
+        "text_alignment": "text-center",
+        "products_rows": 1,
+        "products_layout": "grid",
+        "show_collection_button": true,
+        "button_style": "btn--primary btn--small",
+        "bg_color": "",
+        "enable_slider_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "5fca98a6-98cf-4db8-97a5-7b3874c55409": {
+      "type": "section-text",
+      "blocks": {
+        "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-0": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Subheading<\/p>",
+            "size": 100
+          }
+        },
+        "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Follow us on IG @wildjunkiebtq<\/p>",
+            "size": 100
+          }
+        },
+        "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-2": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "size": 100
+          }
+        },
+        "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-3": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "btn_text": "Read More",
+            "btn_link": "",
+            "btn_style": "btn--primary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-0",
+        "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-1",
+        "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-2",
+        "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-3"
+      ],
+      "settings": {
+        "text_position": "center",
+        "bg_color": "",
+        "text_color": "text-dark",
+        "width": "wrapper--narrow",
+        "padding_top": 23,
+        "padding_bottom": 0
       }
     },
     "16639327156d6f701c": {
       "type": "apps",
       "blocks": {
         "d4e60578-c7b8-402e-9033-b5e9a51c8efa": {
-          "type": "shopify:\/\/apps\/tikshop-tiktok-insta-feeds\/blocks\/tikshop-shoptrade\/9cc01fbc-7a70-4c25-8768-b96d953c7a70",
+          "type": "shopify:\/\/apps\/checkit-formerly-tikshop\/blocks\/tikshop-shoptrade\/9cc01fbc-7a70-4c25-8768-b96d953c7a70",
           "settings": {
           }
         }
@@ -523,7 +630,7 @@
       "settings": {
         "bg_color": "",
         "width": "wrapper",
-        "padding_top": 40,
+        "padding_top": 0,
         "padding_bottom": 0
       }
     },
@@ -558,6 +665,8 @@
     "e011148e-70ed-42bd-9fb8-6a220f657dc2",
     "5252a17b-a43e-4267-bd4d-0db186dac8b8",
     "1665111792048bf374",
+    "a0ed315a-680d-44c7-b3ef-6fb07715cf1f",
+    "5fca98a6-98cf-4db8-97a5-7b3874c55409",
     "16639327156d6f701c",
     "newsletter"
   ]

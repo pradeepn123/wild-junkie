@@ -1,5 +1,36 @@
 <div data-api-content>
   {%- if cart.item_count > 0 -%}
+    {% if settings.show_product_promotional %}
+      <div class="cart-free-item" data-api-free-items
+        {% if animations_enabled %}
+        data-aos="fade-up"
+        data-aos-delay="{{ animation_delay }}"
+          {%- assign animation_delay = animation_delay | plus: 50 -%}
+        {% endif %}
+      >
+        {% assign cartTotal = 0 %}
+        {% assign promotionalLineProductId = blank %}
+        {% for line in cart.items %}
+          {% assign promotionalAvailable = false %}
+          {% for p in line.properties %}
+            {% if p.first == 'Product Type' and p.last == 'Promotional' %}
+              {% assign promotionalAvailable = true %}
+              {% assign promotionalLineProductId = line.product.id %}
+            {% endif %}
+          {% endfor %}
+          {% unless promotionalAvailable %}
+            {% assign lineTitle = line.title | downcase %}
+            {% unless lineTitle contains "protection" %}
+              {% assign cartTotal = cartTotal | plus : line.original_line_price %}
+            {% endunless %}
+          {% endunless %}
+        {% endfor %}
+        {% if cartTotal > 100 %}
+          {%- render 'cart-free-item', animation_delay: animation_delay, promotionalLineProductId: promotionalLineProductId, cartTotal: cartTotal -%}
+        {% endif %}
+      </div>
+    {% endif %}
+    
     <div data-api-line-items>
       {%- render 'cart-line-items', part: 'line-items' -%}
     </div>

@@ -1,11 +1,27 @@
 <!doctype html>
 <html class="no-js no-touch" lang="{{ request.locale.iso_code }}">
 <head>
+  {%- if template.name == 'product' -%}
+  {%- if product.handle contains 'navidium' -%}
+  <script>
+  location.replace('/');
+  </script>
+  {%- endif -%}
+  {%- endif -%}
+  <style>
+    [data-handle*='navidium']{
+    display: none !important;
+    }
+  </style>
   <meta charset="utf-8">
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
   <link rel="canonical" href="{{ canonical_url }}" />
-  <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&family=Montserrat&display=swap" rel="stylesheet">
+
+  <link rel="preload" href="https://fonts.googleapis.com">
+  <link rel="preload" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <link rel="preload" as="style" href="{{ 'theme.css' | asset_url }}">
   <link rel="preload" as="script" href="{{ 'lazysizes.min.js' | asset_url }}">
   <link rel="preload" as="script" href="{{ 'theme.js' | asset_url }}">
@@ -106,6 +122,10 @@
       0% { opacity: 1; }
       50% { opacity: .25; }
       100% { opacity: 1; }
+    }
+
+    .swym-wishlist-button-bar {
+      display: none !important;
     }
   {%- endstyle -%}
 
@@ -266,6 +286,7 @@
         quickButton: {{ settings.quick_button | json }},
         currency_code_enable: {{ settings.currency_code_enable | json }},
         hideInventoryCount: {{ settings.hide_inventory_count | json }},
+        enable_promotional_products: {{ settings.show_product_promotional | json }}
       },
       sizes: {
         mobile: 480,
@@ -288,7 +309,7 @@
     window.initialHeaderHeight = 60;
     window.lastWindowWidth = window.innerWidth || document.documentElement.clientWidth;
   </script>
-  <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
+  <script src="{{ 'lazysizes.min.js' | asset_url }}" defer="defer"></script>
 
   {%- if request.page_type contains 'customers/' -%}
       <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
@@ -297,9 +318,9 @@
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
 
   {{ content_for_header }}
-
-	{{ shop.metafields.loox["global_html_head"] }}
-</head>
+{% render 'okendo-reviews-json-ld' %}
+{% capture boostersnippet %}{% include "booster-apps-common" %}{% endcapture %}{% unless boostersnippet contains "Liquid error" %}{{ boostersnippet }}{% endunless %}
+<!--AZEXO_Header_Scripts--> {% include 'azexo-header-scripts' %} <!--End_AZEXO_Header_Scripts--><!--AZEXO_Version_85--></head>
 
 {%- capture body_class -%}
 template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}
@@ -358,5 +379,20 @@ template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}
   {%- endif -%}
 
 	{{ shop.metafields.loox["global_html_body"] }}
+ <!--Gorgias Chat Widget Start--><script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=23034"></script><!--Gorgias Chat Widget End-->
+<!--AZEXO_Footer_Scripts--> {% include 'azexo-footer-scripts' %} <!--End_AZEXO_Footer_Scripts--> {% include 'smile-initializer' %}
+{% include 'navidium-widget-v4' %}
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
+
+{% section 'sezzle-widget' %}

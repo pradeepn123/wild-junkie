@@ -1,0 +1,300 @@
+{
+  "sections": {
+    "a031b4df-cfb9-40fc-9fc6-171a11820b3e": {
+      "type": "section-slideshow",
+      "blocks": {
+        "template--14548425277503__a031b4df-cfb9-40fc-9fc6-171a11820b3e-167391398564c910ac-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Shiloh.jpg",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_width": "normal",
+            "text_position": "center",
+            "text_color": "text-light",
+            "title": "Wild Junkie Sale",
+            "text": "Get the best deals!",
+            "slide_btn_text": "",
+            "slide_btn_link": "",
+            "slide_btn_style": "btn--primary",
+            "slide_btn_text_2": "",
+            "slide_btn_link_2": "",
+            "slide_btn_style_2": "btn--secondary btn--small",
+            "video_text": "",
+            "video_link": ""
+          }
+        },
+        "template--14548425277503__a031b4df-cfb9-40fc-9fc6-171a11820b3e-167391398564c910ac-1": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_width": "normal",
+            "text_position": "center",
+            "text_color": "text-light",
+            "title": "Welcome to Palo Alto",
+            "text": "Add more info or delete this text",
+            "slide_btn_text": "Shop All",
+            "slide_btn_link": "shopify:\/\/collections\/all",
+            "slide_btn_style": "btn--primary",
+            "slide_btn_text_2": "",
+            "slide_btn_link_2": "",
+            "slide_btn_style_2": "btn--secondary btn--small",
+            "video_text": "",
+            "video_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--14548425277503__a031b4df-cfb9-40fc-9fc6-171a11820b3e-167391398564c910ac-0",
+        "template--14548425277503__a031b4df-cfb9-40fc-9fc6-171a11820b3e-167391398564c910ac-1"
+      ],
+      "settings": {
+        "slide_height": "four-fifty-height",
+        "show_nav_dots": true,
+        "show_nav_arrows": true,
+        "show_arrow_down": false,
+        "autoplay": false,
+        "duration": 4,
+        "transition": "slide",
+        "enable_zoom_animation": true,
+        "heading_size": 120
+      }
+    },
+    "13dc39a9-db4a-4a80-8748-092a982f1a34": {
+      "type": "section-custom-content",
+      "disabled": true,
+      "blocks": {
+        "template--14490298581055__13dc39a9-db4a-4a80-8748-092a982f1a34-16656776048b20adc6-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Section_Header_Image_New.jpg",
+            "image_position": "center-top",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "Return Policy",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--14490298581055__13dc39a9-db4a-4a80-8748-092a982f1a34-16656776048b20adc6-0"
+      ],
+      "settings": {
+        "height": "three-hundred-height",
+        "custom_class_custom_content": "",
+        "bg_color": "",
+        "width": "wrapper",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 20
+      }
+    },
+    "326111f5-7846-4733-8496-cd535bbe6524": {
+      "type": "section-accordions",
+      "disabled": true,
+      "blocks": {
+        "362a8ae2-2303-4068-b18f-c190576a6f48": {
+          "type": "text",
+          "settings": {
+            "title": "",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "362a8ae2-2303-4068-b18f-c190576a6f48"
+      ],
+      "settings": {
+        "section_custom_class": "tabs_heading_left_align",
+        "title": "Shipping Policy",
+        "subheading": "",
+        "text": "",
+        "tabs_bg_color": "",
+        "bg_color": "",
+        "text_color": "text-dark",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "d5a241ff-4a9a-4897-985e-1fec9ac2e59d": {
+      "type": "section-custom-content",
+      "disabled": true,
+      "blocks": {
+        "template--14490298581055__d5a241ff-4a9a-4897-985e-1fec9ac2e59d-166567704666a6f91f-1": {
+          "type": "text",
+          "settings": {
+            "text_position": "left",
+            "top_image_width": 100,
+            "text_color": "text-dark",
+            "subheading": "",
+            "title": "Shipping Policy",
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary btn--small",
+            "secondary_button_text": "",
+            "secondary_button_link": "",
+            "secondary_button_style": "btn--secondary btn--small",
+            "bg_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--14490298581055__d5a241ff-4a9a-4897-985e-1fec9ac2e59d-166567704666a6f91f-1"
+      ],
+      "settings": {
+        "height": "three-hundred-height",
+        "custom_class_custom_content": "",
+        "bg_color": "",
+        "width": "wrapper--full",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "show_page_title": false,
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "e55edcdd-f623-4d2e-bf24-b951c187101c": {
+      "type": "section-marquee",
+      "blocks": {
+        "template--14548425277503__e55edcdd-f623-4d2e-bf24-b951c187101c-1673913948de5082d2-0": {
+          "type": "message",
+          "disabled": true,
+          "settings": {
+            "message": "Spend ||amount|| more for free shipping.",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "template--14548425277503__e55edcdd-f623-4d2e-bf24-b951c187101c-1673913948de5082d2-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>New collections just released - <a href=\"\/collections\" title=\"All collections\">Shop now<\/a><\/p>",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "template--14548425277503__e55edcdd-f623-4d2e-bf24-b951c187101c-1673913948de5082d2-2": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Use code <strong>TENOFF<\/strong> for 10% off first purchase<\/p>",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "c9db6c67-17af-4507-9a7c-807ff4adb851": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Get upto 50% off! <\/p>",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 10,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        }
+      },
+      "block_order": [
+        "template--14548425277503__e55edcdd-f623-4d2e-bf24-b951c187101c-1673913948de5082d2-0",
+        "template--14548425277503__e55edcdd-f623-4d2e-bf24-b951c187101c-1673913948de5082d2-1",
+        "template--14548425277503__e55edcdd-f623-4d2e-bf24-b951c187101c-1673913948de5082d2-2",
+        "c9db6c67-17af-4507-9a7c-807ff4adb851"
+      ],
+      "settings": {
+        "bg_color": "#ff0000",
+        "color": "#ffffff",
+        "layout": "marquee",
+        "padding": 10,
+        "slider_speed": 7,
+        "marquee_speed": 100,
+        "text_size": 150,
+        "message_spacing": 20,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "6d33e036-8ade-4642-b677-28de3f5f1e50": {
+      "type": "section-collection",
+      "settings": {
+        "collection": "under-10",
+        "title": "Shop Under $10",
+        "text": "",
+        "text_alignment": "text-left",
+        "products_rows": 12,
+        "products_layout": "carousel",
+        "show_collection_button": true,
+        "button_style": "btn--primary btn--small",
+        "bg_color": "",
+        "enable_slider_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "bf85e8f6-e3cb-4794-8521-800dcc6c46c9": {
+      "type": "section-collection",
+      "settings": {
+        "collection": "under-25",
+        "title": "Shop Under $25",
+        "text": "",
+        "text_alignment": "text-left",
+        "products_rows": 12,
+        "products_layout": "carousel",
+        "show_collection_button": true,
+        "button_style": "btn--primary btn--small",
+        "bg_color": "",
+        "enable_slider_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "d0c9b572-2906-4084-ab11-b57c7413eb0b": {
+      "type": "section-collection",
+      "settings": {
+        "collection": "under-75",
+        "title": "Shop Under $75",
+        "text": "",
+        "text_alignment": "text-left",
+        "products_rows": 12,
+        "products_layout": "carousel",
+        "show_collection_button": true,
+        "button_style": "btn--primary btn--small",
+        "bg_color": "",
+        "enable_slider_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "a031b4df-cfb9-40fc-9fc6-171a11820b3e",
+    "13dc39a9-db4a-4a80-8748-092a982f1a34",
+    "326111f5-7846-4733-8496-cd535bbe6524",
+    "d5a241ff-4a9a-4897-985e-1fec9ac2e59d",
+    "main",
+    "e55edcdd-f623-4d2e-bf24-b951c187101c",
+    "6d33e036-8ade-4642-b677-28de3f5f1e50",
+    "bf85e8f6-e3cb-4794-8521-800dcc6c46c9",
+    "d0c9b572-2906-4084-ab11-b57c7413eb0b"
+  ]
+}

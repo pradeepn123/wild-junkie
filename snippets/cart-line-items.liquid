@@ -21,6 +21,13 @@
 {%- for line_item in cart.items -%}
   {%- assign cart_products = cart_products | append: line_item.product.id | append: ',' -%}
   
+  {% assign promotionalLine = false %}
+  {%- for p in line_item.properties -%}
+    {% if p.first == 'Product Type' and p.last == 'Promotional' %}
+      {% assign promotionalLine = true %}
+    {% endif %}
+  {%- endfor -%}
+
   {%- capture cart_line_item -%}
     <div class="cart__item{% if forloop.last %} cart__item--no-border{% endif %}"
       {% if animations_enabled %}
@@ -96,69 +103,76 @@
               {%- endif -%}
             </div>
           </div>
+          
+          {% if promotionalLine == true %}
+            <p class="cart__item_price cart_item_free_text">Free</p>
+          {% else%}
+            <p class="cart__item__price">
+              {%- assign discounted = false -%}
+              {%- assign sale = false -%}
 
-          <p class="cart__item__price">
-            {%- assign discounted = false -%}
-            {%- assign sale = false -%}
+              {%- if line_item.original_price > line_item.final_price -%}
+                {%- assign discounted = true -%}
+              {%- endif -%}
 
-            {%- if line_item.original_price > line_item.final_price -%}
-              {%- assign discounted = true -%}
-            {%- endif -%}
+              {%- if line_item.variant.compare_at_price > line_item.price -%}
+                {%- assign sale = true -%}
+              {%- endif -%}
 
-            {%- if line_item.variant.compare_at_price > line_item.price -%}
-              {%- assign sale = true -%}
-            {%- endif -%}
-
-            {%- if sale or discounted -%}
-              <ins>
+              {%- if sale or discounted -%}
+                <ins>
+                  {%- if line_item.final_price == 0 -%}
+                    {{- 'products.product.free' | t -}}
+                  {%- else -%}
+                    {{- line_item.final_price | money -}}
+                  {%- endif -%}
+                </ins>
+              {%- else -%}
                 {%- if line_item.final_price == 0 -%}
                   {{- 'products.product.free' | t -}}
                 {%- else -%}
                   {{- line_item.final_price | money -}}
                 {%- endif -%}
-              </ins>
-            {%- else -%}
-              {%- if line_item.final_price == 0 -%}
-                {{- 'products.product.free' | t -}}
-              {%- else -%}
-                {{- line_item.final_price | money -}}
               {%- endif -%}
-            {%- endif -%}
 
-            {%- if sale and discounted == false -%}
-              <del>
-                {{- line_item.variant.compare_at_price | money -}}
-              </del>
-            {%- endif -%}
+              {%- if sale and discounted == false -%}
+                <del>
+                  {{- line_item.variant.compare_at_price | money -}}
+                </del>
+              {%- endif -%}
 
-            {%- if discounted -%}
-              <del>
-                {{- line_item.original_price | money -}}
-              </del>
-            {%- endif -%}
+              {%- if discounted -%}
+                <del>
+                  {{- line_item.original_price | money -}}
+                </del>
+              {%- endif -%}
 
-            {%- if line_item.unit_price and line_item.unit_price != 0 -%}
-              {%- capture unit_price_separator -%}
-                <span aria-hidden="true">/</span><span class="visually-hidden">{{ 'general.accessibility.unit_price_separator' | t }}&nbsp;</span>
-              {%- endcapture -%}
+              {%- if line_item.unit_price and line_item.unit_price != 0 -%}
+                {%- capture unit_price_separator -%}
+                  <span aria-hidden="true">/</span><span class="visually-hidden">{{ 'general.accessibility.unit_price_separator' | t }}&nbsp;</span>
+                {%- endcapture -%}
 
-              {%- capture unit_price_base_unit -%}
-                {%- if line_item.unit_price_measurement.reference_value != 1 -%}
-                  {{- line_item.unit_price_measurement.reference_value -}}
-                {%- endif -%}
-                {{- line_item.unit_price_measurement.reference_unit -}}
-              {%- endcapture -%}
+                {%- capture unit_price_base_unit -%}
+                  {%- if line_item.unit_price_measurement.reference_value != 1 -%}
+                    {{- line_item.unit_price_measurement.reference_value -}}
+                  {%- endif -%}
+                  {{- line_item.unit_price_measurement.reference_unit -}}
+                {%- endcapture -%}
 
-              <span class="line__price">
-                <small class="visually-hidden">{{ 'products.product.unit_price_label' | t }}</small>
-                <small>{{ line_item.unit_price | money }} {{ unit_price_separator }} {{ unit_price_base_unit }}</small>
-              </span>
-            {%- endif -%}
-          </p>
+                <span class="line__price">
+                  <small class="visually-hidden">{{ 'products.product.unit_price_label' | t }}</small>
+                  <small>{{ line_item.unit_price | money }} {{ unit_price_separator }} {{ unit_price_base_unit }}</small>
+                </span>
+              {%- endif -%}
+            </p>
+          {% endif %}
         </div>
 
-        <div class="cart__item__bottom">
-          <div class="cart__item__quantity" data-quantity-holder>
+        <div class="cart__item__bottom {% if promotionalLine == true %}mt-0{% endif %}">
+          {% if promotionalLine == true %}
+            <p class="cart_item_free_text">FREE</p>
+          {% endif %}
+          <div class="cart__item__quantity {% if promotionalLine == true %}hidden{% endif %}" data-quantity-holder>
             <button type="button" class="cart__item__quantity-minus" data-quantity-minus data-quantity-button title="
               {{- 'general.accessibility.decrease' | t }} - {{ line_item.product.title | strip_html -}}">
               <span class="visually-hidden">{{ 'general.accessibility.decrease' | t }}</span>
@@ -172,7 +186,7 @@
             {%- endif -%}
 
             <input type="number" name="updates[]" id="updates_{{ line_item.key }}" class="cart__item__quantity-field" data-quantity-field
-            data-id="{{- line_item.key -}}" value="{{- quantity -}}"
+            data-id="{{- line_item.key -}}" value="{{- quantity -}}" {% if promotionalLine == true %}disabled{% endif %}
             title="{{- 'cart.label.quantity' | t }} - {{ line_item.product.title | strip_html -}}" pattern="[0-9]*">
 
             <button type="button" class="cart__item__quantity-plus" data-quantity-plus data-quantity-button title="
@@ -180,7 +194,7 @@
               <span class="visually-hidden">{{ 'general.accessibility.increase' | t }}</span>
               {%- render 'icon-toggle-plus' -%}
             </button>
-          </div>
+          </div>          
 
           <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="cart__item__remove" data-item-remove data-id="{{ line_item.key }}" title="{{ 'cart.general.remove' | t }}">
             <span>{{ 'cart.general.remove' | t }}</span>

@@ -1,13 +1,86 @@
 {
   "sections": {
+    "6b0ee484-3c6d-4ecf-8a26-2a5129a417dd": {
+      "type": "section-marquee",
+      "blocks": {
+        "template--14490972127295__6b0ee484-3c6d-4ecf-8a26-2a5129a417dd-1669391392e79bd7e3-0": {
+          "type": "message",
+          "disabled": true,
+          "settings": {
+            "message": "Spend ||amount|| more for free shipping.",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "template--14490972127295__6b0ee484-3c6d-4ecf-8a26-2a5129a417dd-1669391392e79bd7e3-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>New collections just released - <a href=\"\/collections\" title=\"All collections\">Shop now<\/a><\/p>",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "template--14490972127295__6b0ee484-3c6d-4ecf-8a26-2a5129a417dd-1669391392e79bd7e3-2": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Use code <strong>TENOFF<\/strong> for 10% off first purchase<\/p>",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "755d3448-cfce-481d-8f52-a12cfeefd370": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>FREE SHIPPING ON ORDERS OVER $35  <\/strong>📦 <\/p>",
+            "icon_name": "heart",
+            "icon_color": "#e73e52",
+            "icon_width": 20,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        }
+      },
+      "block_order": [
+        "template--14490972127295__6b0ee484-3c6d-4ecf-8a26-2a5129a417dd-1669391392e79bd7e3-0",
+        "template--14490972127295__6b0ee484-3c6d-4ecf-8a26-2a5129a417dd-1669391392e79bd7e3-1",
+        "template--14490972127295__6b0ee484-3c6d-4ecf-8a26-2a5129a417dd-1669391392e79bd7e3-2",
+        "755d3448-cfce-481d-8f52-a12cfeefd370"
+      ],
+      "settings": {
+        "bg_color": "#e97e4c",
+        "color": "#ffffff",
+        "layout": "marquee",
+        "padding": 10,
+        "slider_speed": 7,
+        "marquee_speed": 100,
+        "text_size": 150,
+        "message_spacing": 25,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "main": {
       "type": "product",
       "blocks": {
+        "b40be5b7-a29a-4754-8959-96af5397de5c": {
+          "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/star-rating\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
             "subheading": "none",
-            "show_rating": true,
+            "show_rating": false,
             "show_rating_count": false
           }
         },
@@ -23,10 +96,17 @@
           "settings": {
             "info_page": "",
             "info_page_title_override": "",
+            "show_slide_svg": true,
             "show_labels": true,
-            "show_quantity": false,
+            "show_quantity": true,
             "show_payment_button": true,
-            "enable_subscriptions_selectors": true
+            "enable_subscriptions_selectors": false
+          }
+        },
+        "54d3bf08-7edb-4254-a5ae-b2195de93de0": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"63be821362297b001a6829e1\" class=\"htmlsnpt\"><\/div>"
           }
         },
         "icon": {
@@ -35,10 +115,10 @@
             "icon_name": "check",
             "icon_color": "",
             "icon_width": 20,
-            "icon_text": "Free shipping over $99",
+            "icon_text": "Free shipping over $35",
             "text_size": 90,
             "width": "full",
-            "text_alignment": "center",
+            "text_alignment": "left",
             "bg_color": "#ffffff",
             "remove_padding": true
           }
@@ -65,7 +145,8 @@
             "accordion_page_4": "",
             "accordion_heading_5": "",
             "accordion_text_5": "",
-            "accordion_page_5": ""
+            "accordion_page_5": "",
+            "show_size_chart_accordion": false
           }
         },
         "share-button": {
@@ -79,16 +160,16 @@
           "type": "upsell",
           "disabled": true,
           "settings": {
-            "product_list": [
-
-            ]
+            "product_list": "{{ product.metafields.theme.upsell_list.value }}"
           }
         }
       },
       "block_order": [
+        "b40be5b7-a29a-4754-8959-96af5397de5c",
         "title",
         "inventory_countdown",
         "form",
+        "54d3bf08-7edb-4254-a5ae-b2195de93de0",
         "icon",
         "description",
         "product_accordions",
@@ -100,14 +181,15 @@
         "enable_zoom": true,
         "enable_video_looping": false,
         "bg_color": "",
-        "block_padding": 20,
+        "block_padding": 14,
         "width": "wrapper",
-        "padding_top": 60,
+        "padding_top": 44,
         "padding_bottom": 60
       }
     },
     "section-testimonials": {
       "type": "section-testimonials",
+      "disabled": true,
       "blocks": {
         "text": {
           "type": "text",
@@ -194,6 +276,56 @@
         "padding_bottom": 100
       }
     },
+    "27108dd6-384a-44d5-8a6f-f174b3aeb828": {
+      "type": "text-Highlight",
+      "settings": {
+        "text": "Customer Reviews",
+        "Vertical__Text__alignment": "center",
+        "horizontal_text_alignment": "center",
+        "section__background": "#ffffff",
+        "section__text__color": "#000000",
+        "show__collection__button": true,
+        "btn-text": "",
+        "btn-url": "",
+        "section__height": 100,
+        "desktop__font__size": 30,
+        "section__padding": 0,
+        "section__margin": 60,
+        "mobile__font__size": 20,
+        "section__mobile__height": 0,
+        "section__mobile__padding": 0,
+        "section__mobile__margin": 20
+      }
+    },
+    "1665682367e6a8a8b7": {
+      "type": "apps",
+      "blocks": {
+        "88a24346-cbe0-4668-bca3-b38120bc653e": {
+          "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/media-carousel\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "869380d9-4a43-4777-939a-952f46a94fcb": {
+          "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/reviews-widget\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "88a24346-cbe0-4668-bca3-b38120bc653e",
+        "869380d9-4a43-4777-939a-952f46a94fcb"
+      ],
+      "settings": {
+        "bg_color": "",
+        "width": "wrapper",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
     "section-accordions": {
       "type": "section-accordions",
       "blocks": {
@@ -201,47 +333,46 @@
           "type": "text",
           "settings": {
             "title": "How long does it take to get my products?",
-            "text": "<p>Domestic shipping can take up to 5 business days.<br\/><br\/>Foreign shipping could take up to 14 business days.<br\/><br\/>Due to global supply chain challenges, shipping times could be longer than usual.<\/p>"
+            "text": "<p>All orders ship within 24 business hours! <\/p><p><\/p><p>From here the time in transit is determined by the shipping you've chosen. You can read more about this in our <a href=\"\/policies\/shipping-policy\" target=\"_blank\" title=\"Shipping Policy\">Shipping Policy<\/a>. <\/p><p><br\/>Due to global supply chain challenges, shipping times could be longer than usual.<\/p>"
           }
         },
         "accordion-1": {
           "type": "text",
           "settings": {
-            "title": "Do you offer warranty for your products?",
-            "text": "<p>All our products are subject to quality control.<br\/><br\/>Our warranty provides a guarantee against manufacturer defects.<br\/><br\/>The guarantee covers any manufacturing, design, or material defect. Please notify us within 2 months of noticing any defects.<br\/><br\/>It does not cover blows, improper use, or other issues that are not attributable to a manufacturer defects.<\/p>"
+            "title": "I am not sure what size to get, can you help?",
+            "text": "<p>We are here for you and eager to do our best in getting you into the right size! If need further assistance after reviewing the size chart please contact us! For the quickest response call or text us at 830.330.041. If you prefer email or chat, those options are also available!<\/p>"
           }
         },
         "accordion-2": {
           "type": "text",
           "settings": {
-            "title": "Do you offer refunds?",
-            "text": "<p>Yes, we offer full and partial refunds.<br\/><br\/>Please enquire for more information about our Refund policy.<\/p>"
+            "title": "Do you offer returns or exchanges?",
+            "text": "<p>Yes, we offer both exchanges and returns. Products must be returned in new, unwashed and unworn condition with original tags. You can start a return or exchange <a href=\"https:\/\/returns.wildjunkie.com\/#\/\" target=\"_blank\" title=\"https:\/\/returns.wildjunkie.com\/#\/\"><strong>HERE<\/strong><\/a>!<br\/><br\/>For more information please visit our <a href=\"\/policies\/refund-policy\" target=\"_blank\" title=\"Refund Policy\">Refund Policy<\/a>.<\/p>"
+          }
+        },
+        "5deb6769-1b15-41e9-8162-fbfbab15b717": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "title": "Heading",
+            "text": "<p>Use this text block to discuss some commonly asked questions like shipping and returns, sizing, warranties, or product and company details.<\/p>"
           }
         }
       },
       "block_order": [
         "accordion-0",
         "accordion-1",
-        "accordion-2"
+        "accordion-2",
+        "5deb6769-1b15-41e9-8162-fbfbab15b717"
       ],
       "settings": {
+        "section_custom_class": "",
         "title": "Frequently Asked Questions",
         "subheading": "",
         "text": "",
         "tabs_bg_color": "",
         "bg_color": "",
         "text_color": "text-dark",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "related": {
-      "type": "related-products",
-      "settings": {
-        "limit": 4,
-        "product_recommendations_heading": "You May Also Like",
-        "bg_color": "",
-        "width": "wrapper",
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -254,23 +385,23 @@
           "settings": {
             "icon_name": "truck",
             "title": "Free Shipping",
-            "text": "<p>on all order over $99<\/p>"
+            "text": "<p>on all orders over $35<\/p>"
           }
         },
         "icon-1": {
           "type": "text",
           "settings": {
             "icon_name": "refresh-cw",
-            "title": "Free Returns",
-            "text": "<p>within 30 days of purchase<\/p>"
+            "title": "Free Exchange",
+            "text": "<p>within 14 days of purchase<\/p>"
           }
         },
         "icon-2": {
           "type": "text",
           "settings": {
             "icon_name": "heart",
-            "title": "1% Donated Annually",
-            "text": "<p>to forest conservation<\/p>"
+            "title": "Made with love",
+            "text": "<p>In the United States<\/p>"
           }
         }
       },
@@ -295,32 +426,38 @@
         "padding_bottom": 100
       }
     },
+    "related": {
+      "type": "related-products",
+      "settings": {
+        "limit": 4,
+        "product_recommendations_heading": "You May Also Like",
+        "heading_font_size": 40,
+        "heading_font_size_mobile": 28,
+        "bg_color": "",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "loox-product-reviews-app-section": {
       "type": "apps",
-      "blocks": {
-        "loox-product-reviews": {
-          "type": "shopify:\/\/apps\/loox-product-reviews-photos\/blocks\/loox-dynamic-section\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
-          "settings": {
-            "only_photos": false,
-            "aggregated": false,
-            "hide_thumbnails": false,
-            "maxwidth": 1080
-          }
-        }
-      },
-      "block_order": [
-        "loox-product-reviews"
-      ],
       "settings": {
+        "bg_color": "",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
   "order": [
+    "6b0ee484-3c6d-4ecf-8a26-2a5129a417dd",
     "main",
     "section-testimonials",
+    "27108dd6-384a-44d5-8a6f-f174b3aeb828",
+    "1665682367e6a8a8b7",
     "section-accordions",
-    "related",
     "section-icons-row",
+    "related",
     "loox-product-reviews-app-section"
   ]
 }
