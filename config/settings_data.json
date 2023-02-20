@@ -37,6 +37,7 @@
     "social_snapchat_link": "",
     "social_rss_link": "",
     "loading_image": "shopify:\/\/shop_images\/Wild_junkie_Favicon.png",
+    "currency_code_enable": false,
     "favicon": "shopify:\/\/shop_images\/Wild_junkie_Favicon.png",
     "checkout_header_image": "",
     "checkout_logo_image": "shopify:\/\/shop_images\/Wild_Junkie_Logo.png",
@@ -125,7 +126,7 @@
         "settings": {
           "width": "wrapper",
           "show_footer_wave": true,
-          "color_wave": "#ff6d6d",
+          "color_wave": "#000000",
           "show_social_links": true,
           "show_payment_icons": true,
           "bottom_menu": "",

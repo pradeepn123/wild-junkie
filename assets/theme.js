@@ -1148,8 +1148,16 @@ PaloAlto.ProductForm = (function() {
     // Private Methods
     // -----------------------------------------------------------------------------
     _setIdInputValue(variant) {
+
       if (variant && variant.id) {
-        this.variantElement.value = variant.id.toString();
+      	this.variantElement.value = variant.id.toString();
+      	this.product.options.forEach((optionLabel, index) => {
+      		const optionalLabelSpan = document.querySelector(`span[data-option-parent-${optionLabel.toLowerCase()}=${optionLabel.toLowerCase()}]`
+        	)
+        	if (optionalLabelSpan) {
+        		optionalLabelSpan.nextElementSibling.innerText = variant[`option${index + 1}`]
+        	}
+      	})
       } else {
         this.variantElement.value = '';
       }
@@ -3254,6 +3262,11 @@ PaloAlto.Drawer = {
     const drawer = document.querySelector(`#${e.target.getAttribute('aria-controls')}`);
 
     if (!drawer) { return; }
+
+    const productSingleDetails = document.querySelector(".product-single__details")
+    if (productSingleDetails) {
+        productSingleDetails.style.position = 'unset'
+    }
     const drawerScroller = drawer.querySelector(this.selectors.scroller) || drawer;
     const drawerCloseButton = drawer.querySelector(this.selectors.drawerToggle);
 
@@ -3276,6 +3289,11 @@ PaloAlto.Drawer = {
     if (!document.body.classList.contains(this.classes.drawerOpen)) { return; }
 
     const drawer = document.querySelector(`${this.selectors.drawer}.${this.classes.open}`);
+
+    const productSingleDetails = document.querySelector(".product-single__details")
+    if (productSingleDetails) {
+        productSingleDetails.style.position = ''
+    }
 
     this.drawerToggleButtons.forEach((button) => {
       button.setAttribute(this.attributes.ariaExpanded, false);
@@ -11627,6 +11645,7 @@ PaloAlto.Product = (function() {
     links: 'a, button',
     upsellProduct: '[data-upsell-holder]',
     upsellProductSlider: '[data-upsell-slider]',
+    styleItWithUpsell: '[data-style-it-with]'
   };
 
   const classes = {
@@ -11662,8 +11681,15 @@ PaloAlto.Product = (function() {
     this.scrollToReviews();
 
     this.collapsible = new PaloAlto.initCollapsible(this.container);
+    this.styleItWithContainer = document.querySelector(selectors.styleItWithUpsell)
+
     PaloAlto.initSwatches.makeSwatch(container);
     PaloAlto.QuickViewPopup.init(container);
+
+    if (this.styleItWithContainer) {
+        PaloAlto.QuickViewPopup.init(this.styleItWithContainer);
+    }
+
     new PaloAlto.ShareButton(container);
 
     // Skip initialization of product form, slider and media functions if section has onboarding content only
@@ -11695,6 +11721,7 @@ PaloAlto.Product = (function() {
           wrapAround: true,
           pageDots: false,
           adaptiveHeight: true,
+          watchCSS: slider.dataset.watchCss == 'true',
           on: {
             ready: () => {
               slider.setAttribute(attributes.tabindex, '-1');
