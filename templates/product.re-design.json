@@ -101,7 +101,7 @@
           "type": "product_accordions",
           "settings": {
             "accordion_heading_1": "Shipping & Returns",
-            "accordion_text_1": "<p>Free hassle free Return within<strong>14 days of delivery!<\/strong><\/p>",
+            "accordion_text_1": "<p>Free hassle free Return within <strong>14 days of delivery!<\/strong><\/p>",
             "accordion_page_1": "",
             "accordion_heading_2": "",
             "accordion_text_2": "",

@@ -975,7 +975,7 @@
             {%- if current_variant.available and product.tags contains '_preorder' -%}
               {{ 'products.product.preorder' | t }}
             {%- elsif current_variant.available -%}
-              {{ 'products.product.add_to_cart' | t }}
+              ADD TO BAG
             {%- else -%}
               {{ sold_out_text }}
             {%- endif -%}
@@ -1303,6 +1303,14 @@
             {%- endunless -%}
 
             {% when 'shippingAndReturn' %}
+            {% assign reqCounter = 0 %}
+            {% for tags in product.tags %}
+              {% if tags == "final sale" %}
+                {% assign newreqCounter = reqCounter | plus : 1 %}
+                {% comment %} {% increment reqCounter %} {% endcomment %}
+              {% endif %}
+            {% endfor %}
+            {% assign totalReqVar = newreqCounter | plus : reqCounter %}
             <div class="product__block shipping__and__return__container rte"
               {% if animations_enabled %}
                 data-aos="fade-up"
@@ -1311,16 +1319,18 @@
                 {%- assign animation_delay = animation_delay | plus: 150 -%}
               {% endif %}
               {{ block.shopify_attributes }}>
-              <div class="shipping__and__return">
-                <div class="shipping__and__return__content">
+              <div class="shipping__and__return ">
+                <div class="shipping__and__return__content {% if totalReqVar < 1 %}shipping__and__returns__single__block{% endif %}">
                   <span class="shipping__and__return__icons">{% render 'shipping-svg' %}</span>
                   <span class="shipping__and__return__description">Free Shipping on all <strong>orders over $35</strong></span>
                 </div>
 
-                <div class="shipping__and__return__content">
-                  <span class="shipping__and__return__icons">{%render 'returns-svg' %}</span>
-                  <span class="shipping__and__return__description">Free hassle free Return within <strong>14 days of delivery!</strong></span>
-                </div>
+                {% if newreqCounter == 1 %}
+                  <div class="shipping__and__return__content">
+                    <span class="shipping__and__return__icons">{%render 'returns-svg' %}</span>
+                    <span class="shipping__and__return__description">Free hassle free Return within <strong>14 days of delivery!</strong></span>
+                  </div>
+                {% endif %}
               </div>
             </div>
 
@@ -1360,6 +1370,29 @@
             {% endif %}
 
           {%- when 'product_accordions' -%}
+            {% if template.suffix != "re-design" %}
+              <div class="product__block product__accordions product__description__not__redesign"
+                  {% if animations_enabled %}
+                    data-aos="fade-up"
+                    data-aos-anchor="{{ animation_anchor }}"
+                    data-aos-delay="{{ animation_delay }}"
+                    {%- assign animation_delay = animation_delay | plus: 150 -%}
+                  {% endif %}
+                  {{ block.shopify_attributes }}>
+                    <div class="product__accordion">
+                      <button class="product__accordion__title" aria-controls="ProductAccordion--page-product-description" data-collapsible-trigger>
+                        Product Description
+                        {%- render 'icon-toggle-plus' -%}
+                        {%- render 'icon-toggle-minus' -%}
+                      </button>
+                      <div class="product__accordion__content" id="ProductAccordion--page-product-description" data-collapsible-container>
+                        <div class="product__accordion__inner rte" data-collapsible-content>
+                            {{ product.description }}
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            {% endif %}
             {%- comment -%} Accordions {%- endcomment -%}
             <div class="product__block product__accordions"
               {% if animations_enabled %}
@@ -1373,7 +1406,7 @@
               {% if template.suffix != "re-design" %}
                 {% unless product.metafields.custom.size_chart == blank %}
                   <div class="product__accordion">
-                    <button class="product__accordion__title" aria-controls="ProductAccordion--page-size-chart" data-collapsible-trigger>
+                    <button class="product__accordion__title product__block__size__chart" aria-controls="ProductAccordion--page-size-chart" data-collapsible-trigger>
                       Size Chart
                       {%- render 'icon-toggle-plus' -%}
                       {%- render 'icon-toggle-minus' -%}

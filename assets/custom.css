@@ -172,7 +172,7 @@
     /* Product Page - Hero Section - Product Description */
         .product__description .product__description__heading{
             color: #000;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-weight: 700;
             margin-top: 0;
         }
@@ -305,6 +305,8 @@
         .product__popup__link{
             font-weight: 400;
             color: #FE6D6D;
+            border-bottom: 1px solid #FE6D6D;
+            border-radius: 0;
         }
 
         .product__popup__link::before , .no-touch .product__popup__link::after{
@@ -315,6 +317,9 @@
         .size_chart_product_container{
             align-items: baseline;
         }
+    .product__block__size__chart{
+        border-top: 0;
+    }
 
 /* Footer Styles */
 .site-footer{
@@ -1345,4 +1350,49 @@
 .product_page_tab_collection .section__header .section__heading,
 .product_page_tab_collection .section__subheading__main{
     text-align: left;
+}
+/* Product Page - Product Descriptipn Accordion - Not on Redesign */
+.product__description__not__redesign{
+    border-bottom: 0 !important;
+}
+.product__accordions .product__accordion__inner.rte{
+    padding-bottom: 20px;
+}
+/* Product Add to Cart */
+.product__submit__add{
+    background-color: #FE6D6D;
+    border-color: #FE6D6D;
+}
+.product__submit__item .btn:hover{
+    border-color: #FE6D6D;
+}
+/* Shipping and Info has only one block */
+.shipping__and__info__one__block{
+    flex-direction: row;
+
+}
+
+.popup-quick-view .product__price-and-badge .product__rating{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+}
+.popup-quick-view .product__price-and-badge .product__rating .rating__star__full{
+    margin-top: 4px;
+    margin-left: 5px;
+}
+
+.popup-quick-view .shop-pay-terms .shopify-installments{
+    text-align: left;
+}
+
+.shipping__and__returns__single__block{
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+}
+
+.shipping__and__returns__single__block .shipping__and__return__icons{
+    margin-top: 5px !important;
+    margin-right: 5px !important;
 }
