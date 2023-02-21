@@ -1561,3 +1561,7 @@ i.icon-swym-wishlist:after {
     font-size: 10px;
     font-family: 'Londrina Solid', cursive;
 }
+
+.site-header:hover .swym-wishlist-header-counter:not(.show-badge) {
+    color: #000000;
+}
