@@ -1434,3 +1434,36 @@
 .product-single__details .upsell__products--slider{
     padding-bottom: 0;
 }
+
+/* Wishlist Button */
+    .product__form .product__submit__holder .product__submit__buttons:last-child{
+        flex-direction: row;
+        width: 100%;
+    }
+    .product__form .product__submit__holder .product__submit__buttons:last-child .product__submit__item{
+        width: 70%;
+    }
+
+    .product__form .product__submit__holder .product__submit__buttons .swym-button-container .swym-text{
+        width: auto;
+        height: 100%;
+        padding: 15px 30px 15px 45px;
+        border: 1px solid #B9B9B9;
+        color: white;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .product__form .product__submit__holder .product__submit__buttons .swym-button-container .swym-text svg{
+        position: absolute;
+        left: 12%;
+    }
+
+    .product__form .product__submit__holder .product__submit__buttons .swym-button-container .swym-text p{
+        margin: 0;
+        color: #000;
+        font-size: 18px;
+    }
