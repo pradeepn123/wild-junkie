@@ -1466,7 +1466,7 @@
     .product__form .product__submit__holder .product__submit__buttons .swym-button-container .swym-text{
         width: auto;
         height: 100%;
-        padding: 15px 30px 15px 45px;
+        padding: 15px 20px 15px 45px;
         border: 1px solid #B9B9B9;
         color: white;
 
@@ -1479,6 +1479,9 @@
     .product__form .product__submit__holder .product__submit__buttons .swym-button-container .swym-text svg{
         position: absolute;
         left: 12%;
+    }
+    .product__form .product__submit__holder .product__submit__buttons .swym-button-container .swym-text svg path {
+        fill: white;
     }
 
     .product__form .product__submit__holder .product__submit__buttons .swym-button-container .swym-text p{
@@ -1533,3 +1536,7 @@
     .nav--compress .menu__item .swym-wishlist svg{
         vertical-align: top;
     }
+
+.product__form .product__submit__holder .product__submit__buttons .swym-button-container .swym-added svg path{
+    fill: #FE6D6D !important;
+}
