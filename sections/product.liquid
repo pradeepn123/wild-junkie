@@ -85,7 +85,7 @@
 <section id="ProductTemplate--{{ section.id }}" class="section-padding product-single" data-enable-history-state="true" data-section-type="product-template" data-section-id="{{ section.id }}">
   <div class="{{ section_width }}">
     {%- render 'product' section: section, unique: section.id -%}
-    {% if product.metafields.my_fields.model_info and product.metafields.my_fields.model_info_image and template.suffix != "re-design" %}
+    {% if product.metafields.my_fields.model_info and product.metafields.my_fields.model_info_image and template.suffix == "re-design" %}
       <div class="model_info_container">
         <div class="model_info_parent">
           <div class="model_info_image">
