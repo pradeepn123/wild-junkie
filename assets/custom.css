@@ -1508,3 +1508,13 @@
     .swym-ready i.icon-swym-wishlist:after{
         content: none;
     }
+
+/* Swym Tablet Screens */
+    .nav--compress .menu__item .swym-wishlist{
+        margin-right: 10px;
+        padding: 10px;
+    }
+
+    .nav--compress .menu__item .swym-wishlist svg{
+        vertical-align: top;
+    }
