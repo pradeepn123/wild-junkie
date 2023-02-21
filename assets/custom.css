@@ -1499,6 +1499,7 @@
         margin-right: 10px;
         padding: 0 10px;
         vertical-align: text-top;
+        position: relative;
     }
 
     i.icon-swym-wishlist svg{
@@ -1539,4 +1540,24 @@
 
 .product__form .product__submit__holder .product__submit__buttons .swym-button-container .swym-added svg path{
     fill: #FE6D6D !important;
+}
+
+i.icon-swym-wishlist:after {
+    visibility: hidden;
+}
+
+.swym-ready i.icon-swym-wishlist:after {
+    visibility: visible;
+}
+
+.swym-wishlist-header-counter.show-badge{
+    left: 25px;
+    position: absolute;
+    top: -8px;
+    background: #FE6D6D;
+    color: #FFFFFF;
+    border-radius: 25px;
+    padding: 0px 5px;
+    font-size: 10px;
+    font-family: 'Londrina Solid', cursive;
 }
