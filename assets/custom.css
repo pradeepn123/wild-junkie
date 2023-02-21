@@ -18,7 +18,11 @@
     color: var(--button-primary-bg) !important;
     border-color: #FE6D6D !important;
 }
-
+@media screen and (max-width: 1321px){
+    .swym__desktop__only{
+        display: none;
+    }
+}
 @media screen and (max-width: 1199px){
     .style_it_with_section .style_it_with_product_page .style_it_with_container{
         height: 550px;
@@ -1466,4 +1470,41 @@
         margin: 0;
         color: #000;
         font-size: 18px;
+    }
+
+
+    i.icon-swym-wishlist {
+        font-family: 'swym-icons';
+        font-style: normal;
+        vertical-align: middle;
+        
+        margin-right: 10px;
+        padding: 0 10px;
+        vertical-align: text-top;
+    }
+
+    i.icon-swym-wishlist svg{
+        vertical-align: text-bottom;
+        margin-top: 2px;
+    }
+
+    i.icon-swym-wishlist+span {
+        vertical-align: middle;
+    }
+
+    i.icon-swym-wishlist:after {
+        content: '';
+        font-size: 130%;
+        line-height: 18px;
+        text-align: center;
+        display: inline;
+    }
+
+    /*content rendered after swym is ready to avoid showing block/invalid chars*/
+    .swym-ready i.icon-swym-wishlist:after {
+        content: '\f004';
+    }
+
+    .swym-ready i.icon-swym-wishlist:after{
+        content: none;
     }
