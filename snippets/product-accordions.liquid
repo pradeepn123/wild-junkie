@@ -6,7 +6,12 @@
   {%- assign accordion_page = 'accordion_page_' | append: forloop.index -%}
   {%- assign accordion_content = block_settings[accordion_page].content | default: block_settings[accordion_text] -%}
 
-  {%- if accordion_title != '' and accordion_content != '' -%}
+  {% assign reqCounter = 1 %}
+  {%- if accordion_title contains "Returns" and product.tags contains "final sale" -%}
+    {% assign reqCounter = 0 %}
+  {%- endif -%}
+
+  {%- if accordion_title != '' and accordion_content != '' and reqCounter == 1 -%}
     {%- capture accordions -%}
       {{- accordions -}}
 
