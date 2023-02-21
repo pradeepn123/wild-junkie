@@ -417,6 +417,7 @@
     },
     "a9fe2477-9365-4b0a-ba40-71e4bf130305": {
       "type": "section-marquee",
+      "disabled": true,
       "blocks": {
         "template--14560545767487__a9fe2477-9365-4b0a-ba40-71e4bf130305-1675864641072a5818-0": {
           "type": "message",
@@ -446,6 +447,37 @@
     },
     "ff4d61d6-208f-428f-b193-0fb7fd7e2d93": {
       "type": "section-collection",
+      "blocks": {
+        "429a0f32-9f84-4ad5-919b-a35de643d3f3": {
+          "type": "marquee_text",
+          "settings": {
+            "position": "top",
+            "marquee_speed": 100,
+            "message_spacing": 25,
+            "text_size": 220,
+            "padding": 50,
+            "bg_image": "shopify:\/\/shop_images\/strip.png",
+            "bg_color": "#454545",
+            "color": "#000000"
+          }
+        },
+        "e73c8be9-08bc-4111-a25c-78b232136368": {
+          "type": "marquee_text",
+          "settings": {
+            "position": "bottom",
+            "marquee_speed": 100,
+            "message_spacing": 25,
+            "text_size": 220,
+            "padding": 50,
+            "bg_color": "#ffc47e",
+            "color": "#521017"
+          }
+        }
+      },
+      "block_order": [
+        "429a0f32-9f84-4ad5-919b-a35de643d3f3",
+        "e73c8be9-08bc-4111-a25c-78b232136368"
+      ],
       "settings": {
         "collection": "short-sleeved-tops",
         "products_layout": "split-left",
@@ -469,6 +501,7 @@
     },
     "67f400fb-5da7-4ae1-a92b-b746a2d399c4": {
       "type": "section-marquee",
+      "disabled": true,
       "blocks": {
         "template--14560545767487__67f400fb-5da7-4ae1-a92b-b746a2d399c4-1675864641072a5818-0": {
           "type": "message",
