@@ -1250,6 +1250,11 @@
         width: auto;
     }
 
+        .show_in_flex__mobile {
+            display: flex !important;
+            gap: 0;
+        }
+
 }
 
 @media screen and (max-width: 320px){
