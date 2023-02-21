@@ -1432,6 +1432,10 @@
     text-align: left;
 }
 
+.product-single__details .product__block .shop-pay-terms{
+    margin-top: 34px;
+}
+
 .shipping__and__returns__single__block{
     flex-direction: row !important;
     align-items: center !important;

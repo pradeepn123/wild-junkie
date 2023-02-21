@@ -939,7 +939,7 @@
           {% endif %}>
           {{ form | payment_button }}
         </div>
-        <div class="swym-button-container" 
+        <div class="swym-button-container"  id="swym-button-container"
           {% if animations_enabled %}
             data-aos="fade-up"
             data-aos-anchor="{{ animation_anchor }}"
@@ -1092,7 +1092,6 @@
                   {% if forloop.index == 1 %}checked{% endif %}>
                 <label for="option-{{ value }}-0-{{ section.id }}" class="radio__label">
                   <span>{{ value | escape_once }} </span>
-                  {% comment %} sahrudh {% endcomment %}
                 </label>
               </span>
             {%- endfor -%}
