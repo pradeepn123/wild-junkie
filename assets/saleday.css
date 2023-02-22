@@ -294,8 +294,8 @@
     font-family: 'Yeseva One';
 }
 
-#salesday .featured-collection .product-grid-item .product-grid-item__info .variant__countdown .variant__countdown--low,
-#sales .featured-collection .product-grid-item .product-grid-item__info .variant__countdown .variant__countdown--low{
+#salesday .product-grid-item .product-grid-item__info .variant__countdown .variant__countdown--low,
+#sales .product-grid-item .product-grid-item__info .variant__countdown .variant__countdown--low{
     color: #000000;
 }
 

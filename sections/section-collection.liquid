@@ -156,6 +156,23 @@
         data-coundown-timer></div>
     </div>
   {% endif %}
+  {% if section.settings.show_low_inventory_warning %}
+    {%- liquid
+      assign collection_inventory = 0
+      for product in collection.products
+        for variant in product.variants
+          assign collection_inventory = collection_inventory | plus : variant.inventory_quantity
+        endfor
+      endfor
+    -%}
+    {% if collection_inventory <= section.settings.low_inventory_limit %}
+      <div class="low_inventory_on_collection">
+        <div class="low_inventory_on_collection_inner deal-information">
+          <span class="text">FEW STOCKS LEFT</span>
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
   <div class="section__header featured-collection__top__wrapper">
     {%- if heading != blank -%}
       <h2
@@ -526,6 +543,14 @@
         "unit": "px",
         "label": "Padding bottom",
         "default": 60
+      }, {
+        "type": "checkbox",
+        "id": "show_low_inventory_warning",
+        "label": "Show Low Inventory Warning"
+      }, {
+        "type": "number",
+        "id": "low_inventory_limit",
+        "label": "Low Inventory Limit"
       }, {
         "type": "header",
         "content": "Offer Section"
