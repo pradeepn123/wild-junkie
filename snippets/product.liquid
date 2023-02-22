@@ -24,6 +24,11 @@
   assign first_3d_model = product.media | where: 'media_type', 'model' | first
   assign show_newsletter = settings.show_newsletter
   assign product_metafield_size = product.metafields.custom.choose_size
+  assign show_size_chart_button = false
+  if product.metafields.custom.size_chart != blank or product.metafields.custom.choose_size != blank
+    assign show_size_chart_button = true
+  endif
+  assign showed_size_chart_button = false
   assign sold_out = true
   if current_variant.available
     assign sold_out = false
@@ -485,18 +490,14 @@
   endif
 -%}
 
-{%- if info_page != blank or specific_pages != '' -%}
+{%- if show_size_chart_button -%}
   {%- assign show_size_chart = true -%}
   {%- assign specific_pages_arr = specific_pages | split: ',' -%}
 
   {%- capture size_chart_button -%}
     <button type="button" class="product__popup__link" href="{{ info_page.url }}" aria-controls="size-chart--{{ section.id }}" data-drawer-toggle aria-expanded="false">
       {%- unless info_page_title_override != blank-%}
-        {%- if pages[specific_pages_arr[0]].title != blank -%}
-          {{ pages[specific_pages_arr[0]].title }}
-        {%- else -%}
-          {{ info_page.title }}
-        {%- endif -%}
+        Size Guide
       {%- else -%}
         {{ info_page_title_override }}
       {%- endunless -%}
@@ -513,75 +514,25 @@
       <div class="product__popup__inner" data-scroll>
         <div class="product__popup__content">
           <div class="rte product__tabs" data-tabs-holder>
-            {%- liquid
-              assign tabs_navigation = ''
-              assign tabs = ''
-              assign has_current = false
-              assign index = 0
-            -%}
-
-            {%- for page_handle in specific_pages_arr -%}
-              {%- assign page_size_chart = pages[page_handle] -%}
-
-              {%- if page_size_chart.title != blank -%}
-                {%- capture tabs_navigation -%}
-                  {{ tabs_navigation }}
-
-                  <li class="tab__link" data-focus-element data-tab-link="{{ forloop.index0 }}" tabindex="0">{{ page_size_chart.title }}</li>
-                {%- endcapture -%}
-
-                {%- capture tabs -%}
-                  {{ tabs }}
-
-                  <div class="tab__content{% unless has_current %} current{% endunless %}" data-tab-content="{{ forloop.index0 }}">
-                    {{ page_size_chart.content }}
-                  </div>
-                {%- endcapture -%}
-
-                {%- assign has_current = true -%}
-              {%- endif -%}
-            {%- endfor -%}
-
-            {%- if info_page -%}
-              {%- assign index = specific_pages_arr.size -%}
-
-              {%- capture tabs_navigation -%}
-                {{ tabs_navigation }}
-
-                <li class="tab__link" data-focus-element data-tab-link="{{ index }}" data-lock-scroll tabindex="0">{{ info_page.title }}
-                </li>
-              {%- endcapture -%}
-
-              {%- capture tabs -%}
-                {{ tabs }}
-
-                <div class="tab__content{% unless has_current %} current{% endunless %}" data-tab-content="{{ index }}">
-                  {{ info_page.content }}
-                </div>
-              {%- endcapture -%}
-
-              {%- assign has_current = true -%}
-            {%- endif -%}
-
-            {%- if specific_pages_arr.size > 1 -%}
-              <div class="tabs__head product__tabs__head">
-                <ul class="tabs product__tabs__title" data-scrollbar data-scrollbar-slider>
-                  {{ tabs_navigation }}
-                </ul>
-
-                <button type="button" class="tabs__arrow tabs__arrow--prev tabs-collections__arrow tabs-collections__arrow--prev is-hidden" data-scrollbar-arrow-prev>
-                  <span class="visually-hidden">{{ 'products.general.see_all' | t }}</span>
-                </button>
-
-                <button type="button" class="tabs__arrow tabs__arrow--next tabs-collections__arrow tabs-collections__arrow--next is-hidden" data-scrollbar-arrow-next>
-                  <span class="visually-hidden">{{ 'products.general.see_all' | t }}</span>
-                </button>
+            <h1>Size Chart</h1>
+            {% if product.metafields.custom.choose_size != blank %}
+              <div class="product-page-svg">
+                {% case product_metafield_size %}
+                  {% when 'True to Size' %}
+                    {% render 'true-to-size' %}
+                  {% when 'Runs Small' %}
+                    {% render 'runs-small' %}
+                  {% when 'Runs Large' %}
+                    {% render 'runs-large' %}
+                {% endcase %}
               </div>
-            {%- endif -%}
+            {% endif %}
 
-            {%- if tabs != '' -%}
-              {{ tabs }}
-            {%- endif -%}
+            {% if product.metafields.custom.size_chart != blank %}
+              <div class="custom-size-chart">
+                {{ product.metafields.custom.size_chart | img_url: '500x500' | img_tag }}
+              </div>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -603,18 +554,6 @@
       product_variants: product.variants
     -%}
   {%- endif -%}
-
-  {%- unless show_size_link_as_label or size_chart_button == blank -%}
-    <div class="product__form__size-chart"
-      {% if animations_enabled %}
-        data-aos="fade-up"
-        data-aos-anchor="{{ animation_anchor }}"
-        data-aos-delay="{{ animation_delay }}"
-        {%- assign animation_delay = animation_delay | plus: 100 -%}
-      {% endif %}>
-      {{- size_chart_button -}}
-    </div>
-  {%- endunless -%}
 
   {%- assign quantity_position_bottom = true -%}
 
@@ -752,7 +691,8 @@
               {%- assign current_value = current_variant.options[forloop.index0] -%}
               <fieldset class="radio__fieldset radio__fieldset--{{ settings.color_swatches_product_style }}">
                 <legend class="radio__legend{% if is_size_option and info_page != blank %} radio__legend--flex radio__legend--size-chart{% endif %}">
-                  {%- if is_size_option and show_labels and info_page != blank -%}
+                  {%- if show_size_chart_button and showed_size_chart_button == false -%}
+                  {% assign showed_size_chart_button = true %}
                   <div class="size_chart_product_container" style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
                     <div>
                       <span class="radio__legend__label" data-option-parent-{{ option.name | downcase }}="{{ option.name | downcase }}" data-chart="{{ block.settings.info_page }}">{{ option.name | escape_once }}:
@@ -1787,111 +1727,6 @@
   endif
 -%}
 
-{%- if info_page != blank or specific_pages != '' -%}
-  {%- assign show_size_chart = true -%}
-  {%- assign specific_pages_arr = specific_pages | split: ',' -%}
-
-  {%- capture size_chart_button -%}
-    <button type="button" class="product__popup__link" href="{{ info_page.url }}" aria-controls="size-chart--{{ section.id }}" data-drawer-toggle>
-      {%- unless info_page_title_override != blank-%}
-        {%- if pages[specific_pages_arr[0]].title != blank -%}
-          {{ pages[specific_pages_arr[0]].title }}
-        {%- else -%}
-          {{ info_page.title }}
-        {%- endif -%}
-      {%- else -%}
-        {{ info_page_title_override }}
-      {%- endunless -%}
-      {% render 'icon-ruler' %}
-    </button>
-  {%- endcapture -%}
-
-  {%- capture size_chart_modal -%}
-    <div class="product__popup drawer drawer--right" id="size-chart--{{ section.id }}" aria-hidden="true" role="dialog" data-drawer>
-      <button type="button" class="drawer__close-button" aria-controls="size-chart--{{ section.id }}" data-drawer-toggle>
-        <span class="visually-hidden">{{ 'general.accessibility.close_drawer' | t }}</span>
-        {%- render 'icon-close-small' -%}
-      </button>
-
-      <div class="product__popup__inner" data-scroll>
-        <div class="product__popup__content">
-          <div class="rte product__tabs" data-tabs-holder>
-            {%- liquid
-              assign tabs_navigation = ''
-              assign tabs = ''
-              assign has_current = false
-              assign index = 0
-            -%}
-
-            {%- for page_handle in specific_pages_arr -%}
-              {%- assign page_size_chart = pages[page_handle] -%}
-
-              {%- if page_size_chart.title != blank -%}
-                {%- capture tabs_navigation -%}
-                  {{ tabs_navigation }}
-
-                  <li class="tab__link" data-focus-element data-tab-link="{{ forloop.index0 }}" tabindex="0">{{ page_size_chart.title }}</li>
-                {%- endcapture -%}
-
-                {%- capture tabs -%}
-                  {{ tabs }}
-
-                  <div class="tab__content{% unless has_current %} current{% endunless %}" data-tab-content="{{ forloop.index0 }}">
-                    {{ page_size_chart.content }}
-                  </div>
-                {%- endcapture -%}
-
-                {%- assign has_current = true -%}
-              {%- endif -%}
-            {%- endfor -%}
-
-            {%- if info_page -%}
-              {%- assign index = specific_pages_arr.size -%}
-
-              {%- capture tabs_navigation -%}
-                {{ tabs_navigation }}
-
-                <li class="tab__link" data-focus-element data-tab-link="{{ index }}" data-lock-scroll tabindex="0">{{ info_page.title }}
-                </li>
-              {%- endcapture -%}
-
-              {%- capture tabs -%}
-                {{ tabs }}
-
-                <div class="tab__content{% unless has_current %} current{% endunless %}" data-tab-content="{{ index }}">
-                  {{ info_page.content }}
-                </div>
-              {%- endcapture -%}
-
-              {%- assign has_current = true -%}
-            {%- endif -%}
-
-            {%- if specific_pages_arr.size > 1 -%}
-              <div class="tabs__head product__tabs__head">
-                <ul class="tabs product__tabs__title" data-scrollbar data-scrollbar-slider>
-                  {{ tabs_navigation }}
-                </ul>
-
-                <button type="button" class="tabs__arrow tabs__arrow--prev tabs-collections__arrow tabs-collections__arrow--prev is-hidden" data-scrollbar-arrow-prev>
-                  <span class="visually-hidden">{{ 'products.general.see_all' | t }}</span>
-                </button>
-
-                <button type="button" class="tabs__arrow tabs__arrow--next tabs-collections__arrow tabs-collections__arrow--next is-hidden" data-scrollbar-arrow-next>
-                  <span class="visually-hidden">{{ 'products.general.see_all' | t }}</span>
-                </button>
-              </div>
-            {%- endif -%}
-
-            {%- if tabs != '' -%}
-              {{ tabs }}
-            {%- endif -%}
-          </div>
-        </div>
-      </div>
-    </div>
-  {%- endcapture -%}
-{%- endif -%}
-
 {%- form 'product', product, class: 'product__form', data-product-form: '', id: product_form_id -%}
   <input type="hidden" name="id" value="{{ current_variant.id }}" data-product-select>
 
@@ -1905,18 +1740,6 @@
       product_variants: product.variants
     -%}
   {%- endif -%}
-
-  {%- unless show_size_link_as_label or size_chart_button == blank -%}
-    <div class="product__form__size-chart"
-      {% if animations_enabled %}
-        data-aos="fade-up"
-        data-aos-anchor="{{ animation_anchor }}"
-        data-aos-delay="{{ animation_delay }}"
-        {%- assign animation_delay = animation_delay | plus: 100 -%}
-      {% endif %}>
-      {{- size_chart_button -}}
-    </div>
-  {%- endunless -%}
 
   {% comment %} Shop pay split payment terms {% endcomment %}
   {%- assign quantity_position_bottom = true -%}
