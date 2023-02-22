@@ -1593,3 +1593,11 @@ i.icon-swym-wishlist:after {
 .custom-size-chart {
     margin-top: 3rem;
 }
+
+.swym-button-container .swym-add-to-wishlist {
+    background-color: #FFF !important;
+}
+
+.swym-button-container .swym-added.swym-add-to-wishlist {
+    background-color: #FFF !important;
+}
