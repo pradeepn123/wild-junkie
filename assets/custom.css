@@ -1585,3 +1585,7 @@ i.icon-swym-wishlist:after {
 .swym-button-container {
     margin-left: 10px;
 }
+
+.product__submit__item.hidden + .swym-button-container {
+    margin: unset;
+}
