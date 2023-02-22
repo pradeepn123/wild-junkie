@@ -1443,7 +1443,6 @@
     padding: 10px 30px !important;
 }
 
-
 .shipping__and__returns__single__block .shipping__and__return__icons{
     margin-top: 5px !important;
     margin-right: 15px !important;
@@ -1573,4 +1572,16 @@ i.icon-swym-wishlist:after {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.rc-template .rc-template__legacy-radio .rc-radio {
+    padding: unset;
+}
+
+.rc_container .rc_popup {
+    display: none;
+}
+
+.swym-button-container {
+    margin-left: 10px;
 }

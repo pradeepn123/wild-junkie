@@ -111,11 +111,6 @@
       #BIS_trigger {
         margin-top: 15px !important;
       }
-{% comment %} 
-
-      .product-single__details #BIS_trigger{
-          margin-top: 30px !important;
-      } {% endcomment %}
   {% endstyle %}
 {% endif %}
 
@@ -865,20 +860,6 @@
     </select>
   </noscript>
 
-  {%- if product.selling_plan_groups.size > 0 -%}
-    {%- if enable_subscriptions_selectors -%}
-      {%- render 'subscription-form',
-        product: product,
-        animations_enabled: animations_enabled,
-        animation_anchor: animation_anchor,
-        animation_delay: animation_delay
-      -%}
-    {%- endif -%}
-    {%- assign animation_delay = animation_delay | plus: 100 -%}
-    {%- comment -%} Delete the following line to block the theme from updating subscription prices {%- endcomment -%}
-    <span data-subscription-watch-price></span>
-  {%- endif -%}
-
   {%- if quantity_position_bottom and show_quantity -%}
     <div class="selector-wrapper selector-wrapper--qty"
       {% if animations_enabled %}
@@ -898,7 +879,31 @@
   {%- endif -%}
 
   <div class="product__submit__holder{% if show_payment_button %} product__submit__holder--spb{% endif %}{% if show_newsletter %} product__submit__holder--notification{% endif %}" data-product-id="{{ product.id }}">
-    <div class="product__submit__buttons product__submit__buttons-primary">
+    {%- if product.selling_plan_groups.size > 0 -%}
+      <div class="product__submit__buttons product__submit__buttons-primary">
+        {% for selling_plan_group in product.selling_plan_groups %}
+          <select
+            class="subscription-form-select"
+            name="selling_plan"
+            {% if animations_enabled %}
+              data-aos="fade-up"
+              data-aos-anchor="{{ animation_anchor }}"
+              data-aos-delay="{{ animation_delay }}"
+            {% endif %}
+          >
+            {% for plan in selling_plan_group.selling_plans %}
+              <option value="{{ plan.id }}" {% if plan.selected %}selected{% endif %}>
+                {{ plan.name }}
+              </option>
+            {% endfor %}
+          </select>
+        {% endfor %}
+        {%- assign animation_delay = animation_delay | plus: 100 -%}
+        {%- comment -%} Delete the following line to block the theme from updating subscription prices {%- endcomment -%}
+        <span data-subscription-watch-price></span>
+      </div>
+    {%- endif -%}
+    <div class="product__submit__buttons {% unless product.selling_plan_groups.size > 0 %}product__submit__buttons-primary{% endunless %}">
       <div class="product__submit__item"
         {% if animations_enabled %}
           data-aos="fade-up"
@@ -927,13 +932,21 @@
               {{ sold_out_text }}
             {%- endif -%}
           </span>
-
           <div class="loader loader--line"><div class="loader-indeterminate"></div></div>
         </button>
       </div>
+      {%- if product.selling_plan_groups.size > 0 -%}
+        {%- render 'swym-product-wishlist-button',
+          product: product,
+          animations_enabled: animations_enabled,
+          animation_anchor: animation_anchor,
+          animation_delay: animation_delay,
+          animation_delay: animation_delay
+        -%}
+      {%- endif -%}
     </div>
-    <div class="product__submit__buttons show_in_flex__mobile" style="width: 100%;">     
-      {%- if show_payment_button -%}
+    {%- if show_payment_button -%}
+      <div class="product__submit__buttons show_in_flex__mobile" style="width: 100%;">         
         <div class="product__submit__item{% if sold_out %} hidden{% endif %}"
           data-buy-it-now
           {% if animations_enabled %}
@@ -944,19 +957,15 @@
           {% endif %}>
           {{ form | payment_button }}
         </div>
-      {%- endif -%}
-      <div class="swym-button-container"  id="swym-button-container"
-        {% if animations_enabled %}
-          data-aos="fade-up"
-          data-aos-anchor="{{ animation_anchor }}"
-          data-aos-delay="{{ animation_delay }}"
-          {%- assign animation_delay = animation_delay | plus: 100 -%}
-        {% endif %}
-      >
-        {% render 'swym-product-view', product: product %}
-        {% render 'swym-product-wishlist-button', product: product %}
+        {%- render 'swym-product-wishlist-button',
+          product: product,
+          animations_enabled: animations_enabled,
+          animation_anchor: animation_anchor,
+          animation_delay: animation_delay,
+          animation_delay: animation_delay
+        -%}
       </div>
-    </div>
+    {%- endif -%}
     <div data-cart-errors-container class="product__form__errors"></div>
   </div>
 {%- endform -%}
