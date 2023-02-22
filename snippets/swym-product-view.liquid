@@ -40,5 +40,32 @@
     SwymWatchProducts[{{product.handle | json}}] = SwymWatchProducts[{{product.id | json}}] = o;
   })();
 
+  function swymCallbackFn(swat) {
+    swat.initializeActionButtons(".product-single__details")
+    var counterElems = document.querySelectorAll(".swym-wishlist-header-counter")
+
+    swat.evtLayer.addEventListener("sw:removedfromwishlist", function(e) {
+      renderWishlistCounter(swat)
+    })
+    document.addEventListener("theme:variant:change", function(event) {
+      /* the current selected variant id */
+      var variantId = event.detail.variant.id;
+      window.triggerSwymVariantEvent(variantId);
+      swat.initializeActionButtons(".product-single__details")
+    });
+  }
+
+  function renderWishlistCounter(swat) {
+    var counterElems = document.querySelectorAll(".swym-wishlist-header-counter")
+    Array.from(counterElems).forEach(counterElem => {
+      swat.renderWishlistCount(counterElem);
+    })
+  }
+
+  if (!window.SwymCallbacks) {
+    window.SwymCallbacks = [];
+  }
+  window.SwymCallbacks.push(swymCallbackFn);
+  window.SwymCallbacks.push(renderWishlistCounter);
 </script>
 {%- endif -%}
