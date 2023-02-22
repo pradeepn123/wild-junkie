@@ -2254,15 +2254,26 @@
   <script type="application/json" id="ModelJson-{{ unique }}">{{ product.media | where: 'media_type', 'model' | json }}</script>
   <script>
     function swymCallbackFn(swat) {
-      var variantId = event.detail.variant.id; /* the current selected variant id */
-      window.triggerSwymVariantEvent(variantId);
       swat.initializeActionButtons(".product-page-wishlist-grid");
+      var counterElems = document.querySelectorAll(".swym-wishlist-header-counter")
+
+      swat.evtLayer.addEventListener("sw:removedfromwishlist", function(e) {
+        renderWishlistCounter(swat)
+      })
+    }
+
+    function renderWishlistCounter(swat) {
+        var counterElems = document.querySelectorAll(".swym-wishlist-header-counter")
+        Array.from(counterElems).forEach(counterElem => {
+          swat.renderWishlistCount(counterElem);
+        })
     }
 
     if (!window.SwymCallbacks) {
-        window.SwymCallbacks = [];
+      window.SwymCallbacks = [];
     }
+
     window.SwymCallbacks.push(swymCallbackFn);
-    /* Called when swym is loaded! */
+    window.SwymCallbacks.push(renderWishlistCounter);
 </script>
 </div>

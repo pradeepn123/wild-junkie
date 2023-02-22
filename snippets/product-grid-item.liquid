@@ -215,86 +215,86 @@
             </a>
 
             {%- liquid
-  assign show_sale_badge = settings.show_sale_badge
-  assign show_custom_badge = settings.show_custom_badge
-  assign show_sold_badge = settings.show_sold_badge
-  assign show_saving_badge = settings.show_saving_badge
-  assign sold_out_text = 'products.product.sold_out' | t
-  assign sale_text = 'products.product.sale' | t
+              assign show_sale_badge = settings.show_sale_badge
+              assign show_custom_badge = settings.show_custom_badge
+              assign show_sold_badge = settings.show_sold_badge
+              assign show_saving_badge = settings.show_saving_badge
+              assign sold_out_text = 'products.product.sold_out' | t
+              assign sale_text = 'products.product.sale' | t
 
-  if settings.show_saving_badge
-    assign price = product.price
-    assign price_compare = product.compare_at_price
-    assign price_difference = price_compare | minus: price
+              if settings.show_saving_badge
+                assign price = product.price
+                assign price_compare = product.compare_at_price
+                assign price_difference = price_compare | minus: price
 
-    if product.variants.size > 1
-      for variant in product.variants
-        assign variant_price_difference = variant.compare_at_price | minus: variant.price
+                if product.variants.size > 1
+                  for variant in product.variants
+                    assign variant_price_difference = variant.compare_at_price | minus: variant.price
+                    if variant_price_difference > price_difference
+                      assign price = variant.price
+                      assign price_compare = variant.compare_at_price
+                      assign price_difference = variant_price_difference
+                    endif
+                  endfor
+                endif
 
-        if variant_price_difference > price_difference
-          assign price = variant.price
-          assign price_compare = variant.compare_at_price
-          assign price_difference = variant_price_difference
-        endif
-      endfor
-    endif
+                if settings.currency_code_enable
+                  assign discount = price_difference | money_with_currency | remove: '.00' | remove: ',00'
+                else
+                  assign discount = price_difference | money_without_trailing_zeros
+                endif
 
-    if settings.currency_code_enable
-      assign discount = price_difference | money_with_currency | remove: '.00' | remove: ',00'
-    else
-      assign discount = price_difference | money_without_trailing_zeros
-    endif
+                if settings.saving_badge_type == 'percentage'
+                  assign percent_off = price_difference | times: 1.00 | divided_by: price_compare | times: 100
+                  assign discount = percent_off | floor | append: '%'
+                endif
 
-    if settings.saving_badge_type == 'percentage'
-      assign percent_off = price_difference | times: 1.00 | divided_by: price_compare | times: 100
-      assign discount = percent_off | floor | append: '%'
-    endif
+                if product.variants.size == 1 and price_difference > 0
+                  assign saving_badge_text = 'products.product.save_badge_html' | t: discount: discount
+                endif
 
-    if product.variants.size == 1 and price_difference > 0
-      assign saving_badge_text = 'products.product.save_badge_html' | t: discount: discount
-    endif
+                if product.variants.size > 1 and price_difference > 0
+                  assign saving_badge_text = 'products.product.save_badge_up_to_html' | t: discount: discount
+                endif
 
-    if product.variants.size > 1 and price_difference > 0
-      assign saving_badge_text = 'products.product.save_badge_up_to_html' | t: discount: discount
-    endif
+                if saving_badge_text == blank
+                  assign show_saving_badge = false
+                endif
+              endif
+            -%}
 
-    if saving_badge_text == blank
-      assign show_saving_badge = false
-    endif
-  endif
--%}
+            {%- capture product_badges -%}
+              {%- if custom_badge_metafield and show_custom_badge -%}
+                <div class="product__badge__item product__badge__item--custom"><span>{{ custom_badge_metafield_text }}</span></div>
+              {%- endif -%}
 
-{%- capture product_badges -%}
-  {%- if custom_badge_metafield and show_custom_badge -%}
-    <div class="product__badge__item product__badge__item--custom"><span>{{ custom_badge_metafield_text }}</span></div>
-  {%- endif -%}
+              {%- if sold_out and show_sold_badge -%}
+                <div class="product__badge__item product__badge__item--sold"><span>{{ sold_out_text }}</span></div>
+              {%- endif -%}
 
-  {%- if sold_out and show_sold_badge -%}
-    <div class="product__badge__item product__badge__item--sold"><span>{{ sold_out_text }}</span></div>
-  {%- endif -%}
+              {%- if on_sale and show_sale_badge and sold_out == false and show_saving_badge == false -%}
+                <div class="product__badge__item product__badge__item--sale"><span>{{ sale_text }}</span></div>
+              {%- endif -%}
 
-  {%- if on_sale and show_sale_badge and sold_out == false and show_saving_badge == false -%}
-    <div class="product__badge__item product__badge__item--sale"><span>{{ sale_text }}</span></div>
-  {%- endif -%}
+              {%- if show_saving_badge -%}
+                <div class="product__badge__item product__badge__item--saving"><span>{{ saving_badge_text }}</span></div>
+              {%- endif -%}
+            {%- endcapture -%}
 
-  {%- if show_saving_badge -%}
-    <div class="product__badge__item product__badge__item--saving"><span>{{ saving_badge_text }}</span></div>
-  {%- endif -%}
-{%- endcapture -%}
-
-{%- unless product_badges == blank -%}
-  <div class="product__badge"
-    data-product-badge
-    {% if animations_enabled %}
-      data-aos="fade"
-      {% if animation_anchor %}
-        data-aos-anchor="{{ animation_anchor }}"
-      {% endif %}
-      data-aos-delay="{{ animation_delay | times: 150 | plus: 200 }}"
-    {% endif %}>
-    {{- product_badges -}}
-  </div>
-{%- endunless -%}
+            {%- unless product_badges == blank -%}
+              <div class="product__badge"
+                data-product-badge
+                {% if animations_enabled %}
+                  data-aos="fade"
+                  {% if animation_anchor %}
+                    data-aos-anchor="{{ animation_anchor }}"
+                  {% endif %}
+                  data-aos-delay="{{ animation_delay | times: 150 | plus: 200 }}"
+              {% endif %}
+              >
+                {{- product_badges -}}
+              </div>
+            {%- endunless -%}
 
             {%- unless settings.quick_button == 'none' -%}
               {%- if settings.quick_button == 'view' -%}
@@ -347,9 +347,12 @@
         data-aos-delay="{{ animation_delay | times: 150 }}"
       {% endif %}>
       {% comment %} Title {% endcomment %}
-      <a class="product-grid-item__title" href="{{ product.url | within: collection }}" aria-label="{{ product.title | strip_html | escape }}"{% if index > 1 %} tabindex="-1"{% endif %}>
-        {{- product.title | strip_html | escape -}}
-      </a>
+      <span class="product-grid-item--title-wrapper">
+        <a class="product-grid-item__title" href="{{ product.url | within: collection }}" aria-label="{{ product.title | strip_html | escape }}"{% if index > 1 %} tabindex="-1"{% endif %}>
+          {{- product.title | strip_html | escape -}}
+        </a>
+        <button data-with-epi="true" class="swym-button swym-add-to-wishlist-view-product product_{{product.id}}" data-swaction="addToWishlist" data-product-id="{{product.id | json}}" data-variant-id="{{product.variants[0].id}}" data-product-url="{{ shop.url }}{{ product.url }}"></button>
+      </span>
 
       {%- comment -%} Product tagline {%- endcomment -%}
       {%- if product.metafields.theme.cutline != blank and product.metafields.theme.cutline.type == 'single_line_text_field' -%}

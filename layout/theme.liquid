@@ -385,13 +385,11 @@ template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}
 
 
 {% render 'swymSnippet' %}
-{% render 'swym-product-view' %}
-
-
-{% render 'swym-header-counter'%}
-
-
-{% include 'swymSnippet' %}
+{% if template.name == "product" %}
+  {% render 'swym-product-view' %}
+{% else %}
+  {% render 'swym-theme-view' %}
+{% endif %}
 
 </body>
 </html>
