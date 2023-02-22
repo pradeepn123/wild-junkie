@@ -1550,7 +1550,7 @@ i.icon-swym-wishlist:after {
     visibility: visible;
 }
 
-.swym-wishlist-header-counter.show-badge{
+.swym-wishlist-header-counter {
     left: 25px;
     position: absolute;
     top: -8px;
@@ -1562,6 +1562,8 @@ i.icon-swym-wishlist:after {
     font-family: 'Londrina Solid', cursive;
 }
 
-.site-header:hover .swym-wishlist-header-counter:not(.show-badge) {
-    color: #000000;
+.product-grid-item--title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
