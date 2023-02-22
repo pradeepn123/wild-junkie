@@ -1185,13 +1185,6 @@ PaloAlto.ProductForm = (function() {
         event.dataset = this.getFormState();
         this._setIdInputValue(event.dataset.variant);
         cb(event);
-
-        if(event.dataset.variant.available == false){
-          document.querySelector("#swym-button-container").style.display = 'none';
-        }
-        else{
-          document.querySelector("#swym-button-container").style.display = 'block';
-        }
       }.bind(this);
     },
 
