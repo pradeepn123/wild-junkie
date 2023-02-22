@@ -1,5 +1,19 @@
+{% style %} 
+  {% if section.settings.mobile_banner_image != blank %}
+    .banner_container{
+      background: url('{{ section.settings.mobile_banner_image | img_url: 'master'}}') no-repeat {% if "window.screen.width < 767px" %}30%{% endif %};
+    }
+  {% endif %}
+  @media(min-width:1024px){
+    {% if section.settings.banner_image != blank %}
+    .banner_container{
+      background: url('{{ section.settings.banner_image | img_url: 'master'}}') no-repeat 
+    }
+    {% endif %}
+  }
+{% endstyle %}
 <div class="banner_wrapper">
-  <div class="banner_container" style="background: url('{{ section.settings.banner_image | img_url: 'master'}}') no-repeat {% if "window.screen.width < 767px" %}30%{% endif %}; background-size: cover;">
+  <div class="banner_container" style="background-size: cover;">
     <div class="banner_text">
       <h1>{{ section.settings.banner_title }}</h1>
       
@@ -36,6 +50,11 @@
         "type": "image_picker",
         "label": "Banner Image",
         "id": "banner_image"
+      },
+      {
+        "type": "image_picker",
+        "label": "Mobile Banner Image",
+        "id": "mobile_banner_image"
       },
       {
         "type": "text",

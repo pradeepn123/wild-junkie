@@ -158,6 +158,10 @@
       <h3 class="list-collections__item__title">
         {{- collection_title -}}
       </h3>
+      
+      {%- if custom_collection_text != blank -%}
+        <div class="offer_title">{{ custom_collection_text }}</div>
+      {%- endif-%}
 
       {%- unless button_text == blank -%}
         <div class="list-collections__item__btn-wrapper">
