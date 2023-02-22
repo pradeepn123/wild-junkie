@@ -431,6 +431,13 @@
           {%- endfor -%}
         {%- endunless -%}
       {%- endif -%}
+      {%- if template.name == "page" and template.suffix == "salesday" -%}
+        {%- render 'inventory-countdown-numbers',
+          current_variant: current_variant,
+          product_variants: product.variants,
+          low_inventory_message: "Hurry! Low inventory"
+        -%}
+      {%- endif -%}
     </div>
   </div>
 </div>

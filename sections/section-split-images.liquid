@@ -166,6 +166,7 @@
             </div>
           </div>
         {%- endif -%}
+        <div>{{ section.settings.signup_text  }}</div>
       </div>
 
       {%- if button_text == blank and button_link != '#!' -%}
@@ -295,6 +296,12 @@
       "id": "text",
       "label": "Text",
       "default": "Describe in a few words your special products, collection, or brand."
+    },
+    {
+      "type": "richtext",
+      "id": "signup_text",
+      "label": "Content Text",
+      "default": "<p>Already a member? Sign-in</p>"
     },
     {
       "type": "header",

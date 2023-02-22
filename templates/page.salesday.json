@@ -258,7 +258,7 @@
           "type": "image",
           "settings": {
             "image": "shopify:\/\/shop_images\/50__off_onrewards.png",
-            "image_mobile": "shopify:\/\/shop_images\/50__off_onrewards_mobile.png",
+            "image_mobile": "shopify:\/\/shop_images\/50-off-banner.png",
             "bg_position": "center-center",
             "overlay_opacity": 0,
             "text_width": "normal",
@@ -323,7 +323,7 @@
             "padding": 50,
             "bg_image": "shopify:\/\/shop_images\/strip.png",
             "bg_color": "#454545",
-            "color": "#000000"
+            "color": "#521017"
           }
         },
         "e73c8be9-08bc-4111-a25c-78b232136368": {
@@ -454,7 +454,7 @@
           "type": "image",
           "settings": {
             "image": "shopify:\/\/shop_images\/deal_of_the_day_img.jpg",
-            "image_mobile": "shopify:\/\/shop_images\/deal_of_the_day_mobile.png",
+            "image_mobile": "shopify:\/\/shop_images\/deal-of-the-day-banner-2.png",
             "bg_position": "center-center",
             "overlay_opacity": 0,
             "text_width": "normal",
@@ -584,8 +584,9 @@
         "title": "<p>Earn Wild Junkies Rewards<\/p>",
         "heading_size": 120,
         "text": "Earn points when you spend now to save when you spend later. At Wild Junkie, it pays to be our friend!",
+        "signup_text": "<p>Already a member?<a href=\"https:\/\/wildjunkieboutique.com\/account\/login\" title=\"https:\/\/wildjunkieboutique.com\/account\/login\"> Sign-in<\/a><\/p>",
         "button_text": "Join now",
-        "button_link": "#",
+        "button_link": "shopify:\/\/pages\/rewards",
         "button_style": "btn--primary"
       }
     }
