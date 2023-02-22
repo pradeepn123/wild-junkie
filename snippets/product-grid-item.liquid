@@ -374,9 +374,7 @@
         {%- if product.price_varies -%}
           {{- 'products.general.from_text_html' | t: price: product_price_min -}}
         {%- else -%}
-          {%- if on_sale -%}
-            <span class="product-grid-item__price__new">{{ product_price }}</span>
-
+          {%- if on_sale -%}          
             <s>
               {%- if currency_code_enable -%}
                 {{- product.compare_at_price | money_with_currency -}}
@@ -384,6 +382,8 @@
                 {{- product.compare_at_price | money -}}
               {%- endif -%}
             </s>
+            
+            <span class="product-grid-item__price__new">{{ product_price }}</span>
           {%- else -%}
             {{- product_price -}}
           {%- endif -%}
@@ -414,19 +414,19 @@
       {%- if settings.enable_color_swatches_collection -%}
         {%- comment -%} /partials/product-swatch--grid.liquid {%- endcomment -%}
 
-{%- unless product.has_only_default_variant -%}
-  {%- capture swatch_translation -%}{{ 'general.swatches.color' | t }}{%- endcapture -%}
+        {%- unless product.has_only_default_variant -%}
+          {%- capture swatch_translation -%}{{ 'general.swatches.color' | t }}{%- endcapture -%}
 
-  {%- assign swatch_labels = swatch_translation | append: ',' | split: ',' -%}
-  {%- for label in swatch_labels -%}
-    {%- assign sanitized_label = label | lstrip | rstrip -%}
-    {%- if product.options_by_name[sanitized_label].values.size > 0 -%}
-      <div class="product-grid-item__swatch{% if settings.product_grid_hover_swatches %} product-grid-item__swatch--hover{% endif %}{% if settings.color_swatches_product_style == 'rectangle' %} product-grid__swatch--rectangle{% endif %}" data-grid-swatches data-swatch-handle="{{ product.handle }}" data-swatch-label="{{ label }}" data-tooltip="{{ label }}"></div>
+          {%- assign swatch_labels = swatch_translation | append: ',' | split: ',' -%}
+          {%- for label in swatch_labels -%}
+            {%- assign sanitized_label = label | lstrip | rstrip -%}
+            {%- if product.options_by_name[sanitized_label].values.size > 0 -%}
+              <div class="product-grid-item__swatch{% if settings.product_grid_hover_swatches %} product-grid-item__swatch--hover{% endif %}{% if settings.color_swatches_product_style == 'rectangle' %} product-grid__swatch--rectangle{% endif %}" data-grid-swatches data-swatch-handle="{{ product.handle }}" data-swatch-label="{{ label }}" data-tooltip="{{ label }}"></div>
 
-      {%- break -%}
-    {%- endif -%}
-  {%- endfor -%}
-{%- endunless -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endunless -%}
       {%- endif -%}
     </div>
   </div>

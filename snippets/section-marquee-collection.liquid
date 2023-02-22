@@ -1,5 +1,6 @@
 {%- liquid 
     assign bg_image = block.settings.bg_image
+    assign offer_text = block.settings.offer_text
     assign message_spacing = block.settings.message_spacing | append: 'px'
     assign text_size = block.settings.text_size | times: 0.01
     assign padding = block.settings.padding | append: 'px'
@@ -36,19 +37,21 @@
     #Marquee--{{ block.id }} .top-bar__ticker { padding: 0 {{ message_spacing }}; }    
     {%- endstyle -%}
 
+{% if offer_text != blank %}
     <div class="top-bar">  
         <div class="top-bar__slider">
             <div class="top-bar__slide">
                 <div data-ticker-frame data-marquee-speed="{{ marquee_speed }}" class="top-bar__message">
                     <div data-ticker-scale class="ticker--unloaded top-bar__scale">
                         <div data-ticker-text class="top-bar__text">
-                            <div class="top-bar__ticker">                            
-                                <span class="cart__message__default{{ is_default_message_hidden }}" data-message-default>Upto 50% OFF</span>
+                                <div class="top-bar__ticker">                            
+                                    <span class="cart__message__default{{ is_default_message_hidden }}" data-message-default>{{ offer_text }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
     </div>
-</div>
+{% endif %}

@@ -6,6 +6,7 @@
   assign image_size = section.settings.image_size
   assign image_shape = section.settings.image_shape
   assign offer_bg_image = section.settings.great_offer_image
+  assign offer_mobile_bg_image = section.settings.great_mobile_offer_image
   assign columns = section.settings.columns
   assign columns_small = columns | at_most: 4
   assign columns_mobile = section.settings.columns_mobile | plus: 0 | at_least: 1
@@ -110,9 +111,11 @@
       --image-size: {{ image_size | append: '%' }};
     {%- endif -%}
   }
-  {%- if offer_bg_image != blank -%}
+  
+  {%- if offer_mobile_bg_image != blank -%}
     .great_offer_timer_inner{
-      background-image: url({{ offer_bg_image | img_url: '2048x' }});
+      background-image: url({{ offer_mobile_bg_image | img_url: '1024x' }});
+      background-size: cover;
     }
   {%- endif -%}
 
@@ -122,6 +125,12 @@
 
   @media screen and (min-width: 1024px) {
     #ListCollections--{{ section.id }} { --grid: repeat({{ columns }}, minmax(0, 1fr)); }
+    {%- if offer_bg_image != blank -%}
+      .great_offer_timer_inner{
+        background-image: url({{ offer_bg_image | img_url: '2048x' }});
+        background-size: 100%;
+      }
+    {%- endif -%}
   }
 
   @media screen and (min-width: 480px) and (max-width: 1023px) {

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Poppins:wght@400;500;600&family=Yeseva+One&display=swap');
 
 /*shipping flex section css starts here*/
 .shipping-flex .offer-block {
@@ -6,7 +6,7 @@
     justify-content: space-around;
     text-align: center;
     background: #FE6D6D;
-    padding-top: 25px;
+    padding: 25px 0;
 }
 
 .shipping-flex .offer-block .offer-paragraph {
@@ -34,7 +34,9 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 30px;
     text-align: center;
+    border-top: 1px solid #FE6D6D;
     margin: 0 70px 60px;
+    padding-top: 25px;    
 }
 
 .sale-section .sale-block .sale-icon {
@@ -81,72 +83,94 @@
     overflow: visible;    
 }
 
-#salesday #PageContainer{
+#salesday #PageContainer, #sales #PageContainer{
     overflow: visible;
 }
-#salesday .featured-collection__top-inner {
+#salesday .featured-collection__top-inner, #sales .featured-collection__top-inner {
     position: sticky;
     top: 60px;
 }
 
-#salesday .navlink--toplevel{
+#salesday .navlink--toplevel, #sales .navlink--toplevel{
     color: #000000;
 }
 
-#salesday .navlink--icon svg{
+#salesday .navlink--icon svg, #sales .navlink--icon svg{
     fill: #000000;
 }
 
-#salesday .collection-marbles .section__header .section__heading{
+#salesday .collection-marbles .section__header .section__heading,
+#sales .collection-marbles .section__header .section__heading{
     font-size: 26px;
     color: #FE6D6D;
 }
-#salesday .collection-marbles .list-collections-section{
+#salesday .collection-marbles .list-collections-section,
+#sales .collection-marbles .list-collections-section{
     padding-top: 0;
 }
-#salesday .section__heading{
+#salesday .section__heading, 
+#sales .section__heading{
     font-family: Yeseva One;
 }
 
-#salesday .list-collections__item .list-collections__item__outer .list-collections__item__content{
+#salesday .list-collections__item .list-collections__item__outer .list-collections__item__content,
+#sales .list-collections__item .list-collections__item__outer .list-collections__item__content{
     font-family: 'Poppins', sans-serif;
-    font-weight: 500;
 }
 
-#salesday .main_sec_heading{
+#salesday .main_sec_heading, 
+#sales .main_sec_heading{
     margin-bottom: 40px;
 }
 
-#salesday .main_sec_heading .section__header{
+#salesday .main_sec_heading .section__header,
+#sales .main_sec_heading .section__header{
     margin-bottom: 0;   
 }
-#salesday .main_sec_heading .sub_heading{
+#salesday .main_sec_heading .sub_heading,
+#sales .main_sec_heading .sub_heading{
     font-family: 'Poppins';
 }
 #salesday .featured-collection--split-left .featured-collection__top-inner .section__header .section__heading, 
-#salesday .featured-collection--split-right .featured-collection__top-inner .section__header .section__heading{
+#salesday .featured-collection--split-right .featured-collection__top-inner .section__header .section__heading,
+#sales .featured-collection--split-left .featured-collection__top-inner .section__header .section__heading, 
+#sales .featured-collection--split-right .featured-collection__top-inner .section__header .section__heading{
     color: #000000;
-    font-size: 28px;
-    margin-bottom: 0;
+    font-size: 60px;
+    margin: 10px 0;
+    line-height: 1;
 }
-#salesday .deal-information{
+#salesday .deal-information,
+#sales .deal-information{
     position: relative;
 }
-#salesday .deal-information .text{
-    margin-left: 40px;
+#salesday .deal-information{
+    margin-bottom: 10px;
 }
-#salesday .tab-collections{
+#salesday .deal-information .text,
+#sales .deal-information .text{
+    margin-left: 40px;
+    color: #FE6D6D;
+    font-weight: 600;
+    font-size: 22px;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+}
+#salesday .tab-collections,
+#sales .tab-collections{
     margin-top: 30px;
 }
-#salesday .tab-collections .section__header .section__heading{
+#salesday .tab-collections .section__header .section__heading,
+#sales .tab-collections .section__header .section__heading{
     font-family: Yeseva One;
     font-style: normal;
-    font-weight: 600;
-    font-size: 60px;
-    line-height: 69px;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1;    
     color: #fe6d6d;
 }
-#salesday .deal-information .text::before{
+#salesday .deal-information .text::before,
+#sales .deal-information .text::before{
     position: absolute;
     content: "";
     background: #FFCF54;
@@ -173,19 +197,36 @@
     padding: 20px 0;
     text-align: center;
     color: #fff;
-    font-size: 22px;
+    font-size: 18px;
     font-family: Yeseva One;
 }
 .collection-marbles .great_offer_timer .great_offer_timer_inner .offer_text_heading .font_main_timer{
-    font-size: 40px;
+    font-size: 24px;
 }
 .collection-marbles .great_offer_timer .great_offer_timer_inner .offer_text_heading .font_main_timer .font_format{
-    font-size: 24px;
+    font-size: 18px;
 }
 .featured-collection__inner .featured-collection__top {
     display: block;
 }
-#salesday .collection-marbles .great_offer_timer{
+#salesday .featured-collection__inner .product-grid-item .product-grid-item__info .product-grid-item__price{
+    flex-direction: row;
+    font-weight: 600;
+}
+#salesday .featured-collection__inner .product-grid-item .product-grid-item__info .product-grid-item__price s{
+    font-weight: 400;
+}
+#salesday .featured-collection__inner .product-grid-item .product-grid-item__info .product-grid-item__price .product-grid-item__price__new{
+    margin-left: 5px;
+    font-weight: 600;
+}
+
+#salesday .collection-marbles .great_offer_timer .great_offer_timer_inner,
+#sales .collection-marbles .great_offer_timer .great_offer_timer_inner{
+    background-position: center;
+}
+#salesday .collection-marbles .great_offer_timer,
+#sales .collection-marbles .great_offer_timer{
     margin-bottom: 30px;
 }
 
@@ -217,12 +258,50 @@
     margin-right: 5px;
 }
 
+#salesday .list-collections__item__outer .list-collections__item__content .list-collections__item__title{
+    font-weight: normal;
+    font-family: 'EB Garamond', serif;
+}
+#salesday .list-collections__item__outer .list-collections__item__content .offer_title{
+    font-weight: 600;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+#salesday .split-images-section .split-images__content .split-images__content-inner .slide__text{
+    font-size: 16px;
+}
+#salesday .split-images-section .split-images__content .split-images__content-inner .slide__buttons .slide__btn{
+    width: 60%;
+}
+
+#salesday .split-images-section .split-images__content .split-images__content-inner{
+    transform: translateY(15%);
+}
+#salesday .featured-collection--split-left .top-bar .top-bar__slide .top-bar__text span,
+#salesday .featured-collection--split-right .top-bar .top-bar__slide .top-bar__text span{
+    font-family: 'Yeseva One';
+}
+
+
+
+@media(max-width: 1199px){
+    #salesday .tab-collections .tab-collections-wrapper .tabs__contents .tab__content .product-grid-item .tab-collections__featured-item .tab-collections__featured-image{
+        background-position: 10%;
+    }
+}
+
 @media (min-width:320px) and (max-width: 1023px) {
     .shipping-flex .offer-block {
         flex-direction: column;
         row-gap: 30px;
     }
-
+    #salesday .list-collections__item__outer .list-collections__item__content{
+        padding: 0;
+    }
+    #salesday .list-collections__item__outer .list-collections__item__content .list-collections__item__title{
+        font-size: 16px;
+    }
     .shipping-flex .offer-block .offer-paragraph {
         font-size: 20px;
     }
@@ -230,10 +309,14 @@
     .shipping-flex .offer-block .offer-subtext {
         font-size: 24px;
     }    
+    #salesday .featured-collection--split-left .top-bar .top-bar__slide,
+    #salesday .featured-collection--split-right .top-bar .top-bar__slide{
+        padding: 25px;
+    }
 
     .sale-section .sale-block {
         grid-template-columns: 1fr;
-        margin: 60px 0 !important;
+        margin: 0px 0 40px !important;
         row-gap: 30px;
     }
 
@@ -267,6 +350,10 @@
     #salesday .featured-collection__inner--splitright .featured-collection__top {
         grid-area: column-right;
     }
+    #salesday .split-images-section .split-images__content .split-images__content-inner .slide__text{           
+        width: 65%;
+        margin: 0 auto 10px;
+    }
 }
 @media (min-width:768px) and (max-width: 1200px) {
     .sale-section .sale-block {
@@ -285,6 +372,9 @@
     }   
 }
 @media screen and (min-width: 1200px) {
+    .sale-section .sale-block {
+        padding-top: 50px;
+    }
     #salesday .collection-marbles .section__header .section__heading{
         font-size: 60px !important;        
     }
@@ -292,7 +382,7 @@
     .featured-collection--split-right .featured-collection__top-inner .section__header .section__heading{
         font-size: 80px !important;
         width: 70%;
-        margin-bottom: inherit !important;
+        margin-bottom: 0;
     }
     .countdown-timer span {
         font-size: 46px;
@@ -300,6 +390,35 @@
     .collection-marbles .great_offer_timer{
         margin-bottom: 70px;
     }
+    .collection-marbles .great_offer_timer .great_offer_timer_inner .offer_text_heading p{     
+        font-size: 22px;        
+    }
+    .collection-marbles .great_offer_timer .great_offer_timer_inner .offer_text_heading .font_main_timer{
+        font-size: 40px;
+    }
+    .collection-marbles .great_offer_timer .great_offer_timer_inner .offer_text_heading .font_main_timer .font_format{
+        font-size: 24px;
+    }
+    #salesday .tab-collections .section__header .section__heading{
+        font-size: 60px;
+        line-height: 69px;
+    }
+    #salesday .list-collections__item__outer .list-collections__item__content .offer_title{
+        font-size: 20px;
+    }
+    #salesday .image-accordion__inner .image-accordion__image__wrapper .image-accordion__image__container img{
+        object-fit: inherit;
+    }
+    #salesday .split-images-section .split-images__content .split-images__content-inner .slide__buttons .slide__btn{
+        width: 100%;
+    }
+    #salesday .split-images-section .split-images__content .split-images__content-inner{
+        transform: translateY(30%);
+    }
+    .shipping-flex .offer-block{
+        padding: 50px 0;
+    }
+    
 }
 
 @media screen and (min-width: 1440px) {

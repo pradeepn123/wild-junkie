@@ -73,6 +73,11 @@
   #FeaturedCollection--{{ section.id }}.featured-collection--split-right .featured-collection__inner {
     margin: 30px 0;
   }
+  #FeaturedCollection--{{ section.id }}.featured-collection--split-right .featured-collection__inner{
+    margin: 0;
+    padding: 40px 0;
+    border-top: 1px solid #FE6D6D;
+  }
 
   {%- if bg_color != 'rgba(0,0,0,0)' and bg_color != '' -%}
     #FeaturedCollection--{{ section.id }}{
@@ -103,6 +108,12 @@
   }
 
   @media screen and (max-width: 479px) {
+    #FeaturedCollection--{{ section.id }}.featured-collection--carousel .section__heading {
+      font-size: 26px;
+      color: #FE6D6D;
+      width: 82%;
+      margin: 0 auto;
+    }
     #FeaturedCollection--{{ section.id }}{
       --grid-mobile: repeat({{ columns_mobile }}, minmax(0, 1fr));
 
@@ -274,15 +285,17 @@
 {%- endcapture -%}
 
 {%- capture collection_bottom -%}
-  <div
-    class="featured-collection__bottom"
-    {% if animations_enabled %}
-    data-aos="fade-up"
-    data-aos-delay="{{ columns | plus: 1 | times: 150 }}"
-    data-aos-anchor="{{ animation_anchor }}"
-    {% endif %}>
-    {{- collection_button -}}
-  </div>
+  {% if collection_bottom %}
+    <div
+      class="featured-collection__bottom"
+      {% if animations_enabled %}
+      data-aos="fade-up"
+      data-aos-delay="{{ columns | plus: 1 | times: 150 }}"
+      data-aos-anchor="{{ animation_anchor }}"
+      {% endif %}>
+      {{- collection_button -}}
+    </div>
+  {% endif %}
 {%- endcapture -%}
 
 <section
@@ -534,6 +547,11 @@
           {
             "type": "header",
             "content": "Marquee"
+          },
+          {
+            "type": "text",
+            "id": "offer_text",
+            "label": "Offer Content"
           },
           {
             "type": "select",
