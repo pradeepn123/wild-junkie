@@ -947,7 +947,7 @@
             {%- assign animation_delay = animation_delay | plus: 100 -%}
           {% endif %}>
           {% render 'swym-product-view', product: product %}
-          <button data-swaction="addToWishlist" data-product-id="{{product.id | json}}">
+          <button data-swaction="addToWishlist" data-product-id="{{product.id | json}}" data-swat-btn>
             
             <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_444_10)">
@@ -2254,14 +2254,11 @@
   <script type="application/json" id="ModelJson-{{ unique }}">{{ product.media | where: 'media_type', 'model' | json }}</script>
   <script>
     function swymCallbackFn(swat) {
-      // your API calls go here 
-      // detect variant change event
-      // Based on your theme code - this event detection may be different - this is only a SAMPLE implementation    document.addEventListener("variantChange", function(event) {
-          var variantId = event.detail.variant.id; /* the current selected variant id */
-          window.triggerSwymVariantEvent(variantId);
-          swat.initializeActionButtons(".product-page-wishlist-grid");/* parent container of the where the button is rendered */
-      });
+      var variantId = event.detail.variant.id; /* the current selected variant id */
+      window.triggerSwymVariantEvent(variantId);
+      swat.initializeActionButtons(".product-page-wishlist-grid");
     }
+
     if (!window.SwymCallbacks) {
         window.SwymCallbacks = [];
     }
