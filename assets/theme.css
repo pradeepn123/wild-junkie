@@ -17236,8 +17236,17 @@ body.notification-visible .popup.popup--visible {
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
-  margin-right: calc(var(--form-left) * -1);
 }
+
+.product__submit__buttons select {
+  width: 100%;
+  text-align: center;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
 @media only screen and (max-width: 479px) {
   .product__submit__buttons {
     display: grid;
@@ -17246,13 +17255,13 @@ body.notification-visible .popup.popup--visible {
     width: 100%;
   }
 }
+
 .product__submit__buttons .shopify-payment-button__button--hidden {
   display: none;
 }
 
 .product__submit__item {
   min-width: calc(50% - var(--form-left));
-  margin-right: var(--form-left);
   flex: 1;
 }
 @media only screen and (max-width: 479px) {

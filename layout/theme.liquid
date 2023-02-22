@@ -317,87 +317,75 @@
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
 
   {{ content_for_header }}
-{% render 'okendo-reviews-json-ld' %}
-{% capture boostersnippet %}{% include "booster-apps-common" %}{% endcapture %}{% unless boostersnippet contains "Liquid error" %}{{ boostersnippet }}{% endunless %}
-<!--AZEXO_Header_Scripts--> {% include 'azexo-header-scripts' %} <!--End_AZEXO_Header_Scripts--><!--AZEXO_Version_85--></head>
+  {% render 'okendo-reviews-json-ld' %}
+  {% capture boostersnippet %}{% include "booster-apps-common" %}{% endcapture %}{% unless boostersnippet contains "Liquid error" %}{{ boostersnippet }}{% endunless %}
+  <!--AZEXO_Header_Scripts--> {% include 'azexo-header-scripts' %} <!--End_AZEXO_Header_Scripts--><!--AZEXO_Version_85--></head>
 
-{%- capture body_class -%}
-template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}
-{% if customer %} customer-logged-in{% endif %}
-{% if settings.show_rounded_corners %} body--rounded-corners{% endif %}
-{% if settings.show_buttons_animation %} show-buttons-animation{% endif %}
-{% if settings.animations_enabled %} aos-initialized{% endif %}
-  no-outline
-{%- endcapture -%}
+  {%- capture body_class -%}
+    template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}
+    {% if customer %} customer-logged-in{% endif %}
+    {% if settings.show_rounded_corners %} body--rounded-corners{% endif %}
+    {% if settings.show_buttons_animation %} show-buttons-animation{% endif %}
+    {% if settings.animations_enabled %} aos-initialized{% endif %}
+      no-outline
+  {%- endcapture -%}
 
-{%- liquid
-  capture root
-    if routes.root_url == '/'
-      echo routes.root_url
-    else
-      echo routes.root_url | append: '/'
-    endif
-  endcapture
+  {%- liquid
+    capture root
+      if routes.root_url == '/'
+        echo routes.root_url
+      else
+        echo routes.root_url | append: '/'
+      endif
+    endcapture
+    assign challenge = 'challenge' | prepend: root
+  -%}
 
-  assign challenge = 'challenge' | prepend: root
--%}
+  <body
+    id="{{ page_title | handle }}"
+    class="{{ body_class | strip_newlines | strip }}"
+    data-animations="{{ settings.animations_enabled }}"
+  >
+    {%- render 'loading' -%}
+    <a class="in-page-link skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+    {%- section 'announcement-bar' -%}
+    {%- section 'header' -%}
 
-<body id="{{ page_title | handle }}" class="{{ body_class | strip_newlines | strip }}" data-animations="{{ settings.animations_enabled }}">
-  {%- render 'loading' -%}
+    <div id="PageContainer" data-page-container>
+      <main id="MainContent" class="main-content" data-main>
+        {{ content_for_layout }}
+      </main>
+      {%- section 'footer' -%}
+    </div>
 
-  <a class="in-page-link skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+    {% comment %} Cart Templates {% endcomment %}
+    {%- render 'cart-templates' -%}
 
-  {%- section 'announcement-bar' -%}
-  {%- section 'header' -%}
+    {%- comment -%} Photoswipe container {%- endcomment -%}
+    {%- render 'zoom-pswp' -%}
 
-  <div id="PageContainer" data-page-container>
-    <main id="MainContent" class="main-content" data-main>
-      {{ content_for_layout }}
-    </main>
+    {%- comment -%} Swatches Template {%- endcomment -%}
+	 {%- render 'template-swatch' -%}
 
-    {%- section 'footer' -%}
-  </div>
+    {%- unless request.path == challenge -%}
+      {%- section 'popup' -%}
+    {%- endunless -%}
 
-  {% comment %} Cart Templates {% endcomment %}
-  {%- render 'cart-templates' -%}
+    {%- if settings.show_scroll_to_top -%}
+      <button type="button" class="btn btn--primary btn--scroll-top" data-scroll-top-button aria-label="{{ 'general.accessibility.scroll_to_top' | t }}">
+        {% render 'icon-arrow' %}
+      </button>
+    {%- endif -%}
 
-  {%- comment -%} Photoswipe container {%- endcomment -%}
-  {%- render 'zoom-pswp' -%}
+	 {{ shop.metafields.loox["global_html_body"] }}
+    <!--Gorgias Chat Widget Start--><script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=23034"></script><!--Gorgias Chat Widget End-->
+    <!--AZEXO_Footer_Scripts--> {% include 'azexo-footer-scripts' %} <!--End_AZEXO_Footer_Scripts--> {% include 'smile-initializer' %}
+    {% include 'navidium-widget-v4' %}
 
-  {%- comment -%} Swatches Template {%- endcomment -%}
-	{%- render 'template-swatch' -%}
-
-  {%- unless request.path == challenge -%}
-    {%- section 'popup' -%}
-  {%- endunless -%}
-
-  {%- if settings.show_scroll_to_top -%}
-    <button type="button" class="btn btn--primary btn--scroll-top" data-scroll-top-button aria-label="{{ 'general.accessibility.scroll_to_top' | t }}">
-      {% render 'icon-arrow' %}
-    </button>
-  {%- endif -%}
-
-	{{ shop.metafields.loox["global_html_body"] }}
- <!--Gorgias Chat Widget Start--><script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=23034"></script><!--Gorgias Chat Widget End-->
-<!--AZEXO_Footer_Scripts--> {% include 'azexo-footer-scripts' %} <!--End_AZEXO_Footer_Scripts--> {% include 'smile-initializer' %}
-{% include 'navidium-widget-v4' %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% include 'swymSnippet' %}
-
-</body>
+    {% render 'swymSnippet' %}
+    {% unless template.name == "product" %}
+      {% section 'sezzle-widget' %}
+      {% render 'swym-theme-view' %}
+    {% endunless %}
+  </body>
 </html>
-
-{% section 'sezzle-widget' %}
