@@ -928,7 +928,7 @@
       </div>
     </div>
     {%- if show_payment_button -%}
-      <div class="product__submit__buttons">    
+      <div class="product__submit__buttons show_in_flex__mobile" style="width: 100%;">     
         <div class="product__submit__item{% if sold_out %} hidden{% endif %}"
           data-buy-it-now
           {% if animations_enabled %}
@@ -938,6 +938,31 @@
             {%- assign animation_delay = animation_delay | plus: 100 -%}
           {% endif %}>
           {{ form | payment_button }}
+        </div>
+        <div class="swym-button-container"  id="swym-button-container"
+          {% if animations_enabled %}
+            data-aos="fade-up"
+            data-aos-anchor="{{ animation_anchor }}"
+            data-aos-delay="{{ animation_delay }}"
+            {%- assign animation_delay = animation_delay | plus: 100 -%}
+          {% endif %}>
+          {% render 'swym-product-view', product: product %}
+          <button data-swaction="addToWishlist" data-product-id="{{product.id | json}}" data-swat-btn>
+            
+            <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_444_10)">
+                <path d="M15.624 13.906C14.4295 15.1746 12.9094 16.6872 11.0613 18.4452C11.0606 18.4458 11.06 18.4464 11.0594 18.447L10.5 18.9717L9.94065 18.447C9.94001 18.4464 9.93938 18.4458 9.93875 18.4452C8.09055 16.6872 6.57051 15.1746 5.37604 13.906C4.18314 12.6392 3.24506 11.5204 2.55383 10.5478C1.86107 9.57304 1.39838 8.72191 1.14041 7.99061C0.878862 7.24917 0.75 6.50577 0.75 5.75716C0.75 4.29858 1.21457 3.12081 2.12861 2.17073C3.04282 1.22047 4.15436 0.75 5.5125 0.75C6.38048 0.75 7.1737 0.961964 7.90624 1.38585C8.64414 1.81284 9.30385 2.43855 9.87955 3.28629L10.4704 4.15634L11.1005 3.31427C11.791 2.3915 12.4956 1.74891 13.2047 1.34905C13.9146 0.948659 14.6715 0.75 15.4875 0.75C16.8456 0.75 17.9572 1.22047 18.8714 2.17073C19.7854 3.12081 20.25 4.29858 20.25 5.75716C20.25 6.50577 20.1211 7.24917 19.8596 7.99061C19.6016 8.72191 19.1389 9.57304 18.4462 10.5478C17.7549 11.5204 16.8169 12.6392 15.624 13.906Z" fill="#FE6D6D" stroke="#FE6D6D" stroke-width="1.5"/>
+                </g>
+              <defs>
+                <clipPath id="clip0_444_10">
+                  <rect width="21" height="20" fill="white"/>
+                </clipPath>
+              </defs>
+            </svg>
+
+
+            <p>Wishlist</p>
+          </button>
         </div>
       </div>
     {%- endif -%}
@@ -1076,7 +1101,6 @@
                   {% if forloop.index == 1 %}checked{% endif %}>
                 <label for="option-{{ value }}-0-{{ section.id }}" class="radio__label">
                   <span>{{ value | escape_once }} </span>
-                  {% comment %} sahrudh {% endcomment %}
                 </label>
               </span>
             {%- endfor -%}
@@ -1261,7 +1285,7 @@
                 {% unless product.tags contains "final sale" %}
                   <div class="shipping__and__return__content">
                     <span class="shipping__and__return__icons">{%render 'returns-svg' %}</span>
-                    <span class="shipping__and__return__description">Free hassle free Return within <strong>14 days of delivery!</strong></span>
+                    <span class="shipping__and__return__description">Hassle Free Returns within <strong>14 days of delivery!</strong></span>
                   </div>
                 {% endunless %}
               </div>
@@ -2228,4 +2252,17 @@
 
   <script type="application/json" id="ProductJson-{{ unique }}" data-product-json>{{ product | json }}</script>
   <script type="application/json" id="ModelJson-{{ unique }}">{{ product.media | where: 'media_type', 'model' | json }}</script>
+  <script>
+    function swymCallbackFn(swat) {
+      var variantId = event.detail.variant.id; /* the current selected variant id */
+      window.triggerSwymVariantEvent(variantId);
+      swat.initializeActionButtons(".product-page-wishlist-grid");
+    }
+
+    if (!window.SwymCallbacks) {
+        window.SwymCallbacks = [];
+    }
+    window.SwymCallbacks.push(swymCallbackFn);
+    /* Called when swym is loaded! */
+</script>
 </div>
