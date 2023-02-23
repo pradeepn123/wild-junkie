@@ -1621,3 +1621,8 @@ i.icon-swym-wishlist:after {
     -webkit-padding-start: 10px;
     -webkit-padding-end: 10px;
 }
+
+.cart-notify .cart-drawer__body .cart__item .cart__item__image,
+.cart-notify .cart-drawer__body .cart__item .cart__item__image a {
+    height: 100%;
+}

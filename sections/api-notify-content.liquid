@@ -35,7 +35,7 @@
                     <div class="cart__item__image">
                         <a href="{{ product.url }}">
                             {%- liquid
-                                assign image = product.featured_image
+                                assign image = product.selected_or_first_available_variant.featured_image | default: product.featured_image
                                 assign image_url_pattern = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
                                 assign image_widths = "[90,160,180,270,320]"
                             -%}
