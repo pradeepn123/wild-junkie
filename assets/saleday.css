@@ -299,12 +299,34 @@
     color: #000000;
 }
 
+#salesday .offer_image_banner .offer_banner_inner {
+    position: relative;
+}
+#salesday .offer_image_banner .offer_banner_inner img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.shipping-flex, .offer_image_banner {
+    margin: 20px 0;
+}
 
 
 @media(max-width: 1199px){
     #salesday .tab-collections .tab-collections-wrapper .tabs__contents .tab__content .product-grid-item .tab-collections__featured-item .tab-collections__featured-image,
     #sales .tab-collections .tab-collections-wrapper .tabs__contents .tab__content .product-grid-item .tab-collections__featured-item .tab-collections__featured-image{
         background-position: 10%;
+    }
+    #salesday .offer_image_banner .offer_banner_inner.desktop-image{
+        display: none;
+    }
+    #salesday .offer_image_banner .offer_banner_inner.mobile-image{
+        display: block;
     }
 }
 
@@ -398,6 +420,12 @@
     .sale-section .sale-block {
         padding-top: 50px;
     }
+    #salesday .offer_image_banner .offer_banner_inner.desktop-image{
+        display: block;
+    }
+    #salesday .offer_image_banner .offer_banner_inner.mobile-image{
+        display: none;
+    }
     #salesday .collection-marbles .section__header .section__heading,
     #sales .collection-marbles .section__header .section__heading{
         font-size: 60px !important;        
@@ -443,7 +471,7 @@
     #salesday .split-images-section .split-images__content .split-images__content-inner,
     #sales .split-images-section .split-images__content .split-images__content-inner{
         transform: translateY(30%);
-    }
+    }   
     .shipping-flex .offer-block{
         padding: 50px 0;
     }
