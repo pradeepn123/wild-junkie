@@ -740,6 +740,11 @@
     .product__page__upsell .product-upsell__holder .product-upsell .product-upsell__image{
         height: auto;
     }
+
+    .collection-section .product-grid-item--title-wrapper .swym-button,
+    .featured-collection .product-grid-item--title-wrapper .swym-button{
+        padding-top: 8%;
+    }
 }
 
 /* Rewards Program CSS */
@@ -1600,4 +1605,19 @@ i.icon-swym-wishlist:after {
 
 .swym-button-container .swym-added.swym-add-to-wishlist {
     background-color: #FFF !important;
+}
+
+/* Swym Button for Collections in Homepage and Collections Page */
+.collection-section .product-grid-item--title-wrapper,
+.featured-collection .product-grid-item--title-wrapper{
+    display: grid;
+    grid-template-columns: 75% 25%;
+    align-items: flex-start;
+}
+
+.collection-section .product-grid-item--title-wrapper button,
+.featured-collection .product-grid-item--title-wrapper button{
+    justify-self: flex-end;
+    -webkit-padding-start: 10px;
+    -webkit-padding-end: 10px;
 }
