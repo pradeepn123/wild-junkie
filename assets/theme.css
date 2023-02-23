@@ -129,6 +129,10 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
+.rating__star * {
+  color: #FE6D6D;
+}
+
 input,
 textarea,
 select,

@@ -1,0 +1,132 @@
+{%- liquid
+    assign section_width = section.settings.width
+-%}
+
+{% style %}
+    #offer-image-{{ section.id }} .offer_banner_inner.desktop-image{
+        padding-top: {{ section.settings.set_image_height }}%;
+    }
+    #offer-image-{{ section.id }} .offer_banner_inner.desktop-image img{
+        object-fit: {{ section.settings.fit_image_desktop }};
+    }
+    #offer-image-{{ section.id }} .offer_banner_inner.mobile-image{
+        padding-top: {{ section.settings.set_mobile_image_height }}%;
+    }
+    #offer-image-{{ section.id }} .offer_banner_inner.mobile-image img{
+        object-fit: {{ section.settings.fit_image_mobile }};
+    }
+{% endstyle %}
+
+<div class="offer_image_banner" id="offer-image-{{ section.id }}">
+    <div class="{{ section_width }}">
+        <div class="offer_banner_wrapper">
+            {% if section.settings.image != blank %}
+                <div class="offer_banner_inner desktop-image">
+                    <img src="{{ section.settings.image | img_url: 'master' }}" alt="">
+                </div>
+            {% endif %}
+            {% if section.settings.mobile_image != blank %}
+                <div class="offer_banner_inner mobile-image">
+                    <img src="{{ section.settings.mobile_image | img_url: 'master' }}" alt="">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+{% schema %}
+    {
+    "name": "Offer images",
+    "class": "shopify-offer-banner",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Layout"
+        },
+        {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "default": "wrapper--narrow",
+            "options": [
+                { "value": "wrapper--full-padded", "label": "Full width padded" },
+                { "value": "wrapper", "label": "Page width" },
+                { "value": "wrapper--narrow", "label": "Page width narrow" }
+            ]
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Choose Desktop Image"
+        },
+        {
+            "type": "range",
+            "id": "set_image_height",
+            "label": "Set image height",
+            "info": "Set image height",
+            "min": 10,
+            "max": 95,
+            "step": 1,
+            "unit": "%",
+            "default": 24
+        },
+        {
+            "type": "select",
+            "id": "fit_image_desktop",
+            "label": "Choose image fit to div",
+            "default": "contain",
+            "options": [
+                {
+                    "value": "contain",
+                    "label": "contain"
+                },
+                {
+                    "value": "cover",
+                    "label": "cover"
+                }
+            ]
+        },
+        {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Choose Mobile Image"
+        },
+        {
+            "type": "range",
+            "id": "set_mobile_image_height",
+            "label": "Set Mobile image height",
+            "info": "Set Mobile image height",
+            "min": 50,
+            "max": 140,
+            "step": 1,
+            "unit": "%",
+            "default": 100
+        },
+        {
+            "type": "select",
+            "id": "fit_image_mobile",
+            "label": "Choose image fit to div",
+            "default": "contain",
+            "options": [
+                {
+                    "value": "contain",
+                    "label": "contain"
+                },
+                {
+                    "value": "cover",
+                    "label": "cover"
+                }
+            ]
+        }
+    ],    
+    "presets": [
+      {
+        "name": "Offer images",
+        "category": "Offer Image"        
+      }
+    ]
+  }
+  {% endschema %}
+  

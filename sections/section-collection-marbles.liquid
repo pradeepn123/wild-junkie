@@ -70,6 +70,11 @@
         "unit": "%"
       },
       {
+        "type": "richtext",
+        "id": "sub_heading",
+        "label": "Sub Heading"
+      },
+      {
         "type": "checkbox",
         "id": "overlay_text",
         "label": "Overlay text",
@@ -151,6 +156,35 @@
         "unit": "px",
         "label": "Padding bottom",
         "default": 60
+      },
+      {
+        "type": "header",
+        "content": "Offer Section"
+      },
+      {
+        "type": "image_picker",
+        "id": "great_offer_image",
+        "label": "Choose Image for desktop"
+      },
+      {
+        "type": "image_picker",
+        "id": "great_mobile_offer_image",
+        "label": "Choose Image for mobile"
+      },
+      {
+        "type": "text",
+        "id": "offer_text",
+        "label": "Choose Heading"
+      },
+      {
+        "type": "text",
+        "id": "offer_date",
+        "label": "Offer End Date"
+      },
+      {
+        "type": "text",
+        "id": "offer_time",
+        "label": "Offer End Time"
       }
     ],
     "blocks": [
@@ -167,6 +201,12 @@
             "type": "image_picker",
             "id": "custom_collection_image",
             "label": "Image"
+          },
+          {
+            "type":"text",
+            "id":"custom_collection_text",
+            "label":"sub text",
+            "default":"Min 20% Off"
           },
           {
             "type": "header",

@@ -1,0 +1,57 @@
+{%- liquid 
+    assign bg_image = block.settings.bg_image
+    assign offer_text = block.settings.offer_text
+    assign message_spacing = block.settings.message_spacing | append: 'px'
+    assign text_size = block.settings.text_size | times: 0.01
+    assign padding = block.settings.padding | append: 'px'
+    assign animation_anchor = '#Marquee--' | append: block.id
+    assign animation_delay = 150
+    assign marquee_speed = block.settings.marquee_speed
+-%}
+<div id="Marquee--{{ block.id }}"
+    class="section-padding"
+    data-section-type="marquee"
+    data-section-id="{{ block.id }}"
+    data-announcement-wrapper
+    {% if settings.animations_enabled %}
+    data-aos="fade"
+    data-aos-anchor="{{ animation_anchor }}"
+    data-aos-delay="{{ animation_delay }}"
+    {% endif %}>
+    {%- style -%}
+    #Marquee--{{ block.id }} {
+        --PT: {{ block.settings.padding_top }}px;
+        --PB: {{ block.settings.padding_bottom }}px;
+    }
+    #Marquee--{{ block.id }} .top-bar {
+        --bg: {{ block.settings.bg_color | default: '#fafafa' }};
+        --text: {{ block.settings.color | default: '#333' }};
+        --adjust-body: calc(var(--FONT-ADJUST-BODY) * {{ text_size }});
+        --padding: {{ padding }};        
+
+        {%- if bg_image != blank -%}
+        background-image: url({{ bg_image | img_url: '2048x' }});
+        {%- endif -%}
+    }
+    #Marquee--{{ block.id }} .flickity-enabled .ticker--animated,
+    #Marquee--{{ block.id }} .top-bar__ticker { padding: 0 {{ message_spacing }}; }    
+    {%- endstyle -%}
+
+{% if offer_text != blank %}
+    <div class="top-bar">  
+        <div class="top-bar__slider">
+            <div class="top-bar__slide">
+                <div data-ticker-frame data-marquee-speed="{{ marquee_speed }}" class="top-bar__message">
+                    <div data-ticker-scale class="ticker--unloaded top-bar__scale">
+                        <div data-ticker-text class="top-bar__text">
+                                <div class="top-bar__ticker">                            
+                                    <span class="cart__message__default{{ is_default_message_hidden }}" data-message-default>{{ offer_text }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
