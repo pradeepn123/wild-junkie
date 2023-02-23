@@ -129,17 +129,24 @@
       "type": "section-collection",
       "settings": {
         "collection": "new-arrivals",
-        "title": "New Arrivals",
-        "text": "",
-        "text_alignment": "text-left",
-        "products_rows": 1,
         "products_layout": "grid",
-        "show_collection_button": true,
+        "number_of_products": 4,
+        "text_alignment": "text-left",
+        "title": "New Arrivals",
+        "heading_size": 100,
+        "text": "",
+        "text_size": 125,
+        "button_text": "",
         "button_style": "btn--text",
         "bg_color": "",
         "enable_slider_mobile": true,
+        "columns_mobile": "2",
+        "width": "wrapper",
         "padding_top": 60,
-        "padding_bottom": 80
+        "padding_bottom": 80,
+        "show_low_inventory_warning": false,
+        "offer_date": "",
+        "offer_time": ""
       }
     },
     "166451777374c087c9": {
@@ -551,17 +558,24 @@
       "type": "section-collection",
       "settings": {
         "collection": "best-sellers",
-        "title": "Best Sellers",
-        "text": "",
-        "text_alignment": "text-center",
-        "products_rows": 1,
         "products_layout": "grid",
-        "show_collection_button": true,
+        "number_of_products": 4,
+        "text_alignment": "text-center",
+        "title": "Best Sellers",
+        "heading_size": 300,
+        "text": "",
+        "text_size": 125,
+        "button_text": "",
         "button_style": "btn--primary btn--small",
         "bg_color": "",
         "enable_slider_mobile": true,
+        "columns_mobile": "2",
+        "width": "wrapper",
         "padding_top": 60,
-        "padding_bottom": 60
+        "padding_bottom": 60,
+        "show_low_inventory_warning": false,
+        "offer_date": "",
+        "offer_time": ""
       }
     },
     "5fca98a6-98cf-4db8-97a5-7b3874c55409": {
