@@ -459,6 +459,7 @@
           "type": "image",
           "settings": {
             "image": "shopify:\/\/shop_images\/deal_of_the_day_img.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/deal-of-the-day-banner-3_e2a75255-b153-4d47-bdee-fd779e294173.png",
             "bg_position": "center-center",
             "overlay_opacity": 0,
             "text_width": "normal",
