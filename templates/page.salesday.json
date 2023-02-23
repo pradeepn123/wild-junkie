@@ -251,8 +251,21 @@
         "padding_bottom": 60
       }
     },
+    "e09a43b7-750a-4732-bb21-c165d0c334f6": {
+      "type": "offer_image_section",
+      "settings": {
+        "width": "wrapper--full-padded",
+        "image": "shopify:\/\/shop_images\/50__off_onrewards.png",
+        "set_image_height": 24,
+        "fit_image_desktop": "contain",
+        "mobile_image": "shopify:\/\/shop_images\/50-off-banner.png",
+        "set_mobile_image_height": 120,
+        "fit_image_mobile": "contain"
+      }
+    },
     "69f3b0c9-5d2f-47ff-812b-0ec931dd9862": {
       "type": "section-image-accordions",
+      "disabled": true,
       "blocks": {
         "template--14560545767487__69f3b0c9-5d2f-47ff-812b-0ec931dd9862-16758655823820e416-0": {
           "type": "image",
@@ -452,39 +465,16 @@
       "settings": {
       }
     },
-    "ee32e786-b1e8-4fa2-ba0f-3feed471c429": {
-      "type": "section-image-accordions",
-      "blocks": {
-        "template--14560545767487__ee32e786-b1e8-4fa2-ba0f-3feed471c429-16758655823820e416-0": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/deal_of_the_day_img.jpg",
-            "image_mobile": "shopify:\/\/shop_images\/deal-of-the-day-banner-3_e2a75255-b153-4d47-bdee-fd779e294173.png",
-            "bg_position": "center-center",
-            "overlay_opacity": 0,
-            "text_width": "normal",
-            "text_position": "center",
-            "text_color": "text-light",
-            "title": "",
-            "text": "",
-            "btn_text": "",
-            "btn_link": "",
-            "btn_style": "btn--primary btn--small",
-            "btn_text_2": "",
-            "btn_link_2": "",
-            "btn_style_2": "btn--secondary btn--small"
-          }
-        }
-      },
-      "block_order": [
-        "template--14560545767487__ee32e786-b1e8-4fa2-ba0f-3feed471c429-16758655823820e416-0"
-      ],
+    "8b8f0a78-1b08-407e-8da6-646975fbf71d": {
+      "type": "offer_image_section",
       "settings": {
-        "accordion_height": "four-fifty-height",
-        "heading_size": 100,
         "width": "wrapper--full-padded",
-        "padding_top": 40,
-        "padding_bottom": 42
+        "image": "shopify:\/\/shop_images\/deal_of_the_day_img.jpg",
+        "set_image_height": 31,
+        "fit_image_desktop": "contain",
+        "mobile_image": "shopify:\/\/shop_images\/deal-of-the-day-banner-3_e2a75255-b153-4d47-bdee-fd779e294173.png",
+        "set_mobile_image_height": 125,
+        "fit_image_mobile": "cover"
       }
     },
     "a10ab72c-05b8-4573-a6cd-ddac12848911": {
@@ -602,13 +592,14 @@
     "e58f1bb7-6a84-4da5-946a-e7e9a889ccbb",
     "043de87a-fd00-42b9-99a9-180105f2240e",
     "faeb0e52-a8cc-452a-8117-7b6bd9f44dab",
+    "e09a43b7-750a-4732-bb21-c165d0c334f6",
     "69f3b0c9-5d2f-47ff-812b-0ec931dd9862",
     "33d004fd-9094-48d1-a82d-bfca4f0775fc",
     "ff4d61d6-208f-428f-b193-0fb7fd7e2d93",
     "18412512-18e9-42f3-a2a3-ca4264e7f155",
     "0d51cf37-2259-4f3f-a6be-3cfd1839f675",
     "7178f5cd-0161-4911-a0f8-4fb43f7c96c0",
-    "ee32e786-b1e8-4fa2-ba0f-3feed471c429",
+    "8b8f0a78-1b08-407e-8da6-646975fbf71d",
     "a10ab72c-05b8-4573-a6cd-ddac12848911",
     "1c041506-cb9e-4800-a57f-9494df44042f",
     "09831ecd-0ca1-4643-8e16-946db57cdef3"
