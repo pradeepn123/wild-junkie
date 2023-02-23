@@ -181,7 +181,7 @@
                           <div class="overlay"></div>
 
                           <div class="tab-collections__featured-item__content">
-                            {%- if tab_collection_products.size > 0 -%}
+                            {%- if tab_collection_products.size > 0 and block.settings.show_product_count -%}
                               <span class="tab-collections__products-counter subheading-text">{{ 'products.general.products_with_count' | t: count: tab_collection.all_products_count }}</span>
                             {%- endif -%}
 
@@ -372,6 +372,12 @@
           "type": "checkbox",
           "id": "show_image",
           "label": "Show image",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_product_count",
+          "label": "Show Product Count",
           "default": false
         },
         {

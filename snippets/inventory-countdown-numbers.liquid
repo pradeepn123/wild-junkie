@@ -76,11 +76,15 @@
 {%- endcapture -%}
 
 <div class="variant__countdown {{ show_remaining_class }}" data-remaining-max="{{ max_inventory }}" data-remaining-wrapper>
-  <span class="variant__countdown--in">{{ 'products.product.in_stock' | t }}</span>
-  {%- if hide_inventory_count -%}
-    <span class="variant__countdown--low">{{ 'products.product.remaining_no_count' | t }}</span>
+  {% if low_inventory_message %}
+    <span class="variant__countdown--low">{{ low_inventory_message }}</span>
   {%- else -%}
-    <span class="variant__countdown--low">{{ 'products.product.remaining_html' | t: inventory: inventory }}</span>
+    <span class="variant__countdown--in">{{ 'products.product.in_stock' | t }}</span>
+    {%- if hide_inventory_count -%}
+      <span class="variant__countdown--low">{{ 'products.product.remaining_no_count' | t }}</span>
+    {%- else -%}
+      <span class="variant__countdown--low">{{ 'products.product.remaining_html' | t: inventory: inventory }}</span>
+    {%- endif -%}
   {%- endif -%}
 
   <span class="variant__countdown--out">{{ 'products.product.out_of_stock' | t }}</span>

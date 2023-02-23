@@ -1,0 +1,53 @@
+<section class="shipping-flex">
+    <div class="offer-block">
+        {% for block in section.blocks %}
+        <div class="icon">
+           {{block.settings.icon}}
+           <p class="offer-paragraph">{{block.settings.paragraph}}</p>
+           <h3 class="offer-subtext">{{block.settings.sub-text}}</h3>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Shipping-offers",
+  "settings": [
+   
+],
+
+"blocks": [
+{
+  "type": "select",
+  "name": "select",
+  "settings": [
+    {
+      "type": "html",
+      "id": "icon",
+      "label": "icon"
+    },
+    
+    {
+      "type": "text",
+      "id": "paragraph",
+      "label": "paragraph"
+    },
+
+    {
+      "type": "text",
+      "id": "sub-text",
+      "label": "sub-text"
+    }
+]
+}
+],
+
+"presets": [
+{
+  "name": "Shipping-offers"
+}
+]
+
+}
+{% endschema %}

@@ -13304,6 +13304,114 @@ PaloAlto.updateHash = function(hash) {
   $('#' + hash).attr('tabindex', -1).focus();
 };
 
+PaloAlto.countdown = function (container) {
+    const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
+
+    const endTime = container.dataset.date + " " + container.dataset.time
+    const countDown = new Date(endTime).getTime(),
+    x = setInterval(function() {    
+        const now = new Date().getTime(),
+        distance = countDown - now;
+
+        const isBoxType = container.dataset.box == "true"
+        const days = Math.floor(distance / (day))
+        let hours = Math.floor((distance % (day)) / (hour))
+        let minutes = Math.floor((distance % (hour)) / (minute))
+        let seconds = Math.floor((distance % (minute)) / second)
+
+        container.innerHTML = ''
+        if (days > 0) {
+        	dayString = hours.toString().split('')
+        	if (dayString.length == 1) {
+        		dayString = ["0", days.toString()]
+        	}
+
+        	if (isBoxType) {
+        		container.innerHTML += `<div class="countdown-timer">
+    	    		<div>${dayString.map(str => `<span>${str}</span>`).join('')}</div>
+    	    		<div>Days</div>
+	        	</div><div class="seperator">:</div>`
+        	} else {
+        		container.innerHTML += dayString.join("") + `<span class='font_format'>d : </span>`
+        	}
+        }
+
+        if (hours > 0) {
+        	hoursString = hours.toString().split('')
+        	if (hoursString.length == 1) {
+        		hoursString = ["0", hours.toString()]
+        	}
+
+			if (isBoxType) {
+        		container.innerHTML += `<div class="countdown-timer">
+    	    		<div>${hoursString.map(str => `<span>${str}</span>`).join('')}</div>
+    	    		<div>Hours</div>
+		        </div><div class="seperator">:</div>`
+			} else {
+				container.innerHTML += hoursString.join("") + `<span class='font_format'>h : </span>`
+			}
+        } else {
+        	if (isBoxType) {
+        		container.innerHTML += `
+        			<div class="countdown-timer">
+        				<div><span>0</span><span>0</span></div>
+        				<div>Hours</div>
+        			</div>`
+        	} else {
+        		container.innerHTML += '00h : '
+        	}
+        }
+
+        if (minutes > 0) {
+        	minuteString = minutes.toString().split('')
+        	if (minuteString.length == 1) {
+        		minuteString = ["0", minutes.toString()]
+        	}
+        	if (isBoxType) {
+        		container.innerHTML += `<div class="countdown-timer">
+    	    		<div>${minuteString.map(str => `<span>${str}</span>`).join('')}</div>
+    	    		<div>Minutes</div>
+	        	</div><div class="seperator">:</div>`
+	        } else {
+	        	container.innerHTML += minuteString.join("") + `<span class='font_format'>m : </span>`
+	        }
+        } else {
+        	if (isBoxType) {
+        		container.innerHTML += `
+        			<div class="countdown-timer">
+        				<div><span>0</span><span>0</span></div>
+        				<div>Minutes</div>
+        			</div>`
+        	} else {
+        		container.innerHTML += '00m : '
+        	}
+        }
+
+        secondString = seconds.toString().split('')
+        if (secondString.length == 1) {
+        	secondString = ["0", seconds.toString()]
+        }
+        if (isBoxType) {
+	        container.innerHTML += `<div class="countdown-timer">
+    	    	<div>${secondString.map(str => `<span>${str}</span>`).join('')}</div>
+    	    	<div>Seconds</div>
+	    	   </div>`
+	    } else {
+	    	container.innerHTML += secondString.join("") + `<span class='font_format'>s</span>`
+	    }
+
+	    // clearInterval(x);
+
+        if (distance < 0) {
+        	document.querySelector("#" + container.dataset.targetContainer).remove()
+          	clearInterval(x);
+        }
+    }, 1)
+}
+
 const isTouchDevice = () => {
   return (('ontouchstart' in window) ||
     (navigator.maxTouchPoints > 0) ||
@@ -13351,4 +13459,11 @@ window.addEventListener('load', () => {
   setVarsOnResize();
   preventOverflow(document);
   loadingAnimation();
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+	const timer = document.querySelectorAll("[data-coundown-timer]")
+	timer.forEach(element => {
+		PaloAlto.countdown(element)
+	})
 });
