@@ -5,6 +5,8 @@
   assign height = section.settings.height
   assign image_size = section.settings.image_size
   assign image_shape = section.settings.image_shape
+  assign offer_bg_image = section.settings.great_offer_image
+  assign offer_mobile_bg_image = section.settings.great_mobile_offer_image
   assign columns = section.settings.columns
   assign columns_small = columns | at_most: 4
   assign columns_mobile = section.settings.columns_mobile | plus: 0 | at_least: 1
@@ -109,6 +111,13 @@
       --image-size: {{ image_size | append: '%' }};
     {%- endif -%}
   }
+  
+  {%- if offer_mobile_bg_image != blank -%}
+    .great_offer_timer_inner{
+      background-image: url({{ offer_mobile_bg_image | img_url: '1024x' }});
+      background-size: cover;
+    }
+  {%- endif -%}
 
   {%- if text_size != blank -%}
     #ListCollections--{{ section.id }} .list-collections__item__title { --adjust-heading: calc(var(--FONT-ADJUST-HEADING) * {{ adjust_heading }}); }
@@ -116,6 +125,12 @@
 
   @media screen and (min-width: 1024px) {
     #ListCollections--{{ section.id }} { --grid: repeat({{ columns }}, minmax(0, 1fr)); }
+    {%- if offer_bg_image != blank -%}
+      .great_offer_timer_inner{
+        background-image: url({{ offer_bg_image | img_url: '2048x' }});
+        background-size: 100%;
+      }
+    {%- endif -%}
   }
 
   @media screen and (min-width: 480px) and (max-width: 1023px) {
@@ -137,28 +152,46 @@
   data-section-id="{{ section.id }}"
   data-columns="{{ columns }}">
 
-  <div class="{{ section_width }}">
-    {%- if section.settings.title != blank -%}
-      <div class="section__header">
-        <h2 class="section__heading h2"
-          {% if animations_enabled %}
-            data-aos="fade-up"
-            data-aos-anchor="{{ animation_anchor }}"
-            data-aos-delay="{{ animation_delay }}"
-            {%- assign animation_delay = animation_delay | plus: 150 -%}
-          {% endif %}>{{ section.settings.title | escape }}</h2>
+  <div class="great_offer_timer">
+    <div class="great_offer_timer_inner">
+      <div class="offer_text_heading">
+        <p>
+          {{ section.settings.offer_text }}
+          <span class="font_main_timer" data-date="{{ section.settings.offer_date }}" data-time="{{ section.settings.offer_time }}" data-target-container="ListCollections--{{ section.id }}" data-coundown-timer ></span>
+        </p>
+      </div>
+    </div>
+  </div>
 
-        {%- if settings.show_spacer_lines -%}
-          <hr class="section__heading-line"
+  <div class="{{ section_width }}">
+    <div class="main_sec_heading">
+      {%- if section.settings.title != blank or section.settings.sub_heading != blank -%}
+        <div class="section__header">
+          <h2 class="section__heading h2"
             {% if animations_enabled %}
               data-aos="fade-up"
               data-aos-anchor="{{ animation_anchor }}"
               data-aos-delay="{{ animation_delay }}"
               {%- assign animation_delay = animation_delay | plus: 150 -%}
-            {% endif %}>
+            {% endif %}>{{ section.settings.title | escape }}</h2>
+
+          {%- if settings.show_spacer_lines -%}
+            <hr class="section__heading-line"
+              {% if animations_enabled %}
+                data-aos="fade-up"
+                data-aos-anchor="{{ animation_anchor }}"
+                data-aos-delay="{{ animation_delay }}"
+                {%- assign animation_delay = animation_delay | plus: 150 -%}
+              {% endif %}>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.sub_heading != blank-%}
+          <div class="section__heading sub_heading">
+            {{ section.settings.sub_heading }}
+          </div>
         {%- endif -%}
-      </div>
-    {%- endif -%}
+      {%- endif -%}
+    </div>
 
     <div class="{% if carousel %}carousel__container{% else %}grid__container{% endif %}">
       <div class="{% if carousel %}carousel{% else %}{{ grid_class }}{% endif %}{{ mobile_class }}"
@@ -175,7 +208,7 @@
               assign custom_collection_image = block.settings.custom_collection_image
               assign custom_bg_color = block.settings.bg_color
               assign has_color_overlay = block.settings.show_color
-
+              assign custom_collection_text = block.settings.custom_collection_text
               if carousel
                 assign animation_delay = forloop.index0
               else
@@ -186,7 +219,7 @@
                 cycle 1, 2, 3
               endcapture
 
-              render 'collection-grid-item', collection: collection, item_width: item_width, item_width_mobile: item_width_mobile, custom_collection_image: custom_collection_image, custom_bg_color: custom_bg_color, has_color_overlay: has_color_overlay, animation_delay: animation_delay, animation_anchor: animation_anchor, carousel: carousel, image_shape: image_shape, block_shopify_attributes: block.shopify_attributes, placeholder_index: placeholder_index, text_over_image: text_over_image, text_color: text_color, unique: unique
+              render 'collection-grid-item', collection: collection, item_width: item_width, item_width_mobile: item_width_mobile, custom_collection_image: custom_collection_image, custom_bg_color: custom_bg_color, has_color_overlay: has_color_overlay, animation_delay: animation_delay, animation_anchor: animation_anchor, carousel: carousel, image_shape: image_shape, block_shopify_attributes: block.shopify_attributes, placeholder_index: placeholder_index, text_over_image: text_over_image, text_color: text_color, unique: unique, custom_collection_text: custom_collection_text
             endfor
           else
             comment
