@@ -13324,7 +13324,7 @@ PaloAlto.countdown = function (container) {
 
         container.innerHTML = ''
         if (days > 0) {
-        	dayString = hours.toString().split('')
+        	dayString = days.toString().split('')
         	if (dayString.length == 1) {
         		dayString = ["0", days.toString()]
         	}
