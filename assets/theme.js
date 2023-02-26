@@ -11994,11 +11994,16 @@ PaloAlto.ProductGridItem = (function() {
     variantField: '[data-variant-quantity]',
     variantPickerBtn: '[data-variant-picker-btn]',
     variantPickerModal: '[data-grid-variant-picker]',
-    variantPickerCloseBtn: '[data-variant-picker-close]'
+    variantPickerCloseBtn: '[data-variant-picker-close]',
+    form: '[data-quickview-variant-form]',
+    addToCart: '[data-add-to-cart]',
+    addToCartText: '[data-add-to-cart-text]'
   }
 
   const classes = {
-    active: 'active'
+    active: 'active',
+    soldOut: 'sold-out',
+    unavailable: 'unavailable'
   }
 
   function ProductGridItem(container) {
@@ -12007,6 +12012,9 @@ PaloAlto.ProductGridItem = (function() {
     this.variantPickerBtn = this.container.querySelector(selectors.variantPickerBtn)
     this.variantPickerModal = this.container.querySelector(selectors.variantPickerModal)
     this.variantPickerCloseBtn = this.container.querySelector(selectors.variantPickerCloseBtn)
+    this.form = this.container.querySelector(selectors.form)
+    this.addToCartBtn = this.container.querySelector(selectors.addToCart)
+    this.addToCartText = this.container.querySelector(selectors.addToCartText)
     this.init()
   }
 
@@ -12019,6 +12027,9 @@ PaloAlto.ProductGridItem = (function() {
       }
       if (this.variantPickerBtn) {
         this.variantPickerBtn.addEventListener("click", this._openVariantPicker.bind(this))
+        this.productJSON = JSON.parse(this.container.querySelector(selectors.productJson).innerHTML)
+
+        this._disableWhenRequired()
       }
 
       if (this.variantPickerCloseBtn) {
@@ -12029,17 +12040,15 @@ PaloAlto.ProductGridItem = (function() {
     onSwatchChange: function() {
       const { target } = event
 
-      const productJSON = JSON.parse(this.container.querySelector(selectors.productJson).innerHTML)
-      const formVariantField = this.container.querySelector(selectors.variantField)
-
-      const selectedVariant = productJSON.variants.find((variant) => {
+      this.selectedVariant = this.productJSON.variants.find((variant) => {
         // only return true if every option matches our hypothetical selection
         if (variant[target.dataset.index] == target.value) {
           return variant
         }
       });
 
-      formVariantField.value = selectedVariant.id
+      this._disableWhenRequired()
+      this._updateVariantPicker()
     },
 
     _openVariantPicker: function() {
@@ -12060,8 +12069,30 @@ PaloAlto.ProductGridItem = (function() {
     },
 
     _updateVariantPicker: function() {
+      if (!this.selectedVariant) {
+        return
+      }
 
-    }
+      const formVariantField = this.container.querySelector(selectors.variantField)
+      formVariantField.value = this.selectedVariant.id
+    },
+
+    _disableWhenRequired: function(){
+      new PaloAlto.SelloutVariants(this.container, this.productJSON);
+
+      if (this.selectedVariant) {
+        if (this.selectedVariant.available) {
+          this.addToCartText.innerHTML = theme.strings.add_to_cart;
+          this.addToCartBtn.removeAttribute('disabled')
+        } else {
+          this.addToCartText.innerHTML = theme.strings.sold_out;
+          this.addToCartBtn.setAttribute('disabled', true)
+        }
+      } else {
+        this.addToCartText.innerHTML = theme.strings.unavailable;
+        this.addToCartBtn.setAttribute('disabled', true)
+      }
+    }    
 
   })
 

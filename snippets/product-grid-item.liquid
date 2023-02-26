@@ -377,6 +377,7 @@
                                             endif
                                         -%}
                                             {%- unless is_swatch_option -%}
+                                                {%- assign current_value = current_variant.options[forloop.index0] -%}
                                                 <div class="selector-wrapper selector-wrapper--boxes" data-option-position="{{ option.position }}">
                                                     <fieldset class="radio__fieldset radio__fieldset--{{ settings.color_swatches_product_style }}">
                                                         <legend class="radio__legend{% if shown_close_btn == false %} radio__legend--flex radio__legend--size-chart{% endif %}">
@@ -431,7 +432,15 @@
                                             data-variant-options
                                         {%- endunless -%}
                                     >
-                                        Add to bag
+                                        <span data-add-to-cart-text>
+                                            {%- if current_variant.available and product.tags contains '_preorder' -%}
+                                                {{ 'products.product.preorder' | t }}
+                                            {%- elsif current_variant.available -%}
+                                                ADD TO BAG
+                                            {%- else -%}
+                                                {{ sold_out_text }}
+                                            {%- endif -%}
+                                        </span>
                                         <div class="loader loader--line"><div class="loader-indeterminate"></div></div>
                                     </button>
                                 {%- endform -%}
@@ -598,7 +607,7 @@
                     {%- if is_swatch_option -%}
                         {%- assign current_value = current_variant.options[forloop.index0] -%}
                         <div
-                            class="selector-wrapper--grid collection-product-grid"
+                            class="selector-wrapper--grid collection-product-grid selector-variant-picker-option"
                             data-option-position="{{ option.position }}"
                         >
                             {%- for value in option.values -%}
@@ -617,10 +626,11 @@
                                         class="swatch__input"
                                         data-single-option-selector
                                         data-index="option{{ option.position }}"
-                                        name="{{product.id}}-options[{{ option.name | escape_once }}]"
+                                        name="options[{{ option.name | escape_once }}]"
                                         value="{{ value | escape_once }}"
                                         id="{{ input_id }}"
                                         data-swatch-variant-selector
+                                        form="{{unique_product_grid}}"
                                         data-variant-target-form="{{unique_product_grid}}-variant-form"
                                         {% if value == current_value %}checked{% endif %}
                                     >

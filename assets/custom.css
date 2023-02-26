@@ -1710,6 +1710,16 @@ i.icon-swym-wishlist:after {
     font-size: 16px;
 }
 
+
+.selector-variant-picker-option .swatch__button .swatch__label:after {
+    width: 24px;
+}
+
+.selector-variant-picker-option .swatch__button--circle.sold-out .swatch__input:checked ~ .swatch__label:after,
+.selector-variant-picker-option .swatch__button--circle.unavailable .swatch__input:checked ~ .swatch__label:after {
+    width: 24px;
+}
+
 .variant-picker__close .icon-close-small {
     display: block;
     width: 100%;
