@@ -1626,3 +1626,42 @@ i.icon-swym-wishlist:after {
 .cart-notify .cart-drawer__body .cart__item .cart__item__image a {
     height: 100%;
 }
+
+@media screen and (max-width: 600px) {
+    /* Put here hriks */
+}
+
+.collection-product-grid .swatch__button{
+    margin-right: 7px;
+}
+
+.collection-product-grid .swatch__button .swatch__label {
+    width: 25px;
+    height: 25px;
+}
+
+.collection-product-grid .swatch__button .swatch__label:before {
+    width: calc(25px - 4px);
+    height: calc(25px - 4px);
+}
+
+.quick__variant__form .btn--quick {
+    width: auto;
+    height: auto;
+    border-radius: 20px;
+    padding: 5px 12px;
+}
+
+.quick__variant__form .btn--quick::after {
+    border-radius: 20px;
+}
+
+.quick__variant__form .btn--quick .icon-toggle-plus {
+    margin-right: 5px;
+}
+
+.quick__variant__form .btn--quick .btn--quick__progress {
+    left: 15%;
+}
+
+

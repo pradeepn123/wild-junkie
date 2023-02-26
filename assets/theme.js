@@ -1150,14 +1150,14 @@ PaloAlto.ProductForm = (function() {
     _setIdInputValue(variant) {
 
       if (variant && variant.id) {
-      	this.variantElement.value = variant.id.toString();
-      	this.product.options.forEach((optionLabel, index) => {
-      		const optionalLabelSpan = document.querySelector(`span[data-option-parent-${optionLabel.toLowerCase()}=${optionLabel.toLowerCase()}]`
-        	)
-        	if (optionalLabelSpan) {
-        		optionalLabelSpan.nextElementSibling.innerText = variant[`option${index + 1}`]
-        	}
-      	})
+        this.variantElement.value = variant.id.toString();
+        this.product.options.forEach((optionLabel, index) => {
+            const optionalLabelSpan = document.querySelector(`span[data-option-parent-${optionLabel.toLowerCase()}=${optionLabel.toLowerCase()}]`
+            )
+            if (optionalLabelSpan) {
+                optionalLabelSpan.nextElementSibling.innerText = variant[`option${index + 1}`]
+            }
+        })
       } else {
         this.variantElement.value = '';
       }
@@ -1231,20 +1231,20 @@ PaloAlto.ProductForm = (function() {
 window.isYoutubeAPILoaded = false;
 
 function loadYoutubeAPI() {
-	if (isYoutubeAPILoaded) {
-		return;
-	} else {
-		// Load Youtube API script
-		var tag = document.createElement('script');
-		tag.src = "https://www.youtube.com/iframe_api";
-		var firstScriptTag = document.getElementsByTagName('script')[0];
-		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-	}
+    if (isYoutubeAPILoaded) {
+        return;
+    } else {
+        // Load Youtube API script
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
 }
 
 function onYouTubeIframeAPIReady() {
-	window.isYoutubeAPILoaded = true;
-	document.dispatchEvent(new CustomEvent('youtubeAPIReady'), {bubbles: true});
+    window.isYoutubeAPILoaded = true;
+    document.dispatchEvent(new CustomEvent('youtubeAPIReady'), {bubbles: true});
 }
 
 /*= =============== Slate ================*/
@@ -1392,63 +1392,63 @@ slate.a11y = {
  */
 
 slate.Currency = (function() {
-	var moneyFormat = '${{amount}}'; // eslint-disable-line camelcase
+    var moneyFormat = '${{amount}}'; // eslint-disable-line camelcase
 
-	function formatMoney(cents, format) {
-		if (typeof cents === 'string') {
-			cents = cents.replace('.', '');
-		}
-		var value = '';
-		var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
-		var formatString = format || moneyFormat;
+    function formatMoney(cents, format) {
+        if (typeof cents === 'string') {
+            cents = cents.replace('.', '');
+        }
+        var value = '';
+        var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
+        var formatString = format || moneyFormat;
 
-		function formatWithDelimiters(number, precision, thousands, decimal) {
-			thousands = thousands || ',';
-			decimal = decimal || '.';
+        function formatWithDelimiters(number, precision, thousands, decimal) {
+            thousands = thousands || ',';
+            decimal = decimal || '.';
 
-			if (isNaN(number) || number === null) {
-				return 0;
-			}
+            if (isNaN(number) || number === null) {
+                return 0;
+            }
 
-			number = (number / 100.0).toFixed(precision);
+            number = (number / 100.0).toFixed(precision);
 
-			var parts = number.split('.');
-			var dollarsAmount = parts[0].replace(
-				/(\d)(?=(\d\d\d)+(?!\d))/g,
-				'$1' + thousands
-			);
-			var centsAmount = parts[1] ? decimal + parts[1] : '';
+            var parts = number.split('.');
+            var dollarsAmount = parts[0].replace(
+                /(\d)(?=(\d\d\d)+(?!\d))/g,
+                '$1' + thousands
+            );
+            var centsAmount = parts[1] ? decimal + parts[1] : '';
 
-			return dollarsAmount + centsAmount;
-		}
+            return dollarsAmount + centsAmount;
+        }
 
-		switch (formatString.match(placeholderRegex)[1]) {
-			case 'amount':
-				value = formatWithDelimiters(cents, 2);
-				break;
-			case 'amount_no_decimals':
-				value = formatWithDelimiters(cents, 0);
-				break;
-			case 'amount_with_comma_separator':
-				value = formatWithDelimiters(cents, 2, '.', ',');
-				break;
-			case 'amount_no_decimals_with_comma_separator':
-				value = formatWithDelimiters(cents, 0, '.', ',');
-				break;
-			case 'amount_no_decimals_with_space_separator':
-				value = formatWithDelimiters(cents, 0, ' ');
-				break;
-			case 'amount_with_apostrophe_separator':
-				value = formatWithDelimiters(cents, 2, "'");
-				break;
-		}
+        switch (formatString.match(placeholderRegex)[1]) {
+            case 'amount':
+                value = formatWithDelimiters(cents, 2);
+                break;
+            case 'amount_no_decimals':
+                value = formatWithDelimiters(cents, 0);
+                break;
+            case 'amount_with_comma_separator':
+                value = formatWithDelimiters(cents, 2, '.', ',');
+                break;
+            case 'amount_no_decimals_with_comma_separator':
+                value = formatWithDelimiters(cents, 0, '.', ',');
+                break;
+            case 'amount_no_decimals_with_space_separator':
+                value = formatWithDelimiters(cents, 0, ' ');
+                break;
+            case 'amount_with_apostrophe_separator':
+                value = formatWithDelimiters(cents, 2, "'");
+                break;
+        }
 
-		return formatString.replace(placeholderRegex, value);
-	}
+        return formatString.replace(placeholderRegex, value);
+    }
 
-	return {
-		formatMoney: formatMoney
-	};
+    return {
+        formatMoney: formatMoney
+    };
 })();
 /**
  * Utility helpers
@@ -1460,85 +1460,85 @@ slate.Currency = (function() {
 
 slate.utils = {
 
-	/**
-	 * Return an object from an array of objects that matches the provided key and value
-	 *
-	 * @param {array} array - Array of objects
-	 * @param {string} key - Key to match the value against
-	 * @param {string} value - Value to get match of
-	 */
-	findInstance: function(array, key, value) {
-		for (var i = 0; i < array.length; i++) {
-			if (array[i][key] === value) {
-				return array[i];
-			}
-		}
-	},
+    /**
+     * Return an object from an array of objects that matches the provided key and value
+     *
+     * @param {array} array - Array of objects
+     * @param {string} key - Key to match the value against
+     * @param {string} value - Value to get match of
+     */
+    findInstance: function(array, key, value) {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i][key] === value) {
+                return array[i];
+            }
+        }
+    },
 
-	/**
-	 * Remove an object from an array of objects by matching the provided key and value
-	 *
-	 * @param {array} array - Array of objects
-	 * @param {string} key - Key to match the value against
-	 * @param {string} value - Value to get match of
-	 */
-	removeInstance: function(array, key, value) {
-		var i = array.length;
-		while(i--) {
-			if (array[i][key] === value) {
-				array.splice(i, 1);
-				break;
-			}
-		}
+    /**
+     * Remove an object from an array of objects by matching the provided key and value
+     *
+     * @param {array} array - Array of objects
+     * @param {string} key - Key to match the value against
+     * @param {string} value - Value to get match of
+     */
+    removeInstance: function(array, key, value) {
+        var i = array.length;
+        while(i--) {
+            if (array[i][key] === value) {
+                array.splice(i, 1);
+                break;
+            }
+        }
 
-		return array;
-	},
+        return array;
+    },
 
-	/**
-	 * _.compact from lodash
-	 * Remove empty/false items from array
-	 * Source: https://github.com/lodash/lodash/blob/master/compact.js
-	 *
-	 * @param {array} array
-	 */
-	compact: function(array) {
-		var index = -1;
-		var length = array == null ? 0 : array.length;
-		var resIndex = 0;
-		var result = [];
+    /**
+     * _.compact from lodash
+     * Remove empty/false items from array
+     * Source: https://github.com/lodash/lodash/blob/master/compact.js
+     *
+     * @param {array} array
+     */
+    compact: function(array) {
+        var index = -1;
+        var length = array == null ? 0 : array.length;
+        var resIndex = 0;
+        var result = [];
 
-		while (++index < length) {
-			var value = array[index];
-			if (value) {
-				result[resIndex++] = value;
-			}
-		}
-		return result;
-	},
+        while (++index < length) {
+            var value = array[index];
+            if (value) {
+                result[resIndex++] = value;
+            }
+        }
+        return result;
+    },
 
-	/**
-	 * _.defaultTo from lodash
-	 * Checks `value` to determine whether a default value should be returned in
-	 * its place. The `defaultValue` is returned if `value` is `NaN`, `null`,
-	 * or `undefined`.
-	 * Source: https://github.com/lodash/lodash/blob/master/defaultTo.js
-	 *
-	 * @param {*} value - Value to check
-	 * @param {*} defaultValue - Default value
-	 * @returns {*} - Returns the resolved value
-	 */
-	defaultTo: function(value, defaultValue) {
-		return (value == null || value !== value) ? defaultValue : value
-	},
+    /**
+     * _.defaultTo from lodash
+     * Checks `value` to determine whether a default value should be returned in
+     * its place. The `defaultValue` is returned if `value` is `NaN`, `null`,
+     * or `undefined`.
+     * Source: https://github.com/lodash/lodash/blob/master/defaultTo.js
+     *
+     * @param {*} value - Value to check
+     * @param {*} defaultValue - Default value
+     * @returns {*} - Returns the resolved value
+     */
+    defaultTo: function(value, defaultValue) {
+        return (value == null || value !== value) ? defaultValue : value
+    },
 
-	keyboardKeys: {
-		TAB: 9,
-		ENTER: 13,
-		ESCAPE: 27,
-		SPACE: 32,
-		LEFTARROW: 37,
-		RIGHTARROW: 39
-	}
+    keyboardKeys: {
+        TAB: 9,
+        ENTER: 13,
+        ESCAPE: 27,
+        SPACE: 32,
+        LEFTARROW: 37,
+        RIGHTARROW: 39
+    }
 };
 
 
@@ -2004,7 +2004,7 @@ PaloAlto.CartDrawer = (function() {
 
           // ShopTrade to enabled Promotion need to be removed on Black Friday is over
           if (theme.enable_promotional_products) {
-          	this.promotionalHandler(response)
+            this.promotionalHandler(response)
           }
 
           if (this.cartMessage.length > 0) {
@@ -2013,7 +2013,7 @@ PaloAlto.CartDrawer = (function() {
           }
 
           if (productUrl) {
-						return fetch(productUrl + '&sections=api-cart-items,api-notify-content');
+                        return fetch(productUrl + '&sections=api-cart-items,api-notify-content');
           }
 
           return fetch(theme.routes.root + 'cart?sections=api-cart-items,api-notify-content');
@@ -2071,9 +2071,9 @@ PaloAlto.CartDrawer = (function() {
         })
         .then((response) => {
           if (button) {
-          	if (button.getAttribute("data-upsell-available") == "true") {
-          		this.showCartNotification = true
-          	}
+            if (button.getAttribute("data-upsell-available") == "true") {
+                this.showCartNotification = true
+            }
             button.disabled = true;
           }
           this.addLoadingClass();
@@ -2333,9 +2333,9 @@ PaloAlto.CartDrawer = (function() {
 
       // Open cart drawer after cart items and events are loaded
       if (alwaysOpen) {
-      	if (this.showCartNotification) {
-      		return this.openCartNotification()
-      	}
+        if (this.showCartNotification) {
+            return this.openCartNotification()
+        }
         this.openCartDrawer();
       }
     },
@@ -2370,19 +2370,19 @@ PaloAlto.CartDrawer = (function() {
     },
 
     addCartNotificationEvents() {
-			const cartNotifyPrimaryBtn = this.cartNotify.querySelector(selectors.cartNotifyPrimaryBtn)
-			const cartNotifySecondaryBtn = this.cartNotify.querySelector(selectors.cartNotifySecondaryBtn)
-			cartNotifyPrimaryBtn.addEventListener("click", this.toggleNotifyDrawer.bind(this))
-			cartNotifySecondaryBtn.addEventListener("click", this.closeCartDrawer.bind(this))
+            const cartNotifyPrimaryBtn = this.cartNotify.querySelector(selectors.cartNotifyPrimaryBtn)
+            const cartNotifySecondaryBtn = this.cartNotify.querySelector(selectors.cartNotifySecondaryBtn)
+            cartNotifyPrimaryBtn.addEventListener("click", this.toggleNotifyDrawer.bind(this))
+            cartNotifySecondaryBtn.addEventListener("click", this.closeCartDrawer.bind(this))
     },
 
     toggleNotifyDrawer() {
-    	if (this.isCartDrawerOpen) {
-    		this.isCartDrawerOpen = false
-      	document.body.classList.remove(classes.cartNotifyOpen, true);
-  	    this.cartNotify.classList.remove(classes.open);
-	      this.showCartNotification = false
-    	}
+        if (this.isCartDrawerOpen) {
+            this.isCartDrawerOpen = false
+        document.body.classList.remove(classes.cartNotifyOpen, true);
+        this.cartNotify.classList.remove(classes.open);
+          this.showCartNotification = false
+        }
       return this.openCartDrawer()
     },
 
@@ -2505,7 +2505,7 @@ PaloAlto.CartDrawer = (function() {
       this.cartNotify.addEventListener('keyup', e => {
         if (e.which === slate.utils.keyboardKeys.ESCAPE) {
           this.closeCartDrawer();
-        }      	
+        }       
       })
       this.cartDrawer.addEventListener('keyup', (e) => {
         if (e.which === slate.utils.keyboardKeys.ESCAPE) {
@@ -2587,13 +2587,13 @@ PaloAlto.CartDrawer = (function() {
         this.itemsHolder.innerHTML = data;
         this.pairProductsHolder.innerHTML = '';
         if (this.freeHolder) {
-        	this.freeHolder.innerHTML = '';
+            this.freeHolder.innerHTML = '';
         }
       } else {
         this.itemsHolder.innerHTML = cartItemsData.innerHTML;
         this.pairProductsHolder.innerHTML = upsellItemsData.innerHTML;
         if (this.freeHolder) {
-        	this.freeHolder.innerHTML = freeItemsData.innerHTML;
+            this.freeHolder.innerHTML = freeItemsData.innerHTML;
         }
 
         this.renderPairProducts();
@@ -2603,8 +2603,8 @@ PaloAlto.CartDrawer = (function() {
       this.initQuantity();
 
       if (this.showCartNotification) {
-      	this.showCartNotification = false
-      	this.openCartNotification(cleanNotifyResponse)
+        this.showCartNotification = false
+        this.openCartNotification(cleanNotifyResponse)
       } else if (this.cartDrawer) {
         this.openCartDrawer();
       }
@@ -4081,111 +4081,111 @@ function resizeListener() {
 }
 
 PaloAlto.Sections = function Sections() {
-	this.constructors = {};
-	this.instances = [];
+    this.constructors = {};
+    this.instances = [];
 
-	$(document)
-		.on('shopify:section:load', this._onSectionLoad.bind(this))
-		.on('shopify:section:unload', this._onSectionUnload.bind(this))
-		.on('shopify:section:select', this._onSelect.bind(this))
-		.on('shopify:section:deselect', this._onDeselect.bind(this))
-		.on('shopify:block:select', this._onBlockSelect.bind(this))
-		.on('shopify:block:deselect', this._onBlockDeselect.bind(this));
+    $(document)
+        .on('shopify:section:load', this._onSectionLoad.bind(this))
+        .on('shopify:section:unload', this._onSectionUnload.bind(this))
+        .on('shopify:section:select', this._onSelect.bind(this))
+        .on('shopify:section:deselect', this._onDeselect.bind(this))
+        .on('shopify:block:select', this._onBlockSelect.bind(this))
+        .on('shopify:block:deselect', this._onBlockDeselect.bind(this));
 };
 
 PaloAlto.Sections.prototype = _.assignIn({}, PaloAlto.Sections.prototype, {
-	_createInstance: function(container, constructor) {
-		var $container = $(container);
-		var id = $container.attr('data-section-id');
-		var type = $container.attr('data-section-type');
+    _createInstance: function(container, constructor) {
+        var $container = $(container);
+        var id = $container.attr('data-section-id');
+        var type = $container.attr('data-section-type');
 
-		constructor = constructor || this.constructors[type];
+        constructor = constructor || this.constructors[type];
 
-		if (_.isUndefined(constructor)) {
-			return;
-		}
+        if (_.isUndefined(constructor)) {
+            return;
+        }
 
-		var instance = _.assignIn(new constructor(container), {
-			id: id,
-			type: type,
-			container: container
-		});
+        var instance = _.assignIn(new constructor(container), {
+            id: id,
+            type: type,
+            container: container
+        });
 
-		this.instances.push(instance);
-	},
+        this.instances.push(instance);
+    },
 
-	_onSectionLoad: function(evt) {
-		var container = $('[data-section-id]', evt.target)[0];
-		if (container) {
-			this._createInstance(container);
-		}
-	},
+    _onSectionLoad: function(evt) {
+        var container = $('[data-section-id]', evt.target)[0];
+        if (container) {
+            this._createInstance(container);
+        }
+    },
 
-	_onSectionUnload: function(evt) {
-		this.instances = _.filter(this.instances, function(instance) {
-			var isEventInstance = (instance.id === evt.detail.sectionId);
+    _onSectionUnload: function(evt) {
+        this.instances = _.filter(this.instances, function(instance) {
+            var isEventInstance = (instance.id === evt.detail.sectionId);
 
-			if (isEventInstance) {
-				if (_.isFunction(instance.onUnload)) {
-					instance.onUnload(evt);
-				}
-			}
+            if (isEventInstance) {
+                if (_.isFunction(instance.onUnload)) {
+                    instance.onUnload(evt);
+                }
+            }
 
-			return !isEventInstance;
-		});
-	},
+            return !isEventInstance;
+        });
+    },
 
-	_onSelect: function(evt) {
-		// eslint-disable-next-line no-shadow
-		var instance = _.find(this.instances, function(instance) {
-			return instance.id === evt.detail.sectionId;
-		});
+    _onSelect: function(evt) {
+        // eslint-disable-next-line no-shadow
+        var instance = _.find(this.instances, function(instance) {
+            return instance.id === evt.detail.sectionId;
+        });
 
-		if (!_.isUndefined(instance) && _.isFunction(instance.onSelect)) {
-			instance.onSelect(evt);
-		}
-	},
+        if (!_.isUndefined(instance) && _.isFunction(instance.onSelect)) {
+            instance.onSelect(evt);
+        }
+    },
 
-	_onDeselect: function(evt) {
-		// eslint-disable-next-line no-shadow
-		var instance = _.find(this.instances, function(instance) {
-			return instance.id === evt.detail.sectionId;
-		});
+    _onDeselect: function(evt) {
+        // eslint-disable-next-line no-shadow
+        var instance = _.find(this.instances, function(instance) {
+            return instance.id === evt.detail.sectionId;
+        });
 
-		if (!_.isUndefined(instance) && _.isFunction(instance.onDeselect)) {
-			instance.onDeselect(evt);
-		}
-	},
+        if (!_.isUndefined(instance) && _.isFunction(instance.onDeselect)) {
+            instance.onDeselect(evt);
+        }
+    },
 
-	_onBlockSelect: function(evt) {
-		// eslint-disable-next-line no-shadow
-		var instance = _.find(this.instances, function(instance) {
-			return instance.id === evt.detail.sectionId;
-		});
+    _onBlockSelect: function(evt) {
+        // eslint-disable-next-line no-shadow
+        var instance = _.find(this.instances, function(instance) {
+            return instance.id === evt.detail.sectionId;
+        });
 
-		if (!_.isUndefined(instance) && _.isFunction(instance.onBlockSelect)) {
-			instance.onBlockSelect(evt);
-		}
-	},
+        if (!_.isUndefined(instance) && _.isFunction(instance.onBlockSelect)) {
+            instance.onBlockSelect(evt);
+        }
+    },
 
-	_onBlockDeselect: function(evt) {
-		// eslint-disable-next-line no-shadow
-		var instance = _.find(this.instances, function(instance) {
-			return instance.id === evt.detail.sectionId;
-		});
+    _onBlockDeselect: function(evt) {
+        // eslint-disable-next-line no-shadow
+        var instance = _.find(this.instances, function(instance) {
+            return instance.id === evt.detail.sectionId;
+        });
 
-		if (!_.isUndefined(instance) && _.isFunction(instance.onBlockDeselect)) {
-			instance.onBlockDeselect(evt);
-		}
-	},
+        if (!_.isUndefined(instance) && _.isFunction(instance.onBlockDeselect)) {
+            instance.onBlockDeselect(evt);
+        }
+    },
 
-	register: function(type, constructor) {
-		this.constructors[type] = constructor;
+    register: function(type, constructor) {
+        this.constructors[type] = constructor;
 
-		$('[data-section-type=' + type + ']').each(function(index, container) {
-			this._createInstance(container, constructor);
-		}.bind(this));
-	}
+        $('[data-section-type=' + type + ']').each(function(index, container) {
+            this._createInstance(container, constructor);
+        }.bind(this));
+    }
 });
 PaloAlto.setMainSpacing = function() {
   const selectors = {
@@ -5553,88 +5553,88 @@ PaloAlto.HoverDisclosure = (function() {
 
 // Library loader for 3D Model and YT video player
 var LibraryLoader = (function() {
-	var types = {
-		link: 'link',
-		script: 'script'
-	};
+    var types = {
+        link: 'link',
+        script: 'script'
+    };
 
-	var status = {
-		requested: 'requested',
-		loaded: 'loaded'
-	};
+    var status = {
+        requested: 'requested',
+        loaded: 'loaded'
+    };
 
-	var cloudCdn = 'https://cdn.shopify.com/shopifycloud/';
+    var cloudCdn = 'https://cdn.shopify.com/shopifycloud/';
 
-	var libraries = {
-		youtubeSdk: {
-			tagId: 'youtube-sdk',
-			src: 'https://www.youtube.com/iframe_api',
-			type: types.script
-		},
-		modelViewerUiStyles: {
-			tagId: 'shopify-model-viewer-ui-styles',
-			src: cloudCdn + 'model-viewer-ui/assets/v1.0/model-viewer-ui.css',
-			type: types.link
-		}
-	};
+    var libraries = {
+        youtubeSdk: {
+            tagId: 'youtube-sdk',
+            src: 'https://www.youtube.com/iframe_api',
+            type: types.script
+        },
+        modelViewerUiStyles: {
+            tagId: 'shopify-model-viewer-ui-styles',
+            src: cloudCdn + 'model-viewer-ui/assets/v1.0/model-viewer-ui.css',
+            type: types.link
+        }
+    };
 
-	function load(libraryName, callback) {
-		var library = libraries[libraryName];
+    function load(libraryName, callback) {
+        var library = libraries[libraryName];
 
-		if (!library) return;
-		if (library.status === status.requested) return;
+        if (!library) return;
+        if (library.status === status.requested) return;
 
-		callback = callback || function() {};
-		if (library.status === status.loaded) {
-			callback();
-			return;
-		}
+        callback = callback || function() {};
+        if (library.status === status.loaded) {
+            callback();
+            return;
+        }
 
-		library.status = status.requested;
+        library.status = status.requested;
 
-		var tag;
+        var tag;
 
-		switch (library.type) {
-			case types.script:
-				tag = createScriptTag(library, callback);
-				break;
-			case types.link:
-				tag = createLinkTag(library, callback);
-				break;
-		}
+        switch (library.type) {
+            case types.script:
+                tag = createScriptTag(library, callback);
+                break;
+            case types.link:
+                tag = createLinkTag(library, callback);
+                break;
+        }
 
-		tag.id = library.tagId;
-		library.element = tag;
+        tag.id = library.tagId;
+        library.element = tag;
 
-		var firstScriptTag = document.getElementsByTagName(library.type)[0];
-		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-	}
+        var firstScriptTag = document.getElementsByTagName(library.type)[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
 
-	function createScriptTag(library, callback) {
-		var tag = document.createElement('script');
-		tag.src = library.src;
-		tag.addEventListener('load', function() {
-			library.status = status.loaded;
-			callback();
-		});
-		return tag;
-	}
+    function createScriptTag(library, callback) {
+        var tag = document.createElement('script');
+        tag.src = library.src;
+        tag.addEventListener('load', function() {
+            library.status = status.loaded;
+            callback();
+        });
+        return tag;
+    }
 
-	function createLinkTag(library, callback) {
-		var tag = document.createElement('link');
-		tag.href = library.src;
-		tag.rel = 'stylesheet';
-		tag.type = 'text/css';
-		tag.addEventListener('load', function() {
-			library.status = status.loaded;
-			callback();
-		});
-		return tag;
-	}
+    function createLinkTag(library, callback) {
+        var tag = document.createElement('link');
+        tag.href = library.src;
+        tag.rel = 'stylesheet';
+        tag.type = 'text/css';
+        tag.addEventListener('load', function() {
+            library.status = status.loaded;
+            callback();
+        });
+        return tag;
+    }
 
-	return {
-		load: load
-	};
+    return {
+        load: load
+    };
 })();
 PaloAlto.CustomScrollbar = (function() {
   const selectors = {
@@ -10746,7 +10746,7 @@ PaloAlto.LogoList = (function() {
           pageDots: false,
         });
 
-				// iOS smooth scrolling fix
+                // iOS smooth scrolling fix
         PaloAlto.flickitySmoothScrolling(this.slider);
       }
     },
@@ -11987,6 +11987,50 @@ PaloAlto.Product = (function() {
   return Product;
 })();
 
+PaloAlto.ProductGridItem = (function() {
+  const selectors = {
+    swatches: '[data-swatch-variant-selector]',
+    productJson: '[data-product-json]',
+    variantField: '[data-variant-quantity]'
+  }
+
+  function ProductGridItem(container) {
+    this.container = container;
+    this.swatches = this.container.querySelectorAll(selectors.swatches)
+    this.init()
+  }
+
+  ProductGridItem.prototype = $.extend({}, ProductGridItem.prototype, {
+    init: function() {
+      if (this.swatches.length) {
+        this.swatches.forEach((swatchInput) => {
+          swatchInput.addEventListener("change", this.onSwatchChange.bind(this))
+        })
+      }
+    },
+
+    onSwatchChange: function() {
+      const { target } = event
+
+      const productJSON = JSON.parse(this.container.querySelector(selectors.productJson).innerHTML)
+      const formVariantField = this.container.querySelector(selectors.variantField)
+
+      const selectedVariant = productJSON.variants.find((variant) => {
+        // only return true if every option matches our hypothetical selection
+        if (variant[target.dataset.index] == target.value) {
+          return variant
+        }
+      });
+
+      formVariantField.value = selectedVariant.id
+      debugger;
+      console.log(selectedVariant)
+    }
+  })
+
+  return ProductGridItem
+})();
+
 PaloAlto.ProductGrid = (function() {
   const selectors = {
     slider: '[data-slider]',
@@ -11997,6 +12041,9 @@ PaloAlto.ProductGrid = (function() {
     progressBar: '[data-product-slideshow-progress]',
     flickityButton: '.flickity-button',
     quickButton: '[data-button-quick-view]',
+    swatches: '[data-swatch-variant-selector]',
+    productJson: '[data-product-json]',
+    productGrid: '.product-grid-item'
   };
 
   const classes = {
@@ -12006,13 +12053,25 @@ PaloAlto.ProductGrid = (function() {
   function ProductGrid(container) {
     this.container = container;
     this.sliders = this.container.querySelectorAll(selectors.slider);
+    this.swatches = this.container.querySelectorAll(selectors.swatches)
+    this.productGrids = this.container.querySelectorAll(selectors.productGrid)
 
     if (theme.settings.productGridHover === 'slideshow' && !window.theme.touch) {
       this.productGridSlideshow();
     }
 
     PaloAlto.QuickViewPopup.init(this.container);
-    PaloAlto.initSwatches.makeGridSwatch(this.container);
+
+
+    if (this.container.dataset.makeSwatchRun) {
+      PaloAlto.initSwatches.makeSwatch(this.container)  
+    } else {
+      PaloAlto.initSwatches.makeGridSwatch(this.container);
+    }
+
+    this.productGrids.forEach((gridContainer) => {
+      new PaloAlto.ProductGridItem(gridContainer)
+    })
   }
 
   ProductGrid.prototype = $.extend({}, ProductGrid.prototype, {
@@ -12131,7 +12190,7 @@ PaloAlto.ProductGrid = (function() {
      */
     onUnload: function() {
       $.magnificPopup.close();
-    },
+    }
   });
 
   return ProductGrid;
@@ -12928,13 +12987,15 @@ PaloAlto.Article = (function() {
 })();
 
 PaloAlto.AboutPage = (function() {
-	function AboutPage(container) {
-		PaloAlto.videoLink();
-	}
+    function AboutPage(container) {
+        PaloAlto.videoLink();
+    }
 
-	return AboutPage;
+    return AboutPage;
 })();
+
 PaloAlto.CollectionTemplate = (function() {
+
   function CollectionTemplate(container) {
     new PaloAlto.Filters(container);
   }
@@ -12951,6 +13012,7 @@ PaloAlto.CollectionTemplate = (function() {
 
   return CollectionTemplate;
 })();
+
 
 PaloAlto.Addresses = function() {
   const selectors = {
@@ -13324,90 +13386,87 @@ PaloAlto.countdown = function (container) {
 
         container.innerHTML = ''
         if (days > 0) {
-        	dayString = days.toString().split('')
-        	if (dayString.length == 1) {
-        		dayString = ["0", days.toString()]
-        	}
+            dayString = days.toString().split('')
+            if (dayString.length == 1) {
+                dayString = ["0", days.toString()]
+            }
 
-        	if (isBoxType) {
-        		container.innerHTML += `<div class="countdown-timer">
-    	    		<div>${dayString.map(str => `<span>${str}</span>`).join('')}</div>
-    	    		<div>Days</div>
-	        	</div><div class="seperator">:</div>`
-        	} else {
-        		container.innerHTML += dayString.join("") + `<span class='font_format'>d : </span>`
-        	}
+            if (isBoxType) {
+                container.innerHTML += `<div class="countdown-timer">
+                    <div>${dayString.map(str => `<span>${str}</span>`).join('')}</div>
+                    <div>Days</div>
+                </div><div class="seperator">:</div>`
+            } else {
+                container.innerHTML += dayString.join("") + `<span class='font_format'>d : </span>`
+            }
         }
 
         if (hours > 0) {
-        	hoursString = hours.toString().split('')
-        	if (hoursString.length == 1) {
-        		hoursString = ["0", hours.toString()]
-        	}
+            hoursString = hours.toString().split('')
+            if (hoursString.length == 1) {
+                hoursString = ["0", hours.toString()]
+            }
 
-			if (isBoxType) {
-        		container.innerHTML += `<div class="countdown-timer">
-    	    		<div>${hoursString.map(str => `<span>${str}</span>`).join('')}</div>
-    	    		<div>Hours</div>
-		        </div><div class="seperator">:</div>`
-			} else {
-				container.innerHTML += hoursString.join("") + `<span class='font_format'>h : </span>`
-			}
+            if (isBoxType) {
+                container.innerHTML += `<div class="countdown-timer">
+                    <div>${hoursString.map(str => `<span>${str}</span>`).join('')}</div>
+                    <div>Hours</div>
+                </div><div class="seperator">:</div>`
+            } else {
+                container.innerHTML += hoursString.join("") + `<span class='font_format'>h : </span>`
+            }
         } else {
-        	if (isBoxType) {
-        		container.innerHTML += `
-        			<div class="countdown-timer">
-        				<div><span>0</span><span>0</span></div>
-        				<div>Hours</div>
-        			</div>`
-        	} else {
-        		container.innerHTML += '00h : '
-        	}
+            if (isBoxType) {
+                container.innerHTML += `
+                    <div class="countdown-timer">
+                        <div><span>0</span><span>0</span></div>
+                        <div>Hours</div>
+                    </div>`
+            } else {
+                container.innerHTML += '00h : '
+            }
         }
 
         if (minutes > 0) {
-        	minuteString = minutes.toString().split('')
-        	if (minuteString.length == 1) {
-        		minuteString = ["0", minutes.toString()]
-        	}
-        	if (isBoxType) {
-        		container.innerHTML += `<div class="countdown-timer">
-    	    		<div>${minuteString.map(str => `<span>${str}</span>`).join('')}</div>
-    	    		<div>Minutes</div>
-	        	</div><div class="seperator">:</div>`
-	        } else {
-	        	container.innerHTML += minuteString.join("") + `<span class='font_format'>m : </span>`
-	        }
+            minuteString = minutes.toString().split('')
+            if (minuteString.length == 1) {
+                minuteString = ["0", minutes.toString()]
+            }
+            if (isBoxType) {
+                container.innerHTML += `<div class="countdown-timer">
+                    <div>${minuteString.map(str => `<span>${str}</span>`).join('')}</div>
+                    <div>Minutes</div>
+                </div><div class="seperator">:</div>`
+            } else {
+                container.innerHTML += minuteString.join("") + `<span class='font_format'>m : </span>`
+            }
         } else {
-        	if (isBoxType) {
-        		container.innerHTML += `
-        			<div class="countdown-timer">
-        				<div><span>0</span><span>0</span></div>
-        				<div>Minutes</div>
-        			</div>`
-        	} else {
-        		container.innerHTML += '00m : '
-        	}
+            if (isBoxType) {
+                container.innerHTML += `
+                    <div class="countdown-timer">
+                        <div><span>0</span><span>0</span></div>
+                        <div>Minutes</div>
+                    </div>`
+            } else {
+                container.innerHTML += '00m : '
+            }
         }
 
         secondString = seconds.toString().split('')
         if (secondString.length == 1) {
-        	secondString = ["0", seconds.toString()]
+            secondString = ["0", seconds.toString()]
         }
         if (isBoxType) {
-	        container.innerHTML += `<div class="countdown-timer">
-    	    	<div>${secondString.map(str => `<span>${str}</span>`).join('')}</div>
-    	    	<div>Seconds</div>
-	    	   </div>`
-	    } else {
-	    	container.innerHTML += secondString.join("") + `<span class='font_format'>s</span>`
-	    }
-
-	    // clearInterval(x);
-
+            container.innerHTML += `<div class="countdown-timer">
+                <div>${secondString.map(str => `<span>${str}</span>`).join('')}</div>
+                <div>Seconds</div>
+               </div>`
+        } else {
+            container.innerHTML += secondString.join("") + `<span class='font_format'>s</span>`
+        }
         if (distance < 0) {
-        	document.querySelector("#" + container.dataset.targetContainer).remove()
-          	clearInterval(x);
+            document.querySelector("#" + container.dataset.targetContainer).remove()
+            clearInterval(x);
         }
     }, 1)
 }
@@ -13462,8 +13521,8 @@ window.addEventListener('load', () => {
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {
-	const timer = document.querySelectorAll("[data-coundown-timer]")
-	timer.forEach(element => {
-		PaloAlto.countdown(element)
-	})
+    const timer = document.querySelectorAll("[data-coundown-timer]")
+    timer.forEach(element => {
+        PaloAlto.countdown(element)
+    })
 });
