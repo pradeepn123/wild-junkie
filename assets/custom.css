@@ -1663,7 +1663,7 @@ i.icon-swym-wishlist:after {
 
 .grid-variant-picker {
     opacity: 0;
-    transform: translate(calc(15px + 35px / 2), calc(15px + 35px / 2)) scale(0);
+    transform: translateY(100%);
     transition: transform 0.3s ease, opacity 0.3s ease;
     will-change: transform, opacity;
     z-index: 2;
@@ -1671,9 +1671,8 @@ i.icon-swym-wishlist:after {
     position: absolute;
     bottom: 10px;
     width: 100%;
-    height: 55%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.07);
 }
 
@@ -1685,8 +1684,51 @@ i.icon-swym-wishlist:after {
 .grid-variant-picker .quick__variant__form {
     background: var(--COLOR-BG);
     border-radius: 5%;
+    padding: 15px;
+}
+
+.variant__picker-lable {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.variant-picker__close {
+    width: 52px;
+    padding-left: 18px;
+    cursor: pointer;
+    height: 16px;
+}
+
+.grid-variant-picker .radio__fieldset .radio__label {
+    padding: 6px 12px;
+}
+
+.grid-variant-picker .radio__legend__label {
+    font-size: 16px;
+}
+
+.variant-picker__close .icon-close-small {
+    display: block;
+    width: 100%;
     height: 100%;
-    padding: 10px;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.variant-picker__close:hover .icon-close-small {
+    transform: rotate(90deg);
+}
+
+.grid-variant-picker .product__submit__add {
+    min-width: 100%;
+    padding: 5px 10px;
+}
+
+.grid-variant-picker .radio__fieldset {
+    margin-bottom: calc(var(--form-margin) / 2);
 }
 
 @media screen and (max-width: 600px) {

@@ -11993,7 +11993,8 @@ PaloAlto.ProductGridItem = (function() {
     productJson: '[data-product-json]',
     variantField: '[data-variant-quantity]',
     variantPickerBtn: '[data-variant-picker-btn]',
-    variantPickerModal: '[data-grid-variant-picker]'
+    variantPickerModal: '[data-grid-variant-picker]',
+    variantPickerCloseBtn: '[data-variant-picker-close]'
   }
 
   const classes = {
@@ -12005,6 +12006,7 @@ PaloAlto.ProductGridItem = (function() {
     this.swatches = this.container.querySelectorAll(selectors.swatches)
     this.variantPickerBtn = this.container.querySelector(selectors.variantPickerBtn)
     this.variantPickerModal = this.container.querySelector(selectors.variantPickerModal)
+    this.variantPickerCloseBtn = this.container.querySelector(selectors.variantPickerCloseBtn)
     this.init()
   }
 
@@ -12018,9 +12020,10 @@ PaloAlto.ProductGridItem = (function() {
       if (this.variantPickerBtn) {
         this.variantPickerBtn.addEventListener("click", this._openVariantPicker.bind(this))
       }
-      console.log(this.variantPickerBtn)
-      console.log(this.swatches)
 
+      if (this.variantPickerCloseBtn) {
+        this.variantPickerCloseBtn.addEventListener("click", this._closeVariantPicker.bind(this))
+      }
     },
 
     onSwatchChange: function() {
@@ -12040,11 +12043,20 @@ PaloAlto.ProductGridItem = (function() {
     },
 
     _openVariantPicker: function() {
+      const variantPickerModals = document.querySelectorAll(selectors.variantPickerModal)
+      variantPickerModals.forEach((picker) => {
+        picker.classList.remove(classes.active)
+        const variantPickerBtn = picker.parentElement.querySelector(selectors.variantPickerBtn)
+        variantPickerBtn.style.visibility = ''
+      })
+
+      this.variantPickerBtn.style.visibility = 'hidden'
       this.variantPickerModal.classList.add(classes.active)
     },
 
     _closeVariantPicker: function() {
       this.variantPickerModal.classList.remove(classes.active)
+      this.variantPickerBtn.style.visibility = ''
     },
 
     _updateVariantPicker: function() {

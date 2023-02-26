@@ -364,6 +364,7 @@
                                 {%- form 'product', product, data-product-form: '', data-quickbuy-form: '', id: unique_product_grid, class: 'quick__form quick__variant__form', data-quickview-variant-form: '' -%}
                                     <input type="hidden" name="quantity" value="1">
                                     <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-quantity="{{unique_product_grid}}-variant-form">
+                                    {%- assign shown_close_btn = false -%}
                                     {%- for option in product.options_with_values -%}
                                         {%- liquid
                                             assign option_name_handle_separator = option.name | handle | prepend: ',' | append: ','
@@ -374,9 +375,50 @@
                                             if translation_string contains option_name_handle_separator
                                                 assign is_swatch_option = true
                                             endif
-                                            unless is_swatch_option
-                                            endunless
                                         -%}
+                                            {%- unless is_swatch_option -%}
+                                                <div class="selector-wrapper selector-wrapper--boxes" data-option-position="{{ option.position }}">
+                                                    <fieldset class="radio__fieldset radio__fieldset--{{ settings.color_swatches_product_style }}">
+                                                        <legend class="radio__legend{% if shown_close_btn == false %} radio__legend--flex radio__legend--size-chart{% endif %}">
+                                                            {%- if shown_close_btn == false -%}
+                                                                {% assign shown_close_btn = true %}
+                                                                <div class="variant__picker-lable">
+                                                                    <div>
+                                                                        <span class="radio__legend__label" data-option-parent-{{ option.name | downcase }}="{{ option.name | downcase }}" >
+                                                                            Select {{ option.name | escape_once }}
+                                                                       </span>
+                                                                    </div>
+                                                                    <span class="variant-picker__close" aria-label="Close Picker" data-variant-picker-close>
+                                                                        {%- render 'icon-close-small' -%}
+                                                                    </span>
+                                                                </div>
+                                                            {%- else -%}
+                                                                <span class="radio__legend__label" data-option-parent-{{ option.name | downcase }}="{{ option.name | downcase }}">
+                                                                    Select {{ option.name | escape_once }}
+                                                                </span>
+                                                            {%- endif -%}
+                                                        </legend>
+                                                        {%- for value in option.values -%}
+                                                            {%- capture input_id -%}{{ product.id }}-{{ option.name | escape_once }}-{{ value | escape_once }}{%- endcapture -%}
+
+                                                            <span class="radio__button ">
+                                                            <input
+                                                                type="radio"
+                                                                class="radio__input"
+                                                                data-single-option-selector
+                                                                data-index="option{{ option.position }}"
+                                                                name="options[{{ option.name | escape_once }}]"
+                                                                value="{{ value | escape_once }}" id="{{ input_id }}"
+                                                                {% if value == current_value %}checked{% endif %}>
+                                                            <label for="{{ input_id }}" class="radio__label">
+                                                                <span>{{ value }}</span>
+                                                            </label>
+                                                            </span>
+
+                                                        {%- endfor -%}
+                                                    </fieldset>
+                                                </div>
+                                            {%- endunless -%}
                                     {%- endfor -%}
                                     <button type="submit"
                                         name="add"
