@@ -249,16 +249,16 @@
                                                 {%- liquid
                                                     assign filters_available = true
                                                     for tag in current_tags
-                                                    if tag contains group_with_suffix
-                                                        assign is_active = true
-                                                        assign active_count = active_count | plus: 1
-                                                        assign all_active_tags_count = all_active_tags_count | plus: 1
-                                                    endif
+                                                        if tag contains group_with_suffix
+                                                            assign is_active = true
+                                                            assign active_count = active_count | plus: 1
+                                                            assign all_active_tags_count = all_active_tags_count | plus: 1
+                                                        endif
                                                     endfor
                                                     if color_label contains group_label and settings.enable_color_swatches_collection
-                                                    assign is_color = true
+                                                        assign is_color = true
                                                     else
-                                                    assign is_color = false
+                                                        assign is_color = false
                                                     endif
                                                 -%}
 

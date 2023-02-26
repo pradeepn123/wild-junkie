@@ -107,7 +107,7 @@
         -%}
         <div class="product__media__outer">
             <div class="product__media__inner">
-                <div class="{{ image_container_class }}" style="--aspect-ratio: {{ image_aspect_ratio }};">
+                <div class="{{ image_container_class }} {%- if show_variant_picker -%}product__variant__picker{%- endif -%}" style="--aspect-ratio: {{ image_aspect_ratio }};">
                     <a class="product__media__holder" href="{{ product.url | within: collection }}" aria-label="{{ product.title | strip_html | escape }}"
                         {% if animations_enabled %}
                             data-aos="zoom-out"
@@ -298,29 +298,103 @@
                     {%- endunless -%}
 
                     {%- if show_variant_picker -%}
-                        {%- form 'product', product, data-product-form: '', data-quickbuy-form: '', id: unique_product_grid, class: 'quick__form quick__variant__form', data-quickview-variant-form: '' -%}
-                            <input type="hidden" name="quantity" value="1">
-                            <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-quantity="{{unique_product_grid}}-variant-form">
-                            <button type="submit"
-                                name="add"
-                                class="btn--quick"
-                                data-add-to-cart {% if index > 1 %} tabindex="-1"{% endif %}
-                                data-upsell-available="{% if product.metafields.theme.upsell_list.value != blank %}true{% endif %}"
-                                data-product-url="{{product.url}}"
-                                {%- unless product.has_only_default_variant -%}
-                                    data-variant-options
-                                {%- endunless -%}
-                            >
-                                {%- render 'icon-toggle-plus' -%}
-                                Add to bag
-                                <span class="btn--quick__progress">
-                                    <svg height="18" width="18" class="svg-loader">
-                                        <circle r="7" cx="9" cy="9" />
-                                        <circle stroke-dasharray="87.96459430051421 87.96459430051421" r="7" cx="9" cy="9" />
-                                    </svg>
-                                </span>
-                            </button>
-                        {%- endform -%}
+                        {%- assign is_other_options_available = false -%}
+                        {%- for option in product.options_with_values -%}
+                            {%- liquid
+                                assign option_name_handle_separator = option.name | handle | prepend: ',' | append: ','
+                                assign is_swatch_option = false
+                                assign swatch_translation = 'general.swatches.color' | t
+                                assign translation_string = swatch_translation | remove: '  ' | replace: ', ', ',' | replace: ' ,', ',' | replace: ',', '____' | handle | replace: '____', ',' | append: ',' | prepend: ','
+
+                                if translation_string contains option_name_handle_separator
+                                    assign is_swatch_option = true
+                                endif
+                                unless is_swatch_option
+                                    assign is_other_options_available = true
+                                endunless
+                            -%}
+                        {%- endfor -%}
+                        {%- if product.has_only_default_variant or is_other_options_available == false -%}
+                            {%- form 'product', product, data-product-form: '', data-quickbuy-form: '', id: unique_product_grid, class: 'quick__form quick__variant__form', data-quickview-variant-form: '' -%}
+                                <input type="hidden" name="quantity" value="1">
+                                <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-quantity="{{unique_product_grid}}-variant-form">
+                                <button type="submit"
+                                    name="add"
+                                    class="btn--quick"
+                                    data-add-to-cart {% if index > 1 %} tabindex="-1"{% endif %}
+                                    data-upsell-available="{% if product.metafields.theme.upsell_list.value != blank %}true{% endif %}"
+                                    data-product-url="{{product.url}}"
+                                    {%- unless product.has_only_default_variant -%}
+                                        data-variant-options
+                                    {%- endunless -%}
+                                >
+                                    {%- render 'icon-toggle-plus' -%}
+                                    Add to bag
+                                    <span class="btn--quick__progress">
+                                        <svg height="18" width="18" class="svg-loader">
+                                            <circle r="7" cx="9" cy="9" />
+                                            <circle stroke-dasharray="87.96459430051421 87.96459430051421" r="7" cx="9" cy="9" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            {%- endform -%}
+                        {%- else -%}
+                            <div class="quick__variant__picker__form quick__form">
+                                <button type="submit"
+                                    name="add"
+                                    class="btn--quick"
+                                    {% if index > 1 %} tabindex="-1"{% endif %}
+                                    data-variant-picker-btn
+                                    data-product-url="{{product.url}}"
+                                    {%- unless product.has_only_default_variant -%}
+                                        data-variant-options
+                                    {%- endunless -%}
+                                >
+                                    {%- render 'icon-toggle-plus' -%}
+                                    Add to bag
+                                    <span class="btn--quick__progress">
+                                        <svg height="18" width="18" class="svg-loader">
+                                            <circle r="7" cx="9" cy="9" />
+                                            <circle stroke-dasharray="87.96459430051421 87.96459430051421" r="7" cx="9" cy="9" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="grid-variant-picker" data-grid-variant-picker>
+                                {%- form 'product', product, data-product-form: '', data-quickbuy-form: '', id: unique_product_grid, class: 'quick__form quick__variant__form', data-quickview-variant-form: '' -%}
+                                    <input type="hidden" name="quantity" value="1">
+                                    <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-quantity="{{unique_product_grid}}-variant-form">
+                                    {%- for option in product.options_with_values -%}
+                                        {%- liquid
+                                            assign option_name_handle_separator = option.name | handle | prepend: ',' | append: ','
+                                            assign is_swatch_option = false
+                                            assign swatch_translation = 'general.swatches.color' | t
+                                            assign translation_string = swatch_translation | remove: '  ' | replace: ', ', ',' | replace: ' ,', ',' | replace: ',', '____' | handle | replace: '____', ',' | append: ',' | prepend: ','
+
+                                            if translation_string contains option_name_handle_separator
+                                                assign is_swatch_option = true
+                                            endif
+                                            unless is_swatch_option
+                                            endunless
+                                        -%}
+                                    {%- endfor -%}
+                                    <button type="submit"
+                                        name="add"
+                                        class="btn btn--submit product__submit__add"
+                                        data-focus-element
+                                        data-add-to-cart {% if index > 1 %} tabindex="-1"{% endif %}
+                                        data-upsell-available="{% if product.metafields.theme.upsell_list.value != blank %}true{% endif %}"
+                                        data-product-url="{{product.url}}"
+                                        {%- unless product.has_only_default_variant -%}
+                                            data-variant-options
+                                        {%- endunless -%}
+                                    >
+                                        Add to bag
+                                        <div class="loader loader--line"><div class="loader-indeterminate"></div></div>
+                                    </button>
+                                {%- endform -%}
+                            </div>
+                        {%- endif -%}
                     {%- else -%}
                         {%- unless settings.quick_button == 'none' -%}
                             {%- if settings.quick_button == 'view' -%}

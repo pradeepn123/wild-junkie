@@ -21,7 +21,7 @@
     "image_aspect_ratio": 1.5,
     "product_grid_hover": "image",
     "product_grid_hover_animation": "fade-in",
-    "enable_color_swatches_collection": true,
+    "enable_color_swatches_collection": false,
     "product_grid_hover_swatches": false,
     "show_rating": true,
     "quick_button": "buy",

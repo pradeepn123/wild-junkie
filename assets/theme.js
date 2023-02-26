@@ -11991,12 +11991,20 @@ PaloAlto.ProductGridItem = (function() {
   const selectors = {
     swatches: '[data-swatch-variant-selector]',
     productJson: '[data-product-json]',
-    variantField: '[data-variant-quantity]'
+    variantField: '[data-variant-quantity]',
+    variantPickerBtn: '[data-variant-picker-btn]',
+    variantPickerModal: '[data-grid-variant-picker]'
+  }
+
+  const classes = {
+    active: 'active'
   }
 
   function ProductGridItem(container) {
     this.container = container;
     this.swatches = this.container.querySelectorAll(selectors.swatches)
+    this.variantPickerBtn = this.container.querySelector(selectors.variantPickerBtn)
+    this.variantPickerModal = this.container.querySelector(selectors.variantPickerModal)
     this.init()
   }
 
@@ -12007,6 +12015,12 @@ PaloAlto.ProductGridItem = (function() {
           swatchInput.addEventListener("change", this.onSwatchChange.bind(this))
         })
       }
+      if (this.variantPickerBtn) {
+        this.variantPickerBtn.addEventListener("click", this._openVariantPicker.bind(this))
+      }
+      console.log(this.variantPickerBtn)
+      console.log(this.swatches)
+
     },
 
     onSwatchChange: function() {
@@ -12023,9 +12037,20 @@ PaloAlto.ProductGridItem = (function() {
       });
 
       formVariantField.value = selectedVariant.id
-      debugger;
-      console.log(selectedVariant)
+    },
+
+    _openVariantPicker: function() {
+      this.variantPickerModal.classList.add(classes.active)
+    },
+
+    _closeVariantPicker: function() {
+      this.variantPickerModal.classList.remove(classes.active)
+    },
+
+    _updateVariantPicker: function() {
+
     }
+
   })
 
   return ProductGridItem
