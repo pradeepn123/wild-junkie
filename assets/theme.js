@@ -11997,7 +11997,8 @@ PaloAlto.ProductGridItem = (function() {
     variantPickerCloseBtn: '[data-variant-picker-close]',
     form: '[data-quickview-variant-form]',
     addToCart: '[data-add-to-cart]',
-    addToCartText: '[data-add-to-cart-text]'
+    addToCartText: '[data-add-to-cart-text]',
+    options: '[data-single-option-selector]'
   }
 
   const classes = {
@@ -12015,29 +12016,38 @@ PaloAlto.ProductGridItem = (function() {
     this.form = this.container.querySelector(selectors.form)
     this.addToCartBtn = this.container.querySelector(selectors.addToCart)
     this.addToCartText = this.container.querySelector(selectors.addToCartText)
+    this.optionElements = this.container.querySelectorAll(selectors.options)
+    this.variantElement = this.container.querySelector(selectors.variantField)
+
     this.init()
   }
 
   ProductGridItem.prototype = $.extend({}, ProductGridItem.prototype, {
     init: function() {
-      if (this.swatches.length) {
-        this.swatches.forEach((swatchInput) => {
-          swatchInput.addEventListener("change", this.onSwatchChange.bind(this))
-        })
-      }
-      if (this.variantPickerBtn) {
-        this.variantPickerBtn.addEventListener("click", this._openVariantPicker.bind(this))
+      if (this.container.dataset.variantPicker) {
+
+        if (this.addToCartBtn) {
+          this.addToCartText = this.addToCartBtn.querySelector(selectors.addToCartText)
+        }
+
+        this.variantPickerCloseBtn?.addEventListener("click", this._closeVariantPicker.bind(this))  
+        
+        this.variantPickerBtn?.addEventListener("click", this._openVariantPicker.bind(this))
         this.productJSON = JSON.parse(this.container.querySelector(selectors.productJson).innerHTML)
+
+        this.selectedVariant = this.productJSON.variants.find((variant) => {
+          return this.variantElement.value == variant.id
+        })
+
+        this.optionElements.forEach((element) => {
+          element.addEventListener("change", this.onOptionChange.bind(this))
+        })
 
         this._disableWhenRequired()
       }
-
-      if (this.variantPickerCloseBtn) {
-        this.variantPickerCloseBtn.addEventListener("click", this._closeVariantPicker.bind(this))
-      }
     },
 
-    onSwatchChange: function() {
+    onOptionChange: function(event) {
       const { target } = event
 
       this.selectedVariant = this.productJSON.variants.find((variant) => {

@@ -73,6 +73,9 @@
     class="product-grid-item {% if carousel %}carousel__item{% else %}grid__item{% endif %} {{ size_desktop }} {{ size_mobile }}{% if tag %} has-tag{% endif %}{% if sold_out %} soldout{% endif %}"
     {% if carousel %} data-slide{% endif %}
     data-product-block
+    {% if show_variant_picker %}
+        data-variant-picker="true"
+    {% endif %}
     data-product-id="{{ product.id }}">
     <script type="application/json" class="product-json" id="ProductJson-{{ unique_product_grid }}" data-product-json>{{ product | json }}</script>
     <div class="product-grid-item__inner">
@@ -329,7 +332,15 @@
                                     {%- endunless -%}
                                 >
                                     {%- render 'icon-toggle-plus' -%}
-                                    Add to bag
+                                    <span data-add-to-cart-text>
+                                        {%- if current_variant.available and product.tags contains '_preorder' -%}
+                                            {{ 'products.product.preorder' | t }}
+                                        {%- elsif current_variant.available -%}
+                                            Add to bag
+                                        {%- else -%}
+                                            {{ sold_out_text }}
+                                        {%- endif -%}
+                                    </span>
                                     <span class="btn--quick__progress">
                                         <svg height="18" width="18" class="svg-loader">
                                             <circle r="7" cx="9" cy="9" />
@@ -351,7 +362,15 @@
                                     {%- endunless -%}
                                 >
                                     {%- render 'icon-toggle-plus' -%}
-                                    Add to bag
+                                    <span data-add-to-cart-text>
+                                        {%- if current_variant.available and product.tags contains '_preorder' -%}
+                                            {{ 'products.product.preorder' | t }}
+                                        {%- elsif current_variant.available -%}
+                                            Add to bag
+                                        {%- else -%}
+                                            {{ sold_out_text }}
+                                        {%- endif -%}
+                                    </span>
                                     <span class="btn--quick__progress">
                                         <svg height="18" width="18" class="svg-loader">
                                             <circle r="7" cx="9" cy="9" />
