@@ -12089,7 +12089,7 @@ PaloAlto.ProductGridItem = (function() {
           return
         }
         this.mediaBox.setAttribute('data-current-image-id', featured_media.id)
-        productMedia.setAttribute('data-bgset', PaloAlto.BgSet.render(featured_media.preview_image.src, featured_media.preview_image.aspect_ratio))
+        productMedia.setAttribute('data-bgset', PaloAlto.BgSet.render(getSizedImageUrl(featured_media.preview_image.src, '2048x'), featured_media.preview_image.aspect_ratio))
         productMedia.style.backgroundImage = `url("${getSizedImageUrl(featured_media.preview_image.src, '540x')}")`
       }
     },
