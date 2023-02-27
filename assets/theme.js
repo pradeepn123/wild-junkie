@@ -11998,7 +11998,8 @@ PaloAlto.ProductGridItem = (function() {
     form: '[data-quickview-variant-form]',
     addToCart: '[data-add-to-cart]',
     addToCartText: '[data-add-to-cart-text]',
-    options: '[data-single-option-selector]'
+    options: '[data-single-option-selector]',
+    selectedOptions: '[data-single-option-selector]:checked'
   }
 
   const classes = {
@@ -12035,10 +12036,7 @@ PaloAlto.ProductGridItem = (function() {
         this.variantPickerBtn?.addEventListener("click", this._openVariantPicker.bind(this))
         this.productJSON = JSON.parse(this.container.querySelector(selectors.productJson).innerHTML)
 
-        this.selectedVariant = this.productJSON.variants.find((variant) => {
-          return this.variantElement.value == variant.id
-        })
-
+        this.selectedVariant = this._getSelectedVariant()
         this.optionElements.forEach((element) => {
           element.addEventListener("change", this.onOptionChange.bind(this))
         })
@@ -12047,16 +12045,25 @@ PaloAlto.ProductGridItem = (function() {
       }
     },
 
+    _getSelectedVariant() {
+      const checkedOptions = this.container.querySelectorAll(selectors.selectedOptions)
+
+      return this.productJSON.variants.find((element) => {
+        // only return true if every option matches our hypothetical selection
+        let perfectMatch = true;
+        for (let index = 0; index < checkedOptions.length; index++) {
+          if (element.options[index] !== checkedOptions[index].value) {
+            perfectMatch = false;
+          }
+        }
+        return perfectMatch;
+      });
+    },
+
     onOptionChange: function(event) {
       const { target } = event
 
-      this.selectedVariant = this.productJSON.variants.find((variant) => {
-        // only return true if every option matches our hypothetical selection
-        if (variant[target.dataset.index] == target.value) {
-          return variant
-        }
-      });
-
+      this.selectedVariant = this._getSelectedVariant()
       this._disableWhenRequired()
       this._updateVariantPicker()
     },
@@ -12131,7 +12138,6 @@ PaloAlto.ProductGrid = (function() {
   function ProductGrid(container) {
     this.container = container;
     this.sliders = this.container.querySelectorAll(selectors.slider);
-    this.swatches = this.container.querySelectorAll(selectors.swatches)
     this.productGrids = this.container.querySelectorAll(selectors.productGrid)
 
     if (theme.settings.productGridHover === 'slideshow' && !window.theme.touch) {
