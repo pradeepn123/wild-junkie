@@ -65,6 +65,7 @@
       "settings": {
         "show_breadcrumbs": true,
         "enable_item_grid_swatch": true,
+        "enable_variant_change_images": true,
         "show_variant_picker": true,
         "enable_sorting": true,
         "enable_filters": true,
