@@ -136,6 +136,7 @@
                                 {% if enable_variant_change_images %}
                                     data-product-media-box
                                     data-featured_media="{{ featured_media | json | escape }}"
+                                    data-current-image-id="{{ featured_media.id | json }}"
                                 {% endif %}
                             >
                                 <div class="product__media product__media--featured lazyload"

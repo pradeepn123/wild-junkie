@@ -12043,6 +12043,7 @@ PaloAlto.ProductGridItem = (function() {
         this.optionElements.forEach((element) => {
           element.addEventListener("change", this.onOptionChange.bind(this))
         })
+        this.onDocumentClick = (evt) => this.handleDocumentClick(evt)
 
         this._disableWhenRequired()
       }
@@ -12070,40 +12071,57 @@ PaloAlto.ProductGridItem = (function() {
       this._disableWhenRequired()
       this._updateVariantPicker()
       this._updateProductImage()
+      this._updateProductUrl()
     },
 
     _updateProductImage: function() {
       const productMedia = this.mediaBox.querySelector(selectors.productImage)
 
-      let preview_image = null
-
+      let featured_media = null
       if (this.selectedVariant.featured_media) {
         featured_media = this.selectedVariant.featured_media
-      } else if (this.mediaBox.dataset.preview_image) {
+      } else if (this.mediaBox.dataset.featured_media) {
         featured_media = JSON.parse(this.mediaBox.dataset.featured_media)
       }
 
       if (featured_media) {
+        if (this.mediaBox.dataset.currentImageId == featured_media.id.toString()) {
+          return
+        }
+        this.mediaBox.setAttribute('data-current-image-id', featured_media.id)
         productMedia.setAttribute('data-bgset', PaloAlto.BgSet.render(featured_media.preview_image.src, featured_media.preview_image.aspect_ratio))
         productMedia.style.backgroundImage = `url("${getSizedImageUrl(featured_media.preview_image.src, '540x')}")`
       }
     },
 
-    _openVariantPicker: function() {
-      const variantPickerModals = document.querySelectorAll(selectors.variantPickerModal)
-      variantPickerModals.forEach((picker) => {
-        picker.classList.remove(classes.active)
-        const variantPickerBtn = picker.parentElement.querySelector(selectors.variantPickerBtn)
-        variantPickerBtn.style.visibility = ''
+    _updateProductUrl: function() {
+      const productUrlHolders = this.container.querySelectorAll('a')
+      productUrlHolders.forEach((holder) => {
+        productUrl = holder.href.split("?")
+        if (productUrl.length) {
+          productUrl = productUrl[0].replace("#", '')
+          productUrl = productUrl + "?variant=" + this.selectedVariant.id
+          holder.setAttribute("href", productUrl)
+        }
       })
+    },
 
+    _openVariantPicker: function() {
       this.variantPickerBtn.style.visibility = 'hidden'
       this.variantPickerModal.classList.add(classes.active)
+      document.addEventListener("click", this.onDocumentClick)
+    },
+
+    handleDocumentClick: function(event) {
+      if (!event.target.closest(`[data-product-id="${this.productJSON.id}"]`)) {
+        this._closeVariantPicker()
+      }
     },
 
     _closeVariantPicker: function() {
       this.variantPickerModal.classList.remove(classes.active)
       this.variantPickerBtn.style.visibility = ''
+      document.removeEventListener("click", this.onDocumentClick)
     },
 
     _updateVariantPicker: function() {
