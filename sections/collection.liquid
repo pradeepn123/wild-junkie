@@ -498,7 +498,7 @@
                                         for product in collection.products
                                             assign index = forloop.index
                                             assign animation_delay = forloop.index0 | modulo: columns | times: 1
-                                            render 'product-grid-item', product: product, animation_delay: animation_delay, enable_item_grid_swatch: section.settings.enable_item_grid_swatch, show_variant_picker: section.settings.show_variant_picker
+                                            render 'product-grid-item', product: product, animation_delay: animation_delay, enable_item_grid_swatch: section.settings.enable_item_grid_swatch, show_variant_picker: section.settings.show_variant_picker, enable_variant_change_images: section.settings.enable_variant_change_images
                                         endfor
                                     -%}
 
@@ -629,6 +629,13 @@
             "id": "enable_item_grid_swatch",
             "label": "Show Swatch",
             "info": "This will override theme default settings for hover on swatch",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_variant_change_images",
+            "label": "Show variant based images",
+            "info": "This will override theme default settings for hover on images",
             "default": false
         },
         {

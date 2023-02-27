@@ -61,8 +61,15 @@
     assign animations_enabled = settings.animations_enabled
     assign product_grid_hover = settings.product_grid_hover
     assign product_grid_hover_animation = settings.product_grid_hover_animation
-    if product.media.size <= 1 or product_grid_hover == 'none'
+    if product.media.size <= 1 or product_grid_hover == 'none' or enable_variant_change_images
         assign product_grid_hover = false
+    endif
+
+    if enable_variant_change_images
+        assign featured_media = current_variant.featured_media
+        unless featured_media
+            assign featured_media = product.featured_media
+        endunless
     endif
 
     assign currency_code_enable = settings.currency_code_enable
@@ -124,7 +131,13 @@
                         {% if index > 1 %} tabindex="-1"{% endif %}
                     >
                         {%- if product.media.size > 0 -%}
-                            <div class="product__media__image{% if product_grid_hover %} product__media__image--hover-{{ product_grid_hover_animation }}{% endif %} lazy-image" style="background-image: url({{ image | img_url: '1x1' }});">
+                            <div class="product__media__image{% if product_grid_hover %} product__media__image--hover-{{ product_grid_hover_animation }}{% endif %} lazy-image"
+                                style="background-image: url({{ image | img_url: '1x1' }});"
+                                {% if enable_variant_change_images %}
+                                    data-product-media-box
+                                    data-featured_media="{{ featured_media | json | escape }}"
+                                {% endif %}
+                            >
                                 <div class="product__media product__media--featured lazyload"
                                     data-bgset="{% render 'bgset', image: image %}"
                                     data-sizes="auto"

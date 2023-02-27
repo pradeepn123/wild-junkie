@@ -11999,7 +11999,9 @@ PaloAlto.ProductGridItem = (function() {
     addToCart: '[data-add-to-cart]',
     addToCartText: '[data-add-to-cart-text]',
     options: '[data-single-option-selector]',
-    selectedOptions: '[data-single-option-selector]:checked'
+    selectedOptions: '[data-single-option-selector]:checked',
+    mediaBox: '[data-product-media-box]',
+    productImage: '[data-product-image]'
   }
 
   const classes = {
@@ -12019,6 +12021,7 @@ PaloAlto.ProductGridItem = (function() {
     this.addToCartText = this.container.querySelector(selectors.addToCartText)
     this.optionElements = this.container.querySelectorAll(selectors.options)
     this.variantElement = this.container.querySelector(selectors.variantField)
+    this.mediaBox = this.container.querySelector(selectors.mediaBox)
 
     this.init()
   }
@@ -12066,6 +12069,24 @@ PaloAlto.ProductGridItem = (function() {
       this.selectedVariant = this._getSelectedVariant()
       this._disableWhenRequired()
       this._updateVariantPicker()
+      this._updateProductImage()
+    },
+
+    _updateProductImage: function() {
+      const productMedia = this.mediaBox.querySelector(selectors.productImage)
+
+      let preview_image = null
+
+      if (this.selectedVariant.featured_media) {
+        featured_media = this.selectedVariant.featured_media
+      } else if (this.mediaBox.dataset.preview_image) {
+        featured_media = JSON.parse(this.mediaBox.dataset.featured_media)
+      }
+
+      if (featured_media) {
+        productMedia.setAttribute('data-bgset', PaloAlto.BgSet.render(featured_media.preview_image.src, featured_media.preview_image.aspect_ratio))
+        productMedia.style.backgroundImage = `url("${getSizedImageUrl(featured_media.preview_image.src, '540x')}")`
+      }
     },
 
     _openVariantPicker: function() {
