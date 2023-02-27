@@ -4449,7 +4449,7 @@ PaloAlto.videoLink = function() {
 
 /*= =============== Utilities ================*/
 PaloAlto.BgSet = {
-  render: function(image, imageAspectRatio) {
+  render: function(image, imageAspectRatio, imageSize) {
     let bgset = '';
     const blankImageAspectRatio = 1;
 
@@ -4457,16 +4457,20 @@ PaloAlto.BgSet = {
       imageAspectRatio = blankImageAspectRatio;
     }
 
-    bgset += image.replace('_2048x.', '_180x.') + ' 180w ' + Math.round(180 / imageAspectRatio) + 'h,';
-    bgset += image.replace('_2048x.', '_360x.') + ' 360w ' + Math.round(360 / imageAspectRatio) + 'h,';
-    bgset += image.replace('_2048x.', '_540x.') + ' 540w ' + Math.round(540 / imageAspectRatio) + 'h,';
-    bgset += image.replace('_2048x.', '_720x.') + ' 720w ' + Math.round(720 / imageAspectRatio) + 'h,';
-    bgset += image.replace('_2048x.', '_900x.') + ' 900w ' + Math.round(900 / imageAspectRatio) + 'h,';
-    bgset += image.replace('_2048x.', '_1080x.') + ' 1080w ' + Math.round(1080 / imageAspectRatio) + 'h,';
-    bgset += image.replace('_2048x.', '_1296x.') + ' 1296w ' + Math.round(1296 / imageAspectRatio) + 'h,';
-    bgset += image.replace('_2048x.', '_1512x.') + ' 1512w ' + Math.round(1512 / imageAspectRatio) + 'h,';
-    bgset += image.replace('_2048x.', '_1728x.') + ' 1728w ' + Math.round(1728 / imageAspectRatio) + 'h,';
-    bgset += image.replace('_2048x.', '_1950x.') + ' 1950w ' + Math.round(1950 / imageAspectRatio) + 'h,';
+    if (!imageSize) {
+        imageSize = '_2048x.'
+    }
+
+    bgset += image.replace(imageSize, '_180x.') + ' 180w ' + Math.round(180 / imageAspectRatio) + 'h,';
+    bgset += image.replace(imageSize, '_360x.') + ' 360w ' + Math.round(360 / imageAspectRatio) + 'h,';
+    bgset += image.replace(imageSize, '_540x.') + ' 540w ' + Math.round(540 / imageAspectRatio) + 'h,';
+    bgset += image.replace(imageSize, '_720x.') + ' 720w ' + Math.round(720 / imageAspectRatio) + 'h,';
+    bgset += image.replace(imageSize, '_900x.') + ' 900w ' + Math.round(900 / imageAspectRatio) + 'h,';
+    bgset += image.replace(imageSize, '_1080x.') + ' 1080w ' + Math.round(1080 / imageAspectRatio) + 'h,';
+    bgset += image.replace(imageSize, '_1296x.') + ' 1296w ' + Math.round(1296 / imageAspectRatio) + 'h,';
+    bgset += image.replace(imageSize, '_1512x.') + ' 1512w ' + Math.round(1512 / imageAspectRatio) + 'h,';
+    bgset += image.replace(imageSize, '_1728x.') + ' 1728w ' + Math.round(1728 / imageAspectRatio) + 'h,';
+    bgset += image.replace(imageSize, '_1950x.') + ' 1950w ' + Math.round(1950 / imageAspectRatio) + 'h,';
     bgset += image + ' 2048w ' + Math.round(2048 / imageAspectRatio) + 'h';
 
     return bgset;
@@ -12089,7 +12093,7 @@ PaloAlto.ProductGridItem = (function() {
           return
         }
         this.mediaBox.setAttribute('data-current-image-id', featured_media.id)
-        productMedia.setAttribute('data-bgset', PaloAlto.BgSet.render(getSizedImageUrl(featured_media.preview_image.src, '2048x'), featured_media.preview_image.aspect_ratio))
+        productMedia.setAttribute('data-bgset', PaloAlto.BgSet.render(getSizedImageUrl(featured_media.preview_image.src, '540x'), featured_media.preview_image.aspect_ratio, '_540x.'))
         productMedia.style.backgroundImage = `url("${getSizedImageUrl(featured_media.preview_image.src, '540x')}")`
       }
     },
