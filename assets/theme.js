@@ -12036,6 +12036,7 @@ PaloAlto.ProductGridItem = (function() {
 
         if (this.addToCartBtn) {
           this.addToCartText = this.addToCartBtn.querySelector(selectors.addToCartText)
+          document.addEventListener("theme:cart:updateSuccess", this._closeVariantPicker.bind(this))
         }
 
         this.variantPickerCloseBtn?.addEventListener("click", this._closeVariantPicker.bind(this))  
@@ -12060,7 +12061,7 @@ PaloAlto.ProductGridItem = (function() {
         // only return true if every option matches our hypothetical selection
         let perfectMatch = true;
         for (let index = 0; index < checkedOptions.length; index++) {
-          if (element.options[index] !== checkedOptions[index].value) {
+          if (element[checkedOptions[index].dataset.index] !== checkedOptions[index].value) {
             perfectMatch = false;
           }
         }

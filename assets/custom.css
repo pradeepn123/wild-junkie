@@ -1742,6 +1742,21 @@ i.icon-swym-wishlist:after {
     margin-bottom: calc(var(--form-margin) / 2);
 }
 
+.grid-variant-picker .product__submit__add.is-loading {
+    opacity: 0.6;
+    cursor: default;
+    background: transparent;
+    transition: none;
+}
+
+.grid-variant-picker .loader--line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80%;
+    margin: auto;
+}
+
 @media screen and (max-width: 600px) {
     .collection-product-grid .swatch__button .swatch__label {
         width: 20px;
