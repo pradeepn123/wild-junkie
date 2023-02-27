@@ -347,9 +347,9 @@
                                 >
                                     {%- render 'icon-toggle-plus' -%}
                                     <span data-add-to-cart-text>
-                                        {%- if current_variant.available and product.tags contains '_preorder' -%}
+                                        {%- if product.available and product.tags contains '_preorder' -%}
                                             {{ 'products.product.preorder' | t }}
-                                        {%- elsif current_variant.available -%}
+                                        {%- elsif product.available -%}
                                             Add to bag
                                         {%- else -%}
                                             {{ sold_out_text }}
@@ -377,9 +377,9 @@
                                 >
                                     {%- render 'icon-toggle-plus' -%}
                                     <span data-add-to-cart-text>
-                                        {%- if current_variant.available and product.tags contains '_preorder' -%}
+                                        {%- if product.available and product.tags contains '_preorder' -%}
                                             {{ 'products.product.preorder' | t }}
-                                        {%- elsif current_variant.available -%}
+                                        {%- elsif product.available -%}
                                             Add to bag
                                         {%- else -%}
                                             {{ sold_out_text }}
@@ -466,9 +466,9 @@
                                         {%- endunless -%}
                                     >
                                         <span data-add-to-cart-text>
-                                            {%- if current_variant.available and product.tags contains '_preorder' -%}
+                                            {%- if product.available and product.tags contains '_preorder' -%}
                                                 {{ 'products.product.preorder' | t }}
-                                            {%- elsif current_variant.available -%}
+                                            {%- elsif product.available -%}
                                                 ADD TO BAG
                                             {%- else -%}
                                                 {{ sold_out_text }}
