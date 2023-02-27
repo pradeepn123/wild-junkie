@@ -1683,7 +1683,7 @@ i.icon-swym-wishlist:after {
 
 .grid-variant-picker .quick__variant__form {
     background: var(--COLOR-BG);
-    border-radius: 5%;
+    border-radius: 25px;
     padding: 15px;
 }
 
@@ -1708,6 +1708,7 @@ i.icon-swym-wishlist:after {
 
 .grid-variant-picker .radio__legend__label {
     font-size: 16px;
+    color: #000;
 }
 
 
