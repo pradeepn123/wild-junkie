@@ -67,6 +67,11 @@
   unless show_labels
     assign hide_labels_class = ' variant__labels--hide'
   endunless
+
+  assign is_b2b_customer = false
+  if customer.tags contains 'b2b'
+    assign is_b2b_customer = true
+  endif
 -%}
 
 {% if section_type != 'quickview' %}
@@ -557,6 +562,10 @@
 
   {%- assign quantity_position_bottom = true -%}
 
+  {% if is_b2b_customer %}
+    {% render 'b2b-discount-block', product: product, current_variant: current_variant %}
+  {% endif %}
+
   {%- capture quantity_selector -%}
     <div class="select__fieldset">
       <span class="select__label" id="{{ unique }}-select-quantity-label">{{ 'products.product.quantity' | t }}</span>
@@ -601,7 +610,7 @@
   {%- capture form_fields -%}
     {%- unless product.has_only_default_variant -%}
       {%- assign selects_counter = 0 -%}
-      <div class="product__selectors">
+      <div class="product__selectors {% if is_b2b_customer %} b2b__product__selector {% endif %}">
         {%- for option in product.options_with_values -%}
           {%- comment -%} Use select over radio for long inputs and mismatched lengths {%- endcomment -%}
 
@@ -718,7 +727,10 @@
                         name="options[{{ option.name | escape_once }}]"
                         value="{{ value | escape_once }}"
                         id="{{ input_id }}"
-                        {% if value == current_value %}checked{% endif %}>
+                        {% unless is_b2b_customer %}
+                          {% if value == current_value %}checked{% endif %}
+                        {% endunless %}
+                      >
                       <label for="{{ input_id }}" class="swatch__label" data-swatch="{{ value | escape_once }}" data-tooltip="{{ value | escape_once }}">
                         <span class="visually-hidden">{{ value | escape_once }}</span>
                       </label>
@@ -732,7 +744,10 @@
                         data-index="option{{ option.position }}"
                         name="options[{{ option.name | escape_once }}]"
                         value="{{ value | escape_once }}" id="{{ input_id }}"
-                        {% if value == current_value %}checked{% endif %}>
+                        {% unless is_b2b_customer %}
+                          {% if value == current_value %}checked{% endif %}
+                        {% endunless %}
+                      >
                       <label for="{{ input_id }}" class="radio__label">
                         <span>{{ value }}</span>
                       </label>
@@ -1789,7 +1804,7 @@
   {%- capture form_fields -%}
     {%- unless product.has_only_default_variant -%}
       {%- assign selects_counter = 0 -%}
-      <div class="product__selectors">
+      <div class="product__selectors {% if is_b2b_customer %} b2b__product__selector {% endif %}">
         {%- for option in product.options_with_values -%}
           {%- comment -%} Use select over radio for long inputs and mismatched lengths {%- endcomment -%}
 
