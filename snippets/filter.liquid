@@ -81,7 +81,7 @@
         >
             {%- case filter.type -%}
                 {%- when 'list' or 'boolean' -%}
-                    {% if is_swatch_option == false and enable_color_swatches == true %}
+                    {% if is_swatch_option == false and enable_filter_pills == true %}
                         <div class="selector-wrapper selector-wrapper--boxes filter-selector-wrapper">
                             <fieldset class="radio__fieldset radio__fieldset--default collection__filter-tag--default">
                                 {%- for filter_value in filter.values -%}

@@ -8656,6 +8656,8 @@ body.js-notify-open-cart {
 
 .selector-wrapper--grid {
   display: inline-flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
 }
 .selector-wrapper--grid .radio__fieldset {
   display: grid;
