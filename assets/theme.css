@@ -11395,7 +11395,7 @@ body.js-notify-open-cart {
   .collection__filters {
     position: sticky;
     position: -webkit-sticky;
-    width: 240px;
+    width: 255px;
     float: left;
     margin-right: calc(var(--gutter) / 2);
   }
@@ -11556,12 +11556,12 @@ body.js-notify-open-cart {
 }
 @media only screen and (min-width: 1024px) {
   .collection__filters-list__inner {
-    width: 220px;
+    width: 234px;
   }
 }
 @media only screen and (min-width: 1440px) {
   .collection__filters-list__inner {
-    width: 270px;
+    width: 290px;
   }
 }
 
