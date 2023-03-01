@@ -152,16 +152,18 @@
   data-section-id="{{ section.id }}"
   data-columns="{{ columns }}">
 
-  <div class="great_offer_timer">
-    <div class="great_offer_timer_inner">
-      <div class="offer_text_heading">
-        <p>
-          {{ section.settings.offer_text }}
-          <span class="font_main_timer" data-date="{{ section.settings.offer_date }}" data-time="{{ section.settings.offer_time }}" data-target-container="ListCollections--{{ section.id }}" data-coundown-timer ></span>
-        </p>
+  {% if page.handle == "salesday" %}
+    <div class="great_offer_timer">
+      <div class="great_offer_timer_inner">
+        <div class="offer_text_heading">
+          <p>
+            {{ section.settings.offer_text }}
+            <span class="font_main_timer" data-date="{{ section.settings.offer_date }}" data-time="{{ section.settings.offer_time }}" data-target-container="ListCollections--{{ section.id }}" data-coundown-timer ></span>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
+  {% endif %}
 
   <div class="{{ section_width }}">
     <div class="main_sec_heading">
