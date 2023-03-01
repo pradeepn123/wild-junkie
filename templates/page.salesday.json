@@ -255,13 +255,15 @@
       "type": "offer_image_section",
       "settings": {
         "width": "wrapper--full-padded",
-        "image": "shopify:\/\/shop_images\/50__off_onrewards.png",
+        "image": "shopify:\/\/shop_images\/WILD-JUNKIES-BANNER02--CTA-OPT.jpg",
         "image_url": "shopify:\/\/collections\/christmas",
         "set_image_height": 24,
-        "fit_image_desktop": "contain",
-        "mobile_image": "shopify:\/\/shop_images\/50-off-banner.png",
+        "fit_image_desktop": "cover",
+        "mobile_image": "shopify:\/\/shop_images\/WILD-JUNKIES-MOB--BANNER02-OPT--CTA.jpg",
         "set_mobile_image_height": 120,
-        "fit_image_mobile": "contain"
+        "fit_image_mobile": "contain",
+        "padding_top": 22,
+        "padding_bottom": 28
       }
     },
     "33d004fd-9094-48d1-a82d-bfca4f0775fc": {
@@ -434,13 +436,15 @@
       "type": "offer_image_section",
       "settings": {
         "width": "wrapper--full-padded",
-        "image": "shopify:\/\/shop_images\/deal_of_the_day_img.jpg",
+        "image": "shopify:\/\/shop_images\/WILD-JUNKIES-BANNER-CTA-OPT.jpg",
         "image_url": "shopify:\/\/collections\/christmas",
         "set_image_height": 31,
         "fit_image_desktop": "contain",
-        "mobile_image": "shopify:\/\/shop_images\/deal-of-the-day-banner-3_e2a75255-b153-4d47-bdee-fd779e294173.png",
+        "mobile_image": "shopify:\/\/shop_images\/WILD-JUNKIES-MOB-BANNER-CTA.jpg",
         "set_mobile_image_height": 125,
-        "fit_image_mobile": "cover"
+        "fit_image_mobile": "cover",
+        "padding_top": 60,
+        "padding_bottom": 32
       }
     },
     "a10ab72c-05b8-4573-a6cd-ddac12848911": {
