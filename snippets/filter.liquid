@@ -61,7 +61,10 @@
  
 
   {%- assign option_name_handle_separator = filter.label | handle | prepend: ',' | append: ',' -%}
-  {%- assign enable_color_swatches = settings.enable_color_swatches_collection -%}
+
+  {% if enable_color_swatches != true %}
+    {%- assign enable_color_swatches = settings.enable_color_swatches_collection -%}
+  {% endif %}
 
   {%- liquid
   if enable_color_swatches
@@ -114,11 +117,9 @@
 
                   <label class="swatch__label swatch__label--{{ settings.color_swatches_product_style }} filter__button" for="filter-{{ filter.label | escape }}-{{ forloop.index }}" data-swatch="{{ filter_value.label | escape_once }}" data-tooltip="{{ filter_value.label | escape_once }}">
                     <span class="visually-hidden">{{ filter_value.label }}</span>
-                    {% if settings.color_swatches_product_style == 'circle' %}
-                      {% render 'icon-check' %}
-                    {% endif %}
                   </label>
                 </span>
+                {{ filter_value.value }}
               {%- else -%}
                 <input type="checkbox"
                   class="filter__input"

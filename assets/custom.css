@@ -1645,8 +1645,12 @@ i.icon-swym-wishlist:after {
 .quick__variant__form .btn--quick, .quick__variant__picker__form .btn--quick {
     width: auto;
     height: auto;
-    border-radius: 20px;
+    border-radius: 25px;
     padding: 5px 12px;
+}
+
+.quick__variant__form .radio__legend {
+    display: flex;
 }
 
 .quick__variant__form .btn--quick::after, .quick__variant__picker__form .btn--quick::after {
@@ -1683,7 +1687,7 @@ i.icon-swym-wishlist:after {
 
 .grid-variant-picker .quick__variant__form {
     background: var(--COLOR-BG);
-    border-radius: 25px;
+    border-radius: 15px;
     padding: 15px;
 }
 
@@ -1767,4 +1771,14 @@ i.icon-swym-wishlist:after {
         width: calc(20px - 4px);
         height: calc(20px - 4px);
     }
+}
+
+.collection__filter-tags .swatch__button .swatch__label {
+    width: 32px;
+    height: 32px;
+}
+
+.collection__filter-tags .swatch__button .swatch__label:before {
+    width: calc(32px - 4px);
+    height: calc(32px - 4px);
 }

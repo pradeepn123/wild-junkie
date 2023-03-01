@@ -116,7 +116,7 @@
                                         endif
 
                                         for filter in collection.filters
-                                            render 'filter', filter: filter, animation_delay: animation_delay
+                                            render 'filter', filter: filter, animation_delay: animation_delay, enable_color_swatches: section.settings.enable_item_grid_swatch
                                         endfor
                                     -%}
 
@@ -255,7 +255,7 @@
                                                             assign all_active_tags_count = all_active_tags_count | plus: 1
                                                         endif
                                                     endfor
-                                                    if color_label contains group_label and settings.enable_color_swatches_collection
+                                                    if color_label contains group_label and enable_color_swatches_collection
                                                         assign is_color = true
                                                     else
                                                         assign is_color = false
@@ -281,7 +281,7 @@
                                                         aria-hidden="true"
                                                         data-collapsible-container style="{% if is_active %}height:auto;{% endif %}"
                                                     >
-                                                        <ul class="collection__filter-tags{% if is_color %} collection__filter-tags--swatches collection__filter-tags--swatches-{{settings.color_swatches_product_style }}{% endif %}" data-collapsible-content>
+                                                        <ul class="collection__filter-tags {% if is_color %} collection__filter-tags--swatches collection__filter-tags--swatches-{{settings.color_swatches_product_style }}{% endif %}" data-collapsible-content>
                                                             {%- for tag in collection.all_tags -%}
                                                                 {%- liquid
                                                                     assign tag_parts = tag | split: '_'
