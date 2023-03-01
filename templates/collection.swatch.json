@@ -1,0 +1,85 @@
+{
+  "sections": {
+    "4c118976-e1eb-4014-902b-8ac62986d878": {
+      "type": "collection-page-section-custom-content",
+      "blocks": {
+        "template--14513718034495__4c118976-e1eb-4014-902b-8ac62986d878-166851258861839195-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Bags-_-Purses.jpg",
+            "image_position": "center-center",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "{{ collection.title }}",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "template--14513718034495__4c118976-e1eb-4014-902b-8ac62986d878-166851258861839195-0"
+      ],
+      "settings": {
+        "height": "four-fifty-height",
+        "custom_class_custom_content": "collections_page_mobile_image",
+        "bg_color": "",
+        "width": "wrapper--full",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "hero": {
+      "type": "collection-image-with-title",
+      "disabled": true,
+      "settings": {
+        "banner_height": "two-fifty-height",
+        "text_position": "middle-center",
+        "show_image": true,
+        "text_color": "text-light",
+        "overlay_opacity": 10,
+        "banner_bg_color": "#fafafa",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "subcollections": {
+      "type": "subcollections",
+      "settings": {
+        "layout": "grid",
+        "image_source": "collection",
+        "image_aspect_ratio": 0.6,
+        "image_overlay_opacity": 10,
+        "bg_color": "",
+        "text_color": "text-light",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "collection",
+      "settings": {
+        "show_breadcrumbs": true,
+        "enable_item_grid_swatch": true,
+        "enable_variant_change_images": true,
+        "show_variant_picker": true,
+        "enable_sorting": true,
+        "enable_filters": true,
+        "filter_mode": "default",
+        "bg_color": "",
+        "padding_top": 30,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "4c118976-e1eb-4014-902b-8ac62986d878",
+    "hero",
+    "subcollections",
+    "main"
+  ]
+}
