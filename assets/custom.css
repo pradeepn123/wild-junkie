@@ -1782,3 +1782,16 @@ i.icon-swym-wishlist:after {
     width: calc(32px - 4px);
     height: calc(32px - 4px);
 }
+
+.collection__filter-tag.collection__filter-tag--swatch{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.collection__filter-tag.collection__filter-tag--swatch .collection__filter-swatch_color_name{
+    margin-top: 4px;
+    font-size: 12px;
+}
