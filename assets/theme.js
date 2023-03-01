@@ -1646,6 +1646,7 @@ PaloAlto.CartDrawer = (function() {
     upsellButton: 'data-upsell-btn',
     errorContainerQuickBuy: 'data-cart-errors-container-quickbuy',
     notificationPopup: 'data-notification-popup',
+    chooseOptions: 'data-choose-option'
   };
 
   function CartDrawer() {
@@ -1859,6 +1860,9 @@ PaloAlto.CartDrawer = (function() {
           let formData = '';
 
           event.preventDefault();
+          if (button.hasAttribute(attributes.chooseOptions)) {
+            return false
+          }
 
           if (button.hasAttribute(attributes.notificationPopup) && formWrapper && formWrapper.classList.contains(classes.variantSoldOut)) {
             new PaloAlto.NotificationPopup(button, false);
@@ -2517,7 +2521,6 @@ PaloAlto.CartDrawer = (function() {
       this.cartDrawerToggleClickEvent = (e) => {
         e.preventDefault();
         const button = e.target;
-
         if (button.getAttribute(attributes.ariaExpanded) === 'false') {
           slate.a11y.state.trigger = button;
         }
@@ -7206,7 +7209,7 @@ PaloAlto.ProductAddForm = (function() {
         });
       }
 
-      if (addToCartText.length) {
+      if (addToCartText.length && !addToCart.hasAttribute("data-choose-option")) {
         addToCartText.forEach((element) => {
           if (variant) {
             if (variant.available) {

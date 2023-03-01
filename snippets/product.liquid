@@ -563,8 +563,15 @@
   {%- assign quantity_position_bottom = true -%}
 
   {% if is_b2b_customer %}
-    {% render 'b2b-discount-block', product: product, current_variant: current_variant %}
+    {% render 'b2b-discount-block',
+      product: product,
+      current_variant: current_variant,
+      animation_delay: animation_delay,
+      animations_enabled: animations_enabled
+    %}
   {% endif %}
+
+  
 
   {%- capture quantity_selector -%}
     <div class="select__fieldset">
@@ -833,7 +840,10 @@
     {%- assign sold_out_text = sold_out_text | append: ' - ' | append: newsletter_text -%}
   {%- endif -%}
 
-  <div class="product__submit__holder{% if show_payment_button %} product__submit__holder--spb{% endif %}{% if show_newsletter %} product__submit__holder--notification{% endif %}" data-product-id="{{ product.id }}">
+  {% if is_b2b_customer %}
+    {% render 'b2b-select-option' %} 
+  {% else %}
+  <div class="product__submit__holder {% if show_payment_button %} product__submit__holder--spb{% endif %}{% if show_newsletter %} product__submit__holder--notification{% endif %}" data-product-id="{{ product.id }}">
     {%- if product.selling_plan_groups.size > 0 -%}
       <div class="product__submit__buttons product__submit__buttons-primary">
         {% for selling_plan_group in product.selling_plan_groups %}
@@ -924,7 +934,13 @@
     {%- endif -%}
     <div data-cart-errors-container class="product__form__errors"></div>
   </div>
+  {% endif %}
+
+ 
+ 
 {%- endform -%}
+
+
 {% assign product_form_id = "AddToCartForm--shop-pay" | append: unique %}
 
   {% if current_variant.price < 5000 and section_type != 'quickview' %}
@@ -2060,7 +2076,7 @@
           </span>
 
           <div class="loader loader--line"><div class="loader-indeterminate"></div></div>
-        </button>
+        </button> 
       </div>
 
       {%- if show_payment_button -%}
