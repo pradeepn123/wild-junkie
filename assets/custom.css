@@ -1800,3 +1800,8 @@ i.icon-swym-wishlist:after {
     text-align: center;
     cursor: pointer;
 }
+
+.featured-collection__top {
+    flex-direction: row;
+    justify-content: space-between;
+}
