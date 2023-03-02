@@ -12892,8 +12892,8 @@ button.collection__filters__toggle {
 .featured-collection__top {
   position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .featured-collection__top.text-center {
