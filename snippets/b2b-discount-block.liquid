@@ -1,36 +1,43 @@
 <style>
+
     .b2b__product__selector .swatch__label,
     .b2b__product__selector .radio__label {
-      pointer-events: none;
-    }
-
-    .b2b-discount-block-wrapper{
-
+        pointer-events: none;
     }
 
     .b2b-discount-offer-block {
-      display: flex;
-      justify-content: space-between;
-      width: 75%;
+        display: flex;
+        justify-content: space-between;
+        width: 75%;
     }
 
     .b2b-discount-offer-items {
         color: #909090;
     }
 
-    h3 {
-      color: #FE6D6D;
-      font-family: 'Montserrat';
-      font-weight: 600;
+    .b2b-discount-block-wrapper h3 {
+        color: #FE6D6D;
+        font-family: 'Montserrat';
+        font-weight: 600;
     }
 
-    h5{
+    .b2b-discount-block-wrapper h5 {
       font-family: 'Montserrat';
     }
 
-    .items-title{
+    .b2b-discount-block-wrapper .items-title{
         margin: 10px 0 5px;
     }
+
+    .b2b-minimum-order-title {
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .b2b-button-option {
+        font-size: 16px;
+    }
+
 </style>
 
 <div
@@ -42,24 +49,25 @@
         {%- assign animation_delay = animation_delay | plus: 150 -%}
     {% endif %}
 >
-  <h5>Bulk Discounting</h5>
-  <div class="b2b-discount-offer-block">
-    <div class="b2b-discount-offer-items">
-      <p class="items-title">6 - 50 pieces</p>
-      <h3>10% Off</h3>
-    </div>
+    <h5>Bulk Discounting</h5>
+    <div class="b2b-discount-offer-block">
+        <div class="b2b-discount-offer-items">
+            <p class="items-title">6 - 50 pieces</p>
+            <h3>10% Off</h3>
+        </div>
 
-    <div class="b2b-discount-offer-items">
-      <p class="items-title">6 - 50 pieces</p>
-      <h3>10% Off</h3>
-    </div>
+        <div class="b2b-discount-offer-items">
+            <p class="items-title">6 - 50 pieces</p>
+            <h3>10% Off</h3>
+        </div>
 
-    <div class="b2b-discount-offer-items">
-      <p class="items-title">6 - 50 pieces</p>
-      <h3>10% Off</h3>
+        <div class="b2b-discount-offer-items">
+            <p class="items-title">6 - 50 pieces</p>
+            <h3>10% Off</h3>
+        </div>
     </div>
-  </div>
 </div>
+
 <hr class="hr--full"
     {% if animations_enabled %}
         data-aos="fade-up"

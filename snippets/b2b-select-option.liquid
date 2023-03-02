@@ -1,98 +1,38 @@
 <div
-  class="product__submit__holder{% if show_payment_button %} product__submit__holder--spb{% endif %}{% if show_newsletter %} product__submit__holder--notification{% endif %}"
-  data-product-id="{{ product.id }}"
+    class="product__submit__holder"
+    data-product-id="{{ product.id }}"
 >
-  {%- if product.selling_plan_groups.size > 0 -%}
     <div class="product__submit__buttons product__submit__buttons-primary">
-      {% for selling_plan_group in product.selling_plan_groups %}
-        <select
-          class="subscription-form-select"
-          name="selling_plan"
-          {% if animations_enabled %}
-            data-aos="fade-up"
-            data-aos-anchor="{{ animation_anchor }}"
-            data-aos-delay="{{ animation_delay }}"
-          {% endif %}
+        <div
+            class="product__submit__item"
+            {% if animations_enabled %}
+                data-aos="fade-up"
+                data-aos-anchor="{{ animation_anchor }}"
+                data-aos-delay="{{ animation_delay }}"
+                {%- assign animation_delay = animation_delay | plus: 150 -%}
+            {% endif %}
         >
-          {% for plan in selling_plan_group.selling_plans %}
-            <option
-              value="{{ plan.id }}"
-              {% if plan.selected %}
-                selected
-              {% endif %}
+            <button
+                type="submit"
+                name="add"
+                id="AddToCart--{{ unique }}"
+                class="btn btn--submit product__submit__add "
+                data-add-to-cart
+                data-choose-option
+                data-focus-element
+                data-upsell-available="{% if product.metafields.theme.upsell_list.value != blank %}true{% endif %}"
+                data-product-url="{{product.url}}"
             >
-              {{ plan.name }}
-            </option>
-          {% endfor %}
-        </select>
-      {% endfor %}
-      {%- assign animation_delay = animation_delay | plus: 100 -%}
-      {%- comment -%} Delete the following line to block the theme from updating subscription prices {%- endcomment -%}
-      <span data-subscription-watch-price></span>
+                <span
+                    data-add-to-cart-text
+                    class="b2b-button-option"
+                >
+                    Choose option
+                </span>
+            </button>
+            <p class="b2b-minimum-order-title">
+                *Minimum order 6 Pieces, Maximum up to 200 Pieces
+            </p>
+        </div>
     </div>
-  {%- endif -%}
-  <div class="product__submit__buttons {% unless product.selling_plan_groups.size > 0 %}product__submit__buttons-primary{% endunless %}">
-    <div
-      class="product__submit__item"
-      {% if animations_enabled %}
-        data-aos="fade-up"
-        data-aos-anchor="{{ animation_anchor }}"
-        data-aos-delay="{{ animation_delay }}"
-        {%- assign animation_delay = animation_delay | plus: 150 -%}
-      {% endif %}
-    >
-      <button
-        type="submit"
-        name="add"
-        id="AddToCart--{{ unique }}"
-        class="btn btn--submit product__submit__add "
-        data-add-to-cart
-        data-choose-option
-        data-focus-element
-        data-upsell-available="{% if product.metafields.theme.upsell_list.value != blank %}true{% endif %}"
-        data-product-url="{{product.url}}"
-        {% if show_newsletter %}
-          data-notification-popup="{%- render 'notification-form', product_title: product.title, product_subtitle: current_variant.title, product_id: current_variant.id -%}"
-        {% endif %}
-      >
-        <span data-add-to-cart-text class="b2b-button-option"> Choose option </span>
-        <div class="loader loader--line"><div class="loader-indeterminate"></div></div>
-      </button>
-      <p class="b2b-minimum-order-title">*Minimum order 6 Pieces, Maximum up to 200 Pieces</p>
-    </div>
-    {%- if product.selling_plan_groups.size > 0 -%}
-      {%- render 'swym-product-wishlist-button',
-        product: product,
-        current_variant: current_variant,
-        animations_enabled: animations_enabled,
-        animation_anchor: animation_anchor,
-        animation_delay: animation_delay,
-        animation_delay: animation_delay
-      -%}
-    {%- endif -%}
-  </div>
-  {%- if show_payment_button -%}
-    <div class="product__submit__buttons show_in_flex__mobile" style="width: 100%;">
-      <div
-        class="product__submit__item{% if sold_out %} hidden{% endif %}"
-        data-buy-it-now
-        {% if animations_enabled %}
-          data-aos="fade-up"
-          data-aos-anchor="{{ animation_anchor }}"
-          data-aos-delay="{{ animation_delay }}"
-          {%- assign animation_delay = animation_delay | plus: 100 -%}
-        {% endif %}
-      >
-        {{ form | payment_button }}
-      </div>
-      {%- render 'swym-product-wishlist-button',
-        product: product,
-        animations_enabled: animations_enabled,
-        animation_anchor: animation_anchor,
-        animation_delay: animation_delay,
-        animation_delay: animation_delay
-      -%}
-    </div>
-  {%- endif -%}
-  <div data-cart-errors-container class="product__form__errors"></div>
 </div>

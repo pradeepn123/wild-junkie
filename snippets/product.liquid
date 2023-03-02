@@ -841,7 +841,14 @@
   {%- endif -%}
 
   {% if is_b2b_customer %}
-    {% render 'b2b-select-option' %} 
+    {%- render 'b2b-select-option',
+      product: product,
+      unique: unique,
+      animations_enabled: animations_enabled,
+      animation_delay: animation_delay,
+      animation_anchor: animation_anchor,
+
+    -%}
   {% else %}
   <div class="product__submit__holder {% if show_payment_button %} product__submit__holder--spb{% endif %}{% if show_newsletter %} product__submit__holder--notification{% endif %}" data-product-id="{{ product.id }}">
     {%- if product.selling_plan_groups.size > 0 -%}

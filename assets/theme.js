@@ -1861,6 +1861,7 @@ PaloAlto.CartDrawer = (function() {
 
           event.preventDefault();
           if (button.hasAttribute(attributes.chooseOptions)) {
+          	// Shweta
             return false
           }
 
@@ -1929,6 +1930,7 @@ PaloAlto.CartDrawer = (function() {
           id: promotionalProducts[0].key,
           quantity: 0,
         };
+
         return fetch(theme.routes.root + 'cart/change.js', {
           method: 'post',
           headers: {'Content-Type': 'application/json'},
