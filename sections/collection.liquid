@@ -116,7 +116,7 @@
                                         endif
 
                                         for filter in collection.filters
-                                            render 'filter', filter: filter, animation_delay: animation_delay, enable_color_swatches: section.settings.enable_item_grid_swatch
+                                            render 'filter', filter: filter, animation_delay: animation_delay, enable_color_swatches: section.settings.enable_item_grid_swatch, enable_filter_pills: section.settings.enable_filter_pills
                                         endfor
                                     -%}
 
@@ -355,7 +355,7 @@
                         {%- endcapture -%}
 
                         {%- capture filter_reset_buttons -%}
-                            {%- if filter_mode == 'default' -%}
+                            {%- if filter_mode == 'default' and section.settings.enable_filter_pills == false -%}
                                 {%- for filter in collection.filters -%}
                                     {%- if filter.type == 'price_range' -%}
                                         {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
@@ -636,6 +636,12 @@
             "id": "enable_variant_change_images",
             "label": "Show variant based images",
             "info": "This will override theme default settings for hover on images",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_filter_pills",
+            "label": "Show pills in filter",
             "default": false
         },
         {

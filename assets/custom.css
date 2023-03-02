@@ -1779,13 +1779,13 @@ i.icon-swym-wishlist:after {
 }
 
 .collection__filter-tags .swatch__button .swatch__label:before {
-    width: calc(32px - 4px);
-    height: calc(32px - 4px);
+    width: calc(32px - 6px);
+    height: calc(32px - 6px);
 }
 
 .collection__filter-tags.collection__filter-tags--swatches.collection__filter-tags--swatches-circle {
     display: grid;
-    grid-template-columns: repeat(3,minmax(0,1fr));
+    grid-template-columns: repeat(3,minmax(0, 1fr));
 }
 
 .collection__filter-tag.collection__filter-tag--swatch {
@@ -1804,4 +1804,31 @@ i.icon-swym-wishlist:after {
 .featured-collection__top {
     flex-direction: row;
     justify-content: space-between;
+}
+
+.filter-selector-wrapper fieldset {
+    display: flex;
+    column-gap: 10px;
+    row-gap: 10px;
+    margin-bottom: 10px;
+}
+
+.filter-selector-wrapper fieldset .radio__button {
+    position: relative;
+    width: 30%;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.filter-selector-wrapper fieldset .radio__button .radio__label {
+    text-align: center;
+    padding: 6px 10px;
+    font-size: 13px;
+}
+
+.filter-selector-wrapper .radio__fieldset .radio__input:disabled ~ .radio__label {
+    background-color: var(--bg-accent);
+    color: var(--black-alpha-20);
+    text-decoration: line-through;
+    cursor: not-allowed;
 }
