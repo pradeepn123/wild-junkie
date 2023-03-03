@@ -4,6 +4,14 @@
   assign animation_anchor = '#b2b-drawer--' | append: section.id
 -%}
 
+{% style %}
+    .b2b-cart-drawer__message, .b2b-cart-drawer__progress {
+        padding: 0 var(--inner) 0;
+        margin: 0;
+    }
+
+{% endstyle %}
+
 <div id="variant-picker-modal" class="variant-picker-modal" data-variant-picker-modal >
     <div
         class="variant-picker__head"
@@ -22,9 +30,17 @@
             {%- render 'icon-close-small' -%}
         </a>
     </div>
+    <hr class="hr--full"
+        {% if animations_enabled %}
+            data-aos="fade-up"
+            data-aos-anchor="{{ animation_anchor }}"
+            data-aos-delay="{{ animation_delay }}"
+            {%- assign animation_delay = animation_delay | plus: 150 -%}
+        {% endif %}
+    >
     <div class="variant-picker-modal__body" data-variant-picker-modal-body>
-        <p class="cart-drawer__message"
-            data-cart-message="false"
+        <p class="b2b-cart-drawer__message">Add 16 more pieces to get 20% off.</p>
+        <p class="b2b-cart-drawer__progress"
             data-limit="{{ limit }}"
             data-cart-total-price="{{ cart_total_price }}"
             {% if animations_enabled %}
@@ -32,14 +48,7 @@
                 data-aos-delay="{{ animation_delay }}"
                 {%- assign animation_delay = animation_delay | plus: 100 -%}
             {% endif %}>
-            <span class="cart__message__default{{ is_default_message_hidden }}" data-message-default>
-                {{ free_shipping_message }}
-            </span>
-
-            {%- if qualified_shipping_message != blank -%}
-                <span class="cart__message__success">{{ qualified_shipping_message }}</span>
-            {%- endif -%}
-            <progress class="cart__message__progress" data-cart-message-progress value="40" max="100"></progress>
+            <progress class="cart__message__progress" data-b2b-drawer-progress value="40" max="100"></progress>
         </p>
         <div class="variant-picker-modal__content" data-variant-picker-modal-content>
         </div>

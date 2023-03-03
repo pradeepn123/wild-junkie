@@ -2426,9 +2426,9 @@ PaloAlto.CartDrawer = (function() {
 
     toggleOptionChooser() {
         if (this.isB2bDrawerOpen) {
-            this.openOptionChooser()
-        } else {
             this.closeOptionChooser()
+        } else {
+            this.openOptionChooser()
         }
     },
 
@@ -2593,6 +2593,18 @@ PaloAlto.CartDrawer = (function() {
         this.toggleCartDrawer();
       };
 
+      this.b2bDrawerToggleClickEvent = (e) => {
+        e.preventDefault();
+        const button = e.target;
+        console.log(button)
+        if (button.getAttribute(attributes.ariaExpanded) === 'false') {
+          slate.a11y.state.trigger = button;
+        }
+        this.toggleOptionChooser();
+      };
+
+            //this.b2bCartDrawerButtons = document.querySelectorAll(selectors.b2bCartDrawerToggle);
+
       // Define cart drawer close event
       this.cartDrawerCloseEvent = (e) => {
         const isCartDrawerToggle = e.target.matches(selectors.cartDrawerToggle);
@@ -2604,6 +2616,15 @@ PaloAlto.CartDrawer = (function() {
         }
       };
 
+      this.b2bDrawerCloseEvent = (e) => {
+        const isB2bDrawerToggle = e.target.matches(selectors.b2bCartDrawerToggle);
+        const isB2bDrawerChild = document.querySelector(selectors.b2bCartDrawer).contains(e.target);
+        if (!isB2bDrawerToggle && !isB2bDrawerChild) {
+          this.closeOptionChooser();
+        }
+      };
+
+
       // Bind cart drawer toggle buttons click event
       this.cartToggleButtons.forEach((button) => {
         button.addEventListener('click', this.cartDrawerToggleClickEvent);
@@ -2611,7 +2632,7 @@ PaloAlto.CartDrawer = (function() {
 
       // Bind cart drawer toggle buttons click event
       this.b2bCartDrawerButtons.forEach((button) => {
-        button.addEventListener('click', this.toggleOptionChooser.bind(this));
+        button.addEventListener('click', this.b2bDrawerToggleClickEvent);
       });
 
       // Close drawers on click outside
@@ -2619,7 +2640,7 @@ PaloAlto.CartDrawer = (function() {
       //   which was causing the cart-drawer to close when we start dragging the slider and finish our drag outside the cart-drawer
       //   which was triggering the 'click' event
       document.addEventListener('mousedown', this.cartDrawerCloseEvent);
-      document.addEventListener('mousedown', this.closeOptionChooser.bind(this));
+      document.addEventListener('mousedown', this.b2bDrawerCloseEvent);
     },
 
     /**
