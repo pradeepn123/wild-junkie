@@ -8173,7 +8173,7 @@ body.js-notify-open-cart {
   }
 }
 
-.cart-drawer, .cart-notify {
+.cart-drawer, .cart-notify, .variant-picker-modal {
   /*   -webkit-transform: translateZ(0); // translateZ hack */
   will-change: transform;
   visibility: hidden;
@@ -8201,7 +8201,7 @@ body.js-notify-open-cart {
   /* for Chrome, Safari, and Opera */
 }
 @media only screen and (max-width: 479px) {
-  .cart-drawer, .cart-notify {
+  .cart-drawer, .cart-notify, .variant-picker-modal {
     max-width: 100%;
   }
 }
@@ -8241,13 +8241,16 @@ body.js-notify-open-cart {
   top: 0;
 }
 
-.js-drawer-open-cart .cart-drawer, .js-notify-open-cart .cart-notify {
+.js-drawer-open-cart .cart-drawer, .js-notify-open-cart .cart-notify,
+.js-variant-picker-open .variant-picker-modal {
   visibility: visible;
   transform: translateX(calc(-1 * var(--drawer-width)));
   transition-delay: 0s;
 }
 
-.js-drawer-open-cart.is-drawer-hidden .cart-drawer, .js-notify-open-cart.is-drawer-hidden .cart-notify {
+.js-drawer-open-cart.is-drawer-hidden .cart-drawer,
+.js-notify-open-cart.is-drawer-hidden .cart-notify,
+.js-variant-picker-open.is-drawer-hidden .variant-picker-modal {
   transform: none;
 }
 
@@ -8280,7 +8283,7 @@ body.js-notify-open-cart {
   content: ")";
 }
 
-.cart-drawer__close, .cart-notify__close {
+.cart-drawer__close, .cart-notify__close, .variant-picker-modal__close {
   position: absolute;
   top: 8px;
   right: 0;
@@ -8300,14 +8303,18 @@ body.js-notify-open-cart {
 }
 
 
-.cart-drawer__close .icon-close-small, .cart-notify__close .icon-close-small {
+.cart-drawer__close .icon-close-small,
+.cart-notify__close .icon-close-small,
+.variant-picker-modal__close .icon-close-small {
   display: block;
   width: 100%;
   height: 100%;
   transition: transform 0.3s ease;
   pointer-events: none;
 }
-.cart-drawer__close:hover .icon-close-small, .cart-notify__close:hover .icon-close-small {
+.cart-drawer__close:hover .icon-close-small,
+.cart-notify__close:hover .icon-close-small,
+.variant-picker-modal__close:hover .icon-close-small {
   transform: rotate(90deg);
 }
 

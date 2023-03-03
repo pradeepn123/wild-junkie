@@ -47,6 +47,10 @@
     render 'cart-drawer' cart: cart
     render 'cart-notify' cart: cart
   endif
+  assign is_b2b_customer = false
+  if customer.tags contains 'b2b' and template.name == "product"
+    render 'b2b-cart-drawer'
+  endif
 -%}
 
 {%- comment -%} Prevent CLS on Collection & List Collections pages {%- endcomment -%}
