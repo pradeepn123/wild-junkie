@@ -5,26 +5,43 @@
 -%}
 
 <div id="variant-picker-modal" class="variant-picker-modal" data-variant-picker-modal >
-    <div class="cart-drawer__head"
+    <div
+        class="variant-picker__head"
         {% if animations_enabled %}
             data-aos="fade-up"
             data-aos-delay="{{ animation_delay }}"
             {%- assign animation_delay = animation_delay | plus: 100 -%}
-        {% endif %}>
+        {% endif %}
+    >
+        <h3>Select Varaints</h3>
         <a
-            href="#cart-drawer"
-            class="variant-picker-modal"
+            href="#variant-picker-modal"
+            class="variant-picker-modal__close"
             data-b2b-cart-drawer-toggle
             aria-label="{{ 'general.accessibility.close_drawer' | t }} Select Variants">
             {%- render 'icon-close-small' -%}
         </a>
-        <div class="loader loader--line">
-            <div class="loader-indeterminate"></div>
-        </div>
     </div>
-    <div class="cart-drawer__body" data-variant-picker-modal-body>
-        <div class="variant-picker-modal__content" data-variant-picker-modal-content>
+    <div class="variant-picker-modal__body" data-variant-picker-modal-body>
+        <p class="cart-drawer__message"
+            data-cart-message="false"
+            data-limit="{{ limit }}"
+            data-cart-total-price="{{ cart_total_price }}"
+            {% if animations_enabled %}
+                data-aos="fade-up"
+                data-aos-delay="{{ animation_delay }}"
+                {%- assign animation_delay = animation_delay | plus: 100 -%}
+            {% endif %}>
+            <span class="cart__message__default{{ is_default_message_hidden }}" data-message-default>
+                {{ free_shipping_message }}
+            </span>
 
+            {%- if qualified_shipping_message != blank -%}
+                <span class="cart__message__success">{{ qualified_shipping_message }}</span>
+            {%- endif -%}
+            <progress class="cart__message__progress" data-cart-message-progress value="40" max="100"></progress>
+        </p>
+        <div class="variant-picker-modal__content" data-variant-picker-modal-content>
         </div>
     </div>
 </div>
