@@ -1626,6 +1626,7 @@ PaloAlto.CartDrawer = (function() {
     isHidden: 'is-hidden',
     cartDrawerOpen: 'js-drawer-open-cart',
     cartNotifyOpen: 'js-notify-open-cart',
+    b2bCartDrawerOpen: 'js-variant-picker-open',
     open: 'is-open',
     visible: 'is-visible',
     loading: 'is-loading',
@@ -2392,7 +2393,7 @@ PaloAlto.CartDrawer = (function() {
         if (this.isB2bDrawerOpen) { return; }
         //this.b2bCartDrawer.innerHTML = data.querySelector(selectors.cartNotifyContent).innerHTML
 
-        document.body.classList.add(classes.cartNotifyOpen);
+        document.body.classList.add(classes.b2bCartDrawerOpen);
         this.b2bCartDrawer.classList.add(classes.open);
 
         // Cart elements opening animation
@@ -2418,7 +2419,7 @@ PaloAlto.CartDrawer = (function() {
             button.setAttribute(attributes.ariaExpanded, false);
         });
 
-        document.body.classList.remove(classes.cartNotifyOpen);
+        document.body.classList.remove(classes.b2bCartDrawerOpen, true);
         this.b2bCartDrawer.classList.remove(classes.open);
         this.isB2bDrawerOpen = false
     },
@@ -6664,6 +6665,7 @@ PaloAlto.NavSearch = (function() {
     pushUp: 'push-up',
     cartDrawerOpen: 'js-drawer-open-cart',
     cartNotifyOpen: 'js-notify-open-cart',
+    b2bCartDrawerOpen: 'js-variant-picker-open',
     drawerOpen: 'js-drawer-open',
     isSearching: 'is-searching',
     isSearchVisible: 'is-search-visible',

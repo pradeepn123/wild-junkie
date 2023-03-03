@@ -8156,7 +8156,8 @@ button.mfp-close {
 .modal--is-visible .drawer__overlay,
 .js-drawer-open-cart .drawer__overlay,
 .js-drawer-open .drawer__overlay,
-.js-notify-open-cart .drawer__overlay {
+.js-notify-open-cart .drawer__overlay,
+.js-variant-picker-open .drawer__overlay {
   opacity: 0.2;
   visibility: visible;
   will-change: opacity;
