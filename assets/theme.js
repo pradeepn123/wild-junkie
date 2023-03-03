@@ -1568,6 +1568,7 @@ PaloAlto.CartDrawer = (function() {
     cartNotifyPrimaryBtn: '[data-open-drawer-cart]',
     cartNotifySecondaryBtn: '[data-continue-shopping]',
     b2bCartDrawer: '[data-variant-picker-modal]',
+    apiB2bContent: '[data-api-b2b-drawer-section]',
 
     apiLineItems: '[data-api-line-items]',
     apiFreeItems: '[data-api-free-items]',
@@ -1864,7 +1865,7 @@ PaloAlto.CartDrawer = (function() {
 
         if (clickedElement.matches(selectors.buttonChooseOption) || (clickedElement.closest(selectors.buttonChooseOption) && clickedElement)) {
             event.preventDefault();
-            return this.openOptionChooser()
+            return this.openOptionChooser(event)
         }
 
         if (clickedElement.matches(selectors.buttonAddToCart) || (clickedElement.closest(selectors.buttonAddToCart) && clickedElement)) {
@@ -2389,27 +2390,43 @@ PaloAlto.CartDrawer = (function() {
      *
      * @return  {Void}
      */
-    openOptionChooser() {
+
+    getB2bProductOptions(event) {
+    },
+
+    openOptionChooser(event) {
         if (this.isB2bDrawerOpen) { return; }
-        //this.b2bCartDrawer.innerHTML = data.querySelector(selectors.cartNotifyContent).innerHTML
 
-        document.body.classList.add(classes.b2bCartDrawerOpen);
-        this.b2bCartDrawer.classList.add(classes.open);
+        return fetch(event.target.dataset.productUrl + '?sections=api-b2b-drawer-section')
+        .then((response) => response.json())
+        .then((response) => {
+            const b2bElement = document.createElement('div');
+            b2bElement.innerHTML = response["api-b2b-drawer-section"];
+            this.removeLoadingClass();
 
-        // Cart elements opening animation
-        this.b2bCartDrawer.querySelectorAll(selectors.aos).forEach((item) => {
-            item.classList.add(classes.aosAnimate);
-        });
+            const cleanResponse = b2bElement.querySelector(selectors.apiB2bContent)
 
-        this.b2bCartDrawerButtons.forEach((button) => {
-            button.setAttribute(attributes.ariaExpanded, true);
-        });
+            this.b2bCartDrawer.querySelector(selectors.apiB2bContent).replaceWith(cleanResponse)
 
-        slate.a11y.trapFocus({
-            container: this.b2bCartDrawer,
-        });
+            document.body.classList.add(classes.b2bCartDrawerOpen);
+            this.b2bCartDrawer.classList.add(classes.open);
 
-        this.isB2bDrawerOpen = true;
+            // Cart elements opening animation
+            this.b2bCartDrawer.querySelectorAll(selectors.aos).forEach((item) => {
+                item.classList.add(classes.aosAnimate);
+            });
+
+            this.b2bCartDrawerButtons.forEach((button) => {
+                button.setAttribute(attributes.ariaExpanded, true);
+            });
+
+            slate.a11y.trapFocus({
+                container: this.b2bCartDrawer,
+            });
+
+            this.isB2bDrawerOpen = true;
+        })
+        .catch((error) => console.log(error));
     },
 
     closeOptionChooser() {
@@ -5263,7 +5280,7 @@ PaloAlto.Filters = (function() {
         .then(response => response.text())
         .then((responseText) => {
           const html = responseText;
-          const parsedData = new DOMParser().parseFromString(html, 'text/html');
+        
           const productsHTML = parsedData.querySelector(selectors.productGrid).innerHTML;
           const filtersHTML = parsedData.querySelector(selectors.filters).innerHTML;
 
