@@ -711,8 +711,12 @@
                   {% assign showed_size_chart_button = true %}
                   <div class="size_chart_product_container" style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
                     <div>
+                      {% if is_b2b_customer %}
+                      <span class="radio__legend__label" data-option-parent-{{ option.name | downcase }}="{{ option.name | downcase }}" data-chart="{{ block.settings.info_page }}">Available {{ option.name | escape_once }}:
+                      {% else is_b2b_customer  %}
                       <span class="radio__legend__label" data-option-parent-{{ option.name | downcase }}="{{ option.name | downcase }}" data-chart="{{ block.settings.info_page }}">{{ option.name | escape_once }}:
-                      </span>
+                      {% endif %}
+                    </span>
                       <span data-option-{{ option.name | handle }} class="option-name-class">{{ option.selected_value }}</span>
                     </div>
                     {{- size_chart_button -}}
