@@ -1865,7 +1865,8 @@ PaloAlto.CartDrawer = (function() {
 
         if (clickedElement.matches(selectors.buttonChooseOption) || (clickedElement.closest(selectors.buttonChooseOption) && clickedElement)) {
             event.preventDefault();
-            return this.openOptionChooser(event)
+            const button = clickedElement.matches(selectors.buttonChooseOption) ? clickedElement : clickedElement.closest(selectors.buttonChooseOption);
+            return this.openOptionChooser(button)
         }
 
         if (clickedElement.matches(selectors.buttonAddToCart) || (clickedElement.closest(selectors.buttonAddToCart) && clickedElement)) {
@@ -2391,11 +2392,11 @@ PaloAlto.CartDrawer = (function() {
      * @return  {Void}
      */
 
-    getB2bProductOptions(event) {
-    },
-
-    openOptionChooser(event) {
+    openOptionChooser(button) {
         if (this.isB2bDrawerOpen) { return; }
+
+        button.classList.add(classes.loading);
+        button.setAttribute(attributes.disabled, true);
 
         return fetch(event.target.dataset.productUrl + '?sections=api-b2b-drawer-section')
         .then((response) => response.json())
@@ -2425,6 +2426,8 @@ PaloAlto.CartDrawer = (function() {
             });
 
             this.isB2bDrawerOpen = true;
+            button.classList.remove(classes.loading);
+            button.removeAttribute(attributes.disabled);
         })
         .catch((error) => console.log(error));
     },
