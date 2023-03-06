@@ -1,51 +1,132 @@
-{% style %}
-
-
-
-
-
-{% endstyle %}
-
 {% liquid
-  assign featured_media = current_variant.featured_media | default: product.featured_media
+    assign current_variant = product.selected_or_first_available_variant
+    assign featured_media = current_variant.featured_media | default: product.featured_media
+    assign image_url_pattern = featured_media | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
+    assign image_widths = "[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048, 2450, 2700, 3000, 3350, 3750, 4100]"
+    assign media_aspect_ratio = featured_media.aspect_ratio
+    unless media_aspect_ratio
+        assign media_aspect_ratio = 1
+    endunless
+    assign image_zoom_size = '2048x2048'
 %}
 
 <div class="variant-picker-modal__body" data-variant-picker-modal-body data-api-b2b-drawer-section>
- 
-{% comment %} progress bar as new design doesn't contain it {% endcomment %}
-  {% comment %} <p class="b2b-cart-drawer__message">Add 16 more pieces to get 20% off.</p>
-  <p
-    class="b2b-cart-drawer__progress"
-    data-limit="{{ limit }}"
-    data-cart-total-price="{{ cart_total_price }}"
-    {% if animations_enabled %}
-      data-aos="fade-up"
-      data-aos-delay="{{ animation_delay }}"
-      {%- assign animation_delay = animation_delay | plus: 100 -%}
-    {% endif %}
-  >
-    <progress
-      class="cart__message__progress"
-      data-b2b-drawer-progress
-      value="40"
-      max="100"
-    ></progress>
-  </p> {% endcomment %}
-  <div class="variant-picker-modal__content" data-variant-picker-modal-content>
-    <div class="b2b-product-info-block">
-      <img
-        class="b2b-product-image"
-        src="//cdn.shopify.com/s/files/1/0078/2178/7200/products/image_087b7e44-54f0-4f01-96e8-3873724a54fd_160x.jpg?v=1677702852"
-        alt="Cowboy Hat Air Freshener - Bubblegum"
-      >
-      <div class="b2b-cart-product-info">
-        <div>
-          <h4 class="b2b-cart-item-title">{{- product.title | strip_html -}}</h4>
-          <p class="b2b-cart-item-price">$6.00</p>
+    <script type="application/json" class="product-json" id="ProductJson-{{ product.handle }}-{{product.id}}" data-product-json>{{ product | json }}</script>
+    <div class="variant-picker-modal__content" data-variant-picker-modal-content>
+        <div class="b2b-product-info-block">
+            <div class="b2b-product-image-wrapper">
+                <img class="lazyload b2b-product-image"
+                    src="{{ 'blank.gif' | asset_img_url: '1x1' }}"
+                    data-src="{{ image_url_pattern }}"
+                    data-image-id="{{ featured_media.id }}"
+                    data-widths= "{{ image_widths }}"
+                    data-aspectratio="{{ media_aspect_ratio }}"
+                    data-sizes="auto"
+                    data-object-fit="contain"
+                    alt="{{ featured_media.alt | strip_html | escape }}">
+                <noscript>
+                    <img src="{{ featured_media | img_url: image_zoom_size }}" alt="{{ featured_media.alt | strip_html | escape }}" id="{{ featured_media.id }}">
+                </noscript>
+            </div>
+            <div class="b2b-cart-product-info">
+                <div>
+                    <h4 class="b2b-cart-item-title">{{- product.title | strip_html -}}</h4>
+                    <span
+                        data-product-price
+                        class="product__price--regular">
+                        {%- liquid
+                            if current_variant.price == 0
+                                echo 'products.product.free' | t
+                            elsif currency_code_enable
+                                echo current_variant.price | money_with_currency
+                            else
+                                echo current_variant.price | money
+                            endif
+                        -%}
+                    </span>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="b2b-choose-options-block">
+            {%- for option in product.options_with_values -%}
+                {%- liquid
+                    assign option_name_handle_separator = option.name | handle | prepend: ',' | append: ','
+                    assign is_swatch_option = false
+                    assign swatch_translation = 'general.swatches.color' | t
+                    assign translation_string = swatch_translation | remove: '  ' | replace: ', ', ',' | replace: ' ,', ',' | replace: ',', '____' | handle | replace: '____', ',' | append: ',' | prepend: ','
+
+                    if translation_string contains option_name_handle_separator
+                        assign is_swatch_option = true
+                    endif
+                -%}
+
+                {%- unless is_swatch_option -%}
+                    <div class="selector-wrapper selector-wrapper--boxes" data-option-position="{{ option.position }}">
+                        <fieldset class="radio__fieldset radio__fieldset--{{ settings.color_swatches_product_style }}">
+                            <legend class="radio__legend">
+                                <span class="radio__legend__label" data-option-parent-{{ option.name | downcase }}="{{ option.name | downcase }}">
+                                    Choose your {{ option.name | escape_once }}s
+                                </span>
+                            </legend>
+                            {%- for value in option.values -%}
+                                {%- capture input_id -%}b2b-{{ product.id }}-{{ option.name | escape_once | handle }}-{{ value | escape_once | handle }}{%- endcapture -%}
+                                <span class="radio__button">
+                                    <input
+                                        type="checkbox"
+                                        class="radio__input"
+                                        value="{{ value | escape_once }}"
+                                        id="{{ input_id }}"
+                                    >
+                                    <label for="{{ input_id }}" class="radio__label">
+                                        <span>{{ value }}</span>
+                                        <span class="icon-wrapper">
+                                            {%- render 'icon-check-white' -%}
+                                        </span>
+                                    </label>
+                                </span>
+                            {%- endfor -%}
+                        </fieldset>
+                    </div>
+                {%- else -%}
+                    <div class="selector-wrapper selector-wrapper--boxes" data-option-position="{{ option.position }}">
+                        <fieldset class="radio__fieldset radio__fieldset--circle">
+                            <legend class="radio__legend">
+                                <span class="radio__legend__label" data-option-parent-{{ option.name | downcase }}="{{ option.name | downcase }}">
+                                    Choose your {{ option.name | escape_once }}s
+                                </span>
+                            </legend>
+                            {%- for value in option.values -%}
+                                {%- capture input_id -%}b2b-{{ product.id }}-{{ option.name | escape_once | handle }}-{{ value | escape_once | handle }}{%- endcapture -%}
+                                <span
+                                    class="swatch__button swatch__button--{{ settings.color_swatches_product_style }}"
+                                    data-tooltip="{{ value | escape_once | capitalize }}"
+                                >
+                                    <input
+                                        type="checkbox"
+                                        class="swatch__input"
+                                        name="options[{{ option.name | escape_once }}]"
+                                        value="{{ value | escape_once }}"
+                                        id="{{ input_id }}"
+                                    >
+                                    <label
+                                        for="{{ input_id }}"
+                                        class="swatch__label"
+                                        data-swatch="{{ value | escape_once }}"
+                                        data-tooltip="{{ value | escape_once }}"
+                                    >
+                                        <span class="visually-hidden">{{ value | escape_once }}</span>
+                                        <span class="icon-wrapper">
+                                            {%- render 'icon-check-white' -%}
+                                        </span>
+                                    </label>
+                                </span>
+                            {%- endfor -%}
+                        </fieldset>
+                    </div>
+                {%- endunless -%}
+            {%- endfor -%}
+        </div>
     </div>
-  </div>
 </div>
 
 

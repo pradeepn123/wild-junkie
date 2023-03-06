@@ -2428,6 +2428,8 @@ PaloAlto.CartDrawer = (function() {
             this.isB2bDrawerOpen = true;
             button.classList.remove(classes.loading);
             button.removeAttribute(attributes.disabled);
+
+            new PaloAlto.B2BVariantPicker(this.b2bCartDrawer)
         })
         .catch((error) => console.log(error));
     },
@@ -2982,6 +2984,45 @@ PaloAlto.CartDrawer = (function() {
 
   return CartDrawer;
 })();
+
+
+PaloAlto.B2BVariantPicker = (function() {
+    const selectors = {
+        options: '[data-b2b-option]',
+        swatches: '[data-b2b-swatch]',
+        productJson: '[data-product-json]',
+
+        addToCart: '[data-add-to-cart]',
+        addToCartText: '[data-add-to-cart-text]',
+        selectedOptions: '[data-b2b-option]:checked',
+    }
+
+    const classes = {
+        active: 'active',
+        soldOut: 'sold-out',
+        unavailable: 'unavailable'
+    }
+
+    function B2BVariantPicker(container) {
+        this.container = container;
+        this.swatches = this.container.querySelectorAll(selectors.swatches)
+
+        this.addToCartBtn = this.container.querySelector(selectors.addToCart)
+        this.addToCartText = this.container.querySelector(selectors.addToCartText)
+        this.options = this.container.querySelectorAll(selectors.options)
+        this.productJSON = JSON.parse(this.container.querySelector(selectors.productJson).innerHTML)
+        this.init()
+    }
+
+    B2BVariantPicker.prototype = $.extend({}, B2BVariantPicker.prototype, {
+        init: function() {
+            PaloAlto.initSwatches.makeSwatch(this.container)
+        }
+    })
+
+    return B2BVariantPicker
+})();
+
 
 PaloAlto.initCollapsible = (function() {
   const selectors = {

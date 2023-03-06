@@ -562,17 +562,6 @@
 
   {%- assign quantity_position_bottom = true -%}
 
-  {% if is_b2b_customer %}
-    {% render 'b2b-discount-block',
-      product: product,
-      current_variant: current_variant,
-      animation_delay: animation_delay,
-      animations_enabled: animations_enabled
-    %}
-  {% endif %}
-
-  
-
   {%- capture quantity_selector -%}
     <div class="select__fieldset">
       <span class="select__label" id="{{ unique }}-select-quantity-label">{{ 'products.product.quantity' | t }}</span>
