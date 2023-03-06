@@ -76,6 +76,8 @@
                                         class="radio__input"
                                         value="{{ value | escape_once }}"
                                         id="{{ input_id }}"
+                                        name="{{ option.name | escape_once }}"
+                                        data-b2b-option="{{ option.position }}"
                                     >
                                     <label for="{{ input_id }}" class="radio__label">
                                         <span>{{ value }}</span>
@@ -104,9 +106,11 @@
                                     <input
                                         type="checkbox"
                                         class="swatch__input"
-                                        name="options[{{ option.name | escape_once }}]"
+                                        name="{{ option.name | escape_once }}"
                                         value="{{ value | escape_once }}"
                                         id="{{ input_id }}"
+                                        data-b2b-swatch
+                                        data-b2b-option="{{ option.position }}"
                                     >
                                     <label
                                         for="{{ input_id }}"
@@ -125,6 +129,15 @@
                     </div>
                 {%- endunless -%}
             {%- endfor -%}
+        </div>
+        <div class="b2b-variant-selector">
+            <div class="b2b-variant-selector-header">
+                <div>Variants</div>
+                <div>quantity</div>
+                <div>Total Price</div>
+            </div>
+            <div class="b2b-variant-selector-inner">
+            </div>
         </div>
     </div>
 </div>

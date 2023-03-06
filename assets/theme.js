@@ -2991,7 +2991,6 @@ PaloAlto.B2BVariantPicker = (function() {
         options: '[data-b2b-option]',
         swatches: '[data-b2b-swatch]',
         productJson: '[data-product-json]',
-
         addToCart: '[data-add-to-cart]',
         addToCartText: '[data-add-to-cart-text]',
         selectedOptions: '[data-b2b-option]:checked',
@@ -3011,12 +3010,75 @@ PaloAlto.B2BVariantPicker = (function() {
         this.addToCartText = this.container.querySelector(selectors.addToCartText)
         this.options = this.container.querySelectorAll(selectors.options)
         this.productJSON = JSON.parse(this.container.querySelector(selectors.productJson).innerHTML)
+        this.variants = []
+        this.handleOptionChange = (e) => this._handleOptionChange(e)
         this.init()
     }
 
     B2BVariantPicker.prototype = $.extend({}, B2BVariantPicker.prototype, {
         init: function() {
             PaloAlto.initSwatches.makeSwatch(this.container)
+            this.options.forEach((option) => {
+                option.addEventListener("change", this.handleOptionChange)
+            })
+        },
+        _handleOptionChange: function(evt) {
+            console.log(evt)
+            const proposedVariants = this._getProposeVariants()
+
+            if (proposedVariants.length == 0) {
+                this.variants = []
+                return this._updateVariantTable()
+            }
+            this.variants = proposedVariants
+            return this._updateVariantTable()
+        },
+        _updateVariantTable: function() {
+            console.log(this.variants)
+        },
+        _getProposeVariants: function() {
+            const options = []
+            const checkedOptions = this.container.querySelectorAll(selectors.selectedOptions)
+            checkedOptions.forEach((element) => {
+                let option = options.find((option) => option.name == element.name)
+                if (!option) {
+                    options.push({
+                        name: element.name,
+                        values: [element.value]
+                    })
+                } else {
+                    option.values.push(element.value)
+                }
+            })
+
+            function product(argv) {
+                return argv.reduce(function tl(accumulator, value) {
+                    var tmp = [];
+                    accumulator.forEach(function(a0) {
+                        value.forEach(function(a1) {
+                            tmp.push(a0.concat(a1));
+                        });
+                    });
+                    return tmp;
+                }, [[]]);
+            }
+            const variants = product(options.map(option => option.values))
+
+            if (variants.length == 0 || variants[0].length != this.productJSON.options.length) {
+                return []
+            }
+
+            return variants.map((variantArr) => {
+                return this.productJSON.variants.find((variant) => {
+                    let perfectMatch = true;
+                    for (let index = 0; index < variantArr.length; index++) {
+                        if (variant[`option${index + 1}`] !== variantArr[index]) {
+                            perfectMatch = false;
+                        }
+                    }
+                    return perfectMatch;
+                })
+            })
         }
     })
 
