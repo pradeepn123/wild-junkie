@@ -11,7 +11,7 @@
 %}
 
 <div class="variant-picker-modal__body" data-variant-picker-modal-body data-api-b2b-drawer-section>
-
+ 
 {% comment %} progress bar as new design doesn't contain it {% endcomment %}
   {% comment %} <p class="b2b-cart-drawer__message">Add 16 more pieces to get 20% off.</p>
   <p
@@ -46,65 +46,6 @@
       </div>
     </div>
   </div>
-
-  <div class="b2b-size-chart-content">
-        <div class="b2b-size-chart-title">Choose your sizes</div>
-        <span class="radio__button ">
-          <input
-            type="radio"
-            class="radio__input"
-            data-single-option-selector
-            data-index="option{{ option.position }}"
-            name="options[{{ option.name | escape_once }}]"
-            value="{{ value | escape_once }}" id="{{ input_id }}"
-            {% unless is_b2b_customer %}
-              {% if value == current_value %}checked{% endif %}
-            {% endunless %}
-          >
-          <label for="{{ input_id }}" class="radio__label">
-            <span>{{ value }}</span>
-          </label>
-        </span>
-            <span class="b2b-radio__button">
-                <input type="checkbox" class="checkbox__input" value="Small" id="b2b-size-small">
-                <label class="b2b-radio__label">
-                  <span>Medium</span>
-                </label>
-              </span>
-              <span class="b2b-radio__button">
-                <input type="checkbox" class="checkbox__input">
-                <label class="b2b-radio__label">
-                  <span>Large</span>
-                </label>
-              </span>
-              <span class="b2b-radio__button">
-                <input type="checkbox" class="checkbox__input">
-                <label class="b2b-radio__label">
-                  <span>Xtra Large</span>
-                </label>
-              </span>
-              <span class="b2b-radio__button">
-                <input type="checkbox" class="checkbox__input">
-                <label class="b2b-radio__label">
-                  <span>2x Large</span>
-                </label>
-              </span>
-            </div>  
-
-  <div class="b2b-color-swatch">
-    <div class="b2b-color-swatch-title">Choose your colors</div>
-  </div>
-
-  
-
-  <div class="b2b-cart-variants-quantity">
-    <p>Variants</p>
-    <p>Quantity</p>
-    <p>Total Price</p>
-  </div>
-  
-  
-
 </div>
 
 
