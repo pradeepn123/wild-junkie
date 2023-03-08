@@ -134,14 +134,15 @@
     padding: 10px 15px;
 }
 
-.b2b-choose-options-block .radio__legend {
-    margin-bottom: 1.2rem;
-}
-
 .b2b-choose-options-block .radio__legend__label {
     text-transform: uppercase;
     font-size: 14px;
     color: black;
+}
+
+.b2b-choose-options-block .radio__fieldset .swatch__button,
+.b2b-choose-options-block .radio__button {
+    margin: 0 10px 10px 0;
 }
 
 .b2b-choose-options-block .swatch__button .swatch__label {
@@ -187,8 +188,7 @@
 
 .b2b-variant-selector-header {
     display: grid;
-    /* grid-template-columns: repeat(3,minmax(0, 1.5fr)); */
-    grid-template-columns: 1.3fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
     background: #F5F5F5;
 }
 
@@ -203,12 +203,14 @@
 .b2b-variant-selector-inner {
     margin-top: 15px;
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: center;
 }
 
 .b2b-variant-selector-content{
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 45px auto;
+    align-items: flex-start;
 }
 
 .b2b-variant-image-wrapper{
@@ -239,9 +241,9 @@
     margin: 0;
 }
 
-.b2b-cart__item__quantity, .b2b-variant-price-selector{
-    display: flex;
-    align-items: center;
+.b2b-cart__item__quantity, .b2b-variant-price-selector {
+    align-self: center;
+    justify-self: center;
 }
 
 .b2b-variant-selector-inner .b2b-variant-price-selector p{
@@ -253,19 +255,54 @@
 @media screen and (max-width:768px){
     .b2b-variant-selector-header {
         display: grid;
-        grid-template-columns: 1.5fr 1fr 1.5fr;
+        grid-template-columns: 2fr 1fr 1fr;
         background: #F5F5F5;
     }
+
     .b2b-variant-selector-header div {
         font-size: 10px;
     }
+
     .b2b-variant-content-info-wrapper .b2b-varaint-content-title {
         font-size: 10px;
     }
-    .b2b-variant-content-info-wrapper span {
-        display: none;
-    }
 }
 
+.variant-picker-modal__body {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
 
+.variant-picker-modal__content {
+    flex: 1 0 auto;
+}
 
+.variant-picker-modal__footer {
+    position: sticky;
+    bottom: 0;
+}
+
+.b2b__cart__item__quantity__btn svg {
+    pointer-events: none;
+    fill: #000;
+    width: 13px !important;
+    height: 13px !important;
+}
+
+.cart__item__quantity button {
+    height: 28px;
+    width: 25px;
+}
+
+.b2b__cart__item__quantity__btn:disabled svg {
+    fill: #B9B9B9;
+}
+
+.b2b-variant-selector-inner .cart__item__quantity {
+    width: 90px
+}
+
+.b2b-variant-price-selector.disabled {
+    color: #B9B9B9;
+}

@@ -2428,8 +2428,6 @@ PaloAlto.CartDrawer = (function() {
             this.isB2bDrawerOpen = true;
             button.classList.remove(classes.loading);
             button.removeAttribute(attributes.disabled);
-
-            new PaloAlto.B2BVariantPicker(this.b2bCartDrawer)
         })
         .catch((error) => console.log(error));
     },
@@ -2983,106 +2981,6 @@ PaloAlto.CartDrawer = (function() {
   });
 
   return CartDrawer;
-})();
-
-
-PaloAlto.B2BVariantPicker = (function() {
-    const selectors = {
-        options: '[data-b2b-option]',
-        swatches: '[data-b2b-swatch]',
-        productJson: '[data-product-json]',
-        addToCart: '[data-add-to-cart]',
-        addToCartText: '[data-add-to-cart-text]',
-        selectedOptions: '[data-b2b-option]:checked',
-    }
-
-    const classes = {
-        active: 'active',
-        soldOut: 'sold-out',
-        unavailable: 'unavailable'
-    }
-
-    function B2BVariantPicker(container) {
-        this.container = container;
-        this.swatches = this.container.querySelectorAll(selectors.swatches)
-
-        this.addToCartBtn = this.container.querySelector(selectors.addToCart)
-        this.addToCartText = this.container.querySelector(selectors.addToCartText)
-        this.options = this.container.querySelectorAll(selectors.options)
-        this.productJSON = JSON.parse(this.container.querySelector(selectors.productJson).innerHTML)
-        this.variants = []
-        this.handleOptionChange = (e) => this._handleOptionChange(e)
-        this.init()
-    }
-
-    B2BVariantPicker.prototype = $.extend({}, B2BVariantPicker.prototype, {
-        init: function() {
-            PaloAlto.initSwatches.makeSwatch(this.container)
-            this.options.forEach((option) => {
-                option.addEventListener("change", this.handleOptionChange)
-            })
-        },
-        _handleOptionChange: function(evt) {
-            console.log(evt)
-            const proposedVariants = this._getProposeVariants()
-
-            if (proposedVariants.length == 0) {
-                this.variants = []
-                return this._updateVariantTable()
-            }
-            this.variants = proposedVariants
-            return this._updateVariantTable()
-        },
-        _updateVariantTable: function() {
-            console.log(this.variants)
-        },
-        _getProposeVariants: function() {
-            const options = []
-            const checkedOptions = this.container.querySelectorAll(selectors.selectedOptions)
-            checkedOptions.forEach((element) => {
-                let option = options.find((option) => option.name == element.name)
-                if (!option) {
-                    options.push({
-                        name: element.name,
-                        values: [element.value]
-                    })
-                } else {
-                    option.values.push(element.value)
-                }
-            })
-
-            function product(argv) {
-                return argv.reduce(function tl(accumulator, value) {
-                    var tmp = [];
-                    accumulator.forEach(function(a0) {
-                        value.forEach(function(a1) {
-                            tmp.push(a0.concat(a1));
-                        });
-                    });
-                    return tmp;
-                }, [[]]);
-            }
-            const variants = product(options.map(option => option.values))
-
-            if (variants.length == 0 || variants[0].length != this.productJSON.options.length) {
-                return []
-            }
-
-            return variants.map((variantArr) => {
-                return this.productJSON.variants.find((variant) => {
-                    let perfectMatch = true;
-                    for (let index = 0; index < variantArr.length; index++) {
-                        if (variant[`option${index + 1}`] !== variantArr[index]) {
-                            perfectMatch = false;
-                        }
-                    }
-                    return perfectMatch;
-                })
-            })
-        }
-    })
-
-    return B2BVariantPicker
 })();
 
 
@@ -12316,6 +12214,7 @@ PaloAlto.ProductGridItem = (function() {
         this.mediaBox.setAttribute('data-current-image-id', featured_media.id)
         productMedia.setAttribute('data-bgset', PaloAlto.BgSet.render(getSizedImageUrl(featured_media.preview_image.src, '540x'), featured_media.preview_image.aspect_ratio, '_540x.'))
         productMedia.style.backgroundImage = `url("${getSizedImageUrl(featured_media.preview_image.src, '540x')}")`
+         // Reference
       }
     },
 
@@ -13874,3 +13773,242 @@ document.addEventListener('DOMContentLoaded', (event) => {
         PaloAlto.countdown(element)
     })
 });
+
+
+class B2BVariantBox extends HTMLElement {
+    selectors = {
+        options: '[data-b2b-option]',
+        swatches: '[data-b2b-swatch]',
+        productJson: '[data-product-json]',
+        addToCart: '[data-add-to-cart]',
+        addToCartText: '[data-add-to-cart-text]',
+        selectedOptions: '[data-b2b-option]:checked',
+        variantContainer: '[b2b-variant-selector-container]'
+    }
+
+    classes = {
+        active: 'active',
+        soldOut: 'sold-out',
+        unavailable: 'unavailable'
+    }
+
+    constructor() {
+        super();
+        this.productJSON = JSON.parse(this.querySelector(this.selectors.productJson).innerHTML)
+        this.swatches = this.querySelectorAll(this.selectors.swatches)
+
+        this.addToCartBtn = this.querySelector(this.selectors.addToCart)
+        this.addToCartText = this.querySelector(this.selectors.addToCartText)
+        this.options = this.querySelectorAll(this.selectors.options)
+        this.variants = []
+        this.variantSelectorContainer = this.querySelector(this.selectors.variantContainer)
+        this.handleOptionChange = (e) => this._handleOptionChange(e)
+        console.log(this.selectors)
+    }
+
+    connectedCallback() {
+        PaloAlto.initSwatches.makeSwatch(this)
+        this.options.forEach((option) => {
+            option.addEventListener("change", this.handleOptionChange)
+        })
+    }
+
+    _handleOptionChange (evt) {
+        console.log(evt)
+        const proposedVariants = this._getProposeVariants()
+
+        if (proposedVariants.length == 0) {
+            this.variants = []
+            return this._updateVariantTable()
+        }
+        this.variants = proposedVariants
+        return this._updateVariantTable()
+    }
+
+    _updateVariantTable () {
+        console.log(this.variantSelectorContainer)
+        console.log(this.variants)
+    }
+
+    _getProposeVariants () {
+        const options = []
+        const checkedOptions = this.querySelectorAll(this.selectors.selectedOptions)
+        checkedOptions.forEach((element) => {
+            let option = options.find((option) => option.name == element.name)
+            if (!option) {
+                options.push({
+                    name: element.name,
+                    values: [element.value]
+                })
+            } else {
+                option.values.push(element.value)
+            }
+        })
+
+        function product(argv) {
+            return argv.reduce(function tl(accumulator, value) {
+                var tmp = [];
+                accumulator.forEach(function(a0) {
+                    value.forEach(function(a1) {
+                        tmp.push(a0.concat(a1));
+                    });
+                });
+                return tmp;
+            }, [[]]);
+        }
+        const variants = product(options.map(option => option.values))
+        if (variants.length == 0 || variants[0].length != this.productJSON.options.length) {
+            return []
+        }
+
+        return variants.map((variantArr) => {
+            return this.productJSON.variants.find((variant) => {
+                let perfectMatch = true;
+                for (let index = 0; index < variantArr.length; index++) {
+                    if (variant[`option${index + 1}`] !== variantArr[index]) {
+                        perfectMatch = false;
+                    }
+                }
+                return perfectMatch;
+            })
+        }).filter(variant => variant)
+    }
+}
+
+class B2BVariant extends HTMLElement {
+    icons = {
+        "decrease": `<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-toggle-minus" viewBox="0 0 19 20"><path d="M10.725 11.02h6.671c.566 0 1.03-.506 1.03-1.072 0-.565-.464-1.07-1.03-1.07H1.953c-.566 0-1.029.505-1.029 1.07 0 .566.463 1.072 1.029 1.072h8.772z"></path></svg>`,
+        "increase": `<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-toggle-plus" viewBox="0 0 19 20"><path d="M10.725 11.02h6.671c.566 0 1.03-.506 1.03-1.072 0-.565-.464-1.07-1.03-1.07h-6.67V2.27c0-.565-.506-1.029-1.072-1.029-.566 0-1.071.464-1.071 1.03v6.605h-6.63c-.566 0-1.029.506-1.029 1.071 0 .566.463 1.072 1.029 1.072h6.63v6.695c0 .566.505 1.03 1.07 1.03.566 0 1.072-.464 1.072-1.03V11.02z"></path></svg>`
+    }
+
+    selectors = {
+        productJson: '[data-product-json]',
+        parentBox: 'b2b-variant-box',
+        quantityBtns: '[data-quantity-button]',
+        quantityInput: '[data-quantity-field]',
+        quantityMinusButton: '[data-quantity-minus]',
+        quantityPlusButton: '[data-quantity-plus]',
+        totalPrice: '[data-variant-total-price]'
+    }
+
+    constructor() {
+        super();
+        const productJSON = JSON.parse(this.closest(this.selectors.parentBox).querySelector(this.selectors.productJson).innerHTML)
+        const element = document.createElement('div');
+
+        this.variantId = this.dataset.variantId
+        this.variantJSON = productJSON.variants.find((variant) => variant.id == this.variantId)
+        this.featured_image = this.variantJSON.featured_image || productJSON.featured_image
+        this.options = productJSON.options
+
+        element.innerHTML = this.getSkeleton()
+        Array.from(element.children).forEach(element => {
+            this.appendChild(element)
+        })
+
+        this.handleQuantityChange = (e) => this._handleQuantityChange(e)
+
+        this.quantityBtns = this.querySelectorAll(this.selectors.quantityBtns)
+        this.quantityMinusButton = this.querySelector(this.selectors.quantityMinusButton)
+        this.quantityPlusButton = this.querySelector(this.selectors.quantityPlusButton)
+        this.quantityInput = this.querySelector(this.selectors.quantityInput)
+        this.totalPrice = this.querySelector(this.selectors.totalPrice)
+        this.quantityBtns.forEach((btn) => {
+            btn.addEventListener("click", this.handleQuantityChange)
+        })
+    }
+
+    _handleQuantityChange(e) {
+        let quantity = parseInt(this.quantityInput.value)
+
+        quantity += parseInt(e.target.dataset.quantityButton)
+        if (quantity <= 0) {
+            this.quantityMinusButton.setAttribute('disabled', 'disabled')
+            this.totalPrice.classList.add('disabled')
+            this.totalPrice.innerHTML = '<p>$0</p>'
+        } else {
+            this.quantityMinusButton.removeAttribute('disabled')
+            this.totalPrice.classList.remove('disabled')
+            this.totalPrice.innerHTML = `<p>${slate.Currency.formatMoney(this.variantJSON.price * quantity, theme.moneyFormat)}</p>`
+        }
+
+        if (this.variantJSON.quantity_rule.max && this.variantJSON.quantity_rule.max >= quantity) {
+            this.quantityPlusButton.setAttribute('disabled', 'disabled')
+        } else {
+            this.quantityPlusButton.removeAttribute('disabled')
+        }
+
+        if (quantity >= 0) {
+            this.quantityInput.value = quantity
+        }
+    }
+
+    getSkeleton() {
+        const price = slate.Currency.formatMoney(this.variantJSON.price, theme.moneyFormat)
+        return `<div class="b2b-variant-selector-content">
+            <div class="b2b-variant-image-wrapper">
+                <img
+                    class="b2b-product-image lazyautosizes ls-is-cached lazyloaded" 
+                    src="${this.featured_image}"
+                >
+            </div>
+            <div class="b2b-variant-content-info-wrapper">
+                <p class="b2b-varaint-content-title">
+                    ${price} <span> Per Piece </span>
+                </p>
+                <div>
+                    ${this.options.map((option, index) => {
+                        if (index > 0) {
+                            return `<p class="b2b-varaint-content">${option}: ${this.variantJSON[`option${index + 1}`]}</p>`
+                        }
+                    }).join("\n")}
+                </div> 
+            </div>
+        </div>
+        <div class="b2b-cart__item__quantity">
+            <div class="cart__item__quantity">
+                <button
+                    type="button"
+                    class="cart__item__quantity-minus b2b__cart__item__quantity__btn"
+                    data-quantity-minus
+                    data-quantity-button="-1"
+                    data-variant-id=${this.variantJSON.id}
+                >
+                    <span class="visually-hidden">
+                        Decrease Quantity
+                    </span>
+                    ${this.icons.decrease}
+                </button>
+                <input
+                    type="number"
+                    class="cart__item__quantity-field"
+                    data-quantity-field
+                    value="1"
+                    pattern="[0-9]*"
+                    data-variant-id=${this.variantJSON.id}
+                    readonly
+                >
+                <button
+                    type="button"
+                    class="cart__item__quantity-plus b2b__cart__item__quantity__btn"
+                    data-quantity-plus
+                    data-quantity-button="1"
+                    data-variant-id=${this.variantJSON.id}
+                >
+                    ${this.icons.increase}
+                </button>
+            </div>
+        </div>
+        <div class="b2b-variant-price-selector" data-variant-total-price>
+            <p>${price}</p>
+        </div>`
+    }
+}
+
+if (!customElements.get('b2b-variant-box')) {
+    customElements.define('b2b-variant-box', B2BVariantBox);
+}
+
+if (!customElements.get('b2b-variant')) {
+    customElements.define('b2b-variant', B2BVariant);
+}
