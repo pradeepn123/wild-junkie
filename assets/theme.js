@@ -13828,6 +13828,9 @@ class B2BVariantBox extends HTMLElement {
     _updateVariantTable () {
         console.log(this.variantSelectorContainer)
         console.log(this.variants)
+        const variantQuantity = {}
+        const b2bVariant = this.querySelector("b2b-variant")
+        debugger;
     }
 
     _getProposeVariants () {
@@ -13912,6 +13915,7 @@ class B2BVariant extends HTMLElement {
         this.quantityMinusButton = this.querySelector(this.selectors.quantityMinusButton)
         this.quantityPlusButton = this.querySelector(this.selectors.quantityPlusButton)
         this.quantityInput = this.querySelector(this.selectors.quantityInput)
+        this.quantity = parseInt(this.quantityInput.value)
         this.totalPrice = this.querySelector(this.selectors.totalPrice)
         this.quantityBtns.forEach((btn) => {
             btn.addEventListener("click", this.handleQuantityChange)
@@ -13919,32 +13923,33 @@ class B2BVariant extends HTMLElement {
     }
 
     _handleQuantityChange(e) {
-        let quantity = parseInt(this.quantityInput.value)
-
-        quantity += parseInt(e.target.dataset.quantityButton)
-        if (quantity <= 0) {
+        this.quantity += parseInt(e.target.dataset.quantityButton)
+        if (this.quantity <= 0) {
             this.quantityMinusButton.setAttribute('disabled', 'disabled')
             this.totalPrice.classList.add('disabled')
             this.totalPrice.innerHTML = '<p>$0</p>'
         } else {
             this.quantityMinusButton.removeAttribute('disabled')
             this.totalPrice.classList.remove('disabled')
-            this.totalPrice.innerHTML = `<p>${slate.Currency.formatMoney(this.variantJSON.price * quantity, theme.moneyFormat)}</p>`
+            this.totalPrice.innerHTML = `<p>${slate.Currency.formatMoney(this.variantJSON.price * this.quantity, theme.moneyFormat)}</p>`
         }
 
-        if (this.variantJSON.quantity_rule.max && this.variantJSON.quantity_rule.max >= quantity) {
+        if (this.variantJSON.quantity_rule.max && this.variantJSON.quantity_rule.max >= this.quantity) {
             this.quantityPlusButton.setAttribute('disabled', 'disabled')
         } else {
             this.quantityPlusButton.removeAttribute('disabled')
         }
 
-        if (quantity >= 0) {
-            this.quantityInput.value = quantity
+        if (this.quantity >= 0) {
+            this.quantityInput.value = this.quantity
         }
+        this.setAttribute("data-quantity", this.quantity)
     }
 
     getSkeleton() {
-        const price = slate.Currency.formatMoney(this.variantJSON.price, theme.moneyFormat)
+        const quantity = parseInt(this.dataset.quantity || 1)
+        const totalPrice = slate.Currency.formatMoney(this.variantJSON.price * quantity, theme.moneyFormat)
+        const unitPrice = slate.Currency.formatMoney(this.variantJSON.price, theme.moneyFormat)
         return `<div class="b2b-variant-selector-content">
             <div class="b2b-variant-image-wrapper">
                 <img
@@ -13954,7 +13959,7 @@ class B2BVariant extends HTMLElement {
             </div>
             <div class="b2b-variant-content-info-wrapper">
                 <p class="b2b-varaint-content-title">
-                    ${price} <span> Per Piece </span>
+                    ${unitPrice} USD <span> Per Piece </span>
                 </p>
                 <div>
                     ${this.options.map((option, index) => {
@@ -13983,7 +13988,7 @@ class B2BVariant extends HTMLElement {
                     type="number"
                     class="cart__item__quantity-field"
                     data-quantity-field
-                    value="1"
+                    value="${parseInt(this.dataset.quantity || 1)}"
                     pattern="[0-9]*"
                     data-variant-id=${this.variantJSON.id}
                     readonly
@@ -14000,7 +14005,7 @@ class B2BVariant extends HTMLElement {
             </div>
         </div>
         <div class="b2b-variant-price-selector" data-variant-total-price>
-            <p>${price}</p>
+            <p>${totalPrice}</p>
         </div>`
     }
 }
