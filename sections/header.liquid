@@ -46,11 +46,6 @@
   if settings.cart_type == 'drawer' and template.name != 'cart'
     render 'cart-drawer' cart: cart
     render 'cart-notify' cart: cart
-  endif
-  assign is_b2b_customer = false
-  if customer.tags contains 'b2b'
-    assign is_b2b_customer = true
-
     render 'b2b-cart-drawer'
   endif
 -%}

@@ -138,17 +138,32 @@
                 <div>quantity</div>
                 <div>Total Price</div>
             </div>
-            <div class="b2b-variant-selector-container" data-b2b-variant-selector-container>
-                <b2b-variant
-                    class="b2b-variant-selector-inner"
-                    data-variant-id="39579943010367"
-                    data-quantity="2"
-                ></b2b-variant>
-            </div>
+            <div class="b2b-variant-selector-container" data-b2b-variant-selector-container></div>
         </div>
     </div>
     <div class="variant-picker-modal__footer" data-variant-picker-modal-footer>
-        <button>Add To Cart</button>
+        <div class="b2b-footer-total">
+            <div>TOTAL</div>
+            <div>
+                <span class="b2b-discount" data-b2b-discount></span>
+                <span class="b2b-total-price" data-b2b-total-price></span>
+            </div>
+        </div>
+        <button
+            type="submit"
+            name="add"
+            id="AddToCart--{{ unique }}"
+            class="btn btn--submit product__submit__add"
+            data-product-url="{{product.url}}"
+            data-add-to-cart
+            data-focus-element
+            disabled
+        >
+            <span data-add-to-cart-text>
+                {{ 'products.product.add_to_cart' | t }}
+            </span>
+            <div class="loader loader--line"><div class="loader-indeterminate"></div></div>
+        </button> 
     </div>
 </b2b-variant-box>
 

@@ -12,30 +12,31 @@
 {% endstyle %}
 
 <div id="variant-picker-modal" class="variant-picker-modal" data-variant-picker-modal >
-    <div
-        class="variant-picker__head"
-        {% if animations_enabled %}
-            data-aos="fade-up"
-            data-aos-delay="{{ animation_delay }}"
-            {%- assign animation_delay = animation_delay | plus: 100 -%}
-        {% endif %}
-    >
-        <h3>Select Varaints</h3>
-        <a
-            href="#variant-picker-modal"
-            class="variant-picker-modal__close"
-            data-b2b-cart-drawer-toggle
-            aria-label="{{ 'general.accessibility.close_drawer' | t }} Select Variants">
-            {%- render 'icon-close-small' -%}
-        </a>
+    <div class="variant-picker-modal--header">
+        <div class="variant-picker__head"
+            {% if animations_enabled %}
+                data-aos="fade-up"
+                data-aos-delay="{{ animation_delay }}"
+                {%- assign animation_delay = animation_delay | plus: 100 -%}
+            {% endif %}
+        >
+            <h3>Select Varaints</h3>
+            <a
+                href="#variant-picker-modal"
+                class="variant-picker-modal__close"
+                data-b2b-cart-drawer-toggle
+                aria-label="{{ 'general.accessibility.close_drawer' | t }} Select Variants">
+                {%- render 'icon-close-small' -%}
+            </a>
+        </div>
+        <hr class="hr--full"
+            {% if animations_enabled %}
+                data-aos="fade-up"
+                data-aos-anchor="{{ animation_anchor }}"
+                data-aos-delay="{{ animation_delay }}"
+                {%- assign animation_delay = animation_delay | plus: 150 -%}
+            {% endif %}
+        >
     </div>
-    <hr class="hr--full"
-        {% if animations_enabled %}
-            data-aos="fade-up"
-            data-aos-anchor="{{ animation_anchor }}"
-            data-aos-delay="{{ animation_delay }}"
-            {%- assign animation_delay = animation_delay | plus: 150 -%}
-        {% endif %}
-    >
     <div class="variant-picker-modal__body" data-variant-picker-modal-body data-api-b2b-drawer-section></div>
 </div>
