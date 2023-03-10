@@ -1747,14 +1747,16 @@ i.icon-swym-wishlist:after {
     margin-bottom: calc(var(--form-margin) / 2);
 }
 
-.grid-variant-picker .product__submit__add.is-loading {
+.grid-variant-picker .product__submit__add.is-loading,
+.variant-picker-modal__footer .product__submit__add.is-loading {
     opacity: 0.6;
     cursor: default;
     background: transparent;
     transition: none;
 }
 
-.grid-variant-picker .loader--line {
+.grid-variant-picker .loader--line,
+.variant-picker-modal__footer .loader--line {
     position: absolute;
     top: 0;
     bottom: 0;

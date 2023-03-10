@@ -13790,7 +13790,8 @@ class B2BVariantBox extends HTMLElement {
         selectedOptions: '[data-b2b-option]:checked',
         variantContainer: '[data-b2b-variant-selector-container]',
         totalPriceSelector: '[data-b2b-total-price]',
-        discountSelector: '[data-b2b-discount]'
+        discountSelector: '[data-b2b-discount]',
+        variantSelectorHeader: '[data-b2b-variant-selector-header]'
     }
 
     classes = {
@@ -13811,7 +13812,9 @@ class B2BVariantBox extends HTMLElement {
         this.variantSelectorContainer = this.querySelector(this.selectors.variantContainer)
         this.totalPriceSelector = this.querySelector(this.selectors.totalPriceSelector)
         this.discountSelector = this.querySelector(this.selectors.discountSelector)
+        this.variantSelectorHeader = this.querySelector(this.selectors.variantSelectorHeader)
         this.totalPrice = 0
+        this.variantState = {}
 
         this.handleOptionChange = (e) => this._handleOptionChange(e)
     }
@@ -13863,15 +13866,17 @@ class B2BVariantBox extends HTMLElement {
 
     _updateVariantTable () {
         if (!this.variants.length) {
+            this.variantSelectorHeader.style.display = 'none'
             return this.variantSelectorContainer.innerHTML = this._getEmptyState()
         }
 
-        this.variantState = {}
+        this.variantSelectorHeader.style.display = ''
         this.sections = {}
         this.sectionOrder = []
 
         const firstOption = this.productBaseJSON.options[0]
         const variantRows = []
+        const updatedVariantState = {}
 
         if (this.productBaseJSON.options.length > 1) {
             firstOption.values.forEach((value) => {
@@ -13885,10 +13890,13 @@ class B2BVariantBox extends HTMLElement {
                     variantRows.push(`<div class="b2b-variant-selector-inner-wrapper">
                         <p class="option-name">${firstOption.name}: <span>${section}</span></p>
                         ${variants.map((variant => {
+
                             const quantity = this.variantState[variant.id]?.quantity || 0
                             if (!this.variantState[variant.id]) {
-                                this.variantState[variant.id] = {quantity: quantity, price: variant.price * quantity}
+                                this.variantState[variant.id] = { quantity: quantity, price: variant.price * quantity }
                             }
+
+                            updatedVariantState[variant.id] = this.variantState[variant.id]
                             return `<b2b-variant
                                 class="b2b-variant-selector-inner"
                                 data-variant-id="${variant.id}"
@@ -13901,10 +13909,13 @@ class B2BVariantBox extends HTMLElement {
         } else {
             variantRows.push(`<div class="b2b-variant-selector-inner-wrapper">
                 ${this.variants.map((variant) => {
+
                     const quantity = this.variantState[variant.id]?.quantity || 0
                     if (!this.variantState[variant.id]) {
-                        this.variantState[variant.id] = {quantity: quantity, price: variant.price * quantity}
+                        this.variantState[variant.id] = { quantity: quantity, price: variant.price * quantity }
                     }
+
+                    updatedVariantState[variant.id] = this.variantState[variant.id]
                     return `<b2b-variant
                         class="b2b-variant-selector-inner"
                         data-variant-id="${variant.id}"
@@ -13914,6 +13925,7 @@ class B2BVariantBox extends HTMLElement {
             </div>`)
         }
 
+        this.variantState = updatedVariantState
         this.variantSelectorContainer.innerHTML = variantRows.join("")
         this.updateTotalPrice()
     }
@@ -13921,7 +13933,9 @@ class B2BVariantBox extends HTMLElement {
     updateTotalPrice() {
         this.totalPrice = 0
         this.variants.forEach((variant) => {
-            this.totalPrice += this.variantState[variant.id].price
+            if (this.variantState[variant.id]) {
+                this.totalPrice += this.variantState[variant.id].price
+            }
         })
 
         this.totalPriceSelector.innerHTML = slate.Currency.formatMoney(this.totalPrice, theme.moneyFormat)
@@ -13951,7 +13965,6 @@ class B2BVariantBox extends HTMLElement {
             }
             return ''
         }).join("")}`
-        debugger;
         return formElement
     }
 
@@ -14053,7 +14066,7 @@ class B2BVariant extends HTMLElement {
             this.totalPrice = 0
             this.totalPriceSelector.innerHTML = `<p>${slate.Currency.formatMoney(this.totalPrice, theme.moneyFormat)}</p>`
             this.setAttribute("data-quantity", this.quantity)
-            this.parentBox.setVariantPrice(this.variantId, this.totalPrice)
+            this.parentBox.setVariantPrice(this.variantId, this.quantity, this.totalPrice)
         }
     }
 
