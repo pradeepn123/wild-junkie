@@ -70,7 +70,12 @@
 
   assign is_b2b_applicable = false
   if customer.tags contains 'b2b' and product.tags contains 'wholesale'
-    assign is_b2b_applicable = true
+    assign show_payment_button = false
+    unless product.has_only_default_variant
+      assign is_b2b_applicable = true
+    else
+      assign show_quantity = true
+    endunless
   endif
 -%}
 
@@ -122,6 +127,12 @@
       #BIS_trigger {
         margin-top: 15px !important;
       }
+
+      {% if is_b2b_applicable %}
+        #BIS_trigger {
+          display: none !important;
+        }
+      {% endif %}
   {% endstyle %}
 {% endif %}
 
@@ -440,8 +451,8 @@
             -%}
 
             {%- unless product == blank -%}
-              <div class="product__block product__form__wrapper{{ hide_labels_class }}{% if sold_out %} variant--soldout{% endif %}"
-                data-form-wrapper
+              <div class="product__block product__form__wrapper{{ hide_labels_class }}{% if sold_out and is_b2b_applicable == false %} variant--soldout{% endif %}"
+                data-form-wrapper {% if is_b2b_applicable %}data-b2b-form-wrapper="true"{% endif %}
                 {{ block.shopify_attributes }}>
                 {%- comment -%} Product Form Partial {%- endcomment -%}
                 <!-- /partials/product-form.liquid -->
@@ -457,6 +468,10 @@
   if show_payment_button and product.selling_plan_groups.size < 1 and settings.enable_accept_terms == false
     assign show_payment_button = true
   else
+    assign show_payment_button = false
+  endif
+
+  if customer.tags contains 'b2b' and product.tags contains 'wholesale'
     assign show_payment_button = false
   endif
 
@@ -980,6 +995,14 @@
   if block.settings.show_payment_button and settings.enable_accept_terms == false
     assign show_payment_button = true
   endif
+  if customer.tags contains 'b2b' and product.tags contains 'wholesale'
+    assign show_payment_button = false
+  endif
+
+  if customer.tags contains 'b2b' and product.tags contains 'wholesale' and product.has_only_default_variant
+    assign show_quantity = true
+  endif
+
   assign quantity_position_bottom = true
 
   assign enable_variant_boxes = false
@@ -1709,7 +1732,7 @@
   {%- endif -%}
 </div>
 
-        <div class="product__block product__form__wrapper{{ hide_labels_class }}{% if sold_out %} variant--soldout{% endif %}" data-form-wrapper >
+        <div class="product__block product__form__wrapper{{ hide_labels_class }}{% if sold_out and is_b2b_applicable == false %} variant--soldout{% endif %}" data-form-wrapper {% if is_b2b_applicable %}ddata-b2b-form-wrapper="true"{% endif %}>
           {%- comment -%} Product Form partial {%- endcomment -%}
           <!-- /partials/product-form.liquid -->
 

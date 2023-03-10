@@ -1574,7 +1574,7 @@ PaloAlto.CartDrawer = (function() {
     apiFreeItems: '[data-api-free-items]',
     apiUpsellItems: '[data-api-upsell-items]',
     buttonAddToCart: '[data-add-to-cart]',
-    buttonChooseOption: '[data-choose-option]',
+    buttonChooseOption: '[data-b2b-choose-option]',
     upsellButtonByHandle: '[data-handle]',
     cartCloseError: '[data-cart-error-close]',
     cartDrawer: '[data-cart-drawer]',
@@ -1653,7 +1653,7 @@ PaloAlto.CartDrawer = (function() {
     upsellButton: 'data-upsell-btn',
     errorContainerQuickBuy: 'data-cart-errors-container-quickbuy',
     notificationPopup: 'data-notification-popup',
-    chooseOptions: 'data-choose-option'
+    chooseOptions: 'data-b2b-choose-option'
   };
 
   function CartDrawer() {
@@ -2404,7 +2404,11 @@ PaloAlto.CartDrawer = (function() {
         button.classList.add(classes.loading);
         button.setAttribute(attributes.disabled, true);
 
-        return fetch(event.target.dataset.productUrl + '?sections=api-b2b-drawer-section')
+        const endpoint = new URL(window.location.origin + button.dataset.productUrl)
+        endpoint.searchParams.append('sections', 'api-b2b-drawer-section')
+
+
+        return fetch(endpoint.href)
         .then((response) => response.json())
         .then((response) => {
             const b2bElement = document.createElement('div');
@@ -7330,7 +7334,7 @@ PaloAlto.ProductAddForm = (function() {
 
       if (addToCartText.length) {
         addToCartText.forEach((element) => {
-            if (!element.parentElement.hasAttribute("data-choose-option")) {
+            if (!element.parentElement.hasAttribute("data-b2b-choose-option")) {
                 if (variant) {
                     if (variant.available) {
                         element.innerHTML = addText;
@@ -7349,21 +7353,23 @@ PaloAlto.ProductAddForm = (function() {
 
       if (formWrapper.length) {
         formWrapper.forEach((element) => {
-          if (variant) {
-            if (variant.available) {
-              element.classList.remove(classes.variantSoldOut, classes.variantUnavailable);
-            } else {
-              element.classList.add(classes.variantSoldOut);
-              element.classList.remove(classes.variantUnavailable);
-            }
-            const formSelect = element.querySelector(selectors.originalSelectorId);
-            if (formSelect) {
-              formSelect.value = variant.id;
-            }
-          } else {
-            element.classList.add(classes.variantUnavailable);
-            element.classList.remove(classes.variantSoldOut);
-          }
+        	if (!element.getAttribute('data-b2b-form-wrapper')) {
+	          if (variant) {
+            	if (variant.available) {
+          	    element.classList.remove(classes.variantSoldOut, classes.variantUnavailable);
+        	    } else {
+      	        element.classList.add(classes.variantSoldOut);
+    	          element.classList.remove(classes.variantUnavailable);
+  	          }
+	            const formSelect = element.querySelector(selectors.originalSelectorId);
+            	if (formSelect) {
+          	    formSelect.value = variant.id;
+        	    }
+      	    } else {
+    	        element.classList.add(classes.variantUnavailable);
+  	          element.classList.remove(classes.variantSoldOut);
+	          }
+        	}
         });
       }
     },
@@ -12178,6 +12184,8 @@ PaloAlto.ProductGridItem = (function() {
         })
         this.onDocumentClick = (evt) => this.handleDocumentClick(evt)
 
+        this.isB2bApplicable = this.productJSON.tags.includes("wholesale") && theme.isB2bCustomer
+
         this._disableWhenRequired()
       }
     },
@@ -12268,24 +12276,23 @@ PaloAlto.ProductGridItem = (function() {
     },
 
     _disableWhenRequired: function(){
-      new PaloAlto.SelloutVariants(this.container, this.productJSON);
-
-      if (this.selectedVariant) {
-        if (this.selectedVariant.available) {
-          this.addToCartText.innerHTML = theme.strings.add_to_cart;
-          this.addToCartBtn.removeAttribute('disabled')
-        } else {
-          this.addToCartText.innerHTML = theme.strings.sold_out;
-          this.addToCartBtn.setAttribute('disabled', true)
-        }
-      } else {
-        this.addToCartText.innerHTML = theme.strings.unavailable;
-        this.addToCartBtn.setAttribute('disabled', true)
-      }
-    }    
-
+    	if (!this.isB2bApplicable) {
+      	new PaloAlto.SelloutVariants(this.container, this.productJSON);
+      	if (this.selectedVariant) {
+        	if (this.selectedVariant.available) {
+          	this.addToCartText.innerHTML = theme.strings.add_to_cart;
+          	this.addToCartBtn.removeAttribute('disabled')
+        	} else {
+          	this.addToCartText.innerHTML = theme.strings.sold_out;
+          	this.addToCartBtn.setAttribute('disabled', true)
+        	}
+      	} else {
+        	this.addToCartText.innerHTML = theme.strings.unavailable;
+        	this.addToCartBtn.setAttribute('disabled', true)
+      	}
+    	}
+    }
   })
-
   return ProductGridItem
 })();
 
@@ -14114,8 +14121,8 @@ class B2BVariant extends HTMLElement {
         const totalPrice = slate.Currency.formatMoney(this.variantJSON.price * quantity, theme.moneyFormat)
         const unitPrice = slate.Currency.formatMoney(this.variantJSON.price, theme.moneyFormat)
 
-		const imageURL = getSizedImageUrl(this.featured_image, '100x')
-		const featuredImageBgSet = PaloAlto.BgSet.render(imageURL, 1, '_100x.')
+				const imageURL = getSizedImageUrl(this.featured_image?.src || this.featured_image, '100x')
+				const featuredImageBgSet = PaloAlto.BgSet.render(imageURL, 1, '_100x.')
 
         return `<div class="b2b-variant-selector-content">
             <div class="b2b-variant-image-wrapper">

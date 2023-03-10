@@ -211,14 +211,16 @@
     </div>
 
     <div class="cart-drawer__foot cart__foot{% if cart_items_size == 0 %} hidden{% endif %}" data-foot-holder>
-      <div class="cart__pair" data-cart-widget data-pair-products-holder
-        {% if animations_enabled %}
-          data-aos="fade-up"
-          data-aos-delay="{{ animation_delay }}"
-          {%- assign animation_delay = animation_delay | plus: 100 -%}
-        {% endif %}>
-        {%- render 'cart-line-items', part: 'upsell-items' -%}
-      </div>
+      {% unless customer.tags contains 'b2b' %}
+        <div class="cart__pair" data-cart-widget data-pair-products-holder
+          {% if animations_enabled %}
+            data-aos="fade-up"
+            data-aos-delay="{{ animation_delay }}"
+            {%- assign animation_delay = animation_delay | plus: 100 -%}
+          {% endif %}>
+          {%- render 'cart-line-items', part: 'upsell-items' -%}
+        </div>
+      {% endunless %}
 
       <form action="{{ routes.cart_url }}" method="post" novalidate data-cart-form>
         {%- if settings.enable_cart_notes or settings.enable_gift_notes -%}
