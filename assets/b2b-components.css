@@ -317,6 +317,13 @@
     bottom: 0;
     background: #F6F6F6;
     padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.variant-picker-modal__footer.active{
+    transform: translate(0);
+    opacity: 1;
 }
 
 .b2b__cart__item__quantity__btn svg {
