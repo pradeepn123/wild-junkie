@@ -13791,7 +13791,8 @@ class B2BVariantBox extends HTMLElement {
         variantContainer: '[data-b2b-variant-selector-container]',
         totalPriceSelector: '[data-b2b-total-price]',
         discountSelector: '[data-b2b-discount]',
-        variantSelectorHeader: '[data-b2b-variant-selector-header]'
+        variantSelectorHeader: '[data-b2b-variant-selector-header]',
+        variantBoxFooter: '[data-variant-picker-modal-footer]'
     }
 
     classes = {
@@ -13813,6 +13814,7 @@ class B2BVariantBox extends HTMLElement {
         this.totalPriceSelector = this.querySelector(this.selectors.totalPriceSelector)
         this.discountSelector = this.querySelector(this.selectors.discountSelector)
         this.variantSelectorHeader = this.querySelector(this.selectors.variantSelectorHeader)
+        this.variantBoxFooter = this.querySelector(this.selectors.variantBoxFooter)
         this.totalPrice = 0
         this.variantState = {}
 
@@ -13867,6 +13869,7 @@ class B2BVariantBox extends HTMLElement {
     _updateVariantTable () {
         if (!this.variants.length) {
             this.variantSelectorHeader.style.display = 'none'
+            this.updateTotalPrice()
             return this.variantSelectorContainer.innerHTML = this._getEmptyState()
         }
 
@@ -13942,8 +13945,10 @@ class B2BVariantBox extends HTMLElement {
 
         if (this.totalPrice > 0) {
             this.addToCartBtn.removeAttribute("disabled")
+            this.variantBoxFooter.classList.add('active')
         } else {
             this.addToCartBtn.setAttribute("disabled", "disabled")
+            this.variantBoxFooter.classList.remove('active')
         }
     }
 
