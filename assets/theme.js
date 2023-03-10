@@ -2482,6 +2482,7 @@ PaloAlto.CartDrawer = (function() {
      */
 
     openCartDrawer() {
+        this.closeOptionChooser()
       if (this.isCartDrawerOpen) { return; }
 
       if (!this.isCartDrawerLoaded) {
@@ -13932,8 +13933,11 @@ class B2BVariantBox extends HTMLElement {
         }
     }
 
-    setVariantPrice(variantId, price) {
-        this.variantState[variantId].price = price
+    setVariantPrice(variantId, quantity, price) {
+        this.variantState[variantId] = {
+            quantity: quantity,
+            price: price
+        }
         this.updateTotalPrice()
     }
 
@@ -13947,6 +13951,7 @@ class B2BVariantBox extends HTMLElement {
             }
             return ''
         }).join("")}`
+        debugger;
         return formElement
     }
 
@@ -14075,7 +14080,7 @@ class B2BVariant extends HTMLElement {
             this.quantityInput.value = this.quantity
         }
         this.setAttribute("data-quantity", this.quantity)
-        this.parentBox.setVariantPrice(this.variantId, this.totalPrice)
+        this.parentBox.setVariantPrice(this.variantId, this.quantity, this.totalPrice)
     }
 
     getSkeleton() {
