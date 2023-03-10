@@ -300,7 +300,8 @@
       info: {
         name: 'Palo Alto'
       },
-      version: '4.2.1'
+      version: '4.2.1',
+      isB2bCustomer: {% if customer.tags contains 'b2b' %} true {% else %} false {% endif %}
     };
     window.lazySizesConfig = window.lazySizesConfig || {};
     window.lazySizesConfig.preloadAfterLoad = true;

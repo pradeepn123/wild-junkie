@@ -68,11 +68,12 @@
     assign hide_labels_class = ' variant__labels--hide'
   endunless
 
-  assign is_b2b_customer = false
-  if customer.tags contains 'b2b'
-    assign is_b2b_customer = true
+  assign is_b2b_applicable = false
+  if customer.tags contains 'b2b' and product.tags contains 'wholesale'
+    assign is_b2b_applicable = true
   endif
 -%}
+
 
 {% if section_type != 'quickview' %}
   {% style %}
@@ -606,7 +607,7 @@
   {%- capture form_fields -%}
     {%- unless product.has_only_default_variant -%}
       {%- assign selects_counter = 0 -%}
-      <div class="product__selectors {% if is_b2b_customer %} b2b__product__selector {% endif %}">
+      <div class="product__selectors {% if is_b2b_applicable %} b2b__product__selector {% endif %}">
         {%- for option in product.options_with_values -%}
           {%- comment -%} Use select over radio for long inputs and mismatched lengths {%- endcomment -%}
 
@@ -701,13 +702,13 @@
                   <div class="size_chart_product_container" style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
                     <div>
                       <span class="radio__legend__label" data-option-parent-{{ option.name | downcase }}="{{ option.name | downcase }}" data-chart="{{ block.settings.info_page }}">
-                        {% if is_b2b_customer %}
+                        {% if is_b2b_applicable %}
                           Available {{ option.name | escape_once }}
                         {% else%}
                           {{ option.name | escape_once }}:
                         {% endif %}
                       </span>
-                      {% unless is_b2b_customer %}
+                      {% unless is_b2b_applicable %}
                         <span data-option-{{ option.name | handle }} class="option-name-class">{{ option.selected_value }}</span>
                       {% endunless %}
                     </div>
@@ -730,7 +731,7 @@
                         name="options[{{ option.name | escape_once }}]"
                         value="{{ value | escape_once }}"
                         id="{{ input_id }}"
-                        {% unless is_b2b_customer %}
+                        {% unless is_b2b_applicable %}
                           {% if value == current_value %}checked{% endif %}
                         {% endunless %}
                       >
@@ -747,7 +748,7 @@
                         data-index="option{{ option.position }}"
                         name="options[{{ option.name | escape_once }}]"
                         value="{{ value | escape_once }}" id="{{ input_id }}"
-                        {% unless is_b2b_customer %}
+                        {% unless is_b2b_applicable %}
                           {% if value == current_value %}checked{% endif %}
                         {% endunless %}
                       >
@@ -836,7 +837,7 @@
     {%- assign sold_out_text = sold_out_text | append: ' - ' | append: newsletter_text -%}
   {%- endif -%}
 
-  {% if is_b2b_customer %}
+  {% if is_b2b_applicable %}
     {%- render 'b2b-select-option',
       product: product,
       unique: unique,
@@ -1823,7 +1824,7 @@
   {%- capture form_fields -%}
     {%- unless product.has_only_default_variant -%}
       {%- assign selects_counter = 0 -%}
-      <div class="product__selectors {% if is_b2b_customer %} b2b__product__selector {% endif %}">
+      <div class="product__selectors {% if is_b2b_applicable %} b2b__product__selector {% endif %}">
         {%- for option in product.options_with_values -%}
           {%- comment -%} Use select over radio for long inputs and mismatched lengths {%- endcomment -%}
 

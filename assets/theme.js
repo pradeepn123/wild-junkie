@@ -7751,6 +7751,7 @@ PaloAlto.SelloutVariants = (function() {
 
     update() {
       this.getCurrentState();
+      const isB2bApplicable = this.productJSON.tags.includes("wholesale") && theme.isB2bCustomer
 
       this.optionElements.forEach((el) => {
         const val = el.value || el.getAttribute(attributes.selectOptionValue);
@@ -7777,6 +7778,10 @@ PaloAlto.SelloutVariants = (function() {
           }
           return perfectMatch;
         });
+
+        if (isB2bApplicable){
+            return
+        }
 
         el.parentElement.classList.remove(classes.soldOut, classes.unavailable);
         if (typeof found === 'undefined') {
@@ -13857,12 +13862,21 @@ class B2BVariantBox extends HTMLElement {
     }
 
     _getEmptyState() {
+        const options = [...this.productJSON.options]
+        var optionNames = options.join(", ")
+
+       if (this.productJSON.options.length > 1) {
+            const lastOption = options.pop()
+            optionNames = options.join(", ")
+            optionNames += ` and ${lastOption}`
+        }
+
         return `<div class="b2b-variant-box-empty-state">
           <svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="29" cy="29.0001" r="19" transform="rotate(45 29 29.0001)" stroke="#ADADAD" stroke-width="2"/>
             <rect x="48.0918" y="8.49414" width="2" height="57" transform="rotate(45 48.0918 8.49414)" fill="#ADADAD"/> 
           </svg>
-          <p>Select Sizes and Colours to display available variants.</p>
+          <p>Select ${optionNames} to display available variants.</p>
         </div>`
     }
 
@@ -14019,11 +14033,6 @@ class B2BVariantBox extends HTMLElement {
 }
 
 class B2BVariant extends HTMLElement {
-    icons = {
-        "decrease": `<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-toggle-minus" viewBox="0 0 19 20"><path d="M10.725 11.02h6.671c.566 0 1.03-.506 1.03-1.072 0-.565-.464-1.07-1.03-1.07H1.953c-.566 0-1.029.505-1.029 1.07 0 .566.463 1.072 1.029 1.072h8.772z"></path></svg>`,
-        "increase": `<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-toggle-plus" viewBox="0 0 19 20"><path d="M10.725 11.02h6.671c.566 0 1.03-.506 1.03-1.072 0-.565-.464-1.07-1.03-1.07h-6.67V2.27c0-.565-.506-1.029-1.072-1.029-.566 0-1.071.464-1.071 1.03v6.605h-6.63c-.566 0-1.029.506-1.029 1.071 0 .566.463 1.072 1.029 1.072h6.63v6.695c0 .566.505 1.03 1.07 1.03.566 0 1.072-.464 1.072-1.03V11.02z"></path></svg>`
-    }
-
     selectors = {
         productJson: '[data-product-json]',
         parentBox: 'b2b-variant-box',
@@ -14031,8 +14040,7 @@ class B2BVariant extends HTMLElement {
         quantityInput: '[data-quantity-field]',
         quantityMinusButton: '[data-quantity-minus]',
         quantityPlusButton: '[data-quantity-plus]',
-        totalPrice: '[data-variant-total-price]',
-
+        totalPrice: '[data-variant-total-price]'
     }
 
     constructor() {
@@ -14105,11 +14113,16 @@ class B2BVariant extends HTMLElement {
         const quantity = parseInt(this.dataset.quantity || 1)
         const totalPrice = slate.Currency.formatMoney(this.variantJSON.price * quantity, theme.moneyFormat)
         const unitPrice = slate.Currency.formatMoney(this.variantJSON.price, theme.moneyFormat)
+
+		const imageURL = getSizedImageUrl(this.featured_image, '100x')
+		const featuredImageBgSet = PaloAlto.BgSet.render(imageURL, 1, '_100x.')
+
         return `<div class="b2b-variant-selector-content">
             <div class="b2b-variant-image-wrapper">
                 <img
                     class="b2b-product-image lazyautosizes ls-is-cached lazyloaded" 
-                    src="${this.featured_image}"
+                    srcset="${featuredImageBgSet}"
+                    src="${imageURL}"
                 >
             </div>
             <div class="b2b-variant-content-info-wrapper">
@@ -14137,7 +14150,7 @@ class B2BVariant extends HTMLElement {
                     <span class="visually-hidden">
                         Decrease Quantity
                     </span>
-                    ${this.icons.decrease}
+                    ${theme.icons.minus}
                 </button>
                 <input
                     type="number"
@@ -14155,7 +14168,7 @@ class B2BVariant extends HTMLElement {
                     data-quantity-button="1"
                     data-variant-id=${this.variantJSON.id}
                 >
-                    ${this.icons.increase}
+                    ${theme.icons.plus}
                 </button>
             </div>
         </div>
