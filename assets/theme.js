@@ -2715,7 +2715,9 @@ PaloAlto.CartDrawer = (function() {
         }
       } else {
         this.itemsHolder.innerHTML = cartItemsData.innerHTML;
-        this.pairProductsHolder.innerHTML = upsellItemsData.innerHTML;
+        if (this.pairProductsHolder) {
+          this.pairProductsHolder.innerHTML = upsellItemsData.innerHTML;
+        }
         if (this.freeHolder) {
             this.freeHolder.innerHTML = freeItemsData.innerHTML;
         }
