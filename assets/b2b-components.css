@@ -374,6 +374,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-weight: 700;
+    padding-bottom: 15px;
 }
 
 .variant-picker-modal__footer .b2b-discount {

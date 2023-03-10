@@ -1618,6 +1618,7 @@ PaloAlto.CartDrawer = (function() {
     formWrapper: '[data-form-wrapper]',
     popupQuickView: '.popup-quick-view',
     popupContent: '.mfp-content',
+    b2bAddToCartAttribute: 'data-b2b-add-to-cart'
   };
 
   const classes = {
@@ -1882,7 +1883,12 @@ PaloAlto.CartDrawer = (function() {
             return;
           }
 
-          if (button.hasAttribute(selectors.productIDAttribute)) {
+          if (button.hasAttribute(selectors.b2bAddToCartAttribute)) {
+            this.b2bVariantBox = clickedElement.closest("b2b-variant-box")
+            this.form = this.b2bVariantBox.getFormData()
+            formData = new FormData(this.form);
+            formData = new URLSearchParams(formData).toString();
+          } else if (button.hasAttribute(selectors.productIDAttribute)) {
             formData = `id=${Number(button.getAttribute(selectors.productIDAttribute))}`;
           } else {
             this.form = clickedElement.closest('form');
@@ -13782,8 +13788,8 @@ class B2BVariantBox extends HTMLElement {
         addToCartText: '[data-add-to-cart-text]',
         selectedOptions: '[data-b2b-option]:checked',
         variantContainer: '[data-b2b-variant-selector-container]',
-        totalPrice: '[data-b2b-total-price]',
-        discount: '[data-b2b-discount]'
+        totalPriceSelector: '[data-b2b-total-price]',
+        discountSelector: '[data-b2b-discount]'
     }
 
     classes = {
@@ -13802,6 +13808,10 @@ class B2BVariantBox extends HTMLElement {
         this.options = this.querySelectorAll(this.selectors.options)
         this.variants = []
         this.variantSelectorContainer = this.querySelector(this.selectors.variantContainer)
+        this.totalPriceSelector = this.querySelector(this.selectors.totalPriceSelector)
+        this.discountSelector = this.querySelector(this.selectors.discountSelector)
+        this.totalPrice = 0
+
         this.handleOptionChange = (e) => this._handleOptionChange(e)
     }
 
@@ -13810,19 +13820,21 @@ class B2BVariantBox extends HTMLElement {
         this.options.forEach((option) => {
             option.addEventListener("change", this.handleOptionChange)
         })
+        this.updateTotalPrice()
         this.productBaseJSON = await this.getProductJson()
+        this.variantSelectorContainer.innerHTML = this._getEmptyState()
     }
 
 
     getProductJson(handle) {
-      const requestRoute = `${window.theme.routes.root}products/${this.productJSON.handle}.js`;
-      return window
+        const requestRoute = `${window.theme.routes.root}products/${this.productJSON.handle}.js`;
+        return window
         .fetch(requestRoute)
         .then((response) => {
-          return response.json();
+            return response.json();
         })
         .catch((e) => {
-          console.error(e);
+            console.error(e);
         });
     }
 
@@ -13838,19 +13850,21 @@ class B2BVariantBox extends HTMLElement {
         return this._updateVariantTable()
     }
 
+    _getEmptyState() {
+        return `<div class="b2b-variant-box-empty-state">
+            am Empty!
+        </div>`
+    }
+
     _updateVariantTable () {
         if (!this.variants.length) {
-            return
+            return this.variantSelectorContainer.innerHTML = this._getEmptyState()
         }
 
         this.variantState = {}
-        const b2bVariants = this.querySelectorAll("b2b-variant")
-        b2bVariants.forEach((element) => {
-            this.variantState[element.variantId] = {quantity: element.quantity, price: element.totalPrice}
-        })
-
         this.sections = {}
         this.sectionOrder = []
+
         const firstOption = this.productBaseJSON.options[0]
         const variantRows = []
 
@@ -13866,9 +13880,9 @@ class B2BVariantBox extends HTMLElement {
                     variantRows.push(`<div class="b2b-variant-selector-inner-wrapper">
                         <p class="option-name">${firstOption.name}: <span>${section}</span></p>
                         ${variants.map((variant => {
-                            const quantity = this.variantState[variant.id]?.quantity || 1
+                            const quantity = this.variantState[variant.id]?.quantity || 0
                             if (!this.variantState[variant.id]) {
-                                this.variantState[variant.id] = {quantity: quantity, price: variant.price}
+                                this.variantState[variant.id] = {quantity: quantity, price: variant.price * quantity}
                             }
                             return `<b2b-variant
                                 class="b2b-variant-selector-inner"
@@ -13881,26 +13895,55 @@ class B2BVariantBox extends HTMLElement {
             })
         } else {
             variantRows.push(`<div class="b2b-variant-selector-inner-wrapper">
-                ${this.variants.map((variant => {
-                    const quantity = variantQuantity[variant.id]?.quantity || 1
+                ${this.variants.map((variant) => {
+                    const quantity = this.variantState[variant.id]?.quantity || 0
                     if (!this.variantState[variant.id]) {
-                        this.variantState[variant.id] = {quantity: quantity, price: variant.price}
+                        this.variantState[variant.id] = {quantity: quantity, price: variant.price * quantity}
                     }
                     return `<b2b-variant
                         class="b2b-variant-selector-inner"
                         data-variant-id="${variant.id}"
                         data-quantity="${quantity}"
                     ></b2b-variant>`
-                })).join("")}
+                }).join("")}
             </div>`)
         }
 
         this.variantSelectorContainer.innerHTML = variantRows.join("")
-        debugger;
+        this.updateTotalPrice()
+    }
+
+    updateTotalPrice() {
+        this.totalPrice = 0
+        this.variants.forEach((variant) => {
+            this.totalPrice += this.variantState[variant.id].price
+        })
+
+        this.totalPriceSelector.innerHTML = slate.Currency.formatMoney(this.totalPrice, theme.moneyFormat)
+
+        if (this.totalPrice > 0) {
+            this.addToCartBtn.removeAttribute("disabled")
+        } else {
+            this.addToCartBtn.setAttribute("disabled", "disabled")
+        }
     }
 
     setVariantPrice(variantId, price) {
         this.variantState[variantId].price = price
+        this.updateTotalPrice()
+    }
+
+    getFormData() {
+        const formElement = document.createElement("form")
+        formElement.innerHTML = `${this.variants.map((variant, index) => {
+            const variantInfo = this.variantState[variant.id]
+            if (variantInfo.quantity > 0) {
+                return `<input name="items[${index}][quantity]" value="${variantInfo.quantity}" />
+                    <input name="items[${index}][id]" value="${variant.id}" />`
+            }
+            return ''
+        }).join("")}`
+        return formElement
     }
 
     _getProposeVariants () {
@@ -13980,7 +14023,7 @@ class B2BVariant extends HTMLElement {
             this.appendChild(element)
         })
 
-        this.handleQuantityChange = (e) => this._handleQuantityChange(e)
+        this.handleQuantityChange = (e) => this._handleQuantityChange(e.target)
 
         this.quantityBtns = this.querySelectorAll(this.selectors.quantityBtns)
         this.quantityMinusButton = this.querySelector(this.selectors.quantityMinusButton)
@@ -13994,8 +14037,19 @@ class B2BVariant extends HTMLElement {
         this.totalPrice = this.variantJSON.price * this.quantity
     }
 
-    _handleQuantityChange(e) {
-        this.quantity += parseInt(e.target.dataset.quantityButton)
+    connectedCallback() {
+        if (this.quantity == 0) {
+            this.quantityMinusButton.setAttribute('disabled', 'disabled')
+            this.totalPriceSelector.classList.add('disabled')
+            this.totalPrice = 0
+            this.totalPriceSelector.innerHTML = `<p>${slate.Currency.formatMoney(this.totalPrice, theme.moneyFormat)}</p>`
+            this.setAttribute("data-quantity", this.quantity)
+            this.parentBox.setVariantPrice(this.variantId, this.totalPrice)
+        }
+    }
+
+    _handleQuantityChange(button) {
+        this.quantity += parseInt(button.dataset.quantityButton)
         if (this.quantity <= 0) {
             this.quantityMinusButton.setAttribute('disabled', 'disabled')
             this.totalPriceSelector.classList.add('disabled')
