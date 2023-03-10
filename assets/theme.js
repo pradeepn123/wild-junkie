@@ -13852,7 +13852,11 @@ class B2BVariantBox extends HTMLElement {
 
     _getEmptyState() {
         return `<div class="b2b-variant-box-empty-state">
-            am Empty!
+          <svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="29" cy="29.0001" r="19" transform="rotate(45 29 29.0001)" stroke="#ADADAD" stroke-width="2"/>
+            <rect x="48.0918" y="8.49414" width="2" height="57" transform="rotate(45 48.0918 8.49414)" fill="#ADADAD"/> 
+          </svg>
+          <p>Select Sizes and Colours to display available variants.</p>
         </div>`
     }
 
