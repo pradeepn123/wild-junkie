@@ -71,6 +71,7 @@
           "logo_not_home": "shopify:\/\/shop_images\/image_4bcd965e-c149-48dc-8d09-4afd61575c3d.png",
           "logo_max_width": 90,
           "main-menu": "main-menu-new",
+          "b2b-menu": "wholesale-only",
           "show_images": true,
           "image_aspect_ratio": 0.5,
           "menu_alignment": "left",
