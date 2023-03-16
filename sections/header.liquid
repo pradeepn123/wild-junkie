@@ -50,7 +50,7 @@
   endif
 -%}
 
-{% if customer.tags contains 'b2b' %}
+{% if customer.tags contains 'wholesale' %}
   {{ 'b2b-components.css' | asset_url | stylesheet_tag }}
 {% endif %}
 

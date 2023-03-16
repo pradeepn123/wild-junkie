@@ -69,7 +69,7 @@
   endunless
 
   assign is_b2b_applicable = false
-  if customer.tags contains 'b2b' and product.tags contains 'wholesale'
+  if customer.tags contains 'wholesale' and product.tags contains 'wholesale'
     assign show_payment_button = false
     unless product.has_only_default_variant
       assign is_b2b_applicable = true
