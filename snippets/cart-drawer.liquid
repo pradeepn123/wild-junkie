@@ -211,7 +211,7 @@
     </div>
 
     <div class="cart-drawer__foot cart__foot{% if cart_items_size == 0 %} hidden{% endif %}" data-foot-holder>
-      {% unless customer.tags contains 'b2b' %}
+      {% unless customer.tags contains 'wholesale' %}
         <div class="cart__pair" data-cart-widget data-pair-products-holder
           {% if animations_enabled %}
             data-aos="fade-up"
