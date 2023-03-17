@@ -441,3 +441,8 @@
 [data-b2b-choose-option] * {
     pointer-events: none;
 }
+
+.disable-variant{
+    opacity: 0.5;
+    pointer-events: none;
+}

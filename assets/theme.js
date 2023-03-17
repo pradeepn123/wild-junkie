@@ -14061,6 +14061,12 @@ class B2BVariant extends HTMLElement {
         this.variantJSON = this.parentBox.productJSON.variants.find((variant) => variant.id == this.variantId)
         this.featured_image = this.variantJSON.featured_image || this.parentBox.productJSON.featured_image
         this.options = this.parentBox.productJSON.options
+        this.variant_available = this.variantJSON.available
+     
+
+        if (!this.variant_available) {
+          this.classList.add('disable-variant')
+        }
 
         element.innerHTML = this.getSkeleton()
         Array.from(element.children).forEach(element => {
