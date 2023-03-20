@@ -1,4 +1,20 @@
 <!-- /sections/section-text.liquid -->
+{%-liquid
+  assign show_section = false
+  assign is_b2b_customer = false
+  if customer.tags contains 'wholesale'
+    assign is_b2b_customer = true
+  endif
+
+  if is_b2b_customer and section.settings.is_for_wholesale
+    assign show_section = true
+  elsif is_b2b_customer == false and section.settings.is_for_wholesale == false
+    assign show_section = true
+  endif
+-%}
+
+{% if show_section %}
+  
 {%- liquid
   assign section_width = section.settings.width
   assign unique = section.id
@@ -285,12 +301,20 @@
     </div>
   </div>
 </section>
+{% endif %}
 
 {% schema %}
 {
   "name": "Text",
   "class": "text",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "is_for_wholesale",
+      "label": "Only for Wholesale",
+      "default": false,
+      "info": "If checked will only show for wholesale customers."
+    },
     {
       "type": "header",
       "content": "Layout"

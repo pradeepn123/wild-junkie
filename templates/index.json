@@ -87,6 +87,62 @@
         "accordion-3"
       ],
       "settings": {
+        "is_for_wholesale": false,
+        "accordion_height": "six-fifty-height",
+        "heading_size": 100,
+        "width": "wrapper--full",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "9b87f26d-405d-4d11-a2f9-cc364f55dccc": {
+      "type": "section-image-accordions",
+      "blocks": {
+        "template--14580524089407__9b87f26d-405d-4d11-a2f9-cc364f55dccc-16789633860518751b-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Skylar.jpg",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_width": "full",
+            "text_position": "left",
+            "text_color": "text-light",
+            "title": "Graphic Tees",
+            "text": "",
+            "btn_text": "Show Now",
+            "btn_link": "shopify:\/\/collections\/graphic-tees",
+            "btn_style": "btn--primary btn--small",
+            "btn_text_2": "",
+            "btn_link_2": "",
+            "btn_style_2": "btn--secondary btn--small"
+          }
+        },
+        "template--14580524089407__9b87f26d-405d-4d11-a2f9-cc364f55dccc-16789633860518751b-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6X0A4061.jpg",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_width": "full",
+            "text_position": "left",
+            "text_color": "text-light",
+            "title": "Jewelry",
+            "text": "You've never seen such a unique a variety of premium jewelry and thats a promise!",
+            "btn_text": "Shop Now",
+            "btn_link": "shopify:\/\/collections\/jewelry",
+            "btn_style": "btn--primary btn--small",
+            "btn_text_2": "",
+            "btn_link_2": "",
+            "btn_style_2": "btn--secondary btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--14580524089407__9b87f26d-405d-4d11-a2f9-cc364f55dccc-16789633860518751b-1",
+        "template--14580524089407__9b87f26d-405d-4d11-a2f9-cc364f55dccc-16789633860518751b-0"
+      ],
+      "settings": {
+        "is_for_wholesale": true,
         "accordion_height": "six-fifty-height",
         "heading_size": 100,
         "width": "wrapper--full",
@@ -113,6 +169,7 @@
         "text-0"
       ],
       "settings": {
+        "is_for_wholesale": false,
         "bg_color": "#e97e4c",
         "color": "#ece2da",
         "layout": "marquee",
@@ -128,6 +185,7 @@
     "collection": {
       "type": "section-collection",
       "settings": {
+        "is_for_wholesale": false,
         "collection": "new-arrivals",
         "products_layout": "grid",
         "number_of_products": 4,
@@ -149,9 +207,35 @@
         "offer_time": ""
       }
     },
+    "172b608e-6596-48dc-933e-79d2efeaaf92": {
+      "type": "section-collection",
+      "settings": {
+        "is_for_wholesale": true,
+        "collection": "graphic-tees",
+        "products_layout": "grid",
+        "number_of_products": 4,
+        "text_alignment": "text-left",
+        "title": "Best Sellers",
+        "heading_size": 100,
+        "text": "",
+        "text_size": 125,
+        "button_text": "Shop all",
+        "button_style": "btn--text",
+        "bg_color": "",
+        "enable_slider_mobile": true,
+        "columns_mobile": "2",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_low_inventory_warning": false,
+        "offer_date": "",
+        "offer_time": ""
+      }
+    },
     "166451777374c087c9": {
       "type": "text-Highlight",
       "settings": {
+        "is_for_wholesale": false,
         "text": "Our Collections",
         "Vertical__Text__alignment": "center",
         "horizontal_text_alignment": "space-between",
@@ -261,6 +345,7 @@
         "4cdca39d-cd0f-44e2-9ed0-317fbd191fab"
       ],
       "settings": {
+        "is_for_wholesale": false,
         "height": "fullscreen",
         "heading_size": 130,
         "button_style": "btn--primary",
@@ -316,6 +401,7 @@
         "image-0"
       ],
       "settings": {
+        "is_for_wholesale": false,
         "height": "six-fifty-height",
         "custom_class_custom_content": "",
         "bg_color": "",
@@ -375,6 +461,7 @@
         "3faec129-fe42-4917-bfca-c236b057eff4"
       ],
       "settings": {
+        "is_for_wholesale": false,
         "image__container": "shopify:\/\/shop_images\/wildJunkiesImg.png",
         "order": "initial",
         "order__mobile": "initial",
@@ -488,6 +575,7 @@
     "5252a17b-a43e-4267-bd4d-0db186dac8b8": {
       "type": "text-Highlight",
       "settings": {
+        "is_for_wholesale": false,
         "text": "Reviews from our  customers",
         "Vertical__Text__alignment": "center",
         "horizontal_text_alignment": "space-between",
@@ -548,6 +636,7 @@
         "7e84f444-1360-41fc-a612-435394b2c1f0"
       ],
       "settings": {
+        "is_for_wholesale": false,
         "bg_color": "",
         "width": "wrapper",
         "padding_top": 30,
@@ -557,6 +646,7 @@
     "a0ed315a-680d-44c7-b3ef-6fb07715cf1f": {
       "type": "section-collection",
       "settings": {
+        "is_for_wholesale": false,
         "collection": "best-sellers",
         "products_layout": "grid",
         "number_of_products": 4,
@@ -621,6 +711,7 @@
         "template--14485493219391__5fca98a6-98cf-4db8-97a5-7b3874c55409-16656832053d331582-3"
       ],
       "settings": {
+        "is_for_wholesale": false,
         "text_position": "center",
         "bg_color": "",
         "text_color": "text-dark",
@@ -642,6 +733,7 @@
         "d4e60578-c7b8-402e-9033-b5e9a51c8efa"
       ],
       "settings": {
+        "is_for_wholesale": false,
         "bg_color": "",
         "width": "wrapper",
         "padding_top": 0,
@@ -651,6 +743,7 @@
     "newsletter": {
       "type": "section-newsletter",
       "settings": {
+        "is_for_wholesale": false,
         "flex_align": "align--middle-center",
         "text_color": "text-dark",
         "title": "Newsletter",
@@ -669,8 +762,10 @@
   },
   "order": [
     "image-accordions-0",
+    "9b87f26d-405d-4d11-a2f9-cc364f55dccc",
     "marquee",
     "collection",
+    "172b608e-6596-48dc-933e-79d2efeaaf92",
     "166451777374c087c9",
     "grid-0",
     "custom-content-0",

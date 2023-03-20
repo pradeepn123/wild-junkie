@@ -1,3 +1,19 @@
+{%-liquid
+  assign show_section = false
+  assign is_b2b_customer = false
+  if customer.tags contains 'wholesale'
+    assign is_b2b_customer = true
+  endif
+
+  if is_b2b_customer and section.settings.is_for_wholesale
+    assign show_section = true
+  elsif is_b2b_customer == false and section.settings.is_for_wholesale == false
+    assign show_section = true
+  endif
+-%}
+
+{% if show_section %}
+
 {%- if section.blocks.size > 0 -%}
   {%- liquid
     assign bar_markup = ''
@@ -358,12 +374,20 @@
     </div>
   </div>
 {%- endif -%}
+{% endif %}
 
 {% schema %}
 {
   "name": "Marquee",
   "class": "shopify-section--marquee",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "is_for_wholesale",
+      "label": "Only for Wholesale",
+      "default": false,
+      "info": "If checked will only show for wholesale customers."
+    },
     {
       "type": "image_picker",
       "id": "bg_image",

@@ -1567,16 +1567,21 @@ PaloAlto.CartDrawer = (function() {
     cartNotifyContent: '[data-cart-notify-content]',
     cartNotifyPrimaryBtn: '[data-open-drawer-cart]',
     cartNotifySecondaryBtn: '[data-continue-shopping]',
+    b2bCartDrawer: '[data-variant-picker-modal]',
+    apiB2bContent: '[data-api-b2b-drawer-section]',
+
     apiLineItems: '[data-api-line-items]',
     apiFreeItems: '[data-api-free-items]',
     apiUpsellItems: '[data-api-upsell-items]',
     buttonAddToCart: '[data-add-to-cart]',
+    buttonChooseOption: '[data-b2b-choose-option]',
     upsellButtonByHandle: '[data-handle]',
     cartCloseError: '[data-cart-error-close]',
     cartDrawer: '[data-cart-drawer]',
     cartNotify: '[data-cart-notify]',
     cartDrawerTemplate: '[data-cart-drawer-template]',
     cartDrawerToggle: '[data-cart-drawer-toggle]',
+    b2bCartDrawerToggle: '[data-b2b-cart-drawer-toggle]',
     cartDrawerBody: '[data-cart-drawer-body]',
     cartErrors: '[data-cart-errors]',
     cartForm: '[data-cart-form]',
@@ -1613,6 +1618,7 @@ PaloAlto.CartDrawer = (function() {
     formWrapper: '[data-form-wrapper]',
     popupQuickView: '.popup-quick-view',
     popupContent: '.mfp-content',
+    b2bAddToCartAttribute: 'data-b2b-add-to-cart'
   };
 
   const classes = {
@@ -1622,6 +1628,7 @@ PaloAlto.CartDrawer = (function() {
     isHidden: 'is-hidden',
     cartDrawerOpen: 'js-drawer-open-cart',
     cartNotifyOpen: 'js-notify-open-cart',
+    b2bCartDrawerOpen: 'js-variant-picker-open',
     open: 'is-open',
     visible: 'is-visible',
     loading: 'is-loading',
@@ -1646,6 +1653,7 @@ PaloAlto.CartDrawer = (function() {
     upsellButton: 'data-upsell-btn',
     errorContainerQuickBuy: 'data-cart-errors-container-quickbuy',
     notificationPopup: 'data-notification-popup',
+    chooseOptions: 'data-b2b-choose-option'
   };
 
   function CartDrawer() {
@@ -1660,8 +1668,10 @@ PaloAlto.CartDrawer = (function() {
     init() {
       // DOM Elements
       this.cartToggleButtons = document.querySelectorAll(selectors.cartDrawerToggle);
+      this.b2bCartDrawerButtons = document.querySelectorAll(selectors.b2bCartDrawerToggle);
       this.cartDrawer = document.querySelector(selectors.cartDrawer);
-      this.cartNotify = document.querySelector(selectors.cartNotify)
+      this.cartNotify = document.querySelector(selectors.cartNotify);
+      this.b2bCartDrawer = document.querySelector(selectors.b2bCartDrawer)
 
       this.assignArguments();
 
@@ -1696,6 +1706,7 @@ PaloAlto.CartDrawer = (function() {
       // Flags
       this.totalItems = 0;
       this.isCartDrawerOpen = false;
+      this.isB2bDrawerOpen = false;
       this.isCartDrawerLoaded = false;
       this.cartDiscounts = 0;
       this.cartDrawerEnabled = settings.cartDrawerEnabled;
@@ -1853,6 +1864,12 @@ PaloAlto.CartDrawer = (function() {
       document.addEventListener('click', (event) => {
         const clickedElement = event.target;
 
+        if (clickedElement.matches(selectors.buttonChooseOption) || (clickedElement.closest(selectors.buttonChooseOption) && clickedElement)) {
+            event.preventDefault();
+            const button = clickedElement.matches(selectors.buttonChooseOption) ? clickedElement : clickedElement.closest(selectors.buttonChooseOption);
+            return this.openOptionChooser(button)
+        }
+
         if (clickedElement.matches(selectors.buttonAddToCart) || (clickedElement.closest(selectors.buttonAddToCart) && clickedElement)) {
           const button = clickedElement.matches(selectors.buttonAddToCart) ? clickedElement : clickedElement.closest(selectors.buttonAddToCart);
           const formWrapper = button.closest(selectors.formWrapper);
@@ -1866,7 +1883,12 @@ PaloAlto.CartDrawer = (function() {
             return;
           }
 
-          if (button.hasAttribute(selectors.productIDAttribute)) {
+          if (button.hasAttribute(selectors.b2bAddToCartAttribute)) {
+            this.b2bVariantBox = clickedElement.closest("b2b-variant-box")
+            this.form = this.b2bVariantBox.getFormData()
+            formData = new FormData(this.form);
+            formData = new URLSearchParams(formData).toString();
+          } else if (button.hasAttribute(selectors.productIDAttribute)) {
             formData = `id=${Number(button.getAttribute(selectors.productIDAttribute))}`;
           } else {
             this.form = clickedElement.closest('form');
@@ -1925,6 +1947,7 @@ PaloAlto.CartDrawer = (function() {
           id: promotionalProducts[0].key,
           quantity: 0,
         };
+
         return fetch(theme.routes.root + 'cart/change.js', {
           method: 'post',
           headers: {'Content-Type': 'application/json'},
@@ -2122,6 +2145,7 @@ PaloAlto.CartDrawer = (function() {
       let oldCount = null;
       let newItem = null;
       let quantity = updateData.quantity;
+      let targetProductId = null;
 
       this.addLoadingClass();
 
@@ -2137,10 +2161,25 @@ PaloAlto.CartDrawer = (function() {
         .then(this.handleErrors)
         .then((response) => response.json())
         .then((response) => {
-          const matchKeys = (item) => item.key === updateData.id;
-          const index = response.items.findIndex(matchKeys);
-          oldCount = response.item_count;
-          newItem = response.items[index].title;
+            const matchKeys = (item) => item.key === updateData.id;
+            const index = response.items.findIndex(matchKeys);
+            oldCount = response.item_count;
+            newItem = response.items[index].title;
+
+            const productQuantity = response.items.map((item) => {
+                if (item.product_id == response.items[index].product_id) {
+                    return item.key == updateData.id ? quantity : item.quantity
+                };
+                return 0
+            }).reduce((acc, val) => acc + val)
+
+            if (theme.isB2bCustomer && productQuantity < 6) {
+                if (quantity > 0) {
+                    return fetch(theme.routes.root + 'cart.js')
+                } else {
+                    targetProductId = response.items[index].product_id
+                }
+            }
 
           const data = {
             line: `${index + 1}`,
@@ -2178,6 +2217,15 @@ PaloAlto.CartDrawer = (function() {
           if (this.cartMessage.length > 0) {
             this.subtotal = response.total_price;
             this.updateProgress();
+          }
+
+          if (theme.isB2bCustomer && targetProductId) {
+            const items = response.items.filter((item) => item.product_id == targetProductId)
+            if (items.length) {
+                targetProductId = null;
+                updateData.id = items[0].key
+                return this.updateCart(updateData, holder, valueIsEmpty)
+            }
           }
 
           this.getCart();
@@ -2369,21 +2417,91 @@ PaloAlto.CartDrawer = (function() {
       this.isCartDrawerOpen = true;
     },
 
+    /**
+     * Open cart dropdown and add class on body
+     *
+     * @return  {Void}
+     */
+
+    openOptionChooser(button) {
+        if (this.isB2bDrawerOpen) { return; }
+
+        button.classList.add(classes.loading);
+        button.setAttribute(attributes.disabled, true);
+
+        const endpoint = new URL(window.location.origin + button.dataset.productUrl)
+        endpoint.searchParams.append('sections', 'api-b2b-drawer-section')
+
+
+        return fetch(endpoint.href)
+        .then((response) => response.json())
+        .then((response) => {
+            const b2bElement = document.createElement('div');
+            b2bElement.innerHTML = response["api-b2b-drawer-section"];
+            this.removeLoadingClass();
+
+            const cleanResponse = b2bElement.querySelector(selectors.apiB2bContent)
+
+            this.b2bCartDrawer.querySelector(selectors.apiB2bContent).replaceWith(cleanResponse)
+
+            document.body.classList.add(classes.b2bCartDrawerOpen);
+            this.b2bCartDrawer.classList.add(classes.open);
+
+            // Cart elements opening animation
+            this.b2bCartDrawer.querySelectorAll(selectors.aos).forEach((item) => {
+                item.classList.add(classes.aosAnimate);
+            });
+
+            this.b2bCartDrawerButtons.forEach((button) => {
+                button.setAttribute(attributes.ariaExpanded, true);
+            });
+
+            slate.a11y.trapFocus({
+                container: this.b2bCartDrawer,
+            });
+
+            this.isB2bDrawerOpen = true;
+            button.classList.remove(classes.loading);
+            button.removeAttribute(attributes.disabled);
+        })
+        .catch((error) => console.log(error));
+    },
+
+    closeOptionChooser() {
+        if (!this.isB2bDrawerOpen) { return; }
+
+        this.b2bCartDrawerButtons.forEach((button) => {
+            button.setAttribute(attributes.ariaExpanded, false);
+        });
+
+        document.body.classList.remove(classes.b2bCartDrawerOpen, true);
+        this.b2bCartDrawer.classList.remove(classes.open);
+        this.isB2bDrawerOpen = false
+    },
+
+    toggleOptionChooser() {
+        if (this.isB2bDrawerOpen) {
+            this.closeOptionChooser()
+        } else {
+            this.openOptionChooser()
+        }
+    },
+
     addCartNotificationEvents() {
-            const cartNotifyPrimaryBtn = this.cartNotify.querySelector(selectors.cartNotifyPrimaryBtn)
-            const cartNotifySecondaryBtn = this.cartNotify.querySelector(selectors.cartNotifySecondaryBtn)
-            cartNotifyPrimaryBtn.addEventListener("click", this.toggleNotifyDrawer.bind(this))
-            cartNotifySecondaryBtn.addEventListener("click", this.closeCartDrawer.bind(this))
+        const cartNotifyPrimaryBtn = this.cartNotify.querySelector(selectors.cartNotifyPrimaryBtn)
+        const cartNotifySecondaryBtn = this.cartNotify.querySelector(selectors.cartNotifySecondaryBtn)
+        cartNotifyPrimaryBtn.addEventListener("click", this.toggleNotifyDrawer.bind(this))
+        cartNotifySecondaryBtn.addEventListener("click", this.closeCartDrawer.bind(this))
     },
 
     toggleNotifyDrawer() {
         if (this.isCartDrawerOpen) {
             this.isCartDrawerOpen = false
-        document.body.classList.remove(classes.cartNotifyOpen, true);
-        this.cartNotify.classList.remove(classes.open);
-          this.showCartNotification = false
+            document.body.classList.remove(classes.cartNotifyOpen, true);
+            this.cartNotify.classList.remove(classes.open);
+            this.showCartNotification = false
         }
-      return this.openCartDrawer()
+        return this.openCartDrawer()
     },
 
     /**
@@ -2393,6 +2511,7 @@ PaloAlto.CartDrawer = (function() {
      */
 
     openCartDrawer() {
+        this.closeOptionChooser()
       if (this.isCartDrawerOpen) { return; }
 
       if (!this.isCartDrawerLoaded) {
@@ -2499,7 +2618,7 @@ PaloAlto.CartDrawer = (function() {
      */
 
     cartDrawerToggleEvents() {
-      if (!this.cartDrawer || !this.cartNotify) { return; }
+      if (!this.cartDrawer || !this.cartNotify || !this.b2bCartDrawer) { return; }
 
       // Close cart drawer on ESC key pressed
       this.cartNotify.addEventListener('keyup', e => {
@@ -2513,16 +2632,31 @@ PaloAlto.CartDrawer = (function() {
         }
       });
 
+      this.b2bCartDrawer.addEventListener('keyup', (e) => {
+        if (e.which === slate.utils.keyboardKeys.ESCAPE) {
+          this.closeOptionChooser();
+        }
+      });
+
       // Define cart drawer toggle button click event
       this.cartDrawerToggleClickEvent = (e) => {
         e.preventDefault();
         const button = e.target;
-
         if (button.getAttribute(attributes.ariaExpanded) === 'false') {
           slate.a11y.state.trigger = button;
         }
 
         this.toggleCartDrawer();
+      };
+
+      this.b2bDrawerToggleClickEvent = (e) => {
+        e.preventDefault();
+        const button = e.target;
+        console.log(button)
+        if (button.getAttribute(attributes.ariaExpanded) === 'false') {
+          slate.a11y.state.trigger = button;
+        }
+        this.toggleOptionChooser();
       };
 
       // Define cart drawer close event
@@ -2536,9 +2670,23 @@ PaloAlto.CartDrawer = (function() {
         }
       };
 
+      this.b2bDrawerCloseEvent = (e) => {
+        const isB2bDrawerToggle = e.target.matches(selectors.b2bCartDrawerToggle);
+        const isB2bDrawerChild = document.querySelector(selectors.b2bCartDrawer).contains(e.target);
+        if (!isB2bDrawerToggle && !isB2bDrawerChild) {
+          this.closeOptionChooser();
+        }
+      };
+
+
       // Bind cart drawer toggle buttons click event
       this.cartToggleButtons.forEach((button) => {
         button.addEventListener('click', this.cartDrawerToggleClickEvent);
+      });
+
+      // Bind cart drawer toggle buttons click event
+      this.b2bCartDrawerButtons.forEach((button) => {
+        button.addEventListener('click', this.b2bDrawerToggleClickEvent);
       });
 
       // Close drawers on click outside
@@ -2546,6 +2694,7 @@ PaloAlto.CartDrawer = (function() {
       //   which was causing the cart-drawer to close when we start dragging the slider and finish our drag outside the cart-drawer
       //   which was triggering the 'click' event
       document.addEventListener('mousedown', this.cartDrawerCloseEvent);
+      document.addEventListener('mousedown', this.b2bDrawerCloseEvent);
     },
 
     /**
@@ -2591,7 +2740,9 @@ PaloAlto.CartDrawer = (function() {
         }
       } else {
         this.itemsHolder.innerHTML = cartItemsData.innerHTML;
-        this.pairProductsHolder.innerHTML = upsellItemsData.innerHTML;
+        if (this.pairProductsHolder) {
+          this.pairProductsHolder.innerHTML = upsellItemsData.innerHTML;
+        }
         if (this.freeHolder) {
             this.freeHolder.innerHTML = freeItemsData.innerHTML;
         }
@@ -2867,6 +3018,7 @@ PaloAlto.CartDrawer = (function() {
 
   return CartDrawer;
 })();
+
 
 PaloAlto.initCollapsible = (function() {
   const selectors = {
@@ -5168,7 +5320,7 @@ PaloAlto.Filters = (function() {
         .then(response => response.text())
         .then((responseText) => {
           const html = responseText;
-          const parsedData = new DOMParser().parseFromString(html, 'text/html');
+        
           const productsHTML = parsedData.querySelector(selectors.productGrid).innerHTML;
           const filtersHTML = parsedData.querySelector(selectors.filters).innerHTML;
 
@@ -6591,6 +6743,7 @@ PaloAlto.NavSearch = (function() {
     pushUp: 'push-up',
     cartDrawerOpen: 'js-drawer-open-cart',
     cartNotifyOpen: 'js-notify-open-cart',
+    b2bCartDrawerOpen: 'js-variant-picker-open',
     drawerOpen: 'js-drawer-open',
     isSearching: 'is-searching',
     isSearchVisible: 'is-search-visible',
@@ -7208,39 +7361,42 @@ PaloAlto.ProductAddForm = (function() {
 
       if (addToCartText.length) {
         addToCartText.forEach((element) => {
-          if (variant) {
-            if (variant.available) {
-              element.innerHTML = addText;
-            } else {
-              element.innerHTML = theme.strings.sold_out;
-
-              if (element.parentNode.hasAttribute(attributes.notificationPopup)) {
-                element.innerHTML = `${theme.strings.sold_out} - ${theme.strings.newsletter_product_availability}`;
-              }
+            if (!element.parentElement.hasAttribute("data-b2b-choose-option")) {
+                if (variant) {
+                    if (variant.available) {
+                        element.innerHTML = addText;
+                    } else {
+                        element.innerHTML = theme.strings.sold_out;
+                        if (element.parentNode.hasAttribute(attributes.notificationPopup)) {
+                            element.innerHTML = `${theme.strings.sold_out} - ${theme.strings.newsletter_product_availability}`;
+                        }
+                    }
+                } else {
+                    element.innerHTML = theme.strings.unavailable;
+                }
             }
-          } else {
-            element.innerHTML = theme.strings.unavailable;
-          }
         });
       }
 
       if (formWrapper.length) {
         formWrapper.forEach((element) => {
-          if (variant) {
-            if (variant.available) {
-              element.classList.remove(classes.variantSoldOut, classes.variantUnavailable);
+            if (!element.getAttribute('data-b2b-form-wrapper')) {
+              if (variant) {
+                if (variant.available) {
+                element.classList.remove(classes.variantSoldOut, classes.variantUnavailable);
+                } else {
+                element.classList.add(classes.variantSoldOut);
+                  element.classList.remove(classes.variantUnavailable);
+              }
+                const formSelect = element.querySelector(selectors.originalSelectorId);
+                if (formSelect) {
+                formSelect.value = variant.id;
+                }
             } else {
-              element.classList.add(classes.variantSoldOut);
-              element.classList.remove(classes.variantUnavailable);
+                element.classList.add(classes.variantUnavailable);
+              element.classList.remove(classes.variantSoldOut);
+              }
             }
-            const formSelect = element.querySelector(selectors.originalSelectorId);
-            if (formSelect) {
-              formSelect.value = variant.id;
-            }
-          } else {
-            element.classList.add(classes.variantUnavailable);
-            element.classList.remove(classes.variantSoldOut);
-          }
         });
       }
     },
@@ -7628,6 +7784,7 @@ PaloAlto.SelloutVariants = (function() {
 
     update() {
       this.getCurrentState();
+      const isB2bApplicable = this.productJSON.tags.includes("wholesale") && theme.isB2bCustomer
 
       this.optionElements.forEach((el) => {
         const val = el.value || el.getAttribute(attributes.selectOptionValue);
@@ -7654,6 +7811,10 @@ PaloAlto.SelloutVariants = (function() {
           }
           return perfectMatch;
         });
+
+        if (isB2bApplicable){
+            return
+        }
 
         el.parentElement.classList.remove(classes.soldOut, classes.unavailable);
         if (typeof found === 'undefined') {
@@ -12050,6 +12211,8 @@ PaloAlto.ProductGridItem = (function() {
         })
         this.onDocumentClick = (evt) => this.handleDocumentClick(evt)
 
+        this.isB2bApplicable = this.productJSON.tags.includes("wholesale") && theme.isB2bCustomer
+
         this._disableWhenRequired()
       }
     },
@@ -12096,6 +12259,7 @@ PaloAlto.ProductGridItem = (function() {
         this.mediaBox.setAttribute('data-current-image-id', featured_media.id)
         productMedia.setAttribute('data-bgset', PaloAlto.BgSet.render(getSizedImageUrl(featured_media.preview_image.src, '540x'), featured_media.preview_image.aspect_ratio, '_540x.'))
         productMedia.style.backgroundImage = `url("${getSizedImageUrl(featured_media.preview_image.src, '540x')}")`
+         // Reference
       }
     },
 
@@ -12139,24 +12303,23 @@ PaloAlto.ProductGridItem = (function() {
     },
 
     _disableWhenRequired: function(){
-      new PaloAlto.SelloutVariants(this.container, this.productJSON);
-
-      if (this.selectedVariant) {
-        if (this.selectedVariant.available) {
-          this.addToCartText.innerHTML = theme.strings.add_to_cart;
-          this.addToCartBtn.removeAttribute('disabled')
+        if (!this.isB2bApplicable) {
+        new PaloAlto.SelloutVariants(this.container, this.productJSON);
+        if (this.selectedVariant) {
+            if (this.selectedVariant.available) {
+            this.addToCartText.innerHTML = theme.strings.add_to_cart;
+            this.addToCartBtn.removeAttribute('disabled')
+            } else {
+            this.addToCartText.innerHTML = theme.strings.sold_out;
+            this.addToCartBtn.setAttribute('disabled', true)
+            }
         } else {
-          this.addToCartText.innerHTML = theme.strings.sold_out;
-          this.addToCartBtn.setAttribute('disabled', true)
+            this.addToCartText.innerHTML = theme.strings.unavailable;
+            this.addToCartBtn.setAttribute('disabled', true)
         }
-      } else {
-        this.addToCartText.innerHTML = theme.strings.unavailable;
-        this.addToCartBtn.setAttribute('disabled', true)
-      }
-    }    
-
+        }
+    }
   })
-
   return ProductGridItem
 })();
 
@@ -13654,3 +13817,435 @@ document.addEventListener('DOMContentLoaded', (event) => {
         PaloAlto.countdown(element)
     })
 });
+
+
+class B2BVariantBox extends HTMLElement {
+    selectors = {
+        options: '[data-b2b-option]',
+        swatches: '[data-b2b-swatch]',
+        productJson: '[data-product-json]',
+        addToCart: '[data-add-to-cart]',
+        addToCartText: '[data-add-to-cart-text]',
+        selectedOptions: '[data-b2b-option]:checked',
+        variantContainer: '[data-b2b-variant-selector-container]',
+        totalPriceSelector: '[data-b2b-total-price]',
+        discountSelector: '[data-b2b-discount]',
+        variantSelectorHeader: '[data-b2b-variant-selector-header]',
+        variantBoxFooter: '[data-variant-picker-modal-footer]'
+    }
+
+    classes = {
+        active: 'active',
+        soldOut: 'sold-out',
+        unavailable: 'unavailable'
+    }
+
+    constructor() {
+        super();
+        this.productJSON = JSON.parse(this.querySelector(this.selectors.productJson).innerHTML)
+        this.swatches = this.querySelectorAll(this.selectors.swatches)
+
+        this.addToCartBtn = this.querySelector(this.selectors.addToCart)
+        this.addToCartText = this.querySelector(this.selectors.addToCartText)
+        this.options = this.querySelectorAll(this.selectors.options)
+        this.variants = []
+        this.variantSelectorContainer = this.querySelector(this.selectors.variantContainer)
+        this.totalPriceSelector = this.querySelector(this.selectors.totalPriceSelector)
+        this.discountSelector = this.querySelector(this.selectors.discountSelector)
+        this.variantSelectorHeader = this.querySelector(this.selectors.variantSelectorHeader)
+        this.variantBoxFooter = this.querySelector(this.selectors.variantBoxFooter)
+        this.totalPrice = 0
+        this.totalQuantity = 0
+        this.variantState = {}
+        this.cartLineItems = []
+
+        this.handleOptionChange = (e) => this._handleOptionChange(e)
+    }
+
+    async connectedCallback() {
+        PaloAlto.initSwatches.makeSwatch(this)
+        this.options.forEach((option) => {
+            option.addEventListener("change", this.handleOptionChange)
+        })
+        this.updateTotalPrice()
+        this.productBaseJSON = await this.getProductJson()
+        this.variantSelectorContainer.innerHTML = this._getEmptyState()
+        this.getCart()
+    }
+
+    getCart() {
+        fetch(theme.routes.root + 'cart.js')
+        .then(this.handleErrors)
+        .then((response) => response.json())
+        .then((response) => {
+            this.cartLineItems = response.items.filter((item) => item.product_id == this.productJSON.id)
+            console.log(this.cartLineItems)
+        })
+    }
+
+    getProductJson(handle) {
+        const requestRoute = `${window.theme.routes.root}products/${this.productJSON.handle}.js`;
+        return window
+        .fetch(requestRoute)
+        .then((response) => {
+            return response.json();
+        })
+        .catch((e) => {
+            console.error(e);
+        });
+    }
+
+    _handleOptionChange (evt) {
+        const proposedVariants = this._getProposeVariants()
+
+        if (proposedVariants.length == 0) {
+            this.variants = []
+            return this._updateVariantTable()
+        }
+
+        this.variants = proposedVariants
+        return this._updateVariantTable()
+    }
+
+    _getEmptyState() {
+        const options = [...this.productJSON.options]
+        var optionNames = options.join(", ")
+
+       if (this.productJSON.options.length > 1) {
+            const lastOption = options.pop()
+            optionNames = options.join(", ")
+            optionNames += ` and ${lastOption}`
+        }
+
+        return `<div class="b2b-variant-box-empty-state">
+          <svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="29" cy="29.0001" r="19" transform="rotate(45 29 29.0001)" stroke="#ADADAD" stroke-width="2"/>
+            <rect x="48.0918" y="8.49414" width="2" height="57" transform="rotate(45 48.0918 8.49414)" fill="#ADADAD"/> 
+          </svg>
+          <p>Select ${optionNames} to display available variants.</p>
+        </div>`
+    }
+
+    _updateVariantTable () {
+        if (!this.variants.length) {
+            this.variantSelectorHeader.style.display = 'none'
+            this.updateTotalPrice()
+            return this.variantSelectorContainer.innerHTML = this._getEmptyState()
+        }
+
+        this.variantSelectorHeader.style.display = ''
+        this.sections = {}
+        this.sectionOrder = []
+
+        const firstOption = this.productBaseJSON.options[0]
+        const variantRows = []
+        const updatedVariantState = {}
+
+        if (this.productBaseJSON.options.length > 1) {
+            firstOption.values.forEach((value) => {
+                this.sections[value] = this.variants.filter((variant) => variant['option1'] == value)
+                this.sectionOrder.push(value)
+            })
+
+            this.sectionOrder.map((section) => {
+                const variants = this.sections[section]
+                if (variants.length) {
+                    variantRows.push(`<div class="b2b-variant-selector-inner-wrapper">
+                        <p class="option-name">${firstOption.name}: <span>${section}</span></p>
+                        ${variants.map((variant => {
+
+                            const quantity = this.variantState[variant.id]?.quantity || 0
+                            if (!this.variantState[variant.id]) {
+                                this.variantState[variant.id] = { quantity: quantity, price: variant.price * quantity }
+                            }
+
+                            updatedVariantState[variant.id] = this.variantState[variant.id]
+                            return `<b2b-variant
+                                class="b2b-variant-selector-inner"
+                                data-variant-id="${variant.id}"
+                                data-quantity="${quantity}"
+                            ></b2b-variant>`
+                        })).join("")}
+                    </div>`)
+                }
+            })
+        } else {
+            variantRows.push(`<div class="b2b-variant-selector-inner-wrapper">
+                ${this.variants.map((variant) => {
+
+                    const quantity = this.variantState[variant.id]?.quantity || 0
+                    if (!this.variantState[variant.id]) {
+                        this.variantState[variant.id] = { quantity: quantity, price: variant.price * quantity }
+                    }
+
+                    updatedVariantState[variant.id] = this.variantState[variant.id]
+                    return `<b2b-variant
+                        class="b2b-variant-selector-inner"
+                        data-variant-id="${variant.id}"
+                        data-quantity="${quantity}"
+                    ></b2b-variant>`
+                }).join("")}
+            </div>`)
+        }
+
+        this.variantState = updatedVariantState
+        this.variantSelectorContainer.innerHTML = variantRows.join("")
+        this.updateTotalPrice()
+    }
+
+    updateTotalPrice() {
+        this.totalPrice = 0
+        this.totalQuantity = this.cartLineItems.reduce((acc, item) => {
+            return acc + item.quantity
+        }, 0)
+
+        this.variants.forEach((variant) => {
+            if (this.variantState[variant.id]) {
+                this.totalPrice += this.variantState[variant.id].price
+                this.totalQuantity += this.variantState[variant.id].quantity
+            }
+        })
+
+        this.totalPriceSelector.innerHTML = slate.Currency.formatMoney(this.totalPrice, theme.moneyFormat)
+
+        if (this.totalPrice > 0) {
+            this.variantBoxFooter.classList.add('active')
+        } else {
+            this.variantBoxFooter.classList.remove('active')
+        }
+        this.handleAddToCartButton()
+    }
+
+    handleAddToCartButton() {
+        if (this.totalQuantity > 5) {
+            this.addToCartBtn.removeAttribute("disabled")
+        } else {
+            this.addToCartBtn.setAttribute("disabled", "disabled")
+        }
+    }
+
+    setVariantPrice(variantId, quantity, price) {
+        this.variantState[variantId] = {
+            quantity: quantity,
+            price: price
+        }
+        this.updateTotalPrice()
+    }
+
+    getFormData() {
+        const formElement = document.createElement("form")
+        formElement.innerHTML = `${this.variants.map((variant, index) => {
+            const variantInfo = this.variantState[variant.id]
+            if (variantInfo.quantity > 0) {
+                return `<input name="items[${index}][quantity]" value="${variantInfo.quantity}" />
+                    <input name="items[${index}][id]" value="${variant.id}" />`
+            }
+            return ''
+        }).join("")}`
+        return formElement
+    }
+
+    _getProposeVariants () {
+        const options = []
+        const checkedOptions = this.querySelectorAll(this.selectors.selectedOptions)
+        checkedOptions.forEach((element) => {
+            let option = options.find((option) => option.name == element.name)
+            if (!option) {
+                options.push({
+                    name: element.name,
+                    values: [element.value]
+                })
+            } else {
+                option.values.push(element.value)
+            }
+        })
+
+        function product(argv) {
+            return argv.reduce(function tl(accumulator, value) {
+                var tmp = [];
+                accumulator.forEach(function(a0) {
+                    value.forEach(function(a1) {
+                        tmp.push(a0.concat(a1));
+                    });
+                });
+                return tmp;
+            }, [[]]);
+        }
+        const variants = product(options.map(option => option.values))
+        if (variants.length == 0 || variants[0].length != this.productJSON.options.length) {
+            return []
+        }
+
+        return variants.map((variantArr) => {
+            return this.productJSON.variants.find((variant) => {
+                let perfectMatch = true;
+                for (let index = 0; index < variantArr.length; index++) {
+                    if (variant[`option${index + 1}`] !== variantArr[index]) {
+                        perfectMatch = false;
+                    }
+                }
+                return perfectMatch;
+            })
+        }).filter(variant => variant)
+    }
+}
+
+class B2BVariant extends HTMLElement {
+    selectors = {
+        productJson: '[data-product-json]',
+        parentBox: 'b2b-variant-box',
+        quantityBtns: '[data-quantity-button]',
+        quantityInput: '[data-quantity-field]',
+        quantityMinusButton: '[data-quantity-minus]',
+        quantityPlusButton: '[data-quantity-plus]',
+        totalPrice: '[data-variant-total-price]'
+    }
+
+    constructor() {
+        super();
+        this.parentBox = this.closest(this.selectors.parentBox)
+        const element = document.createElement('div');
+
+        this.variantId = this.dataset.variantId
+        this.variantJSON = this.parentBox.productJSON.variants.find((variant) => variant.id == this.variantId)
+        this.featured_image = this.variantJSON.featured_image || this.parentBox.productJSON.featured_image
+        this.options = this.parentBox.productJSON.options
+        this.variant_available = this.variantJSON.available
+     
+
+        if (!this.variant_available) {
+          this.classList.add('disable-variant')
+        }
+
+        element.innerHTML = this.getSkeleton()
+        Array.from(element.children).forEach(element => {
+            this.appendChild(element)
+        })
+
+        this.handleQuantityChange = (e) => this._handleQuantityChange(e.target)
+
+        this.quantityBtns = this.querySelectorAll(this.selectors.quantityBtns)
+        this.quantityMinusButton = this.querySelector(this.selectors.quantityMinusButton)
+        this.quantityPlusButton = this.querySelector(this.selectors.quantityPlusButton)
+        this.quantityInput = this.querySelector(this.selectors.quantityInput)
+        this.quantity = parseInt(this.quantityInput.value)
+        this.totalPriceSelector = this.querySelector(this.selectors.totalPrice)
+        this.quantityBtns.forEach((btn) => {
+            btn.addEventListener("click", this.handleQuantityChange)
+        })
+        this.totalPrice = this.variantJSON.price * this.quantity
+    }
+
+    connectedCallback() {
+        if (this.quantity == 0) {
+            this.quantityMinusButton.setAttribute('disabled', 'disabled')
+            this.totalPriceSelector.classList.add('disabled')
+            this.totalPrice = 0
+            this.totalPriceSelector.innerHTML = `<p>${slate.Currency.formatMoney(this.totalPrice, theme.moneyFormat)}</p>`
+            this.setAttribute("data-quantity", this.quantity)
+            this.parentBox.setVariantPrice(this.variantId, this.quantity, this.totalPrice)
+        }
+    }
+
+    _handleQuantityChange(button) {
+        this.quantity += parseInt(button.dataset.quantityButton)
+        if (this.quantity <= 0) {
+            this.quantityMinusButton.setAttribute('disabled', 'disabled')
+            this.totalPriceSelector.classList.add('disabled')
+            this.totalPrice = this.variantJSON.price * this.quantity
+        } else {
+            this.quantityMinusButton.removeAttribute('disabled')
+            this.totalPriceSelector.classList.remove('disabled')
+            this.totalPrice = this.variantJSON.price * this.quantity
+        }
+        this.totalPriceSelector.innerHTML = `<p>${slate.Currency.formatMoney(this.totalPrice, theme.moneyFormat)}</p>`
+
+        if (this.variantJSON.quantity_rule.max && this.variantJSON.quantity_rule.max >= this.quantity) {
+            this.quantityPlusButton.setAttribute('disabled', 'disabled')
+        } else {
+            this.quantityPlusButton.removeAttribute('disabled')
+        }
+
+        if (this.quantity >= 0) {
+            this.quantityInput.value = this.quantity
+        }
+        this.setAttribute("data-quantity", this.quantity)
+        this.parentBox.setVariantPrice(this.variantId, this.quantity, this.totalPrice)
+    }
+
+    getSkeleton() {
+        const quantity = parseInt(this.dataset.quantity || 1)
+        const totalPrice = slate.Currency.formatMoney(this.variantJSON.price * quantity, theme.moneyFormat)
+        const unitPrice = slate.Currency.formatMoney(this.variantJSON.price, theme.moneyFormat)
+
+                const imageURL = getSizedImageUrl(this.featured_image?.src || this.featured_image, '100x')
+                const featuredImageBgSet = PaloAlto.BgSet.render(imageURL, 1, '_100x.')
+
+        return `<div class="b2b-variant-selector-content">
+            <div class="b2b-variant-image-wrapper">
+                <img
+                    class="b2b-product-image lazyautosizes ls-is-cached lazyloaded" 
+                    srcset="${featuredImageBgSet}"
+                    src="${imageURL}"
+                >
+            </div>
+            <div class="b2b-variant-content-info-wrapper">
+                <p class="b2b-varaint-content-title">
+                    ${unitPrice} USD <span> Per Piece </span>
+                </p>
+                <div>
+                    ${this.options.map((option, index) => {
+                        if (index > 0 || this.options.length == 1) {
+                            return `<p class="b2b-varaint-content">${option}: ${this.variantJSON[`option${index + 1}`]}</p>`
+                        }
+                    }).join("\n")}
+                </div> 
+            </div>
+        </div>
+        <div class="b2b-cart__item__quantity">
+            <div class="cart__item__quantity">
+                <button
+                    type="button"
+                    class="cart__item__quantity-minus b2b__cart__item__quantity__btn"
+                    data-quantity-minus
+                    data-quantity-button="-1"
+                    data-variant-id=${this.variantJSON.id}
+                >
+                    <span class="visually-hidden">
+                        Decrease Quantity
+                    </span>
+                    ${theme.icons.minus}
+                </button>
+                <input
+                    type="number"
+                    class="cart__item__quantity-field"
+                    data-quantity-field
+                    value="${parseInt(this.dataset.quantity || 1)}"
+                    pattern="[0-9]*"
+                    data-variant-id=${this.variantJSON.id}
+                    readonly
+                >
+                <button
+                    type="button"
+                    class="cart__item__quantity-plus b2b__cart__item__quantity__btn"
+                    data-quantity-plus
+                    data-quantity-button="1"
+                    data-variant-id=${this.variantJSON.id}
+                >
+                    ${theme.icons.plus}
+                </button>
+            </div>
+        </div>
+        <div class="b2b-variant-price-selector" data-variant-total-price>
+            <p>${totalPrice}</p>
+        </div>`
+    }
+}
+
+if (!customElements.get('b2b-variant-box')) {
+    customElements.define('b2b-variant-box', B2BVariantBox);
+}
+
+if (!customElements.get('b2b-variant')) {
+    customElements.define('b2b-variant', B2BVariant);
+}

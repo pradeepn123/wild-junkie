@@ -67,7 +67,18 @@
   unless show_labels
     assign hide_labels_class = ' variant__labels--hide'
   endunless
+
+  assign is_b2b_applicable = false
+  if customer.tags contains 'wholesale' and product.tags contains 'wholesale'
+    assign show_payment_button = false
+    unless product.has_only_default_variant
+      assign is_b2b_applicable = true
+    else
+      assign show_quantity = true
+    endunless
+  endif
 -%}
+
 
 {% if section_type != 'quickview' %}
   {% style %}
@@ -116,6 +127,12 @@
       #BIS_trigger {
         margin-top: 15px !important;
       }
+
+      {% if is_b2b_applicable %}
+        #BIS_trigger {
+          display: none !important;
+        }
+      {% endif %}
   {% endstyle %}
 {% endif %}
 
@@ -434,8 +451,8 @@
             -%}
 
             {%- unless product == blank -%}
-              <div class="product__block product__form__wrapper{{ hide_labels_class }}{% if sold_out %} variant--soldout{% endif %}"
-                data-form-wrapper
+              <div class="product__block product__form__wrapper{{ hide_labels_class }}{% if sold_out and is_b2b_applicable == false %} variant--soldout{% endif %}"
+                data-form-wrapper {% if is_b2b_applicable %}data-b2b-form-wrapper="true"{% endif %}
                 {{ block.shopify_attributes }}>
                 {%- comment -%} Product Form Partial {%- endcomment -%}
                 <!-- /partials/product-form.liquid -->
@@ -451,6 +468,10 @@
   if show_payment_button and product.selling_plan_groups.size < 1 and settings.enable_accept_terms == false
     assign show_payment_button = true
   else
+    assign show_payment_button = false
+  endif
+
+  if customer.tags contains 'b2b' and product.tags contains 'wholesale'
     assign show_payment_button = false
   endif
 
@@ -601,7 +622,7 @@
   {%- capture form_fields -%}
     {%- unless product.has_only_default_variant -%}
       {%- assign selects_counter = 0 -%}
-      <div class="product__selectors">
+      <div class="product__selectors {% if is_b2b_applicable %} b2b__product__selector {% endif %}">
         {%- for option in product.options_with_values -%}
           {%- comment -%} Use select over radio for long inputs and mismatched lengths {%- endcomment -%}
 
@@ -695,9 +716,16 @@
                   {% assign showed_size_chart_button = true %}
                   <div class="size_chart_product_container" style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
                     <div>
-                      <span class="radio__legend__label" data-option-parent-{{ option.name | downcase }}="{{ option.name | downcase }}" data-chart="{{ block.settings.info_page }}">{{ option.name | escape_once }}:
+                      <span class="radio__legend__label" data-option-parent-{{ option.name | downcase }}="{{ option.name | downcase }}" data-chart="{{ block.settings.info_page }}">
+                        {% if is_b2b_applicable %}
+                          Available {{ option.name | escape_once }}
+                        {% else%}
+                          {{ option.name | escape_once }}:
+                        {% endif %}
                       </span>
-                      <span data-option-{{ option.name | handle }} class="option-name-class">{{ option.selected_value }}</span>
+                      {% unless is_b2b_applicable %}
+                        <span data-option-{{ option.name | handle }} class="option-name-class">{{ option.selected_value }}</span>
+                      {% endunless %}
                     </div>
                     {{- size_chart_button -}}
                   </div>
@@ -718,7 +746,10 @@
                         name="options[{{ option.name | escape_once }}]"
                         value="{{ value | escape_once }}"
                         id="{{ input_id }}"
-                        {% if value == current_value %}checked{% endif %}>
+                        {% unless is_b2b_applicable %}
+                          {% if value == current_value %}checked{% endif %}
+                        {% endunless %}
+                      >
                       <label for="{{ input_id }}" class="swatch__label" data-swatch="{{ value | escape_once }}" data-tooltip="{{ value | escape_once }}">
                         <span class="visually-hidden">{{ value | escape_once }}</span>
                       </label>
@@ -732,7 +763,10 @@
                         data-index="option{{ option.position }}"
                         name="options[{{ option.name | escape_once }}]"
                         value="{{ value | escape_once }}" id="{{ input_id }}"
-                        {% if value == current_value %}checked{% endif %}>
+                        {% unless is_b2b_applicable %}
+                          {% if value == current_value %}checked{% endif %}
+                        {% endunless %}
+                      >
                       <label for="{{ input_id }}" class="radio__label">
                         <span>{{ value }}</span>
                       </label>
@@ -818,7 +852,17 @@
     {%- assign sold_out_text = sold_out_text | append: ' - ' | append: newsletter_text -%}
   {%- endif -%}
 
-  <div class="product__submit__holder{% if show_payment_button %} product__submit__holder--spb{% endif %}{% if show_newsletter %} product__submit__holder--notification{% endif %}" data-product-id="{{ product.id }}">
+  {% if is_b2b_applicable %}
+    {%- render 'b2b-select-option',
+      product: product,
+      unique: unique,
+      animations_enabled: animations_enabled,
+      animation_delay: animation_delay,
+      animation_anchor: animation_anchor,
+
+    -%}
+  {% else %}
+  <div class="product__submit__holder {% if show_payment_button %} product__submit__holder--spb{% endif %}{% if show_newsletter %} product__submit__holder--notification{% endif %}" data-product-id="{{ product.id }}">
     {%- if product.selling_plan_groups.size > 0 -%}
       <div class="product__submit__buttons product__submit__buttons-primary">
         {% for selling_plan_group in product.selling_plan_groups %}
@@ -909,7 +953,13 @@
     {%- endif -%}
     <div data-cart-errors-container class="product__form__errors"></div>
   </div>
+  {% endif %}
+
+ 
+ 
 {%- endform -%}
+
+
 {% assign product_form_id = "AddToCartForm--shop-pay" | append: unique %}
 
   {% if current_variant.price < 5000 and section_type != 'quickview' %}
@@ -945,6 +995,14 @@
   if block.settings.show_payment_button and settings.enable_accept_terms == false
     assign show_payment_button = true
   endif
+  if customer.tags contains 'b2b' and product.tags contains 'wholesale'
+    assign show_payment_button = false
+  endif
+
+  if customer.tags contains 'b2b' and product.tags contains 'wholesale' and product.has_only_default_variant
+    assign show_quantity = true
+  endif
+
   assign quantity_position_bottom = true
 
   assign enable_variant_boxes = false
@@ -1674,7 +1732,7 @@
   {%- endif -%}
 </div>
 
-        <div class="product__block product__form__wrapper{{ hide_labels_class }}{% if sold_out %} variant--soldout{% endif %}" data-form-wrapper >
+        <div class="product__block product__form__wrapper{{ hide_labels_class }}{% if sold_out and is_b2b_applicable == false %} variant--soldout{% endif %}" data-form-wrapper {% if is_b2b_applicable %}ddata-b2b-form-wrapper="true"{% endif %}>
           {%- comment -%} Product Form partial {%- endcomment -%}
           <!-- /partials/product-form.liquid -->
 
@@ -1789,7 +1847,7 @@
   {%- capture form_fields -%}
     {%- unless product.has_only_default_variant -%}
       {%- assign selects_counter = 0 -%}
-      <div class="product__selectors">
+      <div class="product__selectors {% if is_b2b_applicable %} b2b__product__selector {% endif %}">
         {%- for option in product.options_with_values -%}
           {%- comment -%} Use select over radio for long inputs and mismatched lengths {%- endcomment -%}
 
@@ -2045,7 +2103,7 @@
           </span>
 
           <div class="loader loader--line"><div class="loader-indeterminate"></div></div>
-        </button>
+        </button> 
       </div>
 
       {%- if show_payment_button -%}

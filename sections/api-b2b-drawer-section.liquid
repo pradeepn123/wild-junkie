@@ -1,0 +1,175 @@
+{% liquid
+    assign current_variant = product.selected_or_first_available_variant
+    assign featured_media = current_variant.featured_media | default: product.featured_media
+    assign image_url_pattern = featured_media | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
+    assign image_widths = "[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048, 2450, 2700, 3000, 3350, 3750, 4100]"
+    assign media_aspect_ratio = featured_media.aspect_ratio
+    unless media_aspect_ratio
+        assign media_aspect_ratio = 1
+    endunless
+    assign image_zoom_size = '2048x2048'
+%}
+
+<b2b-variant-box class="variant-picker-modal__body" data-variant-picker-modal-body data-api-b2b-drawer-section data-section-id>
+    <script type="application/json" class="product-json" id="b2b-ProductJson-{{ product.handle }}-{{product.id}}" data-product-json>
+        {{ product | json }}
+    </script>
+    <div class="variant-picker-modal__content" data-variant-picker-modal-content>
+        <div class="b2b-product-info-block">
+            <div class="b2b-product-image-wrapper">
+                <img class="lazyload b2b-product-image"
+                    src="{{ 'blank.gif' | asset_img_url: '1x1' }}"
+                    data-src="{{ image_url_pattern }}"
+                    data-image-id="{{ featured_media.id }}"
+                    data-widths= "{{ image_widths }}"
+                    data-aspectratio="{{ media_aspect_ratio }}"
+                    data-sizes="auto"
+                    data-object-fit="contain"
+                    alt="{{ featured_media.alt | strip_html | escape }}">
+                <noscript>
+                    <img src="{{ featured_media | img_url: image_zoom_size }}" alt="{{ featured_media.alt | strip_html | escape }}" id="{{ featured_media.id }}">
+                </noscript>
+            </div>
+            <div class="b2b-cart-product-info">
+                <div>
+                    <h4 class="b2b-cart-item-title">{{- product.title | strip_html -}}</h4>
+                    <span
+                        data-product-price
+                        class="product__price--regular">
+                        {%- liquid
+                            if current_variant.price == 0
+                                echo 'products.product.free' | t
+                            elsif currency_code_enable
+                                echo current_variant.price | money_with_currency
+                            else
+                                echo current_variant.price | money
+                            endif
+                        -%}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="b2b-choose-options-block">
+            {%- for option in product.options_with_values -%}
+                {%- liquid
+                    assign option_name_handle_separator = option.name | handle | prepend: ',' | append: ','
+                    assign is_swatch_option = false
+                    assign swatch_translation = 'general.swatches.color' | t
+                    assign translation_string = swatch_translation | remove: '  ' | replace: ', ', ',' | replace: ' ,', ',' | replace: ',', '____' | handle | replace: '____', ',' | append: ',' | prepend: ','
+
+                    if translation_string contains option_name_handle_separator
+                        assign is_swatch_option = true
+                    endif
+                -%}
+
+                {%- unless is_swatch_option -%}
+                    <div class="selector-wrapper selector-wrapper--boxes" data-option-position="{{ option.position }}">
+                        <fieldset class="radio__fieldset radio__fieldset--{{ settings.color_swatches_product_style }}">
+                            <legend class="radio__legend">
+                                <span class="radio__legend__label" data-option-parent-{{ option.name | downcase }}="{{ option.name | downcase }}">
+                                    Choose your {{ option.name | escape_once }}s
+                                </span>
+                            </legend>
+                            {%- for value in option.values -%}
+                                {%- capture input_id -%}b2b-{{ product.id }}-{{ option.name | escape_once | handle }}-{{ value | escape_once | handle }}{%- endcapture -%}
+                                <span class="radio__button">
+                                    <input
+                                        type="checkbox"
+                                        class="radio__input"
+                                        value="{{ value | escape_once }}"
+                                        id="{{ input_id }}"
+                                        name="{{ option.name | escape_once }}"
+                                        data-b2b-option="{{ option.position }}"
+                                    >
+                                    <label for="{{ input_id }}" class="radio__label">
+                                        <span>{{ value }}</span>
+                                        <span class="icon-wrapper">
+                                            {%- render 'icon-check-white' -%}
+                                        </span>
+                                    </label>
+                                </span>
+                            {%- endfor -%}
+                        </fieldset>
+                    </div>
+                {%- else -%}
+                    <div class="selector-wrapper selector-wrapper--boxes" data-option-position="{{ option.position }}">
+                        <fieldset class="radio__fieldset radio__fieldset--circle">
+                            <legend class="radio__legend">
+                                <span class="radio__legend__label" data-option-parent-{{ option.name | downcase }}="{{ option.name | downcase }}">
+                                    Choose your {{ option.name | escape_once }}s
+                                </span>
+                            </legend>
+                            {%- for value in option.values -%}
+                                {%- capture input_id -%}b2b-{{ product.id }}-{{ option.name | escape_once | handle }}-{{ value | escape_once | handle }}{%- endcapture -%}
+                                <span
+                                    class="swatch__button swatch__button--{{ settings.color_swatches_product_style }}"
+                                    data-tooltip="{{ value | escape_once | capitalize }}"
+                                >
+                                    <input
+                                        type="checkbox"
+                                        class="swatch__input"
+                                        name="{{ option.name | escape_once }}"
+                                        value="{{ value | escape_once }}"
+                                        id="{{ input_id }}"
+                                        data-b2b-swatch
+                                        data-b2b-option="{{ option.position }}"
+                                    >
+                                    <label
+                                        for="{{ input_id }}"
+                                        class="swatch__label"
+                                        data-swatch="{{ value | escape_once }}"
+                                        data-tooltip="{{ value | escape_once }}"
+                                    >
+                                        <span class="visually-hidden">{{ value | escape_once }}</span>
+                                        <span class="icon-wrapper">
+                                            {%- render 'icon-check-white' -%}
+                                        </span>
+                                    </label>
+                                </span>
+                            {%- endfor -%}
+                        </fieldset>
+                    </div>
+                {%- endunless -%}
+            {%- endfor -%}
+        </div>
+        <div class="b2b-variant-selector">
+            <div class="b2b-variant-selector-header" data-b2b-variant-selector-header style="display: none;">
+                <div>Variants</div>
+                <div>quantity</div>
+                <div>Total Price</div>
+            </div>
+            <div class="b2b-variant-selector-container" data-b2b-variant-selector-container></div>
+        </div>
+    </div>
+    <div class="variant-picker-modal__footer" data-variant-picker-modal-footer>
+        <div class="b2b-footer-total">
+            <div>TOTAL</div>
+            <div>
+                <span class="b2b-discount" data-b2b-discount></span>
+                <span class="b2b-total-price" data-b2b-total-price></span>
+            </div>
+        </div>
+        <button
+            type="submit"
+            name="add"
+            id="AddToCart--{{ unique }}"
+            class="btn btn--submit product__submit__add"
+            data-product-url="{{product.url}}"
+            data-add-to-cart
+            data-focus-element
+            data-b2b-add-to-cart
+            disabled
+        >
+            <span data-add-to-cart-text>
+                {{ 'products.product.add_to_cart' | t }}
+            </span>
+            <div class="loader loader--line"><div class="loader-indeterminate"></div></div>
+        </button>
+        <p class="b2b-minimum-order-title" style="margin-bottom: 0;">
+            *Minimum order 6 Pieces
+        </p>
+        <div data-cart-errors-container class="product__form__errors"></div>
+    </div>
+</b2b-variant-box>
+
+

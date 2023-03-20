@@ -46,8 +46,13 @@
   if settings.cart_type == 'drawer' and template.name != 'cart'
     render 'cart-drawer' cart: cart
     render 'cart-notify' cart: cart
+    render 'b2b-cart-drawer'
   endif
 -%}
+
+{% if customer.tags contains 'wholesale' %}
+  {{ 'b2b-components.css' | asset_url | stylesheet_tag }}
+{% endif %}
 
 {%- comment -%} Prevent CLS on Collection & List Collections pages {%- endcomment -%}
 {%- style -%}
@@ -189,7 +194,12 @@
     </button>
   </div>
 
-  {%- for link in linklists[section.settings.main-menu].links -%}
+  {% assign menu_link_list = section.settings.main-menu %}
+  {% if customer.tags contains 'wholesale' %}
+    {% assign menu_link_list = section.settings.b2b-menu %}
+  {% endif %}
+
+  {%- for link in linklists[menu_link_list].links -%}
     {%- render 'nav-item', link: link, section: section, index: forloop.index, highlight_item: highlight_item -%}
   {%- endfor -%}
 
@@ -484,6 +494,11 @@
       "id": "main-menu",
       "label": "Main menu",
       "default": "main-menu"
+    },
+    {
+      "type": "link_list",
+      "id": "b2b-menu",
+      "label": "B2B menu"
     },
     {
       "type": "checkbox",

@@ -73,6 +73,11 @@
     endif
 
     assign currency_code_enable = settings.currency_code_enable
+
+    assign is_b2b_applicable = false
+    if customer.tags contains 'wholesale' and product.tags contains 'wholesale'
+        assign is_b2b_applicable = true
+    endif
 -%}
 {%- capture unique_product_grid -%}{{ section.id }}-{{ product.id }}{%- endcapture -%}
 
@@ -338,7 +343,8 @@
                                 <button type="submit"
                                     name="add"
                                     class="btn--quick"
-                                    data-add-to-cart {% if index > 1 %} tabindex="-1"{% endif %}
+                                    data-add-to-cart
+                                    {% if index > 1 %} tabindex="-1"{% endif %}
                                     data-upsell-available="{% if product.metafields.theme.upsell_list.value != blank %}true{% endif %}"
                                     data-product-url="{{product.url}}"
                                     {%- unless product.has_only_default_variant -%}
@@ -369,7 +375,11 @@
                                     name="add"
                                     class="btn--quick"
                                     {% if index > 1 %} tabindex="-1"{% endif %}
-                                    data-variant-picker-btn
+                                    {% unless is_b2b_applicable %}
+                                        data-variant-picker-btn
+                                    {% else %}
+                                        data-b2b-choose-option
+                                    {% endunless %}
                                     data-product-url="{{product.url}}"
                                     {%- unless product.has_only_default_variant -%}
                                         data-variant-options
@@ -498,7 +508,12 @@
                                     <button type="submit"
                                         name="add"
                                         class="btn--quick"
-                                        data-add-to-cart data-product-id="{{ current_variant.id }}"{% if index > 1 %} tabindex="-1"{% endif %}
+                                        {% unless is_b2b_applicable %}
+                                            data-add-to-cart
+                                        {% else %}
+                                            data-b2b-choose-option
+                                        {% endunless %}
+                                        data-product-id="{{ current_variant.id }}"{% if index > 1 %} tabindex="-1"{% endif %}
                                         data-upsell-available="{% if product.metafields.theme.upsell_list.value != blank %}true{% endif %}"
                                         data-product-url="{{product.url}}"
                                     >
