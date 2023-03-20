@@ -7355,23 +7355,23 @@ PaloAlto.ProductAddForm = (function() {
 
       if (formWrapper.length) {
         formWrapper.forEach((element) => {
-        	if (!element.getAttribute('data-b2b-form-wrapper')) {
-	          if (variant) {
-            	if (variant.available) {
-          	    element.classList.remove(classes.variantSoldOut, classes.variantUnavailable);
-        	    } else {
-      	        element.classList.add(classes.variantSoldOut);
-    	          element.classList.remove(classes.variantUnavailable);
-  	          }
-	            const formSelect = element.querySelector(selectors.originalSelectorId);
-            	if (formSelect) {
-          	    formSelect.value = variant.id;
-        	    }
-      	    } else {
-    	        element.classList.add(classes.variantUnavailable);
-  	          element.classList.remove(classes.variantSoldOut);
-	          }
-        	}
+            if (!element.getAttribute('data-b2b-form-wrapper')) {
+              if (variant) {
+                if (variant.available) {
+                element.classList.remove(classes.variantSoldOut, classes.variantUnavailable);
+                } else {
+                element.classList.add(classes.variantSoldOut);
+                  element.classList.remove(classes.variantUnavailable);
+              }
+                const formSelect = element.querySelector(selectors.originalSelectorId);
+                if (formSelect) {
+                formSelect.value = variant.id;
+                }
+            } else {
+                element.classList.add(classes.variantUnavailable);
+              element.classList.remove(classes.variantSoldOut);
+              }
+            }
         });
       }
     },
@@ -12278,21 +12278,21 @@ PaloAlto.ProductGridItem = (function() {
     },
 
     _disableWhenRequired: function(){
-    	if (!this.isB2bApplicable) {
-      	new PaloAlto.SelloutVariants(this.container, this.productJSON);
-      	if (this.selectedVariant) {
-        	if (this.selectedVariant.available) {
-          	this.addToCartText.innerHTML = theme.strings.add_to_cart;
-          	this.addToCartBtn.removeAttribute('disabled')
-        	} else {
-          	this.addToCartText.innerHTML = theme.strings.sold_out;
-          	this.addToCartBtn.setAttribute('disabled', true)
-        	}
-      	} else {
-        	this.addToCartText.innerHTML = theme.strings.unavailable;
-        	this.addToCartBtn.setAttribute('disabled', true)
-      	}
-    	}
+        if (!this.isB2bApplicable) {
+        new PaloAlto.SelloutVariants(this.container, this.productJSON);
+        if (this.selectedVariant) {
+            if (this.selectedVariant.available) {
+            this.addToCartText.innerHTML = theme.strings.add_to_cart;
+            this.addToCartBtn.removeAttribute('disabled')
+            } else {
+            this.addToCartText.innerHTML = theme.strings.sold_out;
+            this.addToCartBtn.setAttribute('disabled', true)
+            }
+        } else {
+            this.addToCartText.innerHTML = theme.strings.unavailable;
+            this.addToCartBtn.setAttribute('disabled', true)
+        }
+        }
     }
   })
   return ProductGridItem
@@ -13958,20 +13958,29 @@ class B2BVariantBox extends HTMLElement {
 
     updateTotalPrice() {
         this.totalPrice = 0
+        this.totalQuantity = 0
         this.variants.forEach((variant) => {
             if (this.variantState[variant.id]) {
                 this.totalPrice += this.variantState[variant.id].price
+                this.totalQuantity += this.variantState[variant.id].quantity
             }
         })
 
         this.totalPriceSelector.innerHTML = slate.Currency.formatMoney(this.totalPrice, theme.moneyFormat)
 
         if (this.totalPrice > 0) {
-            this.addToCartBtn.removeAttribute("disabled")
             this.variantBoxFooter.classList.add('active')
         } else {
-            this.addToCartBtn.setAttribute("disabled", "disabled")
             this.variantBoxFooter.classList.remove('active')
+        }
+        this.handleAddToCartButton()
+    }
+
+    handleAddToCartButton() {
+        if (this.totalQuantity > 5) {
+            this.addToCartBtn.removeAttribute("disabled")
+        } else {
+            this.addToCartBtn.setAttribute("disabled", "disabled")
         }
     }
 
@@ -14129,8 +14138,8 @@ class B2BVariant extends HTMLElement {
         const totalPrice = slate.Currency.formatMoney(this.variantJSON.price * quantity, theme.moneyFormat)
         const unitPrice = slate.Currency.formatMoney(this.variantJSON.price, theme.moneyFormat)
 
-				const imageURL = getSizedImageUrl(this.featured_image?.src || this.featured_image, '100x')
-				const featuredImageBgSet = PaloAlto.BgSet.render(imageURL, 1, '_100x.')
+                const imageURL = getSizedImageUrl(this.featured_image?.src || this.featured_image, '100x')
+                const featuredImageBgSet = PaloAlto.BgSet.render(imageURL, 1, '_100x.')
 
         return `<div class="b2b-variant-selector-content">
             <div class="b2b-variant-image-wrapper">

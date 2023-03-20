@@ -75,7 +75,7 @@
     assign currency_code_enable = settings.currency_code_enable
 
     assign is_b2b_applicable = false
-    if customer.tags contains 'b2b' and product.tags contains 'wholesale'
+    if customer.tags contains 'wholesale' and product.tags contains 'wholesale'
         assign is_b2b_applicable = true
     endif
 -%}
