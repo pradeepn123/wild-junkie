@@ -2145,6 +2145,7 @@ PaloAlto.CartDrawer = (function() {
       let oldCount = null;
       let newItem = null;
       let quantity = updateData.quantity;
+      let targetProductId = null;
 
       this.addLoadingClass();
 
@@ -2160,10 +2161,25 @@ PaloAlto.CartDrawer = (function() {
         .then(this.handleErrors)
         .then((response) => response.json())
         .then((response) => {
-          const matchKeys = (item) => item.key === updateData.id;
-          const index = response.items.findIndex(matchKeys);
-          oldCount = response.item_count;
-          newItem = response.items[index].title;
+            const matchKeys = (item) => item.key === updateData.id;
+            const index = response.items.findIndex(matchKeys);
+            oldCount = response.item_count;
+            newItem = response.items[index].title;
+
+            const productQuantity = response.items.map((item) => {
+                if (item.product_id == response.items[index].product_id) {
+                    return item.key == updateData.id ? quantity : item.quantity
+                };
+                return 0
+            }).reduce((acc, val) => acc + val)
+
+            if (theme.isB2bCustomer && productQuantity < 6) {
+                if (quantity > 0) {
+                    return fetch(theme.routes.root + 'cart.js')
+                } else {
+                    targetProductId = response.items[index].product_id
+                }
+            }
 
           const data = {
             line: `${index + 1}`,
@@ -2201,6 +2217,15 @@ PaloAlto.CartDrawer = (function() {
           if (this.cartMessage.length > 0) {
             this.subtotal = response.total_price;
             this.updateProgress();
+          }
+
+          if (theme.isB2bCustomer && targetProductId) {
+            const items = response.items.filter((item) => item.product_id == targetProductId)
+            if (items.length) {
+                targetProductId = null;
+                updateData.id = items[0].key
+                return this.updateCart(updateData, holder, valueIsEmpty)
+            }
           }
 
           this.getCart();
@@ -13830,7 +13855,9 @@ class B2BVariantBox extends HTMLElement {
         this.variantSelectorHeader = this.querySelector(this.selectors.variantSelectorHeader)
         this.variantBoxFooter = this.querySelector(this.selectors.variantBoxFooter)
         this.totalPrice = 0
+        this.totalQuantity = 0
         this.variantState = {}
+        this.cartLineItems = []
 
         this.handleOptionChange = (e) => this._handleOptionChange(e)
     }
@@ -13843,8 +13870,18 @@ class B2BVariantBox extends HTMLElement {
         this.updateTotalPrice()
         this.productBaseJSON = await this.getProductJson()
         this.variantSelectorContainer.innerHTML = this._getEmptyState()
+        this.getCart()
     }
 
+    getCart() {
+        fetch(theme.routes.root + 'cart.js')
+        .then(this.handleErrors)
+        .then((response) => response.json())
+        .then((response) => {
+            this.cartLineItems = response.items.filter((item) => item.product_id == this.productJSON.id)
+            console.log(this.cartLineItems)
+        })
+    }
 
     getProductJson(handle) {
         const requestRoute = `${window.theme.routes.root}products/${this.productJSON.handle}.js`;
@@ -13958,7 +13995,10 @@ class B2BVariantBox extends HTMLElement {
 
     updateTotalPrice() {
         this.totalPrice = 0
-        this.totalQuantity = 0
+        this.totalQuantity = this.cartLineItems.reduce((acc, item) => {
+            return acc + item.quantity
+        }, 0)
+
         this.variants.forEach((variant) => {
             if (this.variantState[variant.id]) {
                 this.totalPrice += this.variantState[variant.id].price

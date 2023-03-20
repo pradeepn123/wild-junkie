@@ -374,9 +374,8 @@
 }
 
 .variant-picker-modal__footer .product__submit__add:disabled {
-    opacity: 0.9;
-    background: var(--border);
-    border: 2px solid var(--border);
+    opacity: 0.7;
+    cursor: not-allowed;
 }
 
 .variant-picker-modal--header .hr--full {
