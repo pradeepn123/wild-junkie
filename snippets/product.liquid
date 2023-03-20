@@ -71,14 +71,9 @@
   assign is_b2b_applicable = false
   if customer.tags contains 'wholesale' and product.tags contains 'wholesale'
     assign show_payment_button = false
-    unless product.has_only_default_variant
-      assign is_b2b_applicable = true
-    else
-      assign show_quantity = true
-    endunless
+    assign is_b2b_applicable = true
   endif
 -%}
-
 
 {% if section_type != 'quickview' %}
   {% style %}
@@ -858,8 +853,7 @@
       unique: unique,
       animations_enabled: animations_enabled,
       animation_delay: animation_delay,
-      animation_anchor: animation_anchor,
-
+      animation_anchor: animation_anchor
     -%}
   {% else %}
   <div class="product__submit__holder {% if show_payment_button %} product__submit__holder--spb{% endif %}{% if show_newsletter %} product__submit__holder--notification{% endif %}" data-product-id="{{ product.id }}">

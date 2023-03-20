@@ -12,25 +12,56 @@
                 {%- assign animation_delay = animation_delay | plus: 150 -%}
             {% endif %}
         >
-            <button
-                type="submit"
-                name="add"
-                id="AddToCart--{{ unique }}"
-                class="btn btn--submit product__submit__add"
-                data-b2b-choose-option
-                data-focus-element
-                data-product-url="{{product.url}}"
-            >
-                <span
-                    data-add-to-cart-text
-                    class="b2b-button-option"
+            {% if product.has_only_default_variant %}
+                <input type="hidden" name="quantity" value="6">
+                <button
+                    type="submit"
+                    name="add"
+                    id="AddToCart--{{ unique }}"
+                    class="btn btn--submit product__submit__add"
+                    data-add-to-cart
+                    data-focus-element
+                    data-product-url="{{product.url}}"
                 >
-                    Choose option
-                </span>
-                <div class="loader loader--line">
-                    <div class="loader-indeterminate"></div>
-                </div>
-            </button>
+                    <span data-add-to-cart-text>
+                        {%- if product.selected_or_first_available_variant.available -%}
+                            ADD TO BAG
+                        {%- else -%}
+                            {{ 'products.product.sold_out' | t }}
+                        {%- endif -%}
+                    </span>
+                    <div class="loader loader--line">
+                        <div class="loader-indeterminate"></div>
+                    </div>
+                </button>
+            {% else %}
+                <button
+                    type="submit"
+                    name="add"
+                    id="AddToCart--{{ unique }}"
+                    class="btn btn--submit product__submit__add"
+                    data-b2b-choose-option
+                    data-focus-element
+                    data-product-url="{{product.url}}"
+                    {% unless product.available %}
+                        disabled
+                    {% endunless %}
+                >
+                    <span
+                        data-add-to-cart-text
+                        class="b2b-button-option"
+                    >
+                        {%- if product.available -%}
+                            Choose option
+                        {%- else -%}
+                            {{ 'products.product.sold_out' | t }}
+                        {%- endif -%}
+                    </span>
+                    <div class="loader loader--line">
+                        <div class="loader-indeterminate"></div>
+                    </div>
+                </button>
+            {% endif %}
             <p class="b2b-minimum-order-title">
                 *Minimum order 6 Pieces
             </p>
