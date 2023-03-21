@@ -69,7 +69,7 @@
   endunless
 
   assign is_b2b_applicable = false
-  if customer.tags contains 'wholesale' and product.tags contains 'wholesale'
+  if customer.tags contains 'wholesale'
     assign show_payment_button = false
     assign is_b2b_applicable = true
   endif
@@ -466,7 +466,7 @@
     assign show_payment_button = false
   endif
 
-  if customer.tags contains 'b2b' and product.tags contains 'wholesale'
+  if customer.tags contains 'b2b'
     assign show_payment_button = false
   endif
 
@@ -989,11 +989,11 @@
   if block.settings.show_payment_button and settings.enable_accept_terms == false
     assign show_payment_button = true
   endif
-  if customer.tags contains 'b2b' and product.tags contains 'wholesale'
+  if customer.tags contains 'b2b'
     assign show_payment_button = false
   endif
 
-  if customer.tags contains 'b2b' and product.tags contains 'wholesale' and product.has_only_default_variant
+  if customer.tags contains 'b2b' and product.has_only_default_variant
     assign show_quantity = true
   endif
 
