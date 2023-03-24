@@ -68,12 +68,14 @@
           <div class="carousel__container">
             <div class="carousel carousel--inactive carousel--mobile" data-slider data-slider-id="slider--{{ section.id }}">
               {%- for product in recommendations.products -%}
+                  {%- if product.id != 7051688411199 %}
                 {%- assign animation_delay = forloop.index0 -%}
                 {%- render 'product-grid-item',
                   product: product,
                   carousel: true,
                   animation_delay: animation_delay,
                   animation_anchor: animation_anchor -%}
+                   {% endif %}
               {%- endfor -%}
             </div>
           </div>
