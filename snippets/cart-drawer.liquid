@@ -120,7 +120,13 @@
       {%- endif -%}
 
       <div class="cart__errors cart-drawer__errors" data-cart-errors>
-        <p class="cart__errors__heading">{{- 'cart.general.limit_error' | t -}}</p>
+        <p class="cart__errors__heading">
+          {%- if customer.tags contains 'wholesale' -%}
+            Sorry, Minimum 6 Pieces required per product
+          {% else %}
+            {{- 'cart.general.limit_error' | t -}}
+          {% endif %}
+        </p>
 
         <p class="cart__errors__content" data-error-message></p>
 
