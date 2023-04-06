@@ -25,7 +25,7 @@
         "accordion-2": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/6X0A9351.jpg",
+            "image": "shopify:\/\/shop_images\/Main-Banner.jpg",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_width": "normal",
