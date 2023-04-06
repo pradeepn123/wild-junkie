@@ -3,19 +3,19 @@
     "image-accordions-0": {
       "type": "section-image-accordions",
       "blocks": {
-        "accordion-1": {
+        "accordion-3": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/6X0A3616.jpg",
+            "image": "shopify:\/\/shop_images\/6X0A4059.jpg",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_width": "normal",
             "text_position": "bottom-left",
             "text_color": "text-light",
-            "title": "Denim",
-            "text": "A range of premium denim options.",
+            "title": "Jewelry",
+            "text": "You've never seen such a unique a variety of premium jewelry and thats a promise!",
             "btn_text": "Shop Now",
-            "btn_link": "shopify:\/\/collections\/jeans-pants",
+            "btn_link": "shopify:\/\/collections\/jewelry",
             "btn_style": "btn--primary btn--small",
             "btn_text_2": "",
             "btn_link_2": "",
@@ -41,6 +41,25 @@
             "btn_style_2": "btn--secondary btn--small"
           }
         },
+        "accordion-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6X0A3616.jpg",
+            "bg_position": "center-center",
+            "overlay_opacity": 10,
+            "text_width": "normal",
+            "text_position": "bottom-left",
+            "text_color": "text-light",
+            "title": "Denim",
+            "text": "A range of premium denim options.",
+            "btn_text": "Shop Now",
+            "btn_link": "shopify:\/\/collections\/jeans-pants",
+            "btn_style": "btn--primary btn--small",
+            "btn_text_2": "",
+            "btn_link_2": "",
+            "btn_style_2": "btn--secondary btn--small"
+          }
+        },
         "accordion-0": {
           "type": "image",
           "settings": {
@@ -59,32 +78,13 @@
             "btn_link_2": "",
             "btn_style_2": "btn--secondary btn--small"
           }
-        },
-        "accordion-3": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/6X0A4059.jpg",
-            "bg_position": "center-center",
-            "overlay_opacity": 10,
-            "text_width": "normal",
-            "text_position": "bottom-left",
-            "text_color": "text-light",
-            "title": "Jewelry",
-            "text": "You've never seen such a unique a variety of premium jewelry and thats a promise!",
-            "btn_text": "Shop Now",
-            "btn_link": "shopify:\/\/collections\/jewelry",
-            "btn_style": "btn--primary btn--small",
-            "btn_text_2": "",
-            "btn_link_2": "",
-            "btn_style_2": "btn--secondary btn--small"
-          }
         }
       },
       "block_order": [
-        "accordion-1",
+        "accordion-3",
         "accordion-2",
-        "accordion-0",
-        "accordion-3"
+        "accordion-1",
+        "accordion-0"
       ],
       "settings": {
         "is_for_wholesale": false,
