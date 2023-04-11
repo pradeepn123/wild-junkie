@@ -455,9 +455,9 @@
       "type": "section-collection",
       "settings": {
         "is_for_wholesale": false,
-        "collection": "sale",
+        "collection": "rhonda-stark-sale",
         "products_layout": "carousel",
-        "number_of_products": 4,
+        "number_of_products": 10,
         "text_alignment": "text-center",
         "title": "",
         "heading_size": 300,
