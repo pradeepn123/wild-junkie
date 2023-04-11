@@ -386,7 +386,7 @@
         "heading_size": 300,
         "text": "<p><strong>Shop our leftover subscription box items. <\/strong><\/p>",
         "text_size": 125,
-        "button_text": "",
+        "button_text": "Shop All",
         "button_style": "btn--primary",
         "bg_color": "",
         "enable_slider_mobile": true,
