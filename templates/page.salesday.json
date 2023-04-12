@@ -226,7 +226,7 @@
           "type": "collection",
           "settings": {
             "title": "Jewelry",
-            "tab_collection": "accessories",
+            "tab_collection": "jewelry-on-sale",
             "show_image": true,
             "show_product_count": false,
             "overlay_opacity": 0,
