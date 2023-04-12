@@ -19,8 +19,8 @@
         "banner_subtitle": "",
         "banner_subtitle_font_size": 16,
         "show_button": false,
-        "button_text": "",
-        "button_font_size": 20,
+        "button_text": "Shop now",
+        "button_font_size": 16,
         "button_colour": "",
         "button_link": "shopify:\/\/collections\/sale",
         "add_text": ""
