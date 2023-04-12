@@ -266,33 +266,9 @@
         "padding_bottom": 28
       }
     },
-    "33d004fd-9094-48d1-a82d-bfca4f0775fc": {
-      "type": "section-collection",
-      "settings": {
-        "is_for_wholesale": false,
-        "collection": "christmas",
-        "products_layout": "carousel",
-        "number_of_products": 4,
-        "text_alignment": "text-center",
-        "title": "Christmas in April?",
-        "heading_size": 300,
-        "text": "<p>Stock up on Christmas goodies now and save big. <\/p>",
-        "text_size": 125,
-        "button_text": "Shop all",
-        "button_style": "btn--text",
-        "bg_color": "",
-        "enable_slider_mobile": true,
-        "columns_mobile": "2",
-        "width": "wrapper--full-padded",
-        "padding_top": 40,
-        "padding_bottom": 30,
-        "show_low_inventory_warning": false,
-        "offer_date": "",
-        "offer_time": ""
-      }
-    },
     "ff4d61d6-208f-428f-b193-0fb7fd7e2d93": {
       "type": "section-collection",
+      "disabled": true,
       "blocks": {
         "429a0f32-9f84-4ad5-919b-a35de643d3f3": {
           "type": "marquee_text",
@@ -347,6 +323,31 @@
         "show_low_inventory_warning": false,
         "offer_date": "03\/03\/2023",
         "offer_time": "00:00"
+      }
+    },
+    "33d004fd-9094-48d1-a82d-bfca4f0775fc": {
+      "type": "section-collection",
+      "settings": {
+        "is_for_wholesale": false,
+        "collection": "christmas",
+        "products_layout": "carousel",
+        "number_of_products": 4,
+        "text_alignment": "text-center",
+        "title": "Christmas in April?",
+        "heading_size": 300,
+        "text": "<p>Stock up on Christmas goodies now and save big. <\/p>",
+        "text_size": 125,
+        "button_text": "Shop all",
+        "button_style": "btn--text",
+        "bg_color": "",
+        "enable_slider_mobile": true,
+        "columns_mobile": "2",
+        "width": "wrapper--full-padded",
+        "padding_top": 40,
+        "padding_bottom": 30,
+        "show_low_inventory_warning": false,
+        "offer_date": "",
+        "offer_time": ""
       }
     },
     "18412512-18e9-42f3-a2a3-ca4264e7f155": {
@@ -568,8 +569,8 @@
     "043de87a-fd00-42b9-99a9-180105f2240e",
     "faeb0e52-a8cc-452a-8117-7b6bd9f44dab",
     "e09a43b7-750a-4732-bb21-c165d0c334f6",
-    "33d004fd-9094-48d1-a82d-bfca4f0775fc",
     "ff4d61d6-208f-428f-b193-0fb7fd7e2d93",
+    "33d004fd-9094-48d1-a82d-bfca4f0775fc",
     "18412512-18e9-42f3-a2a3-ca4264e7f155",
     "0d51cf37-2259-4f3f-a6be-3cfd1839f675",
     "7178f5cd-0161-4911-a0f8-4fb43f7c96c0",
