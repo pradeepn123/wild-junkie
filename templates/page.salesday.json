@@ -194,8 +194,8 @@
         "template--14560545767487__faeb0e52-a8cc-452a-8117-7b6bd9f44dab-16758653854001c46c-0": {
           "type": "collection",
           "settings": {
-            "title": "Tops",
-            "tab_collection": "tops",
+            "title": "Graphics",
+            "tab_collection": "graphic-tees-on-sale",
             "show_image": true,
             "show_product_count": false,
             "image": "shopify:\/\/shop_images\/off_on_tops_mobile_a36aface-b238-422a-b451-017398b67490.png",
@@ -211,7 +211,7 @@
           "type": "collection",
           "settings": {
             "title": "Bottoms",
-            "tab_collection": "bottoms",
+            "tab_collection": "sale-bottoms",
             "show_image": true,
             "show_product_count": false,
             "overlay_opacity": 0,
@@ -225,7 +225,7 @@
         "4a51ae35-3c4a-49f6-8668-f46e5fb1bcd4": {
           "type": "collection",
           "settings": {
-            "title": "Accessories",
+            "title": "Jewelry",
             "tab_collection": "accessories",
             "show_image": true,
             "show_product_count": false,
@@ -244,7 +244,7 @@
         "4a51ae35-3c4a-49f6-8668-f46e5fb1bcd4"
       ],
       "settings": {
-        "title": "Grab the top deals",
+        "title": "Grab the newest deals here!",
         "bg_color": "",
         "width": "wrapper--full-padded",
         "padding_top": 20,
