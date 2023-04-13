@@ -28,7 +28,6 @@
     },
     "043de87a-fd00-42b9-99a9-180105f2240e": {
       "type": "section-collection-marbles",
-      "disabled": true,
       "blocks": {
         "template--14560545767487__043de87a-fd00-42b9-99a9-180105f2240e-16758648336d6a6c06-0": {
           "type": "collection",
@@ -42,6 +41,7 @@
         },
         "template--14560545767487__043de87a-fd00-42b9-99a9-180105f2240e-16758648336d6a6c06-1": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "shorts-skirts",
             "custom_collection_image": "shopify:\/\/shop_images\/shorts_002.png",
@@ -52,6 +52,7 @@
         },
         "template--14560545767487__043de87a-fd00-42b9-99a9-180105f2240e-16758648336d6a6c06-2": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "stiefeld-boots",
             "custom_collection_image": "shopify:\/\/shop_images\/chel_boot_002.png",
@@ -62,6 +63,7 @@
         },
         "template--14560545767487__043de87a-fd00-42b9-99a9-180105f2240e-16758648336d6a6c06-3": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "earrings",
             "custom_collection_image": "shopify:\/\/shop_images\/studs002.png",
@@ -72,6 +74,7 @@
         },
         "template--14560545767487__043de87a-fd00-42b9-99a9-180105f2240e-16758648336d6a6c06-4": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "jackets-sweaters",
             "custom_collection_image": "shopify:\/\/shop_images\/wcaps_001.png",
@@ -82,6 +85,7 @@
         },
         "template--14560545767487__043de87a-fd00-42b9-99a9-180105f2240e-16758648336d6a6c06-5": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "earrings",
             "custom_collection_image": "shopify:\/\/shop_images\/ear002.png",
@@ -92,6 +96,7 @@
         },
         "d565a022-43ee-4e6f-aec4-ec4f66da954e": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "shoes",
             "custom_collection_image": "shopify:\/\/shop_images\/shoe_001.png",
@@ -102,6 +107,7 @@
         },
         "63838f5c-3a20-4eda-8a63-e4801313c931": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "earrings",
             "custom_collection_image": "shopify:\/\/shop_images\/ear002.png",
@@ -112,6 +118,7 @@
         },
         "f46fac81-5670-4924-be22-9542ba6198a4": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "bottoms",
             "custom_collection_image": "shopify:\/\/shop_images\/shorts_002.png",
@@ -122,6 +129,7 @@
         },
         "49b9f8ef-5b18-4a04-a7ca-9d7c92f49232": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "hair-stuff",
             "custom_collection_image": "shopify:\/\/shop_images\/cap_002.png",
@@ -132,6 +140,7 @@
         },
         "23e3b115-7e0f-4399-b82d-be94ba2ebba4": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "high-end-boots",
             "custom_collection_image": "shopify:\/\/shop_images\/chel_boot_002.png",
@@ -142,6 +151,7 @@
         },
         "661bac2b-be5a-403f-bf94-6a2ce0e6e5f4": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "jewelry",
             "custom_collection_image": "shopify:\/\/shop_images\/jew001.png",
@@ -183,9 +193,9 @@
         "padding_bottom": 70,
         "great_offer_image": "shopify:\/\/shop_images\/countdown_strip.png",
         "great_mobile_offer_image": "shopify:\/\/shop_images\/hat_mobile.png",
-        "offer_text": "offer ends in",
-        "offer_date": "03\/03\/2023",
-        "offer_time": "00:00"
+        "offer_text": "Offer ends in",
+        "offer_date": "04\/16\/2023",
+        "offer_time": "23:59"
       }
     },
     "faeb0e52-a8cc-452a-8117-7b6bd9f44dab": {
