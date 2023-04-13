@@ -335,6 +335,21 @@
         "offer_time": ""
       }
     },
+    "e09a43b7-750a-4732-bb21-c165d0c334f6": {
+      "type": "offer_image_section",
+      "settings": {
+        "width": "wrapper--full-padded",
+        "image": "shopify:\/\/shop_images\/Beige_Aesthetic_Exclusive_Fashion_Wear_Collection_Clothing_Banner.png",
+        "image_url": "shopify:\/\/collections\/tops-on-sale",
+        "set_image_height": 24,
+        "fit_image_desktop": "cover",
+        "mobile_image": "shopify:\/\/shop_images\/Beige_Aesthetic_Exclusive_Fashion_Wear_Collection_Clothing_Banner.png",
+        "set_mobile_image_height": 50,
+        "fit_image_mobile": "contain",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "1c041506-cb9e-4800-a57f-9494df44042f": {
       "type": "sale-offers",
       "blocks": {
@@ -516,21 +531,6 @@
         "offer_time": ""
       }
     },
-    "e09a43b7-750a-4732-bb21-c165d0c334f6": {
-      "type": "offer_image_section",
-      "settings": {
-        "width": "wrapper--full-padded",
-        "image": "shopify:\/\/shop_images\/Beige_Aesthetic_Exclusive_Fashion_Wear_Collection_Clothing_Banner.png",
-        "image_url": "shopify:\/\/collections\/tops-on-sale",
-        "set_image_height": 24,
-        "fit_image_desktop": "cover",
-        "mobile_image": "shopify:\/\/shop_images\/Beige_Aesthetic_Exclusive_Fashion_Wear_Collection_Clothing_Banner.png",
-        "set_mobile_image_height": 50,
-        "fit_image_mobile": "contain",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
     "09831ecd-0ca1-4643-8e16-946db57cdef3": {
       "type": "section-split-images",
       "blocks": {
@@ -571,13 +571,13 @@
     "faeb0e52-a8cc-452a-8117-7b6bd9f44dab",
     "ff4d61d6-208f-428f-b193-0fb7fd7e2d93",
     "33d004fd-9094-48d1-a82d-bfca4f0775fc",
+    "e09a43b7-750a-4732-bb21-c165d0c334f6",
     "1c041506-cb9e-4800-a57f-9494df44042f",
     "18412512-18e9-42f3-a2a3-ca4264e7f155",
     "0d51cf37-2259-4f3f-a6be-3cfd1839f675",
     "7178f5cd-0161-4911-a0f8-4fb43f7c96c0",
     "8b8f0a78-1b08-407e-8da6-646975fbf71d",
     "a10ab72c-05b8-4573-a6cd-ddac12848911",
-    "e09a43b7-750a-4732-bb21-c165d0c334f6",
     "09831ecd-0ca1-4643-8e16-946db57cdef3"
   ]
 }
