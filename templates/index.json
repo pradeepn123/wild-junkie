@@ -182,6 +182,20 @@
         "padding_bottom": 0
       }
     },
+    "fddd2877-ed9e-4823-ad2d-9df993f0336b": {
+      "type": "offer_image_section",
+      "settings": {
+        "width": "wrapper",
+        "image": "shopify:\/\/shop_images\/BOGOteesbanner.png",
+        "image_url": "shopify:\/\/collections\/graphic-tees",
+        "set_image_height": 10,
+        "fit_image_desktop": "contain",
+        "set_mobile_image_height": 50,
+        "fit_image_mobile": "contain",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "collection": {
       "type": "section-collection",
       "settings": {
@@ -814,6 +828,7 @@
     "image-accordions-0",
     "9b87f26d-405d-4d11-a2f9-cc364f55dccc",
     "marquee",
+    "fddd2877-ed9e-4823-ad2d-9df993f0336b",
     "collection",
     "172b608e-6596-48dc-933e-79d2efeaaf92",
     "59149dc9-eeac-4c02-ba1d-ee5e185f13c0",
