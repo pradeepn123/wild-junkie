@@ -244,7 +244,7 @@
         "4a51ae35-3c4a-49f6-8668-f46e5fb1bcd4"
       ],
       "settings": {
-        "title": "Grab the newest deals here!",
+        "title": "Shop the newest deals!",
         "bg_color": "",
         "width": "wrapper--full-padded",
         "padding_top": 20,
@@ -412,7 +412,7 @@
         "products_layout": "carousel",
         "number_of_products": 10,
         "text_alignment": "text-center",
-        "title": "50% off Pendleton Boots",
+        "title": "50% off All Pendleton Boots",
         "heading_size": 300,
         "text": "",
         "text_size": 125,
