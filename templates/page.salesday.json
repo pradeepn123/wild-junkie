@@ -253,6 +253,7 @@
     },
     "ff4d61d6-208f-428f-b193-0fb7fd7e2d93": {
       "type": "section-collection",
+      "disabled": true,
       "blocks": {
         "429a0f32-9f84-4ad5-919b-a35de643d3f3": {
           "type": "marquee_text",
@@ -342,7 +343,6 @@
         "image_url": "shopify:\/\/collections\/tops-on-sale",
         "set_image_height": 10,
         "fit_image_desktop": "cover",
-        "mobile_image": "shopify:\/\/shop_images\/Beige_Aesthetic_Exclusive_Fashion_Wear_Collection_Clothing_Banner.png",
         "set_mobile_image_height": 50,
         "fit_image_mobile": "contain",
         "padding_top": 0,
