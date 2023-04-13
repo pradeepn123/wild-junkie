@@ -28,6 +28,7 @@
     },
     "043de87a-fd00-42b9-99a9-180105f2240e": {
       "type": "section-collection-marbles",
+      "disabled": true,
       "blocks": {
         "template--14560545767487__043de87a-fd00-42b9-99a9-180105f2240e-16758648336d6a6c06-0": {
           "type": "collection",
@@ -174,6 +175,9 @@
         "49b9f8ef-5b18-4a04-a7ca-9d7c92f49232",
         "23e3b115-7e0f-4399-b82d-be94ba2ebba4",
         "661bac2b-be5a-403f-bf94-6a2ce0e6e5f4"
+      ],
+      "custom_css": [
+
       ],
       "settings": {
         "layout": "grid",
