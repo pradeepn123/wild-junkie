@@ -380,8 +380,8 @@
 
 @media (min-width:768px) {
     #salesday .featured-collection__inner,
-    .featured-collection__inner.featured-collection--split-right,
-  .featured-collection__inner.featured-collection--split-left,
+    .featured-collection--split-right .featured-collection__inner,
+    .featured-collection--split-left .featured-collection__inner,
     #sales .featured-collection__inner {
         display: grid;
         grid-template-columns: repeat(2,minmax(0,1fr));
