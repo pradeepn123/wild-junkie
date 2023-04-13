@@ -28,14 +28,13 @@
     },
     "043de87a-fd00-42b9-99a9-180105f2240e": {
       "type": "section-collection-marbles",
-      "disabled": true,
       "blocks": {
         "template--14560545767487__043de87a-fd00-42b9-99a9-180105f2240e-16758648336d6a6c06-0": {
           "type": "collection",
           "settings": {
-            "collection": "hats-scarves",
-            "custom_collection_image": "shopify:\/\/shop_images\/cap_002.png",
-            "custom_collection_text": "Min 20% Off",
+            "collection": "graphic-tees",
+            "custom_collection_image": "shopify:\/\/shop_images\/GraphicTeeCircle.png",
+            "custom_collection_text": "BOGO 50% off all tees",
             "show_color": false,
             "bg_color": "#f7f7f7"
           }
@@ -184,17 +183,17 @@
         "columns": 6,
         "image_size": 90,
         "image_shape": "circle",
-        "title": "Greatest deals",
+        "title": "BOGO 50% Off",
         "text_size": 130,
-        "sub_heading": "<p>Explore collections that has exclusive   offers<\/p>",
+        "sub_heading": "",
         "overlay_text": false,
         "text_color": "text-dark",
         "overlay_opacity": 0,
         "enable_slider_mobile": true,
         "columns_mobile": "2",
         "width": "wrapper--full-padded",
-        "padding_top": 70,
-        "padding_bottom": 70,
+        "padding_top": 0,
+        "padding_bottom": 0,
         "great_offer_image": "shopify:\/\/shop_images\/countdown_strip.png",
         "great_mobile_offer_image": "shopify:\/\/shop_images\/hat_mobile.png",
         "offer_text": "Offer ends in",
