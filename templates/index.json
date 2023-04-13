@@ -189,7 +189,7 @@
           "type": "image",
           "settings": {
             "image": "shopify:\/\/shop_images\/BOGOteesbanner-3.png",
-            "image_mobile": "shopify:\/\/shop_images\/BOGOtees.png",
+            "image_mobile": "shopify:\/\/shop_images\/BOGOtees-2.png",
             "bg_position": "center-center",
             "overlay_opacity": 10,
             "text_width": "full",
