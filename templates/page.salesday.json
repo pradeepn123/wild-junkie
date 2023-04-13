@@ -194,8 +194,8 @@
         "width": "wrapper--full-padded",
         "padding_top": 0,
         "padding_bottom": 0,
-        "great_offer_image": "shopify:\/\/shop_images\/countdown_strip.png",
-        "great_mobile_offer_image": "shopify:\/\/shop_images\/hat_mobile.png",
+        "great_offer_image": "shopify:\/\/shop_images\/HatBanner.png",
+        "great_mobile_offer_image": "shopify:\/\/shop_images\/HatBanner.png",
         "offer_text": "Offer ends in",
         "offer_date": "04\/16\/2023",
         "offer_time": "23:59"
