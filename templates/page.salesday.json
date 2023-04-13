@@ -253,7 +253,6 @@
     },
     "ff4d61d6-208f-428f-b193-0fb7fd7e2d93": {
       "type": "section-collection",
-      "disabled": true,
       "blocks": {
         "429a0f32-9f84-4ad5-919b-a35de643d3f3": {
           "type": "marquee_text",
@@ -306,8 +305,8 @@
         "padding_top": 30,
         "padding_bottom": 60,
         "show_low_inventory_warning": false,
-        "offer_date": "03\/03\/2023",
-        "offer_time": "00:00"
+        "offer_date": "23\/04\/2023",
+        "offer_time": "12:00"
       }
     },
     "33d004fd-9094-48d1-a82d-bfca4f0775fc": {
