@@ -33,7 +33,7 @@
           "type": "collection",
           "settings": {
             "collection": "graphic-tees",
-            "custom_collection_image": "shopify:\/\/shop_images\/GraphicTeeCircle.png",
+            "custom_collection_image": "shopify:\/\/shop_images\/GraphicTeeCircle-2.png",
             "custom_collection_text": "BOGO 50% off all tees",
             "show_color": false,
             "bg_color": "#f7f7f7"
@@ -183,8 +183,8 @@
         "columns": 6,
         "image_size": 90,
         "image_shape": "circle",
-        "title": "BOGO 50% Off",
-        "text_size": 130,
+        "title": "BOGO 1\/2 Off Graphic Tees",
+        "text_size": 75,
         "sub_heading": "",
         "overlay_text": false,
         "text_color": "text-dark",
