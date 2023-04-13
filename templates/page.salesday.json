@@ -253,18 +253,17 @@
     },
     "e09a43b7-750a-4732-bb21-c165d0c334f6": {
       "type": "offer_image_section",
-      "disabled": true,
       "settings": {
         "width": "wrapper--full-padded",
-        "image": "shopify:\/\/shop_images\/WILD-JUNKIES-BANNER02--CTA-OPT.jpg",
-        "image_url": "shopify:\/\/collections\/christmas",
+        "image": "shopify:\/\/shop_images\/Beige_Aesthetic_Exclusive_Fashion_Wear_Collection_Clothing_Banner.png",
+        "image_url": "shopify:\/\/collections\/tops-on-sale",
         "set_image_height": 24,
         "fit_image_desktop": "cover",
-        "mobile_image": "shopify:\/\/shop_images\/WILD-JUNKIES-MOB--BANNER02-OPT--CTA.jpg",
-        "set_mobile_image_height": 120,
+        "mobile_image": "shopify:\/\/shop_images\/Beige_Aesthetic_Exclusive_Fashion_Wear_Collection_Clothing_Banner.png",
+        "set_mobile_image_height": 50,
         "fit_image_mobile": "contain",
-        "padding_top": 22,
-        "padding_bottom": 28
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "ff4d61d6-208f-428f-b193-0fb7fd7e2d93": {
