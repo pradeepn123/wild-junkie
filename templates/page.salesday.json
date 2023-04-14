@@ -354,7 +354,7 @@
         "width": "wrapper--full-padded",
         "image": "shopify:\/\/shop_images\/Beige_Aesthetic_Exclusive_Fashion_Wear_Collection_Clothing_Banner.png",
         "image_url": "shopify:\/\/collections\/tops-on-sale",
-        "set_image_height": 10,
+        "set_image_height": 50,
         "fit_image_desktop": "cover",
         "set_mobile_image_height": 50,
         "fit_image_mobile": "contain",
