@@ -84,56 +84,56 @@
     overflow: visible;    
 }
 
-#salesday #PageContainer, #sales #PageContainer{
+#sale-page #PageContainer, #sales #PageContainer{
     overflow: visible;
 }
-#salesday .featured-collection__top-inner, #sales .featured-collection__top-inner {
+#sale-page .featured-collection__top-inner, #sales .featured-collection__top-inner {
     position: sticky;
     top: 60px;
 }
 
-#salesday .navlink--toplevel, #sales .navlink--toplevel{
+#sale-page .navlink--toplevel, #sales .navlink--toplevel{
     color: #000000;
 }
 
-#salesday .navlink--icon svg, #sales .navlink--icon svg{
+#sale-page .navlink--icon svg, #sales .navlink--icon svg{
     fill: #000000;
 }
 
-#salesday .collection-marbles .section__header .section__heading,
+#sale-page .collection-marbles .section__header .section__heading,
 #sales .collection-marbles .section__header .section__heading{
     font-size: 26px;
     color: #FE6D6D;
 }
-#salesday .collection-marbles .list-collections-section,
+#sale-page .collection-marbles .list-collections-section,
 #sales .collection-marbles .list-collections-section{
     padding-top: 0;
 }
-#salesday .section__heading, 
+#sale-page .section__heading, 
 #sales .section__heading{
     font-family: Yeseva One;
 }
 
-#salesday .list-collections__item .list-collections__item__outer .list-collections__item__content,
+#sale-page .list-collections__item .list-collections__item__outer .list-collections__item__content,
 #sales .list-collections__item .list-collections__item__outer .list-collections__item__content{
     font-family: 'Poppins', sans-serif;
 }
 
-#salesday .main_sec_heading, 
+#sale-page .main_sec_heading, 
 #sales .main_sec_heading{
     margin-bottom: 40px;
 }
 
-#salesday .main_sec_heading .section__header,
+#sale-page .main_sec_heading .section__header,
 #sales .main_sec_heading .section__header{
     margin-bottom: 0;   
 }
-#salesday .main_sec_heading .sub_heading,
+#sale-page .main_sec_heading .sub_heading,
 #sales .main_sec_heading .sub_heading{
     font-family: 'Poppins';
 }
-#salesday .featured-collection--split-left .featured-collection__top-inner .section__header .section__heading, 
-#salesday .featured-collection--split-right .featured-collection__top-inner .section__header .section__heading,
+#sale-page .featured-collection--split-left .featured-collection__top-inner .section__header .section__heading, 
+#sale-page .featured-collection--split-right .featured-collection__top-inner .section__header .section__heading,
 #sales .featured-collection--split-left .featured-collection__top-inner .section__header .section__heading, 
 #sales .featured-collection--split-right .featured-collection__top-inner .section__header .section__heading{
     color: #000000;
@@ -141,14 +141,14 @@
     margin: 10px 0;
     line-height: 1;
 }
-#salesday .deal-information,
+#sale-page .deal-information,
 #sales .deal-information{
     position: relative;
 }
-#salesday .deal-information{
+#sale-page .deal-information{
     margin-bottom: 10px;
 }
-#salesday .deal-information .text,
+#sale-page .deal-information .text,
 #sales .deal-information .text{
     margin-left: 40px;
     color: #FE6D6D;
@@ -157,11 +157,11 @@
     text-transform: uppercase;
     font-family: 'Poppins', sans-serif;
 }
-#salesday .tab-collections,
+#sale-page .tab-collections,
 #sales .tab-collections{
     margin-top: 30px;
 }
-#salesday .tab-collections .section__header .section__heading,
+#sale-page .tab-collections .section__header .section__heading,
 #sales .tab-collections .section__header .section__heading{
     font-family: Yeseva One;
     font-style: normal;
@@ -170,7 +170,7 @@
     line-height: 1;    
     color: #fe6d6d;
 }
-#salesday .deal-information .text::before,
+#sale-page .deal-information .text::before,
 #sales .deal-information .text::before{
     position: absolute;
     content: "";
@@ -210,26 +210,26 @@
 .featured-collection__inner .featured-collection__top {
     display: block;
 }
-#salesday .product-grid-item .product-grid-item__info .product-grid-item__price, 
+#sale-page .product-grid-item .product-grid-item__info .product-grid-item__price, 
 #sales .product-grid-item .product-grid-item__info .product-grid-item__price{
     flex-direction: row;
     font-weight: 600;
 }
-#salesday .product-grid-item .product-grid-item__info .product-grid-item__price s,
+#sale-page .product-grid-item .product-grid-item__info .product-grid-item__price s,
 #sales .product-grid-item .product-grid-item__info .product-grid-item__price s{
     font-weight: 400;
 }
-#salesday .product-grid-item .product-grid-item__info .product-grid-item__price .product-grid-item__price__new,
+#sale-page .product-grid-item .product-grid-item__info .product-grid-item__price .product-grid-item__price__new,
 #sales .product-grid-item .product-grid-item__info .product-grid-item__price .product-grid-item__price__new{
     margin-left: 5px;
     font-weight: 600;
 }
 
-#salesday .collection-marbles .great_offer_timer .great_offer_timer_inner,
+#sale-page .collection-marbles .great_offer_timer .great_offer_timer_inner,
 #sales .collection-marbles .great_offer_timer .great_offer_timer_inner{
     background-position: center;
 }
-#salesday .collection-marbles .great_offer_timer,
+#sale-page .collection-marbles .great_offer_timer,
 #sales .collection-marbles .great_offer_timer{
     margin-bottom: 30px;
 }
@@ -262,47 +262,47 @@
     margin-right: 5px;
 }
 
-#salesday .list-collections__item__outer .list-collections__item__content .list-collections__item__title,
+#sale-page .list-collections__item__outer .list-collections__item__content .list-collections__item__title,
 #sales .list-collections__item__outer .list-collections__item__content .list-collections__item__title{
     font-weight: normal;
     font-family: 'EB Garamond', serif;
 }
-#salesday .list-collections__item__outer .list-collections__item__content .offer_title,
+#sale-page .list-collections__item__outer .list-collections__item__content .offer_title,
 #sales .list-collections__item__outer .list-collections__item__content .offer_title{
     font-weight: 600;
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
 }
 
-#salesday .split-images-section .split-images__content .split-images__content-inner .slide__text,
+#sale-page .split-images-section .split-images__content .split-images__content-inner .slide__text,
 #sales .split-images-section .split-images__content .split-images__content-inner .slide__text{
     font-size: 16px;
     font-family: 'Montserrat';
     line-height: 1.4;
 }
-#salesday .split-images-section .split-images__content .split-images__content-inner .slide__buttons .slide__btn,
+#sale-page .split-images-section .split-images__content .split-images__content-inner .slide__buttons .slide__btn,
 #sales .split-images-section .split-images__content .split-images__content-inner .slide__buttons .slide__btn{
     width: 60%;
 }
 
-#salesday .split-images-section .split-images__content .split-images__content-inner,
+#sale-page .split-images-section .split-images__content .split-images__content-inner,
 #sales .split-images-section .split-images__content .split-images__content-inner{
     transform: translateY(15%);
 }
-#salesday .featured-collection--split-left .top-bar .top-bar__slide .top-bar__text span,
-#salesday .featured-collection--split-right .top-bar .top-bar__slide .top-bar__text span{
+#sale-page .featured-collection--split-left .top-bar .top-bar__slide .top-bar__text span,
+#sale-page .featured-collection--split-right .top-bar .top-bar__slide .top-bar__text span{
     font-family: 'Yeseva One';
 }
 
-#salesday .product-grid-item .product-grid-item__info .variant__countdown .variant__countdown--low,
+#sale-page .product-grid-item .product-grid-item__info .variant__countdown .variant__countdown--low,
 #sales .product-grid-item .product-grid-item__info .variant__countdown .variant__countdown--low{
     color: #000000;
 }
 
-#salesday .offer_image_banner .offer_banner_inner {
+#sale-page .offer_image_banner .offer_banner_inner {
     position: relative;
 }
-#salesday .offer_image_banner .offer_banner_inner img {
+#sale-page .offer_image_banner .offer_banner_inner img {
     position: absolute;
     top: 0;
     left: 0;
@@ -318,14 +318,14 @@
 
 
 @media(max-width: 1199px){
-    #salesday .tab-collections .tab-collections-wrapper .tabs__contents .tab__content .product-grid-item .tab-collections__featured-item .tab-collections__featured-image,
+    #sale-page .tab-collections .tab-collections-wrapper .tabs__contents .tab__content .product-grid-item .tab-collections__featured-item .tab-collections__featured-image,
     #sales .tab-collections .tab-collections-wrapper .tabs__contents .tab__content .product-grid-item .tab-collections__featured-item .tab-collections__featured-image{
         background-position: 10%;
     }
-    #salesday .offer_image_banner .offer_banner_inner.desktop-image{
+    #sale-page .offer_image_banner .offer_banner_inner.desktop-image{
         display: none;
     }
-    #salesday .offer_image_banner .offer_banner_inner.mobile-image{
+    #sale-page .offer_image_banner .offer_banner_inner.mobile-image{
         display: block;
     }
 }
@@ -335,11 +335,11 @@
         flex-direction: column;
         row-gap: 30px;
     }
-    #salesday .list-collections__item__outer .list-collections__item__content,
+    #sale-page .list-collections__item__outer .list-collections__item__content,
     #sales .list-collections__item__outer .list-collections__item__content{
         padding: 0;
     }
-    #salesday .list-collections__item__outer .list-collections__item__content .list-collections__item__title,
+    #sale-page .list-collections__item__outer .list-collections__item__content .list-collections__item__title,
     #sales .list-collections__item__outer .list-collections__item__content .list-collections__item__title{
         font-size: 16px;
     }
@@ -350,8 +350,8 @@
     .shipping-flex .offer-block .offer-subtext {
         font-size: 24px;
     }    
-    #salesday .featured-collection--split-left .top-bar .top-bar__slide,
-    #salesday .featured-collection--split-right .top-bar .top-bar__slide{
+    #sale-page .featured-collection--split-left .top-bar .top-bar__slide,
+    #sale-page .featured-collection--split-right .top-bar .top-bar__slide{
         padding: 25px;
     }
 
@@ -379,7 +379,7 @@
 }
 
 @media (min-width:768px) {
-    #salesday .featured-collection__inner,
+    #sale-page .featured-collection__inner,
     .featured-collection--split-right .featured-collection__inner,
     .featured-collection--split-left .featured-collection__inner,
     #sales .featured-collection__inner {
@@ -388,19 +388,24 @@
         gap: calc(var(--grid-gutter) * 2);
         grid-template-areas: "column-left column-right";
     }
-    #salesday .featured-collection__inner .featured-collection__top,
+    #sale-page .featured-collection__inner .featured-collection__top,
     #sales .featured-collection__inner .featured-collection__top {
         grid-area: column-left;
     }
-    #salesday .featured-collection__inner--splitright .featured-collection__top,
+    #sale-page .featured-collection__inner--splitright .featured-collection__top,
     #sales .featured-collection__inner--splitright .featured-collection__top {
         grid-area: column-right;
     }
-    #salesday .split-images-section .split-images__content .split-images__content-inner .slide__text,
+    #sale-page .split-images-section .split-images__content .split-images__content-inner .slide__text,
     #sales .split-images-section .split-images__content .split-images__content-inner .slide__text{
         width: 65%;
         margin: 0 auto 10px;
     }
+    
+    #sale-page .featured-collection__top__button {
+        margin-left: 0;
+    }
+    
 }
 @media (min-width:768px) and (max-width: 1200px) {
     .sale-section .sale-block {
@@ -422,13 +427,13 @@
     .sale-section .sale-block {
         padding-top: 50px;
     }
-    #salesday .offer_image_banner .offer_banner_inner.desktop-image{
+    #sale-page .offer_image_banner .offer_banner_inner.desktop-image{
         display: block;
     }
-    #salesday .offer_image_banner .offer_banner_inner.mobile-image{
+    #sale-page .offer_image_banner .offer_banner_inner.mobile-image{
         display: none;
     }
-    #salesday .collection-marbles .section__header .section__heading,
+    #sale-page .collection-marbles .section__header .section__heading,
     #sales .collection-marbles .section__header .section__heading{
         font-size: 60px !important;        
     }
@@ -453,24 +458,24 @@
     .collection-marbles .great_offer_timer .great_offer_timer_inner .offer_text_heading .font_main_timer .font_format{
         font-size: 24px;
     }
-    #salesday .tab-collections .section__header .section__heading,
+    #sale-page .tab-collections .section__header .section__heading,
     #sales .tab-collections .section__header .section__heading{
         font-size: 60px;
         line-height: 69px;
     }
-    #salesday .list-collections__item__outer .list-collections__item__content .offer_title,
+    #sale-page .list-collections__item__outer .list-collections__item__content .offer_title,
     #sales .list-collections__item__outer .list-collections__item__content .offer_title{
         font-size: 20px;
     }
-    #salesday .image-accordion__inner .image-accordion__image__wrapper .image-accordion__image__container img,
+    #sale-page .image-accordion__inner .image-accordion__image__wrapper .image-accordion__image__container img,
     #sales .image-accordion__inner .image-accordion__image__wrapper .image-accordion__image__container img{
         object-fit: inherit;
     }
-    #salesday .split-images-section .split-images__content .split-images__content-inner .slide__buttons .slide__btn,
+    #sale-page .split-images-section .split-images__content .split-images__content-inner .slide__buttons .slide__btn,
     #sales .split-images-section .split-images__content .split-images__content-inner .slide__buttons .slide__btn{
         width: 100%;
     }
-    #salesday .split-images-section .split-images__content .split-images__content-inner,
+    #sale-page .split-images-section .split-images__content .split-images__content-inner,
     #sales .split-images-section .split-images__content .split-images__content-inner{
         transform: translateY(30%);
     }   
